@@ -217,11 +217,11 @@
         }
 
         trendingData.forEach((item, index) => {
-            const endTime = new Date(item.endDate).getTime();
-            let isEnded = endTime < Date.now();
+            let isEnded = false;
 
-            if (item.title === "Algoland (ALGO)") {
-                isEnded = false;
+            // 첫번째(Bonk)와 두번째(OriginTrail)는 END로 강제 설정
+            if (index === 0 || index === 1) {
+                isEnded = true;
             }
 
             const card = document.createElement('div');
@@ -255,7 +255,7 @@
                         </div>
 
                         <div class="progress-bar-container">
-                            <div class="progress-bar ${isEnded ? 'end' : 'ongoing'}" id="progress-${index}"></div>
+                            <div class="progress-bar" id="progress-${index}"></div>
                         </div>
 
                         <div class="countdown" id="countdown${index}">
@@ -279,24 +279,22 @@
             const progressBar = document.getElementById(`progress-${index}`);
 
             if (index === 0 || index === 1) {
-                // 1번 (Bonk)과 2번 (OriginTrail) → 꽉 찬 초록색
-                progressBar.classList.remove('ongoing');
-                progressBar.classList.add('end');
+                // Bonk, OriginTrail → END (꽉 찬 초록색)
+                progressBar.style.background = 'var(--primary)';
                 progressBar.style.width = '100%';
             } else if (index === 2) {
-                // 3번 (Aethir) → 30% 부근에서 움직이는 황금색
+                // Aethir → 30% 근처 움직이는 황금색
+                progressBar.style.background = 'linear-gradient(90deg, #FFD700, #FFA500, #FFD700)';
                 progressBar.style.width = '30%';
                 setInterval(() => {
-                    const randomWidth = 25 + Math.random() * 15; // 25% ~ 40% 사이
+                    const randomWidth = 25 + Math.random() * 15;
                     progressBar.style.width = `${randomWidth}%`;
                 }, 1500);
+            } else if (index === 3) {
+                // COMING SOON → 0% (회색 빈 바)
+                progressBar.style.width = '0%';
             } else {
-                // 나머지는 기존 움직이는 바
                 progressBar.style.width = '70%';
-                setInterval(() => {
-                    const randomWidth = 70 + Math.random() * 3.5;
-                    progressBar.style.width = `${randomWidth}%`;
-                }, 1200);
             }
 
             startCountdown(`countdown${index}`, item.endDate);
