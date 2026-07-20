@@ -67,10 +67,10 @@ const coinHotTopics = {
         link: "#"
     },
     'SHIB': {
-        title: "Big Win for SHIB? Japan's Crypto Reforms Open New Doors",
-        comment: "Japan's evolving regulatory landscape could prove particularly meaningful for Shiba Inu.",
-        img: "https://u.today/sites/default/files/styles/1200x/public/2026-07/s10063.jpg.webp",
-        link: "https://u.today/big-win-for-shib-japans-crypto-reforms-open-new-doors?utm_source=chatgpt.com"
+        title: "SHIB Layer 2 Posts 216% in Weekend Transaction Spike: Is This a Turning Point?",
+        comment: "Shiba Inu sees fresh network spark as Layer 2 blockchain numbers jump.",
+        img: "https://u.today/sites/default/files/styles/1200x/public/2026-07/101504.jpg.webp",
+        link: "https://u.today/shib-layer-2-posts-216-in-weekend-transaction-spike-is-this-a-turning-point?utm_source=chatgpt.com"
     },
     'BTT': {
         title: "BitTorrent File System (BTFS) to Provide Decentralized Peer-to-Peer Storage",
@@ -110,7 +110,7 @@ const coinRelatedArticles = {
         { title: "Ripple Partners with Major Banks", link: "#" }
     ],
     'SHIB': [
-        { title: "Shibarium Hits New Transaction Milestone", link: "#" },
+        { title: "FLOKI in 2025: Key Updates and Highlights Enhancing its Relevance in the Blockchain Industry", link: "https://cryptonews.net/news/altcoins/31483608/?utm_source=chatgpt.com" },
         { title: "Shiba Inu Metaverse Expansion", link: "#" },
         { title: "SHIB Burn Rate Increases Dramatically", link: "#" }
     ],
