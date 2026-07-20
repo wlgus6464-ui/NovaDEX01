@@ -73,7 +73,7 @@
     </style>
 </head>
 <body>
-    <!-- Sidebar -->
+    <!-- Sidebar - 이 부분이 핵심 -->
     <aside class="glass" style="width:260px; position:fixed; height:100vh; background:var(--sidebar); padding:24px 0; border-right:1px solid #333;">
         <div style="padding:0 24px 40px; font-size:28px; font-weight:700; color:var(--primary);">🌟 NovaDEX</div>
         <nav>
@@ -117,11 +117,7 @@
             trendContainer.innerHTML = '';
 
             if (typeof window.trendingData === 'undefined' || window.trendingData.length === 0) {
-                trendContainer.innerHTML = `
-                    <div style="padding:40px; color:#888; text-align:center; width:100%;">
-                        Trending 데이터를 불러오는 중...<br>
-                        <small style="opacity:0.6;">trendingData.js 파일을 확인해주세요</small>
-                    </div>`;
+                trendContainer.innerHTML = `<div style="padding:40px; color:#888; text-align:center;">Trending 데이터를 불러오는 중...</div>`;
                 return;
             }
 
@@ -142,13 +138,10 @@
         async function loadCoins() {
             const tbody = document.getElementById('coin-table');
             tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:60px; color:#888;">Loading coins...</td></tr>';
-
             try {
                 const res = await fetch('coins.json');
                 const data = await res.json();
-
                 tbody.innerHTML = '';
-
                 data.forEach(coin => {
                     const row = document.createElement('tr');
                     row.innerHTML = `
@@ -158,22 +151,14 @@
                             ${coin.name} (${coin.symbol})
                         </td>
                         <td style="font-weight:600;">$${coin.price.toLocaleString()}</td>
-                        <td class="${coin.change24h >= 0 ? 'positive' : 'negative'}">
-                            ${coin.change24h}%
-                        </td>
+                        <td class="${coin.change24h >= 0 ? 'positive' : 'negative'}">${coin.change24h}%</td>
                         <td>$${(coin.marketCap / 1e9).toFixed(2)}B</td>
                         <td>$${(coin.volume / 1e9).toFixed(2)}B</td>
                     `;
                     tbody.appendChild(row);
                 });
             } catch (e) {
-                console.error("JSON Load Error", e);
-                tbody.innerHTML = `
-                    <tr><td colspan="6" style="text-align:center; padding:60px; color:#FF5A73;">
-                        Failed to load coins.json<br>
-                        Please check if the file exists.
-                    </td></tr>
-                `;
+                tbody.innerHTML = `<tr><td colspan="6" style="text-align:center; padding:60px; color:#FF5A73;">Failed to load coins.json</td></tr>`;
             }
         }
 
