@@ -34,13 +34,16 @@
             text-decoration: none;
             transition: all 0.25s ease;
         }
-        .nav-item:hover {
+        .nav-item:hover, .nav-item.active {
             color: var(--primary);
             background: rgba(124,255,107,0.12);
-            transform: translateX(6px);
         }
-        .nav-item.active {
-            color: var(--primary);
+        .top-nav {
+            display: flex;
+            gap: 20px;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--border);
+            margin-bottom: 30px;
         }
         .trend-card {
             min-width: 340px;
@@ -73,7 +76,7 @@
     </style>
 </head>
 <body>
-    <!-- Sidebar - 이 부분이 핵심 -->
+    <!-- Left Sidebar -->
     <aside class="glass" style="width:260px; position:fixed; height:100vh; background:var(--sidebar); padding:24px 0; border-right:1px solid #333;">
         <div style="padding:0 24px 40px; font-size:28px; font-weight:700; color:var(--primary);">🌟 NovaDEX</div>
         <nav>
@@ -87,6 +90,15 @@
     </aside>
 
     <main style="margin-left:260px; padding:30px;">
+        <!-- Top Navigation Bar (Trending Now와 Explore Coins 사이) -->
+        <div class="top-nav">
+            <a href="#" style="color:var(--primary); font-weight:600;">🔥 Trending Now</a>
+            <a href="#">🌱 Most Visited</a>
+            <a href="#">💰 Prediction Markets</a>
+            <a href="news.html">📰 News</a>
+            <a href="#">📊 On-Chain Data</a>
+        </div>
+
         <!-- Trending Now -->
         <h2 style="margin-bottom:20px;">🔥 Trending Now</h2>
         <div id="trending" style="display:flex; gap:20px; overflow-x:auto; padding-bottom:30px;"></div>
