@@ -38,7 +38,7 @@
             background: rgba(124,255,107,0.12);
         }
 
-        /* Top Navigation - 타원형 디자인 */
+        /* Top Navigation */
         .top-nav {
             display: flex;
             gap: 12px;
@@ -102,7 +102,7 @@
     </style>
 </head>
 <body>
-    <!-- Sidebar -->
+    <!-- Left Sidebar -->
     <aside class="glass" style="width:260px; position:fixed; height:100vh; background:var(--sidebar); padding:24px 0; border-right:1px solid #333;">
         <div style="padding:0 24px 40px; font-size:28px; font-weight:700; color:var(--primary);">🌟 NovaDEX</div>
         <nav>
@@ -116,18 +116,19 @@
     </aside>
 
     <main style="margin-left:260px; padding:30px;">
-        <!-- Top Navigation (타원형 디자인) -->
+        <!-- Trending Now -->
+        <h2 style="margin-bottom:20px;">🔥 Trending Now</h2>
+        <div id="trending" style="display:flex; gap:20px; overflow-x:auto; padding-bottom:30px;"></div>
+
+        <!-- Top Navigation (Explore Coins 바로 위) -->
         <div class="top-nav">
-            <a href="#" class="active">🔥 Trending Now</a>
+            <a href="#" class="active">🌟 Top</a>
+            <a href="trending.html">🔥 Trending</a>
             <a href="#">🌱 Most Visited</a>
             <a href="#">💰 Prediction Markets</a>
             <a href="news.html">📰 News</a>
             <a href="#">📊 On-Chain Data</a>
         </div>
-
-        <!-- Trending Now -->
-        <h2 style="margin-bottom:20px;">🔥 Trending Now</h2>
-        <div id="trending" style="display:flex; gap:20px; overflow-x:auto; padding-bottom:30px;"></div>
 
         <!-- Explore Coins -->
         <h2>Explore Coins</h2>
