@@ -114,18 +114,22 @@
     <script>
         // Trending Now
         const trendContainer = document.getElementById('trending');
-        trendingData.forEach(item => {
-            const card = document.createElement('div');
-            card.className = 'glass trend-card';
-            card.innerHTML = `
-                <img src="${item.img}" style="width:100%; height:180px; object-fit:cover;">
-                <div style="padding:16px;">
-                    <div style="font-size:1.5rem; font-weight:700;">${item.price}</div>
-                    <div style="margin-top:8px;">${item.title}</div>
-                </div>
-            `;
-            trendContainer.appendChild(card);
-        });
+        if (typeof trendingData !== 'undefined') {
+            trendingData.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'glass trend-card';
+                card.innerHTML = `
+                    <img src="${item.img}" style="width:100%; height:180px; object-fit:cover;">
+                    <div style="padding:16px;">
+                        <div style="font-size:1.5rem; font-weight:700;">${item.price}</div>
+                        <div style="margin-top:8px;">${item.title}</div>
+                    </div>
+                `;
+                trendContainer.appendChild(card);
+            });
+        } else {
+            console.error("trendingData is not loaded");
+        }
 
         // Explore Coins
         async function loadCoins() {
