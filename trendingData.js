@@ -1,3 +1,4 @@
+// trendingData.js
 const trendingData = [
     {
         img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRg-WfPiJ61EwwwgMIdsBHyCPiiWokFF-WlhjExPoJ9uUDdTy8eY132ybs&s=10",
@@ -7,10 +8,7 @@ const trendingData = [
         endDate: "2026-07-24T23:59:59",
         prediction: "+151%",
         bannerImage: "https://media.yellow.com/uploads/Chat_GPT_Image_May_30_2026_11_45_01_PM_97bbbfa0e3.jpg",
-        bannerText: "The odds on a seven-leg parlay and the odds on a fresh memecoin trade are roughly the same, BONK core contributor Nom told audience at the ongoing Consensus Miami on Tuesday.
-Most memecoin teams lack the staying power to push their projects through real regulatory steps, Nom said, citing exchange listings, ETF filings and public-company structures as the markers that separate tokens that last from those that rinse retail.
-Crypto has built systems "really, really good at incentivizing inorganic traffic," he added, pointing to points programs and airdrop farms that pull in mercenary capital and then watch network activity collapse the following week.
-BONK has worked through several of those rails. Nasdaq-listed Bonk Holdings (BNKK), which rebranded from beverage company Safety Shot in October 2025, holds roughly 2.7% of BONK's circulating supply and is targeting $115 million in token holdings by the end of 2026.",
+        bannerText: "The odds on a seven-leg parlay and the odds on a fresh memecoin trade are roughly the same, BONK core contributor Nom told audience at the ongoing Consensus Miami on Tuesday.\nMost memecoin teams lack the staying power to push their projects through real regulatory steps, Nom said, citing exchange listings, ETF filings and public-company structures as the markers that separate tokens that last from those that rinse retail.\nCrypto has built systems \"really, really good at incentivizing inorganic traffic,\" he added, pointing to points programs and airdrop farms that pull in mercenary capital and then watch network activity collapse the following week.\nBONK has worked through several of those rails. Nasdaq-listed Bonk Holdings (BNKK), which rebranded from beverage company Safety Shot in October 2025, holds roughly 2.7% of BONK's circulating supply and is targeting $115 million in token holdings by the end of 2026.",
         participateLink: "https://www.upbit.com/exchange?code=CRIX.UPBIT.KRW-BONK"
     },
     {
@@ -21,9 +19,7 @@ BONK has worked through several of those rails. Nasdaq-listed Bonk Holdings (BNK
         endDate: "2026-07-24T23:59:59",
         prediction: "+95%",
         bannerImage: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTnAGzsvVKg9r66l6TaJWzzb2R7Uu9wZukQgABZ7agygOWWb0bmPLKZJ_k&s=10",
-        bannerText: "The event was organized by OriginTrail, a blockchain ecosystem focused on building what it describes as the world’s first decentralized knowledge graph, or DKG, which it says helps to bring trust and reliability to AI.
-The agenda included talks and panels related to user privacy and empowerment as well as the impact of AI on various industries, with speakers ranging from Ethernet inventor Bob Metcalfe and prominent AI researcher and critic Gary Marcus to SingularityNET CEO Ben Goertzel.
-There was a particular focus on ecosystem builders, with a dedicated section on day one for people to present the projects they are building using the DKG and a second conference day entirely for builder workshops.",
+        bannerText: "The event was organized by OriginTrail, a blockchain ecosystem focused on building what it describes as the world’s first decentralized knowledge graph, or DKG, which it says helps to bring trust and reliability to AI.\nThe agenda included talks and panels related to user privacy and empowerment as well as the impact of AI on various industries, with speakers ranging from Ethernet inventor Bob Metcalfe and prominent AI researcher and critic Gary Marcus to SingularityNET CEO Ben Goertzel.\nThere was a particular focus on ecosystem builders, with a dedicated section on day one for people to present the projects they are building using the DKG and a second conference day entirely for builder workshops.",
         participateLink: "https://www.upbit.com/exchange?code=CRIX.UPBIT.KRW-TRAC"
     },
     {
@@ -34,8 +30,7 @@ There was a particular focus on ecosystem builders, with a dedicated section on 
         endDate: "2026-07-26T23:59:59",
         prediction: "+225%",
         bannerImage: "https://cdn.prod.website-files.com/6506e01c107238bf78e07f19/663e147c9467383ff83f3e6e_ath_morethanjustacryptocurrencyblog.png",
-        bannerText: "Aethir’s decentralized GPU cloud has achieved record-breaking growth throughout 2026, expanding enterprise-grade infrastructure to 93 countries, 200+ global locations, and more than 435,000 high-performance GPU Containers. The ecosystem now serves over 150 AI, gaming, and enterprise clients and partners, with annual recurring revenue (ARR) surging to $147M+ and a historic $39.8M+ in Q3 2026 alone.
-A major 2026 milestone was the launch of the Aethir (ATH) Strategic Compute Reserve (SCR) in partnership with Predictive Oncology (Nasdaq: POAI). As the first Strategic Compute Reserve in the industry, this planned $344M stake in ATH tokens is intended to bridge institutional capital with decentralized compute, turbocharging Cloud Host onboarding and large-scale enterprise deals.​",
+        bannerText: "Aethir’s decentralized GPU cloud has achieved record-breaking growth throughout 2026, expanding enterprise-grade infrastructure to 93 countries, 200+ global locations, and more than 435,000 high-performance GPU Containers. The ecosystem now serves over 150 AI, gaming, and enterprise clients and partners, with annual recurring revenue (ARR) surging to $147M+ and a historic $39.8M+ in Q3 2026 alone.\nA major 2026 milestone was the launch of the Aethir (ATH) Strategic Compute Reserve (SCR) in partnership with Predictive Oncology (Nasdaq: POAI).",
         participateLink: "https://www.upbit.com/exchange?code=CRIX.UPBIT.KRW-ATH"
     },
     {
@@ -166,3 +161,5 @@ window.trendingData = trendingData;
 window.coinHotTopics = coinHotTopics;
 window.coinRelatedArticles = coinRelatedArticles;
 window.manualNews = manualNews;
+
+console.log("✅ trendingData.js 로드 완료! 총 " + trendingData.length + "개 아이템");
