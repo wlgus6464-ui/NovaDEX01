@@ -49,29 +49,6 @@
             transition: 0.3s;
         }
         .trend-card:hover { transform: scale(1.04); }
-        .tab {
-            padding: 10px 24px;
-            background: #1f222b;
-            border-radius: 999px;
-            margin-right: 8px;
-            cursor: pointer;
-            white-space: nowrap;
-            text-decoration: none;
-            color: inherit;
-            transition: all 0.25s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .tab:hover {
-            background: #2a2f3b;
-            transform: translateY(-2px);
-        }
-        .tab.active {
-            background: var(--primary);
-            color: black;
-            font-weight: 600;
-        }
         table {
             width: 100%;
             border-collapse: collapse;
@@ -80,7 +57,6 @@
             padding: 16px 12px;
             text-align: left;
             border-bottom: 1px solid #222;
-            transition: all 0.2s ease;
         }
         tr:hover {
             background: rgba(124,255,107,0.08);
@@ -91,7 +67,6 @@
             border-radius: 50%;
             vertical-align: middle;
             margin-right: 12px;
-            object-fit: contain;
         }
         .positive { color: var(--primary); }
         .negative { color: var(--danger); }
@@ -115,16 +90,6 @@
         <!-- Trending Now -->
         <h2 style="margin-bottom:20px;">🔥 Trending Now</h2>
         <div id="trending" style="display:flex; gap:20px; overflow-x:auto; padding-bottom:30px;"></div>
-
-        <!-- Category Tabs -->
-        <div style="display:flex; gap:10px; margin:30px 0 40px; overflow-x:auto;">
-            <div class="tab active">🌟 Top</div>
-            <a href="trending.html" class="tab">🔥 Trending</a>
-            <div class="tab">🌱 Most Visited</div>
-            <div class="tab">💰 Prediction Markets</div>
-            <a href="news.html" class="tab">📰 News</a>
-            <div class="tab">📊 On-Chain Data</div>
-        </div>
 
         <!-- Explore Coins -->
         <h2>Explore Coins</h2>
@@ -162,7 +127,7 @@
             trendContainer.appendChild(card);
         });
 
-        // Explore Coins - 정적 JSON 로드
+        // Explore Coins
         async function loadCoins() {
             const tbody = document.getElementById('coin-table');
             tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:60px; color:#888;">Loading coins...</td></tr>';
