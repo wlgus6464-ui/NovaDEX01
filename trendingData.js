@@ -39,7 +39,7 @@ const trendingData = [
         price: "$0",
         startDate: "2026-07-27T23:59:59",
         endDate: "2026-08-02T23:59:59",
-        prediction: "+282%",
+        prediction: "0%",
         bannerImage: "https://img.magnific.com/free-vector/modern-coming-soon-new-arrival-background-with-spot-light-effect_1017-57496.jpg?semt=ais_hybrid&w=740&q=80",
         bannerText: "We are looking for a new CRYPTO. A moment would be appreciated.",
         participateLink: "https://www.upbit.com/exchange?code=CRIX.UPBIT.KRW-ALGO"
