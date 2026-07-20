@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NovaDEX - Crypto Discovery</title>
+    <style>
+        :root {
+            --bg: #090B11;
+            --sidebar: #0F141D;
+            --panel: #141B26;
+            --border: #232B38;
+            --primary: #7CFF6B;
+            --danger: #FF5A73;
+        }
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: white;
+            font-family: system-ui, sans-serif;
+        }
+        .glass {
+            background: rgba(20,27,38,0.92);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+        }
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 14px 24px;
+            color: #aaa;
+            text-decoration: none;
+            transition: all 0.25s ease;
+        }
+        .nav-item:hover {
+            color: var(--primary);
+            background: rgba(124,255,107,0.12);
+            transform: translateX(6px);
+        }
+        .nav-item.active {
+            color: var(--primary);
+        }
+        .trend-card {
+            min-width: 340px;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+        .trend-card:hover { transform: scale(1.04); }
+        .tab {
+            padding: 10px 24px;
+            background: #1f222b;
+            border-radius: 999px;
+            margin-right: 8px;
+            cursor: pointer;
+            white-space: nowrap;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .tab:hover {
+            background: #2a2f3b;
+            transform: translateY(-2px);
+        }
+        .tab.active {
+            background: var(--primary);
+            color: black;
+            font-weight: 600;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 16px 12px;
+            text-align: left;
+            border-bottom: 1px solid #222;
+            transition: all 0.2s ease;
+        }
+        tr:hover {
+            background: rgba(124,255,107,0.08);
+        }
+        .coin-logo {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            vertical-align: middle;
+            margin-right: 12px;
+            object-fit: contain;
+        }
+        .positive { color: var(--primary); }
+        .negative { color: var(--danger); }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="glass" style="width:260px; position:fixed; height:100vh; background:var(--sidebar); padding:24px 0; border-right:1px solid #333;">
+        <div style="padding:0 24px 40px; font-size:28px; font-weight:700; color:var(--primary);">🌟 NovaDEX</div>
+        <nav>
+            <a href="#" class="nav-item active">🌟 <span>Top</span></a>
+            <a href="trending.html" class="nav-item">🔥 <span>Trending</span></a>
+            <a href="#" class="nav-item">🌱 <span>Most Visited</span></a>
+            <a href="#" class="nav-item">💰 <span>Prediction Markets</span></a>
+            <a href="news.html" class="nav-item">📰 <span>News</span></a>
+            <a href="#" class="nav-item">📊 <span>On-Chain Data</span></a>
+        </nav>
+    </aside>
+
+    <main style="margin-left:260px; padding:30px;">
+        <!-- Trending Now -->
+        <h2 style="margin-bottom:20px;">🔥 Trending Now</h2>
+        <div id="trending" style="display:flex; gap:20px; overflow-x:auto; padding-bottom:30px;"></div>
+
+        <!-- Category Tabs -->
+        <div style="display:flex; gap:10px; margin:30px 0 40px; overflow-x:auto;">
+            <div class="tab active">🌟 Top</div>
+            <a href="trending.html" class="tab">🔥 Trending</a>
+            <div class="tab">🌱 Most Visited</div>
+            <div class="tab">💰 Prediction Markets</div>
+            <a href="news.html" class="tab">📰 News</a>
+            <div class="tab">📊 On-Chain Data</div>
+        </div>
+
+        <!-- Explore Coins -->
+        <h2>Explore Coins</h2>
+        <div class="glass" style="padding:10px;">
+            <table>
+                <thead>
+                    <tr style="color:#aaa;">
+                        <th>#</th>
+                        <th>Coin</th>
+                        <th>Price</th>
+                        <th>24h %</th>
+                        <th>Market Cap</th>
+                        <th>Volume (24h)</th>
+                    </tr>
+                </thead>
+                <tbody id="coin-table"></tbody>
+            </table>
+        </div>
+    </main>
+
+    <script src="trendingData.js"></script>
+    <script>
+        // Trending Now
+        const trendContainer = document.getElementById('trending');
+        trendingData.forEach(item => {
+            const card = document.createElement('div');
+            card.className = 'glass trend-card';
+            card.innerHTML = `
+                <img src="${item.img}" style="width:100%; height:180px; object-fit:cover;">
+                <div style="padding:16px;">
+                    <div style="font-size:1.5rem; font-weight:700;">${item.price}</div>
+                    <div style="margin-top:8px;">${item.title}</div>
+                </div>
+            `;
+            trendContainer.appendChild(card);
+        });
+
+        // Explore Coins - 정적 JSON 로드
+        async function loadCoins() {
+            const tbody = document.getElementById('coin-table');
+            tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:60px; color:#888;">Loading coins...</td></tr>';
+
+            try {
+                const res = await fetch('coins.json');
+                const data = await res.json();
+
+                tbody.innerHTML = '';
+
+                data.forEach(coin => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${coin.rank}</td>
+                        <td style="display:flex; align-items:center;">
+                            <img src="${coin.image}" class="coin-logo" alt="${coin.name}">
+                            ${coin.name} (${coin.symbol})
+                        </td>
+                        <td style="font-weight:600;">$${coin.price.toLocaleString()}</td>
+                        <td class="${coin.change24h >= 0 ? 'positive' : 'negative'}">
+                            ${coin.change24h}%
+                        </td>
+                        <td>$${(coin.marketCap / 1e9).toFixed(2)}B</td>
+                        <td>$${(coin.volume / 1e9).toFixed(2)}B</td>
+                    `;
+                    tbody.appendChild(row);
+                });
+            } catch (e) {
+                console.error("JSON Load Error", e);
+                tbody.innerHTML = `
+                    <tr><td colspan="6" style="text-align:center; padding:60px; color:#FF5A73;">
+                        Failed to load coins.json<br>
+                        Please check if the file exists.
+                    </td></tr>
+                `;
+            }
+        }
+
+        loadCoins();
+    </script>
+</body>
+</html>
