@@ -11,7 +11,6 @@
             --panel: #141B26;
             --border: #232B38;
             --primary: #7CFF6B;
-            --danger: #FF5A73;
         }
         body {
             margin: 0;
@@ -38,13 +37,40 @@
             color: var(--primary);
             background: rgba(124,255,107,0.12);
         }
+
+        /* Top Navigation - 타원형 디자인 */
         .top-nav {
             display: flex;
-            gap: 20px;
-            padding: 15px 0;
-            border-bottom: 1px solid var(--border);
+            gap: 12px;
+            padding: 20px 0;
             margin-bottom: 30px;
+            flex-wrap: wrap;
         }
+        .top-nav a {
+            padding: 10px 24px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 9999px;
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            white-space: nowrap;
+        }
+        .top-nav a:hover {
+            background: rgba(124,255,107,0.2);
+            color: var(--primary);
+            transform: scale(1.08);
+        }
+        .top-nav a.active {
+            background: var(--primary);
+            color: black;
+            font-weight: 600;
+        }
+
         .trend-card {
             min-width: 340px;
             border-radius: 16px;
@@ -72,11 +98,11 @@
             margin-right: 12px;
         }
         .positive { color: var(--primary); }
-        .negative { color: var(--danger); }
+        .negative { color: #FF5A73; }
     </style>
 </head>
 <body>
-    <!-- Left Sidebar -->
+    <!-- Sidebar -->
     <aside class="glass" style="width:260px; position:fixed; height:100vh; background:var(--sidebar); padding:24px 0; border-right:1px solid #333;">
         <div style="padding:0 24px 40px; font-size:28px; font-weight:700; color:var(--primary);">🌟 NovaDEX</div>
         <nav>
@@ -90,9 +116,9 @@
     </aside>
 
     <main style="margin-left:260px; padding:30px;">
-        <!-- Top Navigation Bar (Trending Now와 Explore Coins 사이) -->
+        <!-- Top Navigation (타원형 디자인) -->
         <div class="top-nav">
-            <a href="#" style="color:var(--primary); font-weight:600;">🔥 Trending Now</a>
+            <a href="#" class="active">🔥 Trending Now</a>
             <a href="#">🌱 Most Visited</a>
             <a href="#">💰 Prediction Markets</a>
             <a href="news.html">📰 News</a>
