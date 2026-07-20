@@ -112,14 +112,21 @@
 
     <script src="trendingData.js"></script>
     <script>
-        // Trending Now
-        const trendContainer = document.getElementById('trending');
-        if (typeof trendingData !== 'undefined') {
-            trendingData.forEach(item => {
+        // Trending Now - 수정된 부분
+        function renderTrendingNow() {
+            const trendContainer = document.getElementById('trending');
+            trendContainer.innerHTML = '';
+
+            if (typeof window.trendingData === 'undefined' || !window.trendingData.length) {
+                trendContainer.innerHTML = `<div style="padding:40px; color:#888; text-align:center;">Trending 데이터를 불러오는 중...</div>`;
+                return;
+            }
+
+            window.trendingData.forEach(item => {
                 const card = document.createElement('div');
                 card.className = 'glass trend-card';
                 card.innerHTML = `
-                    <img src="${item.img}" style="width:100%; height:180px; object-fit:cover;">
+                    <img src="${item.img || 'https://picsum.photos/id/1015/340/180'}" style="width:100%; height:180px; object-fit:cover;">
                     <div style="padding:16px;">
                         <div style="font-size:1.5rem; font-weight:700;">${item.price}</div>
                         <div style="margin-top:8px;">${item.title}</div>
@@ -127,11 +134,9 @@
                 `;
                 trendContainer.appendChild(card);
             });
-        } else {
-            console.error("trendingData is not loaded");
         }
 
-        // Explore Coins
+        // Explore Coins (기존 유지)
         async function loadCoins() {
             const tbody = document.getElementById('coin-table');
             tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:60px; color:#888;">Loading coins...</td></tr>';
@@ -170,7 +175,11 @@
             }
         }
 
-        loadCoins();
+        // 페이지 로드 시 실행
+        window.onload = function() {
+            renderTrendingNow();
+            loadCoins();
+        };
     </script>
 </body>
 </html>
