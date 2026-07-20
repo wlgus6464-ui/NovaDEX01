@@ -171,7 +171,6 @@
             transform: scale(1.02);
         }
 
-        /* Mobile Responsive */
         @media (max-width: 768px) {
             .card-content {
                 flex-direction: column;
@@ -184,9 +183,6 @@
             }
             .banner-text {
                 font-size: 0.9rem;
-            }
-            .hot-topic {
-                flex-direction: column;
             }
         }
     </style>
@@ -207,7 +203,6 @@
 
     <main style="margin-left:260px; padding:40px;">
         <h1 style="margin-bottom:40px;">🔥 Trending</h1>
-
         <div id="trending-cards"></div>
     </main>
 
@@ -283,11 +278,21 @@
 
             const progressBar = document.getElementById(`progress-${index}`);
 
-            if (isEnded) {
+            if (index === 0 || index === 1) {
+                // 1번 (Bonk)과 2번 (OriginTrail) → 꽉 찬 초록색
+                progressBar.classList.remove('ongoing');
+                progressBar.classList.add('end');
                 progressBar.style.width = '100%';
+            } else if (index === 2) {
+                // 3번 (Aethir) → 30% 부근에서 움직이는 황금색
+                progressBar.style.width = '30%';
+                setInterval(() => {
+                    const randomWidth = 25 + Math.random() * 15; // 25% ~ 40% 사이
+                    progressBar.style.width = `${randomWidth}%`;
+                }, 1500);
             } else {
+                // 나머지는 기존 움직이는 바
                 progressBar.style.width = '70%';
-
                 setInterval(() => {
                     const randomWidth = 70 + Math.random() * 3.5;
                     progressBar.style.width = `${randomWidth}%`;
@@ -315,20 +320,6 @@
                 `;
             }, 1000);
         }
-
-        setInterval(() => {
-            const cards = document.querySelectorAll('.pool-card');
-            cards.forEach((card, idx) => {
-                const item = trendingData[idx];
-                if (!item) return;
-
-                const startSpan = card.querySelector('.card-left > div:nth-child(3) > div:first-child span');
-                const endSpan = card.querySelector('.card-left > div:nth-child(3) > div:last-child span');
-
-                if (startSpan) startSpan.style.color = getDateColor(item.startDate);
-                if (endSpan) endSpan.style.color = getDateColor(item.endDate);
-            });
-        }, 60000);
     </script>
 </body>
 </html>
