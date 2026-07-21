@@ -64,7 +64,6 @@
             font-weight: 600;
         }
 
-        /* Hot Topic - 빛 효과 복원 */
         .hot-topic {
             background: #11141f;
             border-radius: 16px;
@@ -184,7 +183,7 @@
         <!-- Crypto News -->
         <h1 style="margin-bottom:20px;">📰 Crypto News</h1>
 
-        <!-- Coin Tabs (All 삭제) -->
+        <!-- Coin Tabs -->
         <div class="coin-tabs">
             <div class="coin-tab active" data-filter="BTC">BTC</div>
             <div class="coin-tab" data-filter="ETH">ETH</div>
@@ -223,7 +222,6 @@
             relatedContainer.innerHTML = '';
 
             const related = window.coinRelatedArticles[filter] || [];
-            // 1개만 표시
             if (related.length > 0) {
                 const r = related[0];
                 const card = document.createElement('div');
@@ -268,7 +266,7 @@
             });
         });
 
-        // 초기 로드 (BTC)
+        // 초기 로드
         renderHotTopic('BTC');
         renderRelatedArticles('BTC');
         renderManualNews('BTC');
