@@ -43,7 +43,6 @@
             color: var(--primary);
         }
 
-        /* Coin Tabs */
         .coin-tabs {
             display: flex;
             gap: 12px;
@@ -65,7 +64,6 @@
             font-weight: 600;
         }
 
-        /* Hot Topic - 강한 금색 효과 */
         .hot-topic {
             background: #11141f;
             border-radius: 16px;
@@ -76,35 +74,8 @@
             gap: 24px;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 0 40px rgba(255, 215, 0, 0.95), 0 0 80px rgba(255, 165, 0, 0.8), 0 0 120px rgba(255, 140, 0, 0.6);
-            animation: flameBorder 2.8s linear infinite;
         }
-        .hot-topic::before {
-            content: '';
-            position: absolute;
-            inset: -8px;
-            border-radius: 24px;
-            background: linear-gradient(45deg, #FFD700, #FFA500, #FF8C00, #FFD700);
-            filter: blur(20px);
-            opacity: 0.85;
-            z-index: -1;
-            animation: flameGlow 2.2s ease-in-out infinite alternate;
-        }
-
-        @keyframes flameBorder {
-            0% { box-shadow: 0 0 40px rgba(255, 215, 0, 0.95), 0 0 80px rgba(255, 165, 0, 0.8); }
-            50% { box-shadow: 0 0 60px rgba(255, 215, 0, 1), 0 0 110px rgba(255, 165, 0, 0.95), 0 0 150px rgba(255, 140, 0, 0.8); }
-            100% { box-shadow: 0 0 40px rgba(255, 215, 0, 0.95), 0 0 80px rgba(255, 165, 0, 0.8); }
-        }
-
-        @keyframes flameGlow {
-            from { opacity: 0.7; transform: scale(1); }
-            to { opacity: 0.9; transform: scale(1.08); }
-        }
-
-        .hot-topic .text-area {
-            flex: 1;
-        }
+        .hot-topic .text-area { flex: 1; }
         .hot-topic .image-area {
             width: 260px;
             flex-shrink: 0;
@@ -115,45 +86,8 @@
             object-fit: cover;
             border-radius: 12px;
         }
-        .hot-topic .hot-label {
-            font-size: 1.45rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .hot-topic .hot-label .exclamation {
-            color: var(--danger);
-        }
-        .hot-topic .hot-label .text {
-            background: linear-gradient(90deg, #FFD700, #FFA500, #FFD700);
-            background-size: 200% 100%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: goldShimmer 2.5s linear infinite;
-        }
-        .hot-topic .title {
-            font-size: 1.35rem;
-            font-weight: 700;
-            margin-bottom: 12px;
-            line-height: 1.4;
-            color: white;
-        }
-        .hot-topic .comment {
-            color: #ddd;
-            line-height: 1.5;
-        }
 
-        @keyframes goldShimmer {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
-        }
-
-        /* Related Articles */
-        .related-section {
-            margin-bottom: 40px;
-        }
+        .related-section { margin-bottom: 40px; }
         .related-title {
             font-size: 1.15rem;
             font-weight: 700;
@@ -168,18 +102,9 @@
             cursor: pointer;
             transition: all 0.2s ease;
         }
-        .related-card:first-child {
-            box-shadow: 0 0 30px rgba(255, 215, 0, 0.9);
-            animation: firstCardGlow 2.8s ease-in-out infinite alternate;
-        }
         .related-card:hover {
             transform: translateY(-2px);
             background: #252b3b;
-        }
-
-        @keyframes firstCardGlow {
-            from { box-shadow: 0 0 20px rgba(255, 215, 0, 0.7); }
-            to { box-shadow: 0 0 40px rgba(255, 215, 0, 1); }
         }
 
         .news-card {
@@ -192,19 +117,6 @@
         }
         .news-card:hover {
             transform: translateY(-3px);
-        }
-        .news-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            line-height: 1.45;
-            margin-bottom: 12px;
-            word-break: break-word;
-        }
-        .news-meta {
-            display: flex;
-            justify-content: space-between;
-            font-size: 0.85rem;
-            color: #aaa;
         }
         .loading {
             text-align: center;
@@ -236,11 +148,11 @@
                     <span class="text">HOT TOPIC</span>
                     <span class="exclamation">‼️</span>
                 </div>
-                <div class="title"></div>
-                <div class="comment"></div>
+                <div class="title" id="hot-title"></div>
+                <div class="comment" id="hot-comment"></div>
             </div>
             <div class="image-area">
-                <img id="hot-image" src="" alt="Hot Topic Image">
+                <img id="hot-image" src="" alt="Hot Topic">
             </div>
         </div>
 
@@ -280,8 +192,8 @@
             if (hot && filter !== 'all') {
                 container.style.display = 'flex';
                 relatedSection.style.display = 'block';
-                container.querySelector('.title').textContent = hot.title;
-                container.querySelector('.comment').textContent = hot.comment || '';
+                document.getElementById('hot-title').textContent = hot.title;
+                document.getElementById('hot-comment').textContent = hot.comment || '';
                 document.getElementById('hot-image').src = hot.img || 'https://picsum.photos/id/1015/260/160';
                 container.onclick = () => window.open(hot.link || '#', '_blank');
             } else {
@@ -290,142 +202,52 @@
             }
         }
 
-        async function fetchNews(filter = 'all') {
-            const container = document.getElementById('news-container');
-            container.innerHTML = '<div class="loading">Now Loading... Please Wait.</div>';
+        function renderRelatedArticles(filter) {
+            const relatedContainer = document.getElementById('related-container');
+            relatedContainer.innerHTML = '';
 
-            if (filter === 'all') {
-                document.getElementById('hot-topic-container').style.display = 'none';
-                document.getElementById('related-section').style.display = 'none';
-                try {
-                    const response = await fetch('https://api.allorigins.win/raw?url=' + encodeURIComponent('https://cointelegraph.com/rss'));
-                    const text = await response.text();
-                    const parser = new DOMParser();
-                    const xml = parser.parseFromString(text, 'text/xml');
-                    const items = xml.querySelectorAll('item');
-
-                    container.innerHTML = '';
-
-                    let count = 0;
-                    items.forEach(item => {
-                        if (count >= 12) return;
-                        const title = item.querySelector('title')?.textContent || '';
-                        const link = item.querySelector('link')?.textContent || '#';
-                        const pubDate = item.querySelector('pubDate')?.textContent;
-
-                        const card = document.createElement('div');
-                        card.className = 'glass news-card';
-                        card.innerHTML = `
-                            <div class="news-title">${title}</div>
-                            <div class="news-meta">
-                                <span>CoinTelegraph</span>
-                                <span>${getTimeAgo(pubDate)}</span>
-                            </div>
-                        `;
-                        card.onclick = () => window.open(link, '_blank');
-                        container.appendChild(card);
-                        count++;
-                    });
-                } catch (e) {
-                    container.innerHTML = `<div class="loading">Failed to load news. Please try again later.</div>`;
-                }
-                return;
-            }
-
-            // 수동 탭 (XRP, SHIB, BTT, ALT, ETC) - API 기다리지 않고 바로 표시
-            if (['XRP', 'SHIB', 'BTT', 'ALT', 'ETC'].includes(filter)) {
-                renderHotTopic(filter);
-
-                const relatedContainer = document.getElementById('related-container');
-                relatedContainer.innerHTML = '';
-
-                const related = window.coinRelatedArticles[filter] || [];
-                related.forEach(r => {
-                    const card = document.createElement('div');
-                    card.className = 'related-card glass';
-                    card.innerHTML = `<div class="news-title">${r.title}</div>`;
-                    card.onclick = () => window.open(r.link, '_blank');
-                    relatedContainer.appendChild(card);
-                });
-
-                container.innerHTML = '';
-
-                const manual = window.manualNews[filter] || [];
-                manual.forEach(news => {
-                    const card = document.createElement('div');
-                    card.className = 'glass news-card';
-                    card.innerHTML = `
-                        <div class="news-title">${news.title}</div>
-                        <div class="news-meta">
-                            <span>Manual Source</span>
-                        </div>
-                    `;
-                    card.onclick = () => window.open(news.link, '_blank');
-                    container.appendChild(card);
-                });
-                return;
-            }
-
-            // BTC, ETH 자동
-            renderHotTopic(filter);
-            try {
-                const response = await fetch('https://api.allorigins.win/raw?url=' + encodeURIComponent('https://cointelegraph.com/rss'));
-                const text = await response.text();
-                const parser = new DOMParser();
-                const xml = parser.parseFromString(text, 'text/xml');
-                const items = xml.querySelectorAll('item');
-
-                container.innerHTML = '';
-
-                let count = 0;
-                const keywords = {
-                    'BTC': ['Bitcoin', 'BTC'],
-                    'ETH': ['Ethereum', 'ETH']
-                };
-
-                const targetKeywords = keywords[filter] || [];
-
-                items.forEach(item => {
-                    const title = item.querySelector('title')?.textContent || '';
-                    const link = item.querySelector('link')?.textContent || '#';
-                    const pubDate = item.querySelector('pubDate')?.textContent;
-
-                    const hasKeyword = targetKeywords.some(kw => title.toUpperCase().includes(kw.toUpperCase()));
-
-                    if (!hasKeyword) return;
-
-                    if (count >= 10) return;
-
-                    const card = document.createElement('div');
-                    card.className = 'glass news-card';
-                    card.innerHTML = `
-                        <div class="news-title">${title}</div>
-                        <div class="news-meta">
-                            <span>CoinTelegraph</span>
-                            <span>${getTimeAgo(pubDate)}</span>
-                        </div>
-                    `;
-                    card.onclick = () => window.open(link, '_blank');
-                    container.appendChild(card);
-                    count++;
-                });
-            } catch (error) {
-                container.innerHTML = `<div class="loading">Failed to load news. Please try again later.</div>`;
-            }
+            const related = window.coinRelatedArticles[filter] || [];
+            related.forEach(r => {
+                const card = document.createElement('div');
+                card.className = 'related-card glass';
+                card.innerHTML = `<div class="news-title">${r.title}</div>`;
+                card.onclick = () => window.open(r.link, '_blank');
+                relatedContainer.appendChild(card);
+            });
         }
 
-        function getTimeAgo(dateString) {
-            if (!dateString) return 'Unknown time';
-            const date = new Date(dateString);
-            const now = new Date();
-            const diffMs = now - date;
-            const diffMin = Math.floor(diffMs / 60000);
+        function fetchNews(filter = 'all') {
+            const container = document.getElementById('news-container');
+            container.innerHTML = '';
 
-            if (diffMin < 1) return 'Just now';
-            if (diffMin < 60) return `${diffMin}m ago`;
-            const diffH = Math.floor(diffMin / 60);
-            if (diffH < 24) return `${diffH}h ago`;
-            return `${Math.floor(diffH / 24)}d ago`;
+            if (filter === 'all') {
+                renderHotTopic('all');
+                container.innerHTML = `<div style="padding:40px; color:#888; text-align:center;">모든 코인 뉴스를 보려면 코인 탭을 선택해주세요.</div>`;
+                return;
+            }
+
+            // Hot Topic + Related Articles
+            renderHotTopic(filter);
+            renderRelatedArticles(filter);
+
+            // Manual News Cards
+            const manual = window.manualNews[filter] || [];
+            manual.forEach(news => {
+                const card = document.createElement('div');
+                card.className = 'glass news-card';
+                card.innerHTML = `
+                    <div class="news-title">${news.title}</div>
+                    <div class="news-meta">
+                        <span>Manual Source</span>
+                    </div>
+                `;
+                card.onclick = () => window.open(news.link, '_blank');
+                container.appendChild(card);
+            });
+
+            if (manual.length === 0) {
+                container.innerHTML = `<div style="padding:40px; color:#888; text-align:center;">이 코인에 대한 뉴스가 아직 등록되지 않았습니다.</div>`;
+            }
         }
 
         document.querySelectorAll('.coin-tab').forEach(tab => {
@@ -437,6 +259,7 @@
             });
         });
 
+        // 초기 로드
         renderHotTopic('BTC');
         fetchNews('all');
     </script>
