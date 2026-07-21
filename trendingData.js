@@ -73,10 +73,10 @@ const coinHotTopics = {
         link: "https://u.today/shib-layer-2-posts-216-in-weekend-transaction-spike-is-this-a-turning-point?utm_source=chatgpt.com"
     },
     'BTT': {
-        title: "BitTorrent File System (BTFS) to Provide Decentralized Peer-to-Peer Storage",
-        comment: "BitTorrent is pleased to announce its plans to introduce decentralized storage as another blockchain solution into the BitTorrent ecosystem. BTFS, which is a variant of the open-source InterPlanetary File System (IPFS) protocol, will allow users to receive and host storage on their computers with other individuals and businesses. ",
-        img: "https://blog.bittorrent.com/files/2020/02/bittorrent_blog_btfs.jpg",
-        link: "https://www.blockchaingamer.biz/news/42586/the-sandbox-ai-game-jam-live/?utm_source=chatgpt.com"
+        title: "TRON Accelerates Ecosystem Growth Through Stablecoin Expansion, Institutional Adoption, and RWA Initiatives",
+        comment: "TRON has continued to expand its blockchain ecosystem through a series of official announcements focused on strengthening stablecoin infrastructure, attracting institutional participation, and supporting real-world asset (RWA) projects. These initiatives reflect TRON's strategy of building a more robust and scalable blockchain network with broader real-world adoption and long-term ecosystem growth.",
+        img: "https://framerusercontent.com/images/QLsY9F9K6ZGBd8BxPdwewUVeW6E.png?width=1200&height=675",
+        link: "https://trondao.org/news?utm_source=chatgpt.com"
     },
     'ALT': {
         title: "VeChain Unveils 2026 Roadmap, Positioning Blockchain as the Trust Layer for the AI Economy",
@@ -115,7 +115,7 @@ const coinRelatedArticles = {
         { title: "SHIB Burn Rate Increases Dramatically", link: "#" }
     ],
     'BTT': [
-        { title: "Decentralize Your Data. Store it with Filecoin.", link: "https://fil.org/blog/decentralize-your-data-store-it-with-filecoin?utm_source=chatgpt.com" },
+        { title: "The Arbitrum Foundation 2025 Transparency Report: The Year of Institutional Adoption.", link: "https://blog.arbitrum.foundation/the-arbitrum-foundation-2025-transparency-report-the-year-of-institutional-adoption/?utm_source=chatgpt.com" },
         { title: "BitTorrent Token Utility Expansion", link: "#" },
         { title: "BTT Long-Term Burn Strategy", link: "#" }
     ],
