@@ -57,7 +57,7 @@ const coinHotTopics = {
     'ETH': {
         title: "Ether outpaces bitcoin as ETF flows split and Ethereum activity jumps 41% on-week",
         comment: "Ether is outperforming bitcoin as ETF flows, spot prices and a 41% jump in Ethereum transactions move in the same direction for the first time in months.",
-        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhF0UAZr7vjtP1tiAiIwMtnlenM2RiFhZyrFDduiOqzWE09wmPm9Ae5ss&s=10",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTczWlWkTWl3dv0CH6MfeCs9xthUxNzclk8TLQtRYaZjZFvQOnr2CchoORa&s=10",
         link: "https://www.coindesk.com/markets/2026/04/14/ether-outpaces-bitcoin-as-etf-flows-split-and-ethereum-activity-jumps-41-on-week"
     },
     'XRP': {
