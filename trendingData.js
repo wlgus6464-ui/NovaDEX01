@@ -117,56 +117,56 @@ const coinRelatedArticles = {
     ]
 };
 
-// Manual News (각 코인당 5개 이상)
+// Manual News (각 코인당 5개 이상, time 필드 추가)
 const manualNews = {
     'BTC': [
-        { title: "Bitcoin ETF Inflows Hit Record High", link: "#" },
-        { title: "Why Institutions Are Betting Big on Bitcoin", link: "#" },
-        { title: "Bitcoin Halving Cycle Analysis 2026", link: "#" },
-        { title: "Bitcoin Surpasses $100K Milestone", link: "#" },
-        { title: "BTC Dominance Remains Strong", link: "#" }
+        { title: "Bitcoin ETF Inflows Hit Record High", link: "#", time: "1 hour ago" },
+        { title: "Why Institutions Are Betting Big on Bitcoin", link: "#", time: "3 hours ago" },
+        { title: "Bitcoin Halving Cycle Analysis 2026", link: "#", time: "12 hours ago" },
+        { title: "Bitcoin Surpasses $100K Milestone", link: "#", time: "1 day ago" },
+        { title: "BTC Dominance Remains Strong", link: "#", time: "2 days ago" }
     ],
     'ETH': [
-        { title: "Ether outpaces bitcoin as ETF flows split and Ethereum activity jumps 41% on-week", link: "https://www.coindesk.com/markets/2026/04/14/ether-outpaces-bitcoin-as-etf-flows-split-and-ethereum-activity-jumps-41-on-week" },
-        { title: "The Arbitrum Foundation 2025 Transparency Report", link: "https://blog.arbitrum.foundation/the-arbitrum-foundation-2025-transparency-report-the-year-of-institutional-adoption" },
-        { title: "Layer 2 Solutions Driving ETH Adoption", link: "#" },
-        { title: "Vitalik Buterin on Ethereum's Future", link: "#" },
-        { title: "Ethereum ETF Approval Expected Soon", link: "#" }
+        { title: "Ether outpaces bitcoin as ETF flows split and Ethereum activity jumps 41% on-week", link: "https://www.coindesk.com/markets/2026/04/14/ether-outpaces-bitcoin-as-etf-flows-split-and-ethereum-activity-jumps-41-on-week", time: "45 minutes ago" },
+        { title: "The Arbitrum Foundation 2025 Transparency Report", link: "https://blog.arbitrum.foundation/the-arbitrum-foundation-2025-transparency-report-the-year-of-institutional-adoption", time: "2 hours ago" },
+        { title: "Layer 2 Solutions Driving ETH Adoption", link: "#", time: "5 hours ago" },
+        { title: "Vitalik Buterin on Ethereum's Future", link: "#", time: "1 day ago" },
+        { title: "Ethereum ETF Approval Expected Soon", link: "#", time: "2 days ago" }
     ],
     'XRP': [
-        { title: "Ripple Receives Full MiCA CASP Authorisation in Europe", link: "https://ripple.com/press-releases/" },
-        { title: "Ripple and SBI Group Partner to Launch Ripple USD (RLUSD) in Japan", link: "https://ripple.com/press-releases/" },
-        { title: "Ripple Secures Preliminary MiCA CASP License", link: "https://ripple.com/press-releases/" },
-        { title: "XRP Adoption Growing in Asia", link: "#" },
-        { title: "Ripple Expands Partnerships with Banks", link: "#" }
+        { title: "Ripple Receives Full MiCA CASP Authorisation in Europe", link: "https://ripple.com/press-releases/", time: "30 minutes ago" },
+        { title: "Ripple and SBI Group Partner to Launch Ripple USD (RLUSD) in Japan", link: "https://ripple.com/press-releases/", time: "4 hours ago" },
+        { title: "Ripple Secures Preliminary MiCA CASP License", link: "https://ripple.com/press-releases/", time: "9 hours ago" },
+        { title: "XRP Adoption Growing in Asia", link: "#", time: "1 day ago" },
+        { title: "Ripple Expands Partnerships with Banks", link: "#", time: "2 days ago" }
     ],
     'SHIB': [
-        { title: "Shiba Eternity & SHIB Metaverse Relaunch Announced", link: "https://coinmarketcap.com/cmc-ai/shiba-inu/latest-updates/" },
-        { title: "SHIB OS: Building the Future of Decentralized Governance", link: "https://blog.shib.io/" },
-        { title: "SHIB Burn Rate Increases Dramatically", link: "#" },
-        { title: "Shibarium Hits New Transaction Milestone", link: "#" },
-        { title: "Big Win for SHIB? Japan's Crypto Reforms Open New Doors", link: "https://u.today/big-win-for-shib-japans-crypto-reforms-open-new-doors" }
+        { title: "Shiba Eternity & SHIB Metaverse Relaunch Announced", link: "https://coinmarketcap.com/cmc-ai/shiba-inu/latest-updates/", time: "1 hour ago" },
+        { title: "SHIB OS: Building the Future of Decentralized Governance", link: "https://blog.shib.io/", time: "3 hours ago" },
+        { title: "SHIB Burn Rate Increases Dramatically", link: "#", time: "8 hours ago" },
+        { title: "Shibarium Hits New Transaction Milestone", link: "#", time: "1 day ago" },
+        { title: "Big Win for SHIB? Japan's Crypto Reforms Open New Doors", link: "https://u.today/big-win-for-shib-japans-crypto-reforms-open-new-doors", time: "2 days ago" }
     ],
     'BTT': [
-        { title: "Announcement on the Launch of BTT Buyback and Burn", link: "https://medium.com/@BitTorrent/announcement-on-the-launch-of-btt-buyback-and-burn-8b5a2b6af78d" },
-        { title: "BitTorrent Sets Q3 Launch for BTT Buyback", link: "https://cfgi.io/bittorrent-news/" },
-        { title: "BTFS Decentralized Storage Update", link: "#" },
-        { title: "BTT Long-Term Burn Strategy", link: "#" },
-        { title: "BitTorrent Token Utility Expansion", link: "#" }
+        { title: "Announcement on the Launch of BTT Buyback and Burn", link: "https://medium.com/@BitTorrent/announcement-on-the-launch-of-btt-buyback-and-burn-8b5a2b6af78d", time: "2 hours ago" },
+        { title: "BitTorrent Sets Q3 Launch for BTT Buyback", link: "https://cfgi.io/bittorrent-news/", time: "6 hours ago" },
+        { title: "BTFS Decentralized Storage Update", link: "#", time: "14 hours ago" },
+        { title: "BTT Long-Term Burn Strategy", link: "#", time: "1 day ago" },
+        { title: "BitTorrent Token Utility Expansion", link: "#", time: "3 days ago" }
     ],
     'ETC': [
-        { title: "Ethereum Classic Reinforces Core Infrastructure with Ongoing Network and Development Support", link: "https://ethereumclassic.org/blog/2024-07-30-ethereum-classic-pathways-by-etc-cooperative-istora-and-donald-mcIntyre" },
-        { title: "ETC Mining Difficulty Adjustment", link: "#" },
-        { title: "ETC Ecosystem Growth 2026", link: "#" },
-        { title: "Ethereum Classic Stability Update", link: "#" },
-        { title: "ETC Core-Geth Client Support", link: "#" }
+        { title: "Ethereum Classic Reinforces Core Infrastructure with Ongoing Network and Development Support", link: "https://ethereumclassic.org/blog/2024-07-30-ethereum-classic-pathways-by-etc-cooperative-istora-and-donald-mcIntyre", time: "50 minutes ago" },
+        { title: "ETC Mining Difficulty Adjustment", link: "#", time: "5 hours ago" },
+        { title: "ETC Ecosystem Growth 2026", link: "#", time: "11 hours ago" },
+        { title: "Ethereum Classic Stability Update", link: "#", time: "1 day ago" },
+        { title: "ETC Core-Geth Client Support", link: "#", time: "2 days ago" }
     ],
     'ALT': [
-        { title: "Altcoins Show Strength in Bull Market", link: "#" },
-        { title: "Top Altcoins to Watch in 2026", link: "#" },
-        { title: "Altcoin Season Indicators", link: "#" },
-        { title: "VeChain 2026 Roadmap Update", link: "#" },
-        { title: "ALT Ecosystem Growth", link: "#" }
+        { title: "Altcoins Show Strength in Bull Market", link: "#", time: "1 hour ago" },
+        { title: "Top Altcoins to Watch in 2026", link: "#", time: "4 hours ago" },
+        { title: "Altcoin Season Indicators", link: "#", time: "9 hours ago" },
+        { title: "VeChain 2026 Roadmap Update", link: "#", time: "1 day ago" },
+        { title: "ALT Ecosystem Growth", link: "#", time: "2 days ago" }
     ]
 };
 
