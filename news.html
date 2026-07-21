@@ -64,7 +64,7 @@
             font-weight: 600;
         }
 
-        /* Hot Topic - 황금빛 그라데이션 복원 + 선명하게 */
+        /* Hot Topic - 황금 효과 */
         .hot-topic {
             background: #11141f;
             border-radius: 16px;
@@ -75,7 +75,7 @@
             gap: 24px;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 0 40px rgba(255, 215, 0, 0.95), 0 0 80px rgba(255, 165, 0, 0.8), 0 0 120px rgba(255, 140, 0, 0.6);
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.95), 0 0 80px rgba(255, 165, 0, 0.8);
             animation: flameBorder 2.8s linear infinite;
         }
         .hot-topic::before {
@@ -91,16 +91,16 @@
         }
         @keyframes flameBorder {
             0% { box-shadow: 0 0 40px rgba(255, 215, 0, 0.95), 0 0 80px rgba(255, 165, 0, 0.8); }
-            50% { box-shadow: 0 0 60px rgba(255, 215, 0, 1), 0 0 110px rgba(255, 165, 0, 0.95), 0 0 150px rgba(255, 140, 0, 0.8); }
+            50% { box-shadow: 0 0 60px rgba(255, 215, 0, 1), 0 0 110px rgba(255, 165, 0, 0.95); }
             100% { box-shadow: 0 0 40px rgba(255, 215, 0, 0.95), 0 0 80px rgba(255, 165, 0, 0.8); }
         }
         @keyframes flameGlow {
-            from { opacity: 0.7; transform: scale(1); }
-            to { opacity: 0.9; transform: scale(1.08); }
+            from { opacity: 0.7; }
+            to { opacity: 0.95; }
         }
 
         .hot-topic .hot-label .text {
-            background: linear-gradient(90deg, #FFD700, #FFEA80, #FFD700, #FFEA80);
+            background: linear-gradient(90deg, #FFD700, #FFEA80, #FFD700);
             background-size: 200% 100%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -108,7 +108,6 @@
             font-size: 1.6rem;
             font-weight: 700;
         }
-
         @keyframes goldShimmer {
             0% { background-position: 200% 0; }
             100% { background-position: -200% 0; }
@@ -119,7 +118,6 @@
             font-weight: 700;
             margin: 12px 0 8px;
             line-height: 1.4;
-            color: white;
         }
         .hot-topic .comment {
             color: #ddd;
@@ -127,7 +125,7 @@
             font-size: 1.05rem;
         }
 
-        .related-section { margin-bottom: 40px; z-index: 10; position: relative; }
+        .related-section { margin-bottom: 40px; position: relative; z-index: 5; }
         .related-title {
             font-size: 1.2rem;
             font-weight: 700;
@@ -141,8 +139,6 @@
             margin-bottom: 12px;
             cursor: pointer;
             transition: all 0.2s ease;
-            position: relative;
-            z-index: 11;
         }
         .related-card:hover {
             transform: translateY(-2px);
@@ -156,6 +152,7 @@
             margin-bottom: 18px;
             cursor: pointer;
             transition: all 0.2s ease;
+            position: relative;
         }
         .news-card:hover {
             transform: translateY(-3px);
@@ -175,7 +172,7 @@
 </head>
 <body>
     <!-- Sidebar -->
-    <aside class="glass" style="width:260px; position:fixed; height:100vh; background:var(--sidebar); padding:24px 0; border-right:1px solid #333;">
+    <aside class="glass" style="width:260px; position:fixed; height:100vh; background:var(--sidebar); padding:24px 0; border-right:1px solid #333; z-index: 10;">
         <div style="padding:0 24px 40px; font-size:28px; font-weight:700; color:var(--primary);">🌟 NovaDEX</div>
         <nav>
             <a href="index.html" class="nav-item">🌟 <span>Top</span></a>
@@ -273,7 +270,7 @@
                 card.innerHTML = `
                     <div class="news-title">${news.title}</div>
                     <div class="news-meta">
-                        <span>Manual Source</span>
+                        <span>${news.time || '2 hours ago'}</span>
                     </div>
                 `;
                 card.onclick = () => window.open(news.link, '_blank');
