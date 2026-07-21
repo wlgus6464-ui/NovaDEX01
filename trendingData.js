@@ -49,10 +49,10 @@ const trendingData = [
 // 코인별 HOT TOPIC 데이터
 const coinHotTopics = {
     'BTC': {
-        title: "Bitcoin ETF Inflows Hit Record High",
-        comment: "Institutional investors continue to pour money into Bitcoin ETFs as confidence grows.",
-        img: "https://picsum.photos/id/1015/600/280",
-        link: "#"
+        title: "Live updates: Bitcoin rises near $65,000 as markets get more good inflation news",
+        comment: "U.S. spot bitcoin ETFs took in about $181 million on Tuesday, a day after shedding roughly $425 million, per SoSoValue data. Ether ETFs added about $58 million.",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQd42h6QfmxemDH7cIsyg6KBons5RVGKWvgsZELyd0MlBAGqGykX2R-7Lk&s=10",
+        link: "https://www.coindesk.com/tech/2026/07/15/live-markets-bitcoin-ether-etfs-draw-inflows-as-majors-rise-as-much-as-5"
     },
     'ETH': {
         title: "Ether outpaces bitcoin as ETF flows split and Ethereum activity jumps 41% on-week",
@@ -95,7 +95,7 @@ const coinHotTopics = {
 // Related Articles (각 코인당 1개)
 const coinRelatedArticles = {
     'BTC': [
-        { title: "Bitcoin ETF Inflows Surpass $10B This Month", link: "#" }
+        { title: "eCash Advances Network Upgrades as Proof-of-Work Ecosystems Regain Market Attention", link: "https://e.cash/upgrade?trk=public_post_main-feed-card-text&utm_source=chatgpt.com" }
     ],
     'ETH': [
         { title: "The Arbitrum Foundation 2025 Transparency Report: The Year of Institutional Adoption", link: "https://blog.arbitrum.foundation/the-arbitrum-foundation-2025-transparency-report-the-year-of-institutional-adoption" }
