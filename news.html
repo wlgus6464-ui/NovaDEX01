@@ -64,6 +64,7 @@
             font-weight: 600;
         }
 
+        /* Hot Topic - 빛 효과 복원 */
         .hot-topic {
             background: #11141f;
             border-radius: 16px;
@@ -74,7 +75,30 @@
             gap: 24px;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.95), 0 0 80px rgba(255, 165, 0, 0.8), 0 0 120px rgba(255, 140, 0, 0.6);
+            animation: flameBorder 2.8s linear infinite;
         }
+        .hot-topic::before {
+            content: '';
+            position: absolute;
+            inset: -8px;
+            border-radius: 24px;
+            background: linear-gradient(45deg, #FFD700, #FFA500, #FF8C00, #FFD700);
+            filter: blur(20px);
+            opacity: 0.85;
+            z-index: -1;
+            animation: flameGlow 2.2s ease-in-out infinite alternate;
+        }
+        @keyframes flameBorder {
+            0% { box-shadow: 0 0 40px rgba(255, 215, 0, 0.95), 0 0 80px rgba(255, 165, 0, 0.8); }
+            50% { box-shadow: 0 0 60px rgba(255, 215, 0, 1), 0 0 110px rgba(255, 165, 0, 0.95), 0 0 150px rgba(255, 140, 0, 0.8); }
+            100% { box-shadow: 0 0 40px rgba(255, 215, 0, 0.95), 0 0 80px rgba(255, 165, 0, 0.8); }
+        }
+        @keyframes flameGlow {
+            from { opacity: 0.7; transform: scale(1); }
+            to { opacity: 0.9; transform: scale(1.08); }
+        }
+
         .hot-topic .text-area { flex: 1; }
         .hot-topic .image-area {
             width: 260px;
@@ -118,11 +142,6 @@
         .news-card:hover {
             transform: translateY(-3px);
         }
-        .loading {
-            text-align: center;
-            padding: 60px 20px;
-            color: #888;
-        }
     </style>
 </head>
 <body>
@@ -165,10 +184,9 @@
         <!-- Crypto News -->
         <h1 style="margin-bottom:20px;">📰 Crypto News</h1>
 
-        <!-- Coin Tabs -->
+        <!-- Coin Tabs (All 삭제) -->
         <div class="coin-tabs">
-            <div class="coin-tab active" data-filter="all">All</div>
-            <div class="coin-tab" data-filter="BTC">BTC</div>
+            <div class="coin-tab active" data-filter="BTC">BTC</div>
             <div class="coin-tab" data-filter="ETH">ETH</div>
             <div class="coin-tab" data-filter="XRP">XRP</div>
             <div class="coin-tab" data-filter="SHIB">SHIB</div>
@@ -177,9 +195,7 @@
             <div class="coin-tab" data-filter="ALT">ALT</div>
         </div>
 
-        <div id="news-container">
-            <div class="loading">Now Loading... Please Wait.</div>
-        </div>
+        <div id="news-container"></div>
     </main>
 
     <script src="trendingData.js"></script>
@@ -189,7 +205,7 @@
             const container = document.getElementById('hot-topic-container');
             const relatedSection = document.getElementById('related-section');
 
-            if (hot && filter !== 'all') {
+            if (hot) {
                 container.style.display = 'flex';
                 relatedSection.style.display = 'block';
                 document.getElementById('hot-title').textContent = hot.title;
@@ -207,30 +223,21 @@
             relatedContainer.innerHTML = '';
 
             const related = window.coinRelatedArticles[filter] || [];
-            related.forEach(r => {
+            // 1개만 표시
+            if (related.length > 0) {
+                const r = related[0];
                 const card = document.createElement('div');
                 card.className = 'related-card glass';
                 card.innerHTML = `<div class="news-title">${r.title}</div>`;
                 card.onclick = () => window.open(r.link, '_blank');
                 relatedContainer.appendChild(card);
-            });
+            }
         }
 
-        function fetchNews(filter = 'all') {
+        function renderManualNews(filter) {
             const container = document.getElementById('news-container');
             container.innerHTML = '';
 
-            if (filter === 'all') {
-                renderHotTopic('all');
-                container.innerHTML = `<div style="padding:40px; color:#888; text-align:center;">모든 코인 뉴스를 보려면 코인 탭을 선택해주세요.</div>`;
-                return;
-            }
-
-            // Hot Topic + Related Articles
-            renderHotTopic(filter);
-            renderRelatedArticles(filter);
-
-            // Manual News Cards
             const manual = window.manualNews[filter] || [];
             manual.forEach(news => {
                 const card = document.createElement('div');
@@ -255,13 +262,16 @@
                 document.querySelectorAll('.coin-tab').forEach(t => t.classList.remove('active'));
                 tab.classList.add('active');
                 const filter = tab.getAttribute('data-filter');
-                fetchNews(filter);
+                renderHotTopic(filter);
+                renderRelatedArticles(filter);
+                renderManualNews(filter);
             });
         });
 
-        // 초기 로드
+        // 초기 로드 (BTC)
         renderHotTopic('BTC');
-        fetchNews('all');
+        renderRelatedArticles('BTC');
+        renderManualNews('BTC');
     </script>
 </body>
 </html>
