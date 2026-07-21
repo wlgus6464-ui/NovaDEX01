@@ -55,10 +55,11 @@ const coinHotTopics = {
         link: "#"
     },
     'ETH': {
-        title: "Ethereum Layer 2 Scaling Solutions Explode",
-        comment: "Optimism and Arbitrum lead the charge in Ethereum's scaling race.",
-        img: "https://picsum.photos/id/201/600/280",
-        link: "#"
+        title: "Ether outpaces bitcoin as ETF flows split and Ethereum activity jumps 41% on-week",
+        comment: "Ether is outperforming bitcoin as ETF flows, spot prices and a 41% jump in Ethereum transactions move in the same direction for the first time in months.",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhF0UAZr7vjtP1tiAiIwMtnlenM2RiFhZyrFDduiOqzWE09wmPm9Ae5ss&s=10",
+        link: "https://www.coindesk.com/markets/2026/04/14/ether-outpaces-bitcoin-as-etf-flows-split-and-ethereum-activity-jumps-41-on-week
+"
     },
     'XRP': {
         title: "Ripple Wins Major Legal Victory",
@@ -100,7 +101,7 @@ const coinRelatedArticles = {
         { title: "Bitcoin Halving Cycle Analysis 2026", link: "#" }
     ],
     'ETH': [
-        { title: "Ethereum ETF Approval Expected Soon", link: "#" },
+        { title: "The Arbitrum Foundation 2025 Transparency Report: The Year of Institutional Adoption", link: "https://blog.arbitrum.foundation/the-arbitrum-foundation-2025-transparency-report-the-year-of-institutional-adoption/?utm_source=chatgpt.com" },
         { title: "Layer 2 Solutions Driving ETH Adoption", link: "#" },
         { title: "Vitalik Buterin on Ethereum's Future", link: "#" }
     ],
