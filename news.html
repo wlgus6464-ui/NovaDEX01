@@ -64,6 +64,7 @@
             font-weight: 600;
         }
 
+        /* Hot Topic - 황금빛 그라데이션 복원 + 선명하게 */
         .hot-topic {
             background: #11141f;
             border-radius: 16px;
@@ -98,21 +99,37 @@
             to { opacity: 0.9; transform: scale(1.08); }
         }
 
-        .hot-topic .text-area { flex: 1; }
-        .hot-topic .image-area {
-            width: 260px;
-            flex-shrink: 0;
-        }
-        .hot-topic img {
-            width: 100%;
-            height: 160px;
-            object-fit: cover;
-            border-radius: 12px;
+        .hot-topic .hot-label .text {
+            background: linear-gradient(90deg, #FFD700, #FFEA80, #FFD700, #FFEA80);
+            background-size: 200% 100%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: goldShimmer 2s linear infinite;
+            font-size: 1.6rem;
+            font-weight: 700;
         }
 
-        .related-section { margin-bottom: 40px; }
+        @keyframes goldShimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        .hot-topic .title {
+            font-size: 1.45rem;
+            font-weight: 700;
+            margin: 12px 0 8px;
+            line-height: 1.4;
+            color: white;
+        }
+        .hot-topic .comment {
+            color: #ddd;
+            line-height: 1.6;
+            font-size: 1.05rem;
+        }
+
+        .related-section { margin-bottom: 40px; z-index: 10; position: relative; }
         .related-title {
-            font-size: 1.15rem;
+            font-size: 1.2rem;
             font-weight: 700;
             color: white;
             margin-bottom: 16px;
@@ -124,6 +141,8 @@
             margin-bottom: 12px;
             cursor: pointer;
             transition: all 0.2s ease;
+            position: relative;
+            z-index: 11;
         }
         .related-card:hover {
             transform: translateY(-2px);
@@ -140,6 +159,17 @@
         }
         .news-card:hover {
             transform: translateY(-3px);
+        }
+        .news-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            line-height: 1.5;
+            margin-bottom: 12px;
+            color: #f0f0f0;
+        }
+        .news-meta {
+            font-size: 0.9rem;
+            color: #aaa;
         }
     </style>
 </head>
