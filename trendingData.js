@@ -79,10 +79,10 @@ const coinHotTopics = {
         link: "https://trondao.org/news"
     },
     'ALT': {
-        title: "Starknet on Bitcoin and Ethereum: The first L2 to unify both chains",
-        comment: "Bitcoin is more than just a financial asset: It’s a movement rooted in individual sovereignty and the separation of money from the state. Over the past 16 years, it has empowered millions of people around the world to reclaim control over their assets, catalyzing a revolution in how we think about money and trust. And yet, most Bitcoin today sits static in wallets and exchanges, constrained by the limitations of the network’s original design: a lack of scalability and an inability to natively support applications beyond simple buying, selling, and transferring.",
-        img: "https://www.starknet.io/wp-content/uploads/2025/03/BITCOIN-BANNER-FINAL-scaled.jpg",
-        link: "https://www.starknet.io/blog/starknet-bitcoin-scaling/"
+        title: "Ondo Finance Accelerates RWA Expansion, Announces Partnership to Advance On-Chain Finance",
+        comment: "Ondo Finance announced that it is continuing to expand its real-world asset (RWA) ecosystem by bringing traditional financial assets, such as U.S. Treasuries, onto the blockchain. As part of this effort, the project also unveiled a partnership with Sei to strengthen on-chain financial infrastructure and accelerate the adoption of tokenized institutional assets.",
+        img: "https://www.altcoinbuzz.io/wp-content/uploads/2025/07/Web_Spot_Only-1_Sei-VS-Ondo.jpg",
+        link: "https://ondo.finance/blog/usdy-is-now-live-on-sei?utm_source=chatgpt.com"
     },
     'ETC': {
         title: "Ethereum Classic Reinforces Core Infrastructure with Ongoing Network and Development Support",
@@ -110,7 +110,7 @@ const coinRelatedArticles = {
         { title: "TRON Accelerates Ecosystem Growth Through Stablecoin Expansion", link: "https://trondao.org/news" }
     ],
     'ALT': [
-        { title: "Stacks Unlocks Smart Contracts on Bitcoin, Expanding the World's Largest Blockchain Ecosystem", link: "https://www.stacks.co/learn" }
+        { title: "Centrifuge Expands Tokenized RWAs to Solana, Starting With $400M Treasury Fund", link: "https://www.coindesk.com/markets/2025/05/22/centrifuge-expands-tokenized-rwas-to-solana-starting-with-400m-treasury-fund" }
     ],
     'ETC': [
         { title: "Ethereum Classic Reinforces Core Infrastructure", link: "#" }
