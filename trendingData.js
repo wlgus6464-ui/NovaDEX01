@@ -79,10 +79,12 @@ const coinHotTopics = {
         link: "https://trondao.org/news"
     },
     'ALT': {
-        title: "Ondo Finance Accelerates RWA Expansion, Announces Partnership to Advance On-Chain Finance",
-        comment: "Ondo Finance announced that it is continuing to expand its real-world asset (RWA) ecosystem by bringing traditional financial assets, such as U.S. Treasuries, onto the blockchain. As part of this effort, the project also unveiled a partnership with Sei to strengthen on-chain financial infrastructure and accelerate the adoption of tokenized institutional assets.",
-        img: "https://www.altcoinbuzz.io/wp-content/uploads/2025/07/Web_Spot_Only-1_Sei-VS-Ondo.jpg",
-        link: "https://ondo.finance/blog/usdy-is-now-live-on-sei?utm_source=chatgpt.com"
+        title: "Sahara AI, Blockchain Project Tackling Copyright and Privacy, Raises $43M",
+        comment: "Sahara's aim is to tackle concerns over copyright, privacy and resource access amid proliferation of AI tools.
+
+Projects that combine blockchain and AI in order to introduce decentralization to artificial intelligence engines have been an emerging trend in the crypto industry for the last couple of years.",
+        img: "https://www.cryptotimes.io/wp-content/uploads/2025/06/Sahara-AI-Crashes-Despite-Exchange-Listing-Will-SAHARA-Slump-to-0.png",
+        link: "https://finance.yahoo.com/news/sahara-ai-blockchain-project-tackling-130000009.html?utm_source=chatgpt.com"
     },
     'ETC': {
         title: "Ethereum Classic Reinforces Core Infrastructure with Ongoing Network and Development Support",
@@ -110,7 +112,7 @@ const coinRelatedArticles = {
         { title: "TRON Accelerates Ecosystem Growth Through Stablecoin Expansion", link: "https://trondao.org/news" }
     ],
     'ALT': [
-        { title: "Centrifuge Expands Tokenized RWAs to Solana, Starting With $400M Treasury Fund", link: "https://www.coindesk.com/markets/2025/05/22/centrifuge-expands-tokenized-rwas-to-solana-starting-with-400m-treasury-fund" }
+        { title: "Story Protocol Launches to Let People Register IP and Get Paid for It", link: "https://www.coindesk.com/tech/2025/02/13/story-protocol-launches-to-let-people-to-register-ip-and-get-paid-for-it" }
     ],
     'ETC': [
         { title: "Ethereum Classic Reinforces Core Infrastructure", link: "#" }
