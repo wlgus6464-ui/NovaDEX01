@@ -8,7 +8,7 @@ const trendingData = [
         endDate: "2026-07-24T23:59:59",
         prediction: "+151%",
         bannerImage: "https://media.yellow.com/uploads/Chat_GPT_Image_May_30_2026_11_45_01_PM_97bbbfa0e3.jpg",
-        bannerText: "The odds on a seven-leg parlay and the odds on a fresh memecoin trade are roughly the same, BONK core contributor Nom told audience at the ongoing Consensus Miami on Tuesday.\nMost memecoin teams lack the staying power to push their projects through real regulatory steps, Nom said, citing exchange listings, ETF filings and public-company structures as the markers that separate tokens that last from those that rinse retail.\nCrypto has built systems \"really, really good at incentivizing inorganic traffic,\" he added, pointing to points programs and airdrop farms that pull in mercenary capital and then watch network activity collapse the following week.\nBONK has worked through several of those rails. Nasdaq-listed Bonk Holdings (BNKK), which rebranded from beverage company Safety Shot in October 2025, holds roughly 2.7% of BONK's circulating supply and is targeting $115 million in token holdings by the end of 2026.",
+        bannerText: "The odds on a seven-leg parlay and the odds on a fresh memecoin trade are roughly the same, BONK core contributor Nom told audience at the ongoing Consensus Miami on Tuesday.\nMost memecoin teams lack the staying power to push their projects through real regulatory steps.",
         participateLink: "https://www.upbit.com/exchange?code=CRIX.UPBIT.KRW-BONK"
     },
     {
@@ -19,7 +19,7 @@ const trendingData = [
         endDate: "2026-07-24T23:59:59",
         prediction: "+95%",
         bannerImage: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTnAGzsvVKg9r66l6TaJWzzb2R7Uu9wZukQgABZ7agygOWWb0bmPLKZJ_k&s=10",
-        bannerText: "The event was organized by OriginTrail, a blockchain ecosystem focused on building what it describes as the world’s first decentralized knowledge graph, or DKG, which it says helps to bring trust and reliability to AI.\nThe agenda included talks and panels related to user privacy and empowerment as well as the impact of AI on various industries, with speakers ranging from Ethernet inventor Bob Metcalfe and prominent AI researcher and critic Gary Marcus to SingularityNET CEO Ben Goertzel.\nThere was a particular focus on ecosystem builders, with a dedicated section on day one for people to present the projects they are building using the DKG and a second conference day entirely for builder workshops.",
+        bannerText: "The event was organized by OriginTrail, a blockchain ecosystem focused on building what it describes as the world’s first decentralized knowledge graph.",
         participateLink: "https://www.upbit.com/exchange?code=CRIX.UPBIT.KRW-TRAC"
     },
     {
@@ -30,7 +30,7 @@ const trendingData = [
         endDate: "2026-07-26T23:59:59",
         prediction: "+225%",
         bannerImage: "https://cdn.prod.website-files.com/6506e01c107238bf78e07f19/663e147c9467383ff83f3e6e_ath_morethanjustacryptocurrencyblog.png",
-        bannerText: "Aethir’s decentralized GPU cloud has achieved record-breaking growth throughout 2026, expanding enterprise-grade infrastructure to 93 countries, 200+ global locations, and more than 435,000 high-performance GPU Containers. The ecosystem now serves over 150 AI, gaming, and enterprise clients and partners, with annual recurring revenue (ARR) surging to $147M+ and a historic $39.8M+ in Q3 2026 alone.\nA major 2026 milestone was the launch of the Aethir (ATH) Strategic Compute Reserve (SCR) in partnership with Predictive Oncology (Nasdaq: POAI).",
+        bannerText: "Aethir’s decentralized GPU cloud has achieved record-breaking growth throughout 2026.",
         participateLink: "https://www.upbit.com/exchange?code=CRIX.UPBIT.KRW-ATH"
     },
     {
@@ -50,7 +50,7 @@ const trendingData = [
 const coinHotTopics = {
     'BTC': {
         title: "Live updates: Bitcoin rises near $65,000 as markets get more good inflation news",
-        comment: "U.S. spot bitcoin ETFs took in about $181 million on Tuesday, a day after shedding roughly $425 million, per SoSoValue data. Ether ETFs added about $58 million.",
+        comment: "U.S. spot bitcoin ETFs took in about $181 million on Tuesday.",
         img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQd42h6QfmxemDH7cIsyg6KBons5RVGKWvgsZELyd0MlBAGqGykX2R-7Lk&s=10",
         link: "https://www.coindesk.com/tech/2026/07/15/live-markets-bitcoin-ether-etfs-draw-inflows-as-majors-rise-as-much-as-5"
     },
@@ -80,11 +80,9 @@ const coinHotTopics = {
     },
     'ALT': {
         title: "Sahara AI, Blockchain Project Tackling Copyright and Privacy, Raises $43M",
-        comment: "Sahara's aim is to tackle concerns over copyright, privacy and resource access amid proliferation of AI tools.
-
-Projects that combine blockchain and AI in order to introduce decentralization to artificial intelligence engines have been an emerging trend in the crypto industry for the last couple of years.",
+        comment: "Sahara's aim is to tackle concerns over copyright, privacy and resource access amid proliferation of AI tools.",
         img: "https://www.cryptotimes.io/wp-content/uploads/2025/06/Sahara-AI-Crashes-Despite-Exchange-Listing-Will-SAHARA-Slump-to-0.png",
-        link: "https://finance.yahoo.com/news/sahara-ai-blockchain-project-tackling-130000009.html?utm_source=chatgpt.com"
+        link: "https://finance.yahoo.com/news/sahara-ai-blockchain-project-tackling-130000009.html"
     },
     'ETC': {
         title: "Ethereum Classic Reinforces Core Infrastructure with Ongoing Network and Development Support",
@@ -96,30 +94,16 @@ Projects that combine blockchain and AI in order to introduce decentralization t
 
 // Related Articles (각 코인당 1개)
 const coinRelatedArticles = {
-    'BTC': [
-        { title: "eCash Advances Network Upgrades as Proof-of-Work Ecosystems Regain Market Attention", link: "https://e.cash/upgrade?trk=public_post_main-feed-card-text&utm_source=chatgpt.com" }
-    ],
-    'ETH': [
-        { title: "The Arbitrum Foundation 2025 Transparency Report: The Year of Institutional Adoption", link: "https://blog.arbitrum.foundation/the-arbitrum-foundation-2025-transparency-report-the-year-of-institutional-adoption" }
-    ],
-    'XRP': [
-        { title: "Ripple Wins Major Legal Victory", link: "#" }
-    ],
-    'SHIB': [
-        { title: "SHIB Layer 2 Posts 216% in Weekend Transaction Spike", link: "https://u.today/shib-layer-2-posts-216-in-weekend-transaction-spike-is-this-a-turning-point" }
-    ],
-    'BTT': [
-        { title: "TRON Accelerates Ecosystem Growth Through Stablecoin Expansion", link: "https://trondao.org/news" }
-    ],
-    'ALT': [
-        { title: "Story Protocol Launches to Let People Register IP and Get Paid for It", link: "https://www.coindesk.com/tech/2025/02/13/story-protocol-launches-to-let-people-to-register-ip-and-get-paid-for-it" }
-    ],
-    'ETC': [
-        { title: "Ethereum Classic Reinforces Core Infrastructure", link: "#" }
-    ]
+    'BTC': [{ title: "Bitcoin ETF Inflows Surpass $10B This Month", link: "#" }],
+    'ETH': [{ title: "The Arbitrum Foundation 2025 Transparency Report", link: "https://blog.arbitrum.foundation/the-arbitrum-foundation-2025-transparency-report-the-year-of-institutional-adoption" }],
+    'XRP': [{ title: "Ripple Wins Major Legal Victory", link: "#" }],
+    'SHIB': [{ title: "SHIB Layer 2 Posts 216% in Weekend Transaction Spike", link: "https://u.today/shib-layer-2-posts-216-in-weekend-transaction-spike-is-this-a-turning-point" }],
+    'BTT': [{ title: "TRON Accelerates Ecosystem Growth", link: "https://trondao.org/news" }],
+    'ALT': [{ title: "Story Protocol Launches to Let People Register IP", link: "https://www.coindesk.com/tech/2025/02/13/story-protocol-launches-to-let-people-to-register-ip-and-get-paid-for-it" }],
+    'ETC': [{ title: "Ethereum Classic Reinforces Core Infrastructure", link: "#" }]
 };
 
-// Manual News (각 코인당 5개 이상, time 필드 추가)
+// Manual News (각 코인당 5개 이상)
 const manualNews = {
     'BTC': [
         { title: "Bitcoin ETF Inflows Hit Record High", link: "#", time: "1 hour ago" },
