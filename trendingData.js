@@ -79,10 +79,10 @@ const coinHotTopics = {
         link: "https://trondao.org/news"
     },
     'ALT': {
-        title: "VeChain Unveils 2026 Roadmap, Positioning Blockchain as the Trust Layer for the AI Economy",
-        comment: "VeChain's 2026 roadmap outlines a vision where billions of AI agents will participate in the global economy.",
-        img: "https://framerusercontent.com/images/9NryVtIT3mn1OE0iA6zpIL28r7Y.jpg?width=680&height=383",
-        link: "https://vechain.org/vechain-roadmap-2026-agentic-foundations-for-tomorrow-beyond"
+        title: "Baby Doge Expands Beyond Meme Coin Roots with DeFi, Gaming, and Real-World Web3 Services",
+        comment: "Baby Doge is continuing to expand its Web3 ecosystem by introducing various services, including DeFi, launchpad, gaming, DEX infrastructure, and crypto-based real estate solutions. These developments highlight the project's shift from a meme coin-focused identity toward building a broader consumer-oriented Web3 platform with practical use cases and ecosystem growth potential.",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3ZGEQPPeP1BuU2aDbZJIad1KM6RA54MfmWfBmJB8PKA&s",
+        link: "https://babydoge.com/product?utm_source=chatgpt.com"
     },
     'ETC': {
         title: "Ethereum Classic Reinforces Core Infrastructure with Ongoing Network and Development Support",
@@ -110,7 +110,7 @@ const coinRelatedArticles = {
         { title: "TRON Accelerates Ecosystem Growth Through Stablecoin Expansion", link: "https://trondao.org/news" }
     ],
     'ALT': [
-        { title: "VeChain Unveils 2026 Roadmap", link: "https://vechain.org/vechain-roadmap-2026-agentic-foundations-for-tomorrow-beyond" }
+        { title: "BonkSwap Expands BONK Ecosystem Beyond Trading with DeFi and Gamified Web3 Experiences", link: "https://bonkswaps-organization.gitbook.io/bonkswap-white-paper?utm_source=chatgpt.com" }
     ],
     'ETC': [
         { title: "Ethereum Classic Reinforces Core Infrastructure", link: "#" }
