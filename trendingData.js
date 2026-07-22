@@ -79,10 +79,10 @@ const coinHotTopics = {
         link: "https://trondao.org/news"
     },
     'ALT': {
-        title: "Baby Doge Expands Beyond Meme Coin Roots with DeFi, Gaming, and Real-World Web3 Services",
-        comment: "Baby Doge is continuing to expand its Web3 ecosystem by introducing various services, including DeFi, launchpad, gaming, DEX infrastructure, and crypto-based real estate solutions. These developments highlight the project's shift from a meme coin-focused identity toward building a broader consumer-oriented Web3 platform with practical use cases and ecosystem growth potential.",
-        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3ZGEQPPeP1BuU2aDbZJIad1KM6RA54MfmWfBmJB8PKA&s",
-        link: "https://babydoge.com/product?utm_source=chatgpt.com"
+        title: "Starknet on Bitcoin and Ethereum: The first L2 to unify both chains",
+        comment: "Bitcoin is more than just a financial asset: It’s a movement rooted in individual sovereignty and the separation of money from the state. Over the past 16 years, it has empowered millions of people around the world to reclaim control over their assets, catalyzing a revolution in how we think about money and trust. And yet, most Bitcoin today sits static in wallets and exchanges, constrained by the limitations of the network’s original design: a lack of scalability and an inability to natively support applications beyond simple buying, selling, and transferring.",
+        img: "https://www.starknet.io/wp-content/uploads/2025/03/BITCOIN-BANNER-FINAL-scaled.jpg",
+        link: "https://www.starknet.io/blog/starknet-bitcoin-scaling/"
     },
     'ETC': {
         title: "Ethereum Classic Reinforces Core Infrastructure with Ongoing Network and Development Support",
@@ -110,7 +110,7 @@ const coinRelatedArticles = {
         { title: "TRON Accelerates Ecosystem Growth Through Stablecoin Expansion", link: "https://trondao.org/news" }
     ],
     'ALT': [
-        { title: "BonkSwap Expands BONK Ecosystem Beyond Trading with DeFi and Gamified Web3 Experiences", link: "https://bonkswaps-organization.gitbook.io/bonkswap-white-paper?utm_source=chatgpt.com" }
+        { title: "Stacks Unlocks Smart Contracts on Bitcoin, Expanding the World's Largest Blockchain Ecosystem", link: "https://www.stacks.co/learn" }
     ],
     'ETC': [
         { title: "Ethereum Classic Reinforces Core Infrastructure", link: "#" }
