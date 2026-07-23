@@ -82,7 +82,6 @@
             white-space: pre-wrap;
             word-break: break-word;
         }
-
         .progress-bar-container {
             margin: 12px 0;
             height: 10px;
@@ -105,12 +104,12 @@
             background: linear-gradient(90deg, #FFD700, #FFA500, #FFD700);
             background-size: 200% 100%;
             animation: goldShimmer 3s linear infinite;
-            box-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
         }
         .progress-bar.ongoing::after {
             content: '';
             position: absolute;
-            right: -3px;
+            right: -2px;
             top: 50%;
             transform: translateY(-50%);
             width: 18px;
@@ -118,19 +117,23 @@
             background: #fff;
             border-radius: 50%;
             box-shadow: 0 0 12px #fff, 0 0 24px #FFD700, 0 0 40px #FFA500;
-            animation: tipGlow 1.8s ease-in-out infinite;
+            animation: tipGlow 1.5s ease-in-out infinite;
             z-index: 5;
         }
-
         @keyframes goldShimmer {
             0% { background-position: 200% 0; }
             100% { background-position: -200% 0; }
         }
         @keyframes tipGlow {
-            0%, 100% { box-shadow: 0 0 12px #fff, 0 0 24px #FFD700, 0 0 40px #FFA500; transform: translateY(-50%) scale(1); }
-            50% { box-shadow: 0 0 20px #fff, 0 0 36px #FFD700, 0 0 60px #FFA500; transform: translateY(-50%) scale(1.12); }
+            0%, 100% {
+                box-shadow: 0 0 12px #fff, 0 0 24px #FFD700, 0 0 40px #FFA500;
+                transform: translateY(-50%) scale(1);
+            }
+            50% {
+                box-shadow: 0 0 20px #fff, 0 0 36px #FFD700, 0 0 60px #FFA500;
+                transform: translateY(-50%) scale(1.15);
+            }
         }
-
         .countdown {
             display: flex;
             gap: 12px;
@@ -161,6 +164,21 @@
         button:hover {
             transform: scale(1.02);
         }
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .card-content {
+                flex-direction: column;
+            }
+            .card-right {
+                order: -1;
+            }
+            .banner-image {
+                height: 180px;
+            }
+            .banner-text {
+                font-size: 0.9rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -176,28 +194,24 @@
             <a href="#" class="nav-item">📊 <span>On-Chain Data</span></a>
         </nav>
     </aside>
-
     <main style="margin-left:260px; padding:40px;">
         <h1 style="margin-bottom:40px;">🔥 Trending</h1>
         <div id="trending-cards"></div>
     </main>
-
     <script src="trendingData.js"></script>
     <script>
         const container = document.getElementById('trending-cards');
-
         function getDateColor(dateStr) {
             const targetDate = new Date(dateStr);
             const now = new Date();
             return targetDate < now ? 'var(--danger)' : '#7CFF6B';
         }
-
         trendingData.forEach((item, index) => {
-            let isEnded = false;
-            if (item.title.includes("Bonk") || item.title.includes("OriginTrail")) {
-                isEnded = true;
+            const endTime = new Date(item.endDate).getTime();
+            let isEnded = endTime < Date.now();
+            if (item.title === "Algoland (ALGO)") {
+                isEnded = false;
             }
-
             const card = document.createElement('div');
             card.className = 'pool-card glass';
             card.innerHTML = `
@@ -212,13 +226,11 @@
                                 </div>
                             </div>
                         </div>
-
                         <div style="margin-bottom:20px;">
                             <div style="color:#aaa;">Upward Prediction</div>
                             <div style="font-size:2.4rem; font-weight:700; color:var(--primary);">${item.prediction}</div>
                             <div style="color:#aaa;">≈ ${item.price} USDT</div>
                         </div>
-
                         <div style="margin-bottom:12px; line-height:1.6;">
                             <div style="color:#aaa; font-size:0.95rem;">
                                 Start In <span style="color:${getDateColor(item.startDate)};">${item.startDate.split('T')[0]}</span>
@@ -227,21 +239,17 @@
                                 Ends In <span style="color:${getDateColor(item.endDate)};">${item.endDate.split('T')[0]}</span>
                             </div>
                         </div>
-
                         <div class="progress-bar-container">
-                            <div class="progress-bar" id="progress-${index}"></div>
+                            <div class="progress-bar ${isEnded ? 'end' : 'ongoing'}" id="progress-${index}"></div>
                         </div>
-
                         <div class="countdown" id="countdown${index}">
                             <div class="countdown-box"><span class="number">0</span><div>D</div></div>
                             <div class="countdown-box"><span class="number">0</span><div>H</div></div>
                             <div class="countdown-box"><span class="number">0</span><div>M</div></div>
                             <div class="countdown-box"><span class="number">0</span><div>S</div></div>
                         </div>
-
                         <button onclick="window.open('${item.participateLink}', '_blank')">Participate</button>
                     </div>
-
                     <div class="card-right">
                         <img src="${item.bannerImage}" class="banner-image" alt="Banner">
                         <div class="banner-text">${item.bannerText}</div>
@@ -257,27 +265,29 @@
                 progressBar.style.background = 'var(--primary)';
                 progressBar.style.width = '100%';
             } else if (item.title.includes("Aethir")) {
-                // Aethir → 65~75% 사이에서 4초마다 천천히 자연스럽게 움직임
+                // Aethir → 65~75% 사이에서 4초마다 천천히 움직임
                 let current = 70;
                 progressBar.style.width = current + '%';
-
                 setInterval(() => {
-                    current = Math.max(65, Math.min(75, current + (Math.random() * 6 - 3))); // ±3% 정도 부드럽게 변화
-                    progressBar.style.width = current.toFixed(1) + '%';
+                    current = 65 + Math.random() * 10;
+                    progressBar.style.width = current + '%';
                 }, 4000);
             } else if (item.title.includes("COMING SOON")) {
-                // COMING SOON → 0% 회색 빈 바
+                // COMING SOON → 0% 빈 바
                 progressBar.style.width = '0%';
             } else {
+                // 나머지는 기본 움직임
                 progressBar.style.width = '70%';
+                setInterval(() => {
+                    const randomWidth = 70 + Math.random() * 3.5;
+                    progressBar.style.width = `${randomWidth}%`;
+                }, 1200);
             }
 
             startCountdown(`countdown${index}`, item.endDate);
         });
 
         function startCountdown(id, endTimeStr) {
-            const el = document.getElementById(id);
-            if (!el) return;
             const endTime = new Date(endTimeStr).getTime();
             setInterval(() => {
                 const now = new Date().getTime();
@@ -287,7 +297,7 @@
                 const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                el.innerHTML = `
+                document.getElementById(id).innerHTML = `
                     <div class="countdown-box"><span class="number">${days}</span><div>D</div></div>
                     <div class="countdown-box"><span class="number">${hours}</span><div>H</div></div>
                     <div class="countdown-box"><span class="number">${minutes}</span><div>M</div></div>
