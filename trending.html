@@ -164,6 +164,7 @@
         button:hover {
             transform: scale(1.02);
         }
+        /* Mobile Responsive */
         @media (max-width: 768px) {
             .card-content {
                 flex-direction: column;
@@ -256,10 +257,10 @@
                 </div>
             `;
             container.appendChild(card);
-
             const progressBar = document.getElementById(`progress-${index}`);
-
-            if (isEnded) {
+            if (item.title.includes("Bonk") || item.title.includes("OriginTrail")) {
+                // Bonk, OriginTrail → 초록색 꽉찬 바
+                progressBar.style.background = 'var(--primary)';
                 progressBar.style.width = '100%';
             } else if (item.title.includes("Aethir")) {
                 // Aethir만 80~90% 사이에서 움직임
@@ -269,6 +270,9 @@
                     current = 80 + Math.random() * 10;
                     progressBar.style.width = current + '%';
                 }, 4000);
+            } else if (item.title.includes("COMING SOON")) {
+                // COMING SOON → 0% 회색 빈 바
+                progressBar.style.width = '0%';
             } else {
                 progressBar.style.width = '70%';
                 setInterval(() => {
@@ -278,7 +282,6 @@
             }
             startCountdown(`countdown${index}`, item.endDate);
         });
-
         function startCountdown(id, endTimeStr) {
             const endTime = new Date(endTimeStr).getTime();
             setInterval(() => {
