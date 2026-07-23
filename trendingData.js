@@ -106,7 +106,7 @@ const coinRelatedArticles = {
     'DOGE': [{ title: "Dogecoin Community Celebrates New All-Time High in Daily Active Addresses", link: "#" }],
     'SHIB': [{ title: "SHIB Layer 2 Posts 216% in Weekend Transaction Spike", link: "https://u.today/shib-layer-2-posts-216-in-weekend-transaction-spike-is-this-a-turning-point" }],
     'BTT': [{ title: "TRON Accelerates Ecosystem Growth", link: "https://trondao.org/news" }],
-    'ALT': [{ title: "Dubai developer DAMAC signs $1 bln deal with blockchain platform MANTRA", link: "https://www.reuters.com/technology/dubai-developer-damac-signs-1-bln-deal-with-blockchain-platform-mantra-2025-01-09/?utm_source=chatgpt.com" }],
+    'ALT': [{ title: "Dubai developer DAMAC signs $1 bln deal with blockchain platform MANTRA.", link: "https://www.reuters.com/technology/dubai-developer-damac-signs-1-bln-deal-with-blockchain-platform-mantra-2025-01-09/?utm_source=chatgpt.com" }],
     'ETC': [{ title: "Ethereum Classic Reinforces Core Infrastructure", link: "#" }]
 };
 
