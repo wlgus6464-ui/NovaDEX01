@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NovaDEX - Trending</title>
-    <link rel="icon" href="data:,">
     <style>
         :root {
             --bg: #090B11;
@@ -255,9 +254,11 @@
             const progressBar = document.getElementById(`progress-${index}`);
 
             if (index === 0 || index === 1) {
+                // Bonk, OriginTrail → 초록색 꽉찬 바
                 progressBar.style.background = 'var(--primary)';
                 progressBar.style.width = '100%';
             } else if (index === 2) {
+                // Aethir → 65~75% 사이에서 4초마다 천천히 랜덤 움직임
                 let current = 70;
                 progressBar.style.width = current + '%';
                 setInterval(() => {
@@ -265,16 +266,13 @@
                     progressBar.style.width = current + '%';
                 }, 4000);
             } else if (index === 3) {
+                // COMING SOON → 0% 회색 빈 바
                 progressBar.style.width = '0%';
             } else {
                 progressBar.style.width = '70%';
             }
 
-            // countdown ID 안전하게 처리
-            const countdownEl = document.getElementById(`countdown${index}`);
-            if (countdownEl) {
-                startCountdown(`countdown${index}`, item.endDate);
-            }
+            startCountdown(`countdown${index}`, item.endDate);
         });
 
         function startCountdown(id, endTimeStr) {
