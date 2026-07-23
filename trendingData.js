@@ -61,10 +61,10 @@ const coinHotTopics = {
         link: "https://www.coindesk.com/markets/2026/04/14/ether-outpaces-bitcoin-as-etf-flows-split-and-ethereum-activity-jumps-41-on-week"
     },
     'XRP': {
-        title: "Ripple Wins Major Legal Victory",
-        comment: "Court ruling boosts XRP adoption prospects in global payments.",
-        img: "https://picsum.photos/id/301/600/280",
-        link: "#"
+        title: "“껍데기만 블록체인”...SWIFT 결제망 출시에 터진 리플 커뮤니티의 분노",
+        comment: "“도널드 트럼프 미국 대통령의 대국민 연설 이후 비트코인과 이더리움, 리플(XRP) 등 주요 가상자산 시장이 일제히 하락세로 돌아서며 투자 심리가 잔뜩 위축된 가운데, 국제은행간통신협회(SWIFT)가 전격 출시한 24시간 블록체인 원장 시스템을 두고 리플 커뮤니티가 기술적 한계와 결제 공백을 맹렬히 비판하고 나서며 제도권 결제 패권을 둘러싼 전운이 고조되고 있다.",
+        img: "https://cdn.pinpointnews.co.kr/news/photo/202607/469261_457126_3823.png",
+        link: "https://www.pinpointnews.co.kr/news/articleView.html?idxno=469261"
     },
     'SHIB': {
         title: "SHIB Layer 2 Posts 216% in Weekend Transaction Spike: Is This a Turning Point?",
@@ -96,7 +96,7 @@ const coinHotTopics = {
 const coinRelatedArticles = {
     'BTC': [{ title: "Bitcoin ETF Inflows Surpass $10B This Month", link: "#" }],
     'ETH': [{ title: "The Arbitrum Foundation 2025 Transparency Report", link: "https://blog.arbitrum.foundation/the-arbitrum-foundation-2025-transparency-report-the-year-of-institutional-adoption" }],
-    'XRP': [{ title: "Ripple Wins Major Legal Victory", link: "#" }],
+    'XRP': [{ title: "Stellar's payment volume hit $5.5 billion in Q1 2026, a 72% annual increase, and XLM surged 28% on the DTCC announcement while the broader crypto market fell sharply the same day.", link: "https://finance.yahoo.com/markets/crypto/articles/xrp-ripple-vs-stellar-xlm-185640141.html" }],
     'SHIB': [{ title: "SHIB Layer 2 Posts 216% in Weekend Transaction Spike", link: "https://u.today/shib-layer-2-posts-216-in-weekend-transaction-spike-is-this-a-turning-point" }],
     'BTT': [{ title: "TRON Accelerates Ecosystem Growth", link: "https://trondao.org/news" }],
     'ALT': [{ title: "Story Protocol Launches to Let People Register IP", link: "https://www.coindesk.com/tech/2025/02/13/story-protocol-launches-to-let-people-to-register-ip-and-get-paid-for-it" }],
