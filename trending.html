@@ -94,7 +94,7 @@
         .progress-bar {
             height: 100%;
             border-radius: 999px;
-            transition: width 1.2s ease-in-out;
+            transition: width 1.8s ease-in-out;
             position: relative;
         }
         .progress-bar.end {
@@ -104,24 +104,21 @@
         .progress-bar.ongoing {
             background: linear-gradient(90deg, #FFD700, #FFA500, #FFD700);
             background-size: 200% 100%;
-            animation: goldShimmer 1.2s linear infinite;
-            box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+            animation: goldShimmer 2.5s linear infinite;
+            box-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
         }
         .progress-bar.ongoing::after {
             content: '';
             position: absolute;
-            right: -2px;
+            right: -3px;
             top: 50%;
             transform: translateY(-50%);
             width: 18px;
             height: 18px;
             background: #fff;
             border-radius: 50%;
-            box-shadow: 
-                0 0 12px #fff,
-                0 0 24px #FFD700,
-                0 0 40px #FFA500;
-            animation: tipGlow 1.5s ease-in-out infinite;
+            box-shadow: 0 0 12px #fff, 0 0 24px #FFD700, 0 0 40px #FFA500;
+            animation: tipGlow 1.8s ease-in-out infinite;
             z-index: 5;
         }
 
@@ -130,14 +127,8 @@
             100% { background-position: -200% 0; }
         }
         @keyframes tipGlow {
-            0%, 100% { 
-                box-shadow: 0 0 12px #fff, 0 0 24px #FFD700, 0 0 40px #FFA500; 
-                transform: translateY(-50%) scale(1);
-            }
-            50% { 
-                box-shadow: 0 0 20px #fff, 0 0 36px #FFD700, 0 0 60px #FFA500; 
-                transform: translateY(-50%) scale(1.15);
-            }
+            0%, 100% { box-shadow: 0 0 12px #fff, 0 0 24px #FFD700, 0 0 40px #FFA500; transform: translateY(-50%) scale(1); }
+            50% { box-shadow: 0 0 20px #fff, 0 0 36px #FFD700, 0 0 60px #FFA500; transform: translateY(-50%) scale(1.12); }
         }
 
         .countdown {
@@ -217,11 +208,11 @@
         }
 
         trendingData.forEach((item, index) => {
-            let isEnded = false;
+            const endTime = new Date(item.endDate).getTime();
+            let isEnded = endTime < Date.now();
 
-            // 첫번째(Bonk)와 두번째(OriginTrail)는 END로 강제 설정
-            if (index === 0 || index === 1) {
-                isEnded = true;
+            if (item.title === "Algoland (ALGO)") {
+                isEnded = false;
             }
 
             const card = document.createElement('div');
@@ -255,7 +246,7 @@
                         </div>
 
                         <div class="progress-bar-container">
-                            <div class="progress-bar" id="progress-${index}"></div>
+                            <div class="progress-bar ${isEnded ? 'end' : 'ongoing'}" id="progress-${index}"></div>
                         </div>
 
                         <div class="countdown" id="countdown${index}">
@@ -278,23 +269,24 @@
 
             const progressBar = document.getElementById(`progress-${index}`);
 
-            if (index === 0 || index === 1) {
-                // Bonk, OriginTrail → END (꽉 찬 초록색)
-                progressBar.style.background = 'var(--primary)';
+            if (isEnded) {
                 progressBar.style.width = '100%';
             } else if (index === 2) {
-                // Aethir → 30% 근처 움직이는 황금색
-                progressBar.style.background = 'linear-gradient(90deg, #FFD700, #FFA500, #FFD700)';
+                // Aethir - 30% 근처 움직임 (이전 설정 유지)
                 progressBar.style.width = '30%';
                 setInterval(() => {
                     const randomWidth = 25 + Math.random() * 15;
                     progressBar.style.width = `${randomWidth}%`;
                 }, 1500);
-            } else if (index === 3) {
-                // COMING SOON → 0% (회색 빈 바)
-                progressBar.style.width = '0%';
             } else {
-                progressBar.style.width = '70%';
+                // 기본 황금 바: 65% ~ 80% 사이에서 천천히 랜덤 움직임
+                let currentWidth = 72;
+                progressBar.style.width = currentWidth + '%';
+
+                setInterval(() => {
+                    currentWidth = 65 + Math.random() * 15; // 65 ~ 80%
+                    progressBar.style.width = currentWidth + '%';
+                }, 2200); // 2.2초마다 천천히 변화
             }
 
             startCountdown(`countdown${index}`, item.endDate);
