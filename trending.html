@@ -184,6 +184,8 @@
 
     <script src="trendingData.js"></script>
     <script>
+        console.log("🚀 Trending script started");
+
         const container = document.getElementById('trending-cards');
 
         function getDateColor(dateStr) {
@@ -193,8 +195,9 @@
         }
 
         trendingData.forEach((item, index) => {
-            let isEnded = false;
+            console.log(`카드 ${index} 생성: ${item.title}`);
 
+            let isEnded = false;
             if (index === 0 || index === 1) {
                 isEnded = true;
             }
@@ -254,19 +257,21 @@
             const progressBar = document.getElementById(`progress-${index}`);
 
             if (index === 0 || index === 1) {
-                // Bonk, OriginTrail → 초록색 꽉찬 바
                 progressBar.style.background = 'var(--primary)';
                 progressBar.style.width = '100%';
+                console.log(`카드 ${index} (${item.title}): 초록 꽉찬 바`);
             } else if (index === 2) {
-                // Aethir → 65~75% 사이에서 4초마다 천천히 랜덤 움직임
+                // Aethir - 황금 바
                 let current = 70;
                 progressBar.style.width = current + '%';
+                console.log(`카드 ${index} (Aethir): 황금 바 시작`);
+
                 setInterval(() => {
                     current = 65 + Math.random() * 10;
                     progressBar.style.width = current + '%';
+                    console.log(`Aethir 바 이동 → ${current.toFixed(1)}%`);
                 }, 4000);
             } else if (index === 3) {
-                // COMING SOON → 0% 회색 빈 바
                 progressBar.style.width = '0%';
             } else {
                 progressBar.style.width = '70%';
@@ -276,10 +281,12 @@
         });
 
         function startCountdown(id, endTimeStr) {
-            const endTime = new Date(endTimeStr).getTime();
             const el = document.getElementById(id);
-            if (!el) return;
-
+            if (!el) {
+                console.warn(`Countdown element ${id} not found`);
+                return;
+            }
+            const endTime = new Date(endTimeStr).getTime();
             setInterval(() => {
                 const now = new Date().getTime();
                 let distance = endTime - now;
