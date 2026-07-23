@@ -94,7 +94,7 @@
         .progress-bar {
             height: 100%;
             border-radius: 999px;
-            transition: width 4s ease-in-out;   /* 4초 천천히 변화 */
+            transition: width 4s ease-in-out;
             position: relative;
         }
         .progress-bar.end {
@@ -208,11 +208,11 @@
         }
 
         trendingData.forEach((item, index) => {
-            const endTime = new Date(item.endDate).getTime();
-            let isEnded = endTime < Date.now();
+            let isEnded = false;
 
-            if (item.title === "Algoland (ALGO)") {
-                isEnded = false;
+            // Bonk과 OriginTrail은 END로 설정
+            if (index === 0 || index === 1) {
+                isEnded = true;
             }
 
             const card = document.createElement('div');
@@ -246,7 +246,7 @@
                         </div>
 
                         <div class="progress-bar-container">
-                            <div class="progress-bar ${isEnded ? 'end' : 'ongoing'}" id="progress-${index}"></div>
+                            <div class="progress-bar" id="progress-${index}"></div>
                         </div>
 
                         <div class="countdown" id="countdown${index}">
@@ -270,7 +270,7 @@
             const progressBar = document.getElementById(`progress-${index}`);
 
             if (index === 0 || index === 1) {
-                // Bonk, OriginTrail → 초록색 꽉찬 바
+                // Bonk, OriginTrail → 초록색 꽉찬 바 + END
                 progressBar.style.background = 'var(--primary)';
                 progressBar.style.width = '100%';
             } else if (index === 2) {
@@ -278,14 +278,13 @@
                 let current = 70;
                 progressBar.style.width = current + '%';
                 setInterval(() => {
-                    current = 65 + Math.random() * 10; // 65 ~ 75%
+                    current = 65 + Math.random() * 10;
                     progressBar.style.width = current + '%';
                 }, 4000);
             } else if (index === 3) {
                 // COMING SOON → 0% 회색 빈 바
                 progressBar.style.width = '0%';
             } else {
-                // 나머지는 기본
                 progressBar.style.width = '70%';
             }
 
