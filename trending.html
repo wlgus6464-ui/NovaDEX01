@@ -260,44 +260,14 @@
             const progressBar = document.getElementById(`progress-${index}`);
             if (isEnded) {
                 progressBar.style.width = '100%';
+            } else if (item.title.includes("Aethir")) {
+                // Aethir만 80~90% 사이에서 천천히 움직임
+                let current = 85;
+                progressBar.style.width = current + '%';
+                setInterval(() => {
+                    current = 80 + Math.random() * 10;
+                    progressBar.style.width = current + '%';
+                }, 4000);
             } else {
                 progressBar.style.width = '70%';
-                setInterval(() => {
-                    const randomWidth = 70 + Math.random() * 3.5;
-                    progressBar.style.width = `${randomWidth}%`;
-                }, 1200);
-            }
-            startCountdown(`countdown${index}`, item.endDate);
-        });
-        function startCountdown(id, endTimeStr) {
-            const endTime = new Date(endTimeStr).getTime();
-            setInterval(() => {
-                const now = new Date().getTime();
-                let distance = endTime - now;
-                if (distance < 0) distance = 0;
-                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                document.getElementById(id).innerHTML = `
-                    <div class="countdown-box"><span class="number">${days}</span><div>D</div></div>
-                    <div class="countdown-box"><span class="number">${hours}</span><div>H</div></div>
-                    <div class="countdown-box"><span class="number">${minutes}</span><div>M</div></div>
-                    <div class="countdown-box"><span class="number">${seconds}</span><div>S</div></div>
-                `;
-            }, 1000);
-        }
-        setInterval(() => {
-            const cards = document.querySelectorAll('.pool-card');
-            cards.forEach((card, idx) => {
-                const item = trendingData[idx];
-                if (!item) return;
-                const startSpan = card.querySelector('.card-left > div:nth-child(3) > div:first-child span');
-                const endSpan = card.querySelector('.card-left > div:nth-child(3) > div:last-child span');
-                if (startSpan) startSpan.style.color = getDateColor(item.startDate);
-                if (endSpan) endSpan.style.color = getDateColor(item.endDate);
-            });
-        }, 60000);
-    </script>
-</body>
-</html>
+               
