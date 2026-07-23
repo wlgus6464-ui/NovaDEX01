@@ -161,21 +161,6 @@
         button:hover {
             transform: scale(1.02);
         }
-
-        @media (max-width: 768px) {
-            .card-content {
-                flex-direction: column;
-            }
-            .card-right {
-                order: -1;
-            }
-            .banner-image {
-                height: 180px;
-            }
-            .banner-text {
-                font-size: 0.9rem;
-            }
-        }
     </style>
 </head>
 <body>
@@ -269,19 +254,17 @@
             const progressBar = document.getElementById(`progress-${index}`);
 
             if (index === 0 || index === 1) {
-                // Bonk, OriginTrail → 초록색 꽉찬 바
                 progressBar.style.background = 'var(--primary)';
                 progressBar.style.width = '100%';
             } else if (index === 2) {
-                // Aethir → 65~75% 사이에서 4초마다 천천히 랜덤 움직임
+                // Aethir - 65~75% 사이 4초마다 움직임
                 let current = 70;
                 progressBar.style.width = current + '%';
                 setInterval(() => {
-                    current = 65 + Math.random() * 10; // 65 ~ 75%
+                    current = 65 + Math.random() * 10;
                     progressBar.style.width = current + '%';
                 }, 4000);
             } else if (index === 3) {
-                // COMING SOON → 0% 회색 빈 바
                 progressBar.style.width = '0%';
             } else {
                 progressBar.style.width = '70%';
