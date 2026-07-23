@@ -79,10 +79,10 @@ const coinHotTopics = {
         link: "https://trondao.org/news"
     },
     'ALT': {
-        title: "Sahara AI, Blockchain Project Tackling Copyright and Privacy, Raises $43M",
-        comment: "Sahara's aim is to tackle concerns over copyright, privacy and resource access amid proliferation of AI tools.",
-        img: "https://www.cryptotimes.io/wp-content/uploads/2025/06/Sahara-AI-Crashes-Despite-Exchange-Listing-Will-SAHARA-Slump-to-0.png",
-        link: "https://finance.yahoo.com/news/sahara-ai-blockchain-project-tackling-130000009.html"
+        title: "MoneyGram and Stellar Extend Partnership to Scale Real-World Stablecoin Utility Globally",
+        comment: "MoneyGram, one of the world's leading global payments networks, and the Stellar Development Foundation (SDF), the nonprofit supporting the Stellar blockchain, today announced a multi-year extension of their partnership. This milestone marks more than five years of turning stablecoin potential into real-world utility and financial inclusion. ",
+        img: "https://cdn.sanity.io/images/e2r40yh6/production-i18n/edbd77de17854a9b23f67d28211f5ca87d90e14d-4500x2532.jpg?rect=1,0,4498,2532&w=1224&h=689&auto=format&dpr=2",
+        link: "https://stellar.org/press/moneygram-and-stellar-extend-partnership-to-scale-real-world-stablecoin-utility-globally?utm_source=chatgpt.com"
     },
     'ETC': {
         title: "Ethereum Classic Reinforces Core Infrastructure with Ongoing Network and Development Support",
@@ -99,7 +99,7 @@ const coinRelatedArticles = {
     'XRP': [{ title: "Stellar's payment volume hit $5.5 billion in Q1 2026, a 72% annual increase, and XLM surged 28% on the DTCC announcement while the broader crypto market fell sharply the same day.", link: "https://finance.yahoo.com/markets/crypto/articles/xrp-ripple-vs-stellar-xlm-185640141.html" }],
     'SHIB': [{ title: "SHIB Layer 2 Posts 216% in Weekend Transaction Spike", link: "https://u.today/shib-layer-2-posts-216-in-weekend-transaction-spike-is-this-a-turning-point" }],
     'BTT': [{ title: "TRON Accelerates Ecosystem Growth", link: "https://trondao.org/news" }],
-    'ALT': [{ title: "Story Protocol Launches to Let People Register IP", link: "https://www.coindesk.com/tech/2025/02/13/story-protocol-launches-to-let-people-to-register-ip-and-get-paid-for-it" }],
+    'ALT': [{ title: "Built on Celo, the fast-growing stablecoin wallet is designed for financial inclusion and global payments.", link: "https://press.opera.com/2025/05/13/minipay-standalone-app-ios-android/" }],
     'ETC': [{ title: "Ethereum Classic Reinforces Core Infrastructure", link: "#" }]
 };
 
