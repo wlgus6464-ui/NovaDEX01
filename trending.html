@@ -94,7 +94,7 @@
         .progress-bar {
             height: 100%;
             border-radius: 999px;
-            transition: width 1.8s ease-in-out;
+            transition: width 4s ease-in-out;   /* 4초 천천히 변화 */
             position: relative;
         }
         .progress-bar.end {
@@ -104,7 +104,7 @@
         .progress-bar.ongoing {
             background: linear-gradient(90deg, #FFD700, #FFA500, #FFD700);
             background-size: 200% 100%;
-            animation: goldShimmer 2.5s linear infinite;
+            animation: goldShimmer 3s linear infinite;
             box-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
         }
         .progress-bar.ongoing::after {
@@ -269,24 +269,24 @@
 
             const progressBar = document.getElementById(`progress-${index}`);
 
-            if (isEnded) {
+            if (index === 0 || index === 1) {
+                // Bonk, OriginTrail → 초록색 꽉찬 바
+                progressBar.style.background = 'var(--primary)';
                 progressBar.style.width = '100%';
             } else if (index === 2) {
-                // Aethir - 30% 근처 움직임 (이전 설정 유지)
-                progressBar.style.width = '30%';
+                // Aethir → 65~75% 사이에서 4초마다 천천히 랜덤 움직임
+                let current = 70;
+                progressBar.style.width = current + '%';
                 setInterval(() => {
-                    const randomWidth = 25 + Math.random() * 15;
-                    progressBar.style.width = `${randomWidth}%`;
-                }, 1500);
+                    current = 65 + Math.random() * 10; // 65 ~ 75%
+                    progressBar.style.width = current + '%';
+                }, 4000);
+            } else if (index === 3) {
+                // COMING SOON → 0% 회색 빈 바
+                progressBar.style.width = '0%';
             } else {
-                // 기본 황금 바: 65% ~ 80% 사이에서 천천히 랜덤 움직임
-                let currentWidth = 72;
-                progressBar.style.width = currentWidth + '%';
-
-                setInterval(() => {
-                    currentWidth = 65 + Math.random() * 15; // 65 ~ 80%
-                    progressBar.style.width = currentWidth + '%';
-                }, 2200); // 2.2초마다 천천히 변화
+                // 나머지는 기본
+                progressBar.style.width = '70%';
             }
 
             startCountdown(`countdown${index}`, item.endDate);
