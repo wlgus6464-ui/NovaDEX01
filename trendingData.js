@@ -66,6 +66,12 @@ const coinHotTopics = {
         img: "https://cdn.pinpointnews.co.kr/news/photo/202607/469261_457126_3823.png",
         link: "https://www.pinpointnews.co.kr/news/articleView.html?idxno=469261"
     },
+    'DOGE': {
+        title: "Dogecoin Surges as Elon Musk Mentions DOGE Again",
+        comment: "Dogecoin sees renewed interest after recent comments from Elon Musk, with trading volume spiking across major exchanges.",
+        img: "https://picsum.photos/id/237/600/280",
+        link: "#"
+    },
     'SHIB': {
         title: "SHIB Layer 2 Posts 216% in Weekend Transaction Spike: Is This a Turning Point?",
         comment: "Shiba Inu sees fresh network spark as Layer 2 blockchain numbers jump.",
@@ -97,6 +103,7 @@ const coinRelatedArticles = {
     'BTC': [{ title: "Bitcoin ETF Inflows Surpass $10B This Month", link: "#" }],
     'ETH': [{ title: "The Arbitrum Foundation 2025 Transparency Report", link: "https://blog.arbitrum.foundation/the-arbitrum-foundation-2025-transparency-report-the-year-of-institutional-adoption" }],
     'XRP': [{ title: "Stellar's payment volume hit $5.5 billion in Q1 2026, a 72% annual increase, and XLM surged 28% on the DTCC announcement while the broader crypto market fell sharply the same day.", link: "https://finance.yahoo.com/markets/crypto/articles/xrp-ripple-vs-stellar-xlm-185640141.html" }],
+    'DOGE': [{ title: "Dogecoin Community Celebrates New All-Time High in Daily Active Addresses", link: "#" }],
     'SHIB': [{ title: "SHIB Layer 2 Posts 216% in Weekend Transaction Spike", link: "https://u.today/shib-layer-2-posts-216-in-weekend-transaction-spike-is-this-a-turning-point" }],
     'BTT': [{ title: "TRON Accelerates Ecosystem Growth", link: "https://trondao.org/news" }],
     'ALT': [{ title: "Built on Celo, the fast-growing stablecoin wallet is designed for financial inclusion and global payments.", link: "https://press.opera.com/2025/05/13/minipay-standalone-app-ios-android/" }],
@@ -125,6 +132,13 @@ const manualNews = {
         { title: "Ripple Secures Preliminary MiCA CASP License", link: "https://ripple.com/press-releases/", time: "9 hours ago" },
         { title: "XRP Adoption Growing in Asia", link: "#", time: "1 day ago" },
         { title: "Ripple Expands Partnerships with Banks", link: "#", time: "2 days ago" }
+    ],
+    'DOGE': [
+        { title: "Dogecoin Sees Massive Volume Spike After Musk Tweet", link: "#", time: "1 hour ago" },
+        { title: "DOGE Whales Accumulate Amid Market Dip", link: "#", time: "3 hours ago" },
+        { title: "Dogecoin Payment Adoption Grows in Online Retail", link: "#", time: "8 hours ago" },
+        { title: "Community-Driven Development Pushes DOGE Forward", link: "#", time: "1 day ago" },
+        { title: "Analysts Predict Strong DOGE Rally in Q3 2026", link: "#", time: "2 days ago" }
     ],
     'SHIB': [
         { title: "Shiba Eternity & SHIB Metaverse Relaunch Announced", link: "https://coinmarketcap.com/cmc-ai/shiba-inu/latest-updates/", time: "1 hour ago" },
