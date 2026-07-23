@@ -85,10 +85,10 @@ const coinHotTopics = {
         link: "https://trondao.org/news"
     },
     'ALT': {
-        title: "MoneyGram and Stellar Extend Partnership to Scale Real-World Stablecoin Utility Globally",
-        comment: "MoneyGram, one of the world's leading global payments networks, and the Stellar Development Foundation (SDF), the nonprofit supporting the Stellar blockchain, today announced a multi-year extension of their partnership. This milestone marks more than five years of turning stablecoin potential into real-world utility and financial inclusion. ",
-        img: "https://cdn.sanity.io/images/e2r40yh6/production-i18n/edbd77de17854a9b23f67d28211f5ca87d90e14d-4500x2532.jpg?rect=1,0,4498,2532&w=1224&h=689&auto=format&dpr=2",
-        link: "https://stellar.org/press/moneygram-and-stellar-extend-partnership-to-scale-real-world-stablecoin-utility-globally?utm_source=chatgpt.com"
+        title: "Hedera Expands Enterprise Blockchain Ecosystem Through Tokenization, Stablecoins, and Institutional Finance",
+        comment: "Hedera is continuing to expand its enterprise-focused blockchain ecosystem by advancing real-world asset (RWA) tokenization, institutional finance, and stablecoin infrastructure. The initiative aims to provide businesses and financial institutions with the trusted infrastructure needed to adopt blockchain technology at scale, reinforcing Hedera's role as a foundation for enterprise-grade Web3 applications.",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDO33GyXKEA_ipANvJkBbFhnBSxK4T4xBh84YQd4nte2uMW5XoSR2A19U&s=10",
+        link: "https://hedera.com/blog/hedera-in-2025-building-the-trust-layer/?utm_source=chatgpt.com"
     },
     'ETC': {
         title: "Ethereum Classic Reinforces Core Infrastructure with Ongoing Network and Development Support",
@@ -106,7 +106,7 @@ const coinRelatedArticles = {
     'DOGE': [{ title: "Dogecoin Community Celebrates New All-Time High in Daily Active Addresses", link: "#" }],
     'SHIB': [{ title: "SHIB Layer 2 Posts 216% in Weekend Transaction Spike", link: "https://u.today/shib-layer-2-posts-216-in-weekend-transaction-spike-is-this-a-turning-point" }],
     'BTT': [{ title: "TRON Accelerates Ecosystem Growth", link: "https://trondao.org/news" }],
-    'ALT': [{ title: "Built on Celo, the fast-growing stablecoin wallet is designed for financial inclusion and global payments.", link: "https://press.opera.com/2025/05/13/minipay-standalone-app-ios-android/" }],
+    'ALT': [{ title: "Dubai developer DAMAC signs $1 bln deal with blockchain platform MANTRA", link: "https://www.reuters.com/technology/dubai-developer-damac-signs-1-bln-deal-with-blockchain-platform-mantra-2025-01-09/?utm_source=chatgpt.com" }],
     'ETC': [{ title: "Ethereum Classic Reinforces Core Infrastructure", link: "#" }]
 };
 
