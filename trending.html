@@ -93,7 +93,7 @@
         .progress-bar {
             height: 100%;
             border-radius: 999px;
-            transition: width 4s ease-in-out;
+            transition: width 1.2s ease-in-out;
             position: relative;
         }
         .progress-bar.end {
@@ -103,7 +103,7 @@
         .progress-bar.ongoing {
             background: linear-gradient(90deg, #FFD700, #FFA500, #FFD700);
             background-size: 200% 100%;
-            animation: goldShimmer 3s linear infinite;
+            animation: goldShimmer 1.2s linear infinite;
             box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
         }
         .progress-bar.ongoing::after {
@@ -257,36 +257,18 @@
                 </div>
             `;
             container.appendChild(card);
-
             const progressBar = document.getElementById(`progress-${index}`);
-
-            if (item.title.includes("Bonk") || item.title.includes("OriginTrail")) {
-                // Bonk, OriginTrail → 초록색 꽉찬 바
-                progressBar.style.background = 'var(--primary)';
+            if (isEnded) {
                 progressBar.style.width = '100%';
-            } else if (item.title.includes("Aethir")) {
-                // Aethir → 65~75% 사이에서 4초마다 천천히 움직임
-                let current = 70;
-                progressBar.style.width = current + '%';
-                setInterval(() => {
-                    current = 65 + Math.random() * 10;
-                    progressBar.style.width = current + '%';
-                }, 4000);
-            } else if (item.title.includes("COMING SOON")) {
-                // COMING SOON → 0% 빈 바
-                progressBar.style.width = '0%';
             } else {
-                // 나머지는 기본 움직임
                 progressBar.style.width = '70%';
                 setInterval(() => {
                     const randomWidth = 70 + Math.random() * 3.5;
                     progressBar.style.width = `${randomWidth}%`;
                 }, 1200);
             }
-
             startCountdown(`countdown${index}`, item.endDate);
         });
-
         function startCountdown(id, endTimeStr) {
             const endTime = new Date(endTimeStr).getTime();
             setInterval(() => {
@@ -305,6 +287,17 @@
                 `;
             }, 1000);
         }
+        setInterval(() => {
+            const cards = document.querySelectorAll('.pool-card');
+            cards.forEach((card, idx) => {
+                const item = trendingData[idx];
+                if (!item) return;
+                const startSpan = card.querySelector('.card-left > div:nth-child(3) > div:first-child span');
+                const endSpan = card.querySelector('.card-left > div:nth-child(3) > div:last-child span');
+                if (startSpan) startSpan.style.color = getDateColor(item.startDate);
+                if (endSpan) endSpan.style.color = getDateColor(item.endDate);
+            });
+        }, 60000);
     </script>
 </body>
 </html>
