@@ -194,7 +194,6 @@
 
         trendingData.forEach((item, index) => {
             let isEnded = false;
-
             if (item.title.includes("Bonk") || item.title.includes("OriginTrail")) {
                 isEnded = true;
             }
@@ -258,15 +257,16 @@
                 progressBar.style.background = 'var(--primary)';
                 progressBar.style.width = '100%';
             } else if (item.title.includes("Aethir")) {
-                // Aethir → 65~75% 사이에서 4초마다 천천히 움직임
+                // Aethir → 65~75% 사이에서 4초마다 천천히 자연스럽게 움직임
                 let current = 70;
                 progressBar.style.width = current + '%';
+
                 setInterval(() => {
-                    current = 65 + Math.random() * 10;
-                    progressBar.style.width = current + '%';
+                    current = Math.max(65, Math.min(75, current + (Math.random() * 6 - 3))); // ±3% 정도 부드럽게 변화
+                    progressBar.style.width = current.toFixed(1) + '%';
                 }, 4000);
             } else if (item.title.includes("COMING SOON")) {
-                // COMING SOON → 0% 빈 바
+                // COMING SOON → 0% 회색 빈 바
                 progressBar.style.width = '0%';
             } else {
                 progressBar.style.width = '70%';
