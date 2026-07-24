@@ -62,33 +62,33 @@ const coinHotTopics = {
     },
     'XRP': {
         title: "“껍데기만 블록체인”...SWIFT 결제망 출시에 터진 리플 커뮤니티의 분노",
-        comment: "“도널드 트럼프 미국 대통령의 대국민 연설 이후 비트코인과 이더리움, 리플(XRP) 등 주요 가상자산 시장이 일제히 하락세로 돌아서며 투자 심리가 잔뜩 위축된 가운데, 국제은행간통신협회(SWIFT)가 전격 출시한 24시간 블록체인 원장 시스템을 두고 리플 커뮤니티가 기술적 한계와 결제 공백을 맹렬히 비판하고 나서며 제도권 결제 패권을 둘러싼 전운이 고조되고 있다.",
+        comment: "“Explosive growth in crypto card usage signals a new era of real-world digital currency adoption.",
         img: "https://cdn.pinpointnews.co.kr/news/photo/202607/469261_457126_3823.png",
         link: "https://www.pinpointnews.co.kr/news/articleView.html?idxno=469261"
     },
     'DOGE': {
-        title: "Dogecoin Surges as Elon Musk Mentions DOGE Again",
-        comment: "Dogecoin sees renewed interest after recent comments from Elon Musk, with trading volume spiking across major exchanges.",
-        img: "https://picsum.photos/id/237/600/280",
-        link: "#"
+        title: "Global Crypto Card Spending Surges to $18 Billion Annually as House of Doge Targets Integration of Dogecoin Into Traditional Payment Rails",
+        comment: "Explosive growth in crypto card usage signals a new era of real-world digital currency adoption.",
+        img: "https://ml.globenewswire.com/Resource/Download/24d06781-2cc4-482a-9af0-c899b182f533?size=3",
+        link: "https://www.globenewswire.com/news-release/2026/03/12/3254667/0/en/Global-Crypto-Card-Spending-Surges-to-18-Billion-Annually-as-House-of-Doge-Targets-Integration-of-Dogecoin-Into-Traditional-Payment-Rails.html"
     },
     'SHIB': {
-        title: "SHIB Layer 2 Posts 216% in Weekend Transaction Spike: Is This a Turning Point?",
-        comment: "Shiba Inu sees fresh network spark as Layer 2 blockchain numbers jump.",
-        img: "https://u.today/sites/default/files/styles/1200x/public/2026-07/101504.jpg.webp",
-        link: "https://u.today/shib-layer-2-posts-216-in-weekend-transaction-spike-is-this-a-turning-point"
+        title: "Shibarium Erupts: 4,000% User Surge, Transactions Soar",
+        comment: "Shibarium ignites with a surge of new users, its daily sign-ups rocketing over 4,000%, while transaction volumes swell аt a breakneck pace. From developers deploying fresh smart contracts to users flooding the network, adoption is not just growing but erupting.‍‌‌​﻿‌​‌​​﻿​‍​﻿​‍​﻿‌‌​﻿‌‌​﻿‌‌‌‌‌​​﻿​‍​﻿​‌‌‍​‍‌‍​‍‌‍‌​​﻿‍‌​﻿‌﻿‌‍​‌‌﻿﻿​‌‍‍​‌﻿‌​‌﻿‌​‌﻿​​‌﻿​﻿​﻿‍‍​‍﻿﻿​‍﻿﻿‌‍﻿‍‌‍‌‌‌﻿‌﻿‌﻿​﻿​‍﻿‍‌﻿​﻿‌‍‍​‌‍‍‌‌‍​‍​‍﻿‍‌‍‍‌‌‍﻿﻿​‍﻿﻿​﻿​‍​﻿​​​﻿​‍​﻿‌‌​‍﻿﻿​﻿​​​﻿​﻿​‍﻿﻿​﻿​‍​﻿‌﻿​‍﻿﻿‌﻿​﻿‌‍‍​‌‍‍‌‌‍​‍‌‍​‌‌﻿​‍‌‍‍‌‌﻿‌‌‌‍﻿‌​‍﻿‌‌‍‌‌‌﻿​‍‌﻿‌‌‌﻿​​‌﻿‌​‌﻿​﻿​‍﻿‌​﻿‌​​﻿​​​﻿​​​﻿​​​‍﻿‌‌﻿‌‌‌﻿​﻿‌‍‌‌‌﻿​‍​‍﻿‌‌﻿​﻿‌﻿‌‌‌﻿​‍‌‍‌﻿‌‍‌‌​‍﻿‌‌﻿‌​‌﻿​‍‌‍​‌‌‍﻿‍‌﻿​﻿‌‍​‌‌‍​﻿‌﻿‌​‌‍‍‌‌‍﻿﻿‌‍﻿‍‌﻿​﻿​‍﻿‌‌﻿​﻿‌‍﻿﻿‌‍​‌‌﻿​‍​‍﻿﻿‍",
+        img: "https://news.shib.io/wp-content/uploads/2025/03/MAG-IMAGES-5.png",
+        link: "https://news.shib.io/2025/03/27/shibarium-erupts-4000-user-surge-transactions-soar/"
     },
     'BTT': {
-        title: "TRON Accelerates Ecosystem Growth Through Stablecoin Expansion",
-        comment: "TRON has continued to expand its blockchain ecosystem through a series of official announcements.",
-        img: "https://framerusercontent.com/images/QLsY9F9K6ZGBd8BxPdwewUVeW6E.png?width=1200&height=675",
-        link: "https://trondao.org/news"
+        title: "USDT on TRON Exceeds $90 Billion as TRON Leads USDT Transfer Volume with $4.2 Trillion YTD",
+        comment: " TRON DAO, the community-governed DAO dedicated to accelerating the decentralization of the internet through blockchain technology and decentralized applications (dApps), announced today that the total circulating supply of USDT on the TRON blockchain has exceeded $90 billion.",
+        img: "https://www.tbstat.com/cdn-cgi/image/f=avif,q=50/wp/uploads/2026/07/Screenshot-2026-07-09-at-3.03.35%E2%80%AFPM-1200x669.png",
+        link: "https://www.theblock.co/post/407792/usdt-on-tron-exceeds-90-billion-as-tron-leads-usdt-transfer-volume-with-4-2-trillion-ytd"
     },
     'ALT': {
-        title: "Hedera Expands Enterprise Blockchain Ecosystem Through Tokenization, Stablecoins, and Institutional Finance",
-        comment: "Hedera is continuing to expand its enterprise-focused blockchain ecosystem by advancing real-world asset (RWA) tokenization, institutional finance, and stablecoin infrastructure. The initiative aims to provide businesses and financial institutions with the trusted infrastructure needed to adopt blockchain technology at scale, reinforcing Hedera's role as a foundation for enterprise-grade Web3 applications.",
-        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRDO33GyXKEA_ipANvJkBbFhnBSxK4T4xBh84YQd4nte2uMW5XoSR2A19U&s=10",
-        link: "https://hedera.com/blog/hedera-in-2025-building-the-trust-layer/?utm_source=chatgpt.com"
+        title: "Baby Doge Accelerates Ecosystem Growth with Token Burns, BabyDogeSwap, and Expanding Web3 Services",
+        comment: "Baby Doge continues to strengthen its ecosystem through ongoing token burns, the expansion of BabyDogeSwap, and the rollout of new Web3 services and platform features. Alongside active community initiatives and continuous product development, the project has been attracting renewed attention from global investors, reflecting growing interest in Baby Doge's evolving utility and long-term ecosystem growth.",
+        img: "https://coindar.org/images/upload/tFCa1dgYGUpp2FRb/image.yNJQnrVzKjoqSOkikKUj.jpg",
+        link: "https://coinmarketcap.com/cmc-ai/baby-doge-coin/latest-updates/"
     },
     'ETC': {
         title: "Ethereum Classic Reinforces Core Infrastructure with Ongoing Network and Development Support",
@@ -103,10 +103,10 @@ const coinRelatedArticles = {
     'BTC': [{ title: "Bitcoin ETF Inflows Surpass $10B This Month", link: "#" }],
     'ETH': [{ title: "The Arbitrum Foundation 2025 Transparency Report", link: "https://blog.arbitrum.foundation/the-arbitrum-foundation-2025-transparency-report-the-year-of-institutional-adoption" }],
     'XRP': [{ title: "Stellar's payment volume hit $5.5 billion in Q1 2026, a 72% annual increase, and XLM surged 28% on the DTCC announcement while the broader crypto market fell sharply the same day.", link: "https://finance.yahoo.com/markets/crypto/articles/xrp-ripple-vs-stellar-xlm-185640141.html" }],
-    'DOGE': [{ title: "Dogecoin Community Celebrates New All-Time High in Daily Active Addresses", link: "#" }],
-    'SHIB': [{ title: "SHIB Layer 2 Posts 216% in Weekend Transaction Spike", link: "https://u.today/shib-layer-2-posts-216-in-weekend-transaction-spike-is-this-a-turning-point" }],
-    'BTT': [{ title: "TRON Accelerates Ecosystem Growth", link: "https://trondao.org/news" }],
-    'ALT': [{ title: "Dubai developer DAMAC signs $1 bln deal with blockchain platform MANTRA.", link: "https://www.reuters.com/technology/dubai-developer-damac-signs-1-bln-deal-with-blockchain-platform-mantra-2025-01-09/?utm_source=chatgpt.com" }],
+    'DOGE': [{ title: "From Meme Coin to Mass Retail: BONK Announces Strategic Partnership With Paxos", link: "https://chainwire.org/2026/04/30/from-meme-coin-to-mass-retail-bonk-announces-strategic-partnership-with-paxos/" }],
+    'SHIB': [{ title: "From Meme Coin to Mass Retail: BONK Announces Strategic Partnership With Paxos - Chainwire", link: "https://chainwire.org/2026/04/30/from-meme-coin-to-mass-retail-bonk-announces-strategic-partnership-with-paxos/" }],
+    'BTT': [{ title: "SUN Expanded Beyond a Simple DeFi Protocol to Become a Core Project in the TRON Ecosystem", link: "https://docs.sun.io/get-started/overview/?utm_source=chatgpt.com" }],
+    'ALT': [{ title: "PEPE Regains Investor Attention as Community Growth and Ecosystem Development Continue", link: "https://coinmarketcap.com/cmc-ai/pepe/latest-updates/" }],
     'ETC': [{ title: "Ethereum Classic Reinforces Core Infrastructure", link: "#" }]
 };
 
