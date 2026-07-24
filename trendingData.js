@@ -85,10 +85,10 @@ const coinHotTopics = {
         link: "https://www.theblock.co/post/407792/usdt-on-tron-exceeds-90-billion-as-tron-leads-usdt-transfer-volume-with-4-2-trillion-ytd"
     },
     'ALT': {
-        title: "Baby Doge Accelerates Ecosystem Growth with Token Burns, BabyDogeSwap, and Expanding Web3 Services",
-        comment: "Baby Doge continues to strengthen its ecosystem through ongoing token burns, the expansion of BabyDogeSwap, and the rollout of new Web3 services and platform features. Alongside active community initiatives and continuous product development, the project has been attracting renewed attention from global investors, reflecting growing interest in Baby Doge's evolving utility and long-term ecosystem growth.",
-        img: "https://coindar.org/images/upload/tFCa1dgYGUpp2FRb/image.yNJQnrVzKjoqSOkikKUj.jpg",
-        link: "https://coinmarketcap.com/cmc-ai/baby-doge-coin/latest-updates/"
+        title: "LINE NEXT and Kaia Expand Web3 and Stablecoin Adoption Across Asia Following the Launch of Tether’s USD₮ on Kaia Blockchain",
+        comment: " Tether, the largest company in the digital assets industry today, announced it has created a native deployment of Tether’s USD₮ on the Kaia blockchain. LINE NEXT Corp., LINE’s venture dedicated to developing and expanding the Web3 ecosystem, and Kaia, a high-performance public layer 1 blockchain that exclusively powers the Mini Dapp and Dapp Portal ecosystem accessible within LINE Messenger, will collaborate to deliver USD stablecoin offerings to Asia’s mainstream consumers, leveraging native USD₮-Kaia integrated with LINE NEXT’s blockchain-powered services and platforms.",
+        img: "https://tether.io/wp-content/uploads/2025/05/Kaia-Line-Next.png",
+        link: "https://tether.io/news/line-next-and-kaia-expand-web3-and-stablecoin-adoption-across-asia-following-the-launch-of-tethers-usdt-on-kaia-blockchain/?utm_source=chatgpt.com"
     },
     'ETC': {
         title: "Ethereum Classic Reinforces Core Infrastructure with Ongoing Network and Development Support",
@@ -106,7 +106,7 @@ const coinRelatedArticles = {
     'DOGE': [{ title: "From Meme Coin to Mass Retail: BONK Announces Strategic Partnership With Paxos", link: "https://chainwire.org/2026/04/30/from-meme-coin-to-mass-retail-bonk-announces-strategic-partnership-with-paxos/" }],
     'SHIB': [{ title: "From Meme Coin to Mass Retail: BONK Announces Strategic Partnership With Paxos - Chainwire", link: "https://chainwire.org/2026/04/30/from-meme-coin-to-mass-retail-bonk-announces-strategic-partnership-with-paxos/" }],
     'BTT': [{ title: "SUN Expanded Beyond a Simple DeFi Protocol to Become a Core Project in the TRON Ecosystem", link: "https://docs.sun.io/get-started/overview/?utm_source=chatgpt.com" }],
-    'ALT': [{ title: "PEPE Regains Investor Attention as Community Growth and Ecosystem Development Continue", link: "https://coinmarketcap.com/cmc-ai/pepe/latest-updates/" }],
+    'ALT': [{ title: "Celo Receives Additional $20 Million In Institutional Backing Amid Launch Of Global Payments Application And Exponential User Growth", link: "https://www.prnewswire.com/news-releases/celo-receives-additional-20-million-in-institutional-backing-amid-launch-of-global-payments-application-and-exponential-user-growth-301226002.html?utm_source=chatgpt.com" }],
     'ETC': [{ title: "Ethereum Classic Reinforces Core Infrastructure", link: "#" }]
 };
 
