@@ -79,16 +79,16 @@ const coinHotTopics = {
         link: "https://www.bitget.com/news/detail/12560604434763?utm_source=chatgpt.com"
     },
     'BTT': {
-        title: "USDT on TRON Exceeds $90 Billion as TRON Leads USDT Transfer Volume with $4.2 Trillion YTD",
-        comment: " TRON DAO, the community-governed DAO dedicated to accelerating the decentralization of the internet through blockchain technology and decentralized applications (dApps), announced today that the total circulating supply of USDT on the TRON blockchain has exceeded $90 billion.",
-        img: "https://www.tbstat.com/cdn-cgi/image/f=avif,q=50/wp/uploads/2026/07/Screenshot-2026-07-09-at-3.03.35%E2%80%AFPM-1200x669.png",
-        link: "https://www.theblock.co/post/407792/usdt-on-tron-exceeds-90-billion-as-tron-leads-usdt-transfer-volume-with-4-2-trillion-ytd"
+        title: "BitTorrent unveils long term BTT buyback and burn program for Q3 2026",
+        comment: " BitTorrent has unveiled a long-term BTT token buyback and burn program that will use 100% of revenue from its decentralized services for quarterly market purchases starting in the third quarter of 2026.",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDHJk2kg0zgkTZtB4jNoJom0C2JVkwTPmyv7y_iI3UdGqBM3ViST3Y0R_Z&s=10",
+        link: "https://crypto.news/bittorrent-unveils-long-term-btt-buyback-and-burn-program-for-q3-2026/"
     },
     'ALT': {
-        title: "LINE NEXT and Kaia Expand Web3 and Stablecoin Adoption Across Asia Following the Launch of Tether’s USD₮ on Kaia Blockchain",
-        comment: " Tether, the largest company in the digital assets industry today, announced it has created a native deployment of Tether’s USD₮ on the Kaia blockchain. LINE NEXT Corp., LINE’s venture dedicated to developing and expanding the Web3 ecosystem, and Kaia, a high-performance public layer 1 blockchain that exclusively powers the Mini Dapp and Dapp Portal ecosystem accessible within LINE Messenger, will collaborate to deliver USD stablecoin offerings to Asia’s mainstream consumers, leveraging native USD₮-Kaia integrated with LINE NEXT’s blockchain-powered services and platforms.",
-        img: "https://tether.io/wp-content/uploads/2025/05/Kaia-Line-Next.png",
-        link: "https://tether.io/news/line-next-and-kaia-expand-web3-and-stablecoin-adoption-across-asia-following-the-launch-of-tethers-usdt-on-kaia-blockchain/?utm_source=chatgpt.com"
+        title: "Baby Doge Announces RealGo AI Partnership, Expanding Its AI-Powered Web3 Ecosystem",
+        comment: " Baby Doge announced a partnership with RealGo, unveiling a new strategic direction that combines AI technology with meme culture. Through the collaboration, the project plans to introduce AI-powered services and further expand its Web3 ecosystem. The announcement has attracted growing attention across global crypto communities, highlighting increasing interest in Baby Doge's evolving ecosystem and long-term development strategy.",
+        img: "https://media.licdn.com/dms/image/v2/D4E22AQG5Qi-OdndyBA/feedshare-shrink_800/B4EZgcmbreHgAg-/0/1752826495080?e=2147483647&v=beta&t=a-OVsa0GraVuHl6LNKufOHLVHWkvbjr-dC6ThqvoDyE",
+        link: "https://coinmarketcap.com/cmc-ai/baby-doge-coin/price-prediction/"
     },
     'ETC': {
         title: "Ethereum Classic Reinforces Core Infrastructure with Ongoing Network and Development Support",
@@ -105,8 +105,8 @@ const coinRelatedArticles = {
     'XRP': [{ title: "Stellar's payment volume hit $5.5 billion in Q1 2026, a 72% annual increase, and XLM surged 28% on the DTCC announcement while the broader crypto market fell sharply the same day.", link: "https://finance.yahoo.com/markets/crypto/articles/xrp-ripple-vs-stellar-xlm-185640141.html" }],
     'DOGE': [{ title: "From Meme Coin to Mass Retail: BONK Announces Strategic Partnership With Paxos", link: "https://chainwire.org/2026/04/30/from-meme-coin-to-mass-retail-bonk-announces-strategic-partnership-with-paxos/" }],
     'SHIB': [{ title: "From Meme Coin to Mass Retail: BONK Announces Strategic Partnership With Paxos - Chainwire", link: "https://chainwire.org/2026/04/30/from-meme-coin-to-mass-retail-bonk-announces-strategic-partnership-with-paxos/" }],
-    'BTT': [{ title: "SUN Expanded Beyond a Simple DeFi Protocol to Become a Core Project in the TRON Ecosystem", link: "https://docs.sun.io/get-started/overview/?utm_source=chatgpt.com" }],
-    'ALT': [{ title: "Celo Receives Additional $20 Million In Institutional Backing Amid Launch Of Global Payments Application And Exponential User Growth", link: "https://www.prnewswire.com/news-releases/celo-receives-additional-20-million-in-institutional-backing-amid-launch-of-global-payments-application-and-exponential-user-growth-301226002.html?utm_source=chatgpt.com" }],
+    'BTT': [{ title: "The BNB Foundation has officially announced the successful completion of the 36th quarterly BNB token burn by BNB Chain.", link: "https://www.bnbchain.org/en/blog/36th-bnb-burn" }],
+    'ALT': [{ title: "Floki Expands Beyond Memes with AI Security, TokenFi Integration, and Cross-Ecosystem Growth", link: "https://www.tokenfi.com/" }],
     'ETC': [{ title: "Ethereum Classic Reinforces Core Infrastructure", link: "#" }]
 };
 
