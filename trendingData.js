@@ -73,10 +73,10 @@ const coinHotTopics = {
         link: "https://www.globenewswire.com/news-release/2026/03/12/3254667/0/en/Global-Crypto-Card-Spending-Surges-to-18-Billion-Annually-as-House-of-Doge-Targets-Integration-of-Dogecoin-Into-Traditional-Payment-Rails.html"
     },
     'SHIB': {
-        title: "Shibarium Erupts: 4,000% User Surge, Transactions Soar",
-        comment: "Shibarium ignites with a surge of new users, its daily sign-ups rocketing over 4,000%, while transaction volumes swell аt a breakneck pace. From developers deploying fresh smart contracts to users flooding the network, adoption is not just growing but erupting.‍‌‌​﻿‌​‌​​﻿​‍​﻿​‍​﻿‌‌​﻿‌‌​﻿‌‌‌‌‌​​﻿​‍​﻿​‌‌‍​‍‌‍​‍‌‍‌​​﻿‍‌​﻿‌﻿‌‍​‌‌﻿﻿​‌‍‍​‌﻿‌​‌﻿‌​‌﻿​​‌﻿​﻿​﻿‍‍​‍﻿﻿​‍﻿﻿‌‍﻿‍‌‍‌‌‌﻿‌﻿‌﻿​﻿​‍﻿‍‌﻿​﻿‌‍‍​‌‍‍‌‌‍​‍​‍﻿‍‌‍‍‌‌‍﻿﻿​‍﻿﻿​﻿​‍​﻿​​​﻿​‍​﻿‌‌​‍﻿﻿​﻿​​​﻿​﻿​‍﻿﻿​﻿​‍​﻿‌﻿​‍﻿﻿‌﻿​﻿‌‍‍​‌‍‍‌‌‍​‍‌‍​‌‌﻿​‍‌‍‍‌‌﻿‌‌‌‍﻿‌​‍﻿‌‌‍‌‌‌﻿​‍‌﻿‌‌‌﻿​​‌﻿‌​‌﻿​﻿​‍﻿‌​﻿‌​​﻿​​​﻿​​​﻿​​​‍﻿‌‌﻿‌‌‌﻿​﻿‌‍‌‌‌﻿​‍​‍﻿‌‌﻿​﻿‌﻿‌‌‌﻿​‍‌‍‌﻿‌‍‌‌​‍﻿‌‌﻿‌​‌﻿​‍‌‍​‌‌‍﻿‍‌﻿​﻿‌‍​‌‌‍​﻿‌﻿‌​‌‍‍‌‌‍﻿﻿‌‍﻿‍‌﻿​﻿​‍﻿‌‌﻿​﻿‌‍﻿﻿‌‍​‌‌﻿​‍​‍﻿﻿‍",
-        img: "https://news.shib.io/wp-content/uploads/2025/03/MAG-IMAGES-5.png",
-        link: "https://news.shib.io/2025/03/27/shibarium-erupts-4000-user-surge-transactions-soar/"
+        title: "Shiba Inu’s Executives Reflects on Shibarium’s Journey: DApps, Ecosystem Expansion, and Overcoming Doubts",
+        comment: "Shiba Inu executives have highlighted the success of the Shibarium protocol after its launch. The Ethereum L2 has inked many milestones since its launch. An executive of the Shiba Inu (SHIB) ecosystem has been reflecting on Shibarium’s journey since its launch. Notably, the Shiba Inu team launched Shibarium , the Layer-2 scaling solution, four years after the network debuted. Since it launched, Shibarium has demonstrated outstanding performance and contributed to the network’s growth.​﻿‌​‌​​﻿​‍​﻿​‍​﻿‌‌​﻿‌‌​﻿‌‌‌‌‌​​﻿​‍​﻿​‌‌‍​‍‌‍​‍‌‍‌​​﻿‍‌​﻿‌﻿‌‍​‌‌﻿﻿​‌‍‍​‌﻿‌​‌﻿‌​‌﻿​​‌﻿​﻿​﻿‍‍​‍﻿﻿​‍﻿﻿‌‍﻿‍‌‍‌‌‌﻿‌﻿‌﻿​﻿​‍﻿‍‌﻿​﻿‌‍‍​‌‍‍‌‌‍​‍​‍﻿‍‌‍‍‌‌‍﻿﻿​‍﻿﻿​﻿​‍​﻿​​​﻿​‍​﻿‌‌​‍﻿﻿​﻿​​​﻿​﻿​‍﻿﻿​﻿​‍​﻿‌﻿​‍﻿﻿‌﻿​﻿‌‍‍​‌‍‍‌‌‍​‍‌‍​‌‌﻿​‍‌‍‍‌‌﻿‌‌‌‍﻿‌​‍﻿‌‌‍‌‌‌﻿​‍‌﻿‌‌‌﻿​​‌﻿‌​‌﻿​﻿​‍﻿‌​﻿‌​​﻿​​​﻿​​​﻿​​​‍﻿‌‌﻿‌‌‌﻿​﻿‌‍‌‌‌﻿​‍​‍﻿‌‌﻿​﻿‌﻿‌‌‌﻿​‍‌‍‌﻿‌‍‌‌​‍﻿‌‌﻿‌​‌﻿​‍‌‍​‌‌‍﻿‍‌﻿​﻿‌‍​‌‌‍​﻿‌﻿‌​‌‍‍‌‌‍﻿﻿‌‍﻿‍‌﻿​﻿​‍﻿‌‌﻿​﻿‌‍﻿﻿‌‍​‌‌﻿​‍​‍﻿﻿‍",
+        img: "https://public.bnbstatic.com/image/pgc/202308/983f9ff847c916e32b756239338d45d1.jpg",
+        link: "https://www.bitget.com/news/detail/12560604434763?utm_source=chatgpt.com"
     },
     'BTT': {
         title: "USDT on TRON Exceeds $90 Billion as TRON Leads USDT Transfer Volume with $4.2 Trillion YTD",
