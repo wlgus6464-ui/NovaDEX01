@@ -262,12 +262,13 @@
                 progressBar.style.background = 'var(--primary)';
                 progressBar.style.width = '100%';
             } else if (index === 2) {
-                // Aethir → 황금 바 움직임
-                progressBar.style.width = '70%';
+                // Aethir → 10~15% 사이에서 랜덤 움직임
+                let current = 12;
+                progressBar.style.width = current + '%';
                 setInterval(() => {
-                    const randomWidth = 70 + Math.random() * 3.5;
-                    progressBar.style.width = `${randomWidth}%`;
-                }, 1200);
+                    current = 10 + Math.random() * 5;
+                    progressBar.style.width = current + '%';
+                }, 2000);
             } else if (index === 3) {
                 // COMING SOON → 0% 빈 바
                 progressBar.style.width = '0%';
