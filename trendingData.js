@@ -18,7 +18,7 @@ const trendingData = [
         startDate: "2026-07-24T00:00:00",
         endDate: "2026-07-31T23:59:59",
         prediction: "+180%",
-        bannerImage: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcToFQpOfSdLiPgf0ZfMVZzd7MInAPUN5BX5f9FVcNUDaQ&s",
+        bannerImage: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlNEDmCOfrUxAwoPFqrS2GoZIvpmRXt21IjS0Fgymj7oAjXzBKV5VdyX4&s=10",
         bannerText: "Euler (EUL) is a digital token of the Euler platform, a decentralized finance (DeFi) protocol built on Ethereum. Users can borrow and lend various digital assets through functions such as unauthorized lending and efficient risk management. The EUL token is used for governance, allowing holders to vote on platform decisions and to use it in a reward structure. The platform was founded in 2021 by Michael Bentley, Doug Hoyte, and Jack Prior. Euler (EUL) is a digital token that operates within the Euler ecosystem, a platform designed primarily for various financial activities in decentralized finance (DeFi). As an encryption token, EUL functions as the default utility token of the Euler platform. The token is built on Ethereum and follows the widely accepted ERC-20 token standard that guarantees compatibility with a wide range of wallets and exchanges.",
         participateLink: "https://www.bithumb.com/react/trade/order/EUL-KRW"
     },
