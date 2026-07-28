@@ -79,10 +79,10 @@ const coinHotTopics = {
         link: "https://thecryptobasic.com/2026/07/25/dormant-shiba-inu-whale-ends-seven-month-silence-with-30-billion-shib-purchase-from-binance/?utm_source=chatgpt.com"
     },
     'BTT': {
-        title: "BitTorrent unveils long term BTT buyback and burn program for Q3 2026",
-        comment: " BitTorrent has unveiled a long-term BTT token buyback and burn program that will use 100% of revenue from its decentralized services for quarterly market purchases starting in the third quarter of 2026.",
-        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDHJk2kg0zgkTZtB4jNoJom0C2JVkwTPmyv7y_iI3UdGqBM3ViST3Y0R_Z&s=10",
-        link: "https://crypto.news/bittorrent-unveils-long-term-btt-buyback-and-burn-program-for-q3-2026/"
+        title: "TRON Included in S&P Pantera Digital Asset Index as Institutional Benchmarking Expands to Blockchain Networks",
+        comment: " TRON DAO, the community-governed DAO dedicated to accelerating the decentralization of the internet through blockchain technology and decentralized applications (dApps), today welcomes the launch of the S&P Pantera Digital Asset Index and the inclusion of the TRON blockchain among the top protocols represented in the benchmark.",
+        img: "https://ml.globenewswire.com/Resource/Download/76deb509-773e-4935-a804-1e587b451799/39-1784827197cwxez8zs0n.jpg",
+        link: "https://www.globenewswire.com/news-release/2026/07/23/3332531/0/en/tron-included-in-s-p-pantera-digital-asset-index-as-institutional-benchmarking-expands-to-blockchain-networks.html"
     },
     'ALT': {
         title: "The Sandbox keeps it cheerful with Smiley Factory game and avatars",
@@ -105,7 +105,7 @@ const coinRelatedArticles = {
     'XRP': [{ title: "Stellar's payment volume hit $5.5 billion in Q1 2026, a 72% annual increase, and XLM surged 28% on the DTCC announcement while the broader crypto market fell sharply the same day.", link: "https://finance.yahoo.com/markets/crypto/articles/xrp-ripple-vs-stellar-xlm-185640141.html" }],
     'DOGE': [{ title: "From Meme Coin to Mass Retail: BONK Announces Strategic Partnership With Paxos", link: "https://chainwire.org/2026/04/30/from-meme-coin-to-mass-retail-bonk-announces-strategic-partnership-with-paxos/" }],
     'SHIB': [{ title: "PEPE Outpaces Memecoin Market as Whales Continue Accumulating", link: "https://www.coindesk.com/markets/2025/10/06/pepe-outpaces-memecoin-market-as-whales-continue-accumulating?utm_source=chatgpt.com" }],
-    'BTT': [{ title: "The BNB Foundation has officially announced the successful completion of the 36th quarterly BNB token burn by BNB Chain.", link: "https://www.bnbchain.org/en/blog/36th-bnb-burn" }],
+    'BTT': [{ title: "Coinbase Strengthened Its Global Reputation Through Nasdaq Listing and Institutional Adoption.", link: "https://www.coinbase.com/blog" }],
     'ALT': [{ title: "Immutable Expands Gaming Ecosystem as Major Titles and Developers Join Its Platform", link: "https://www.immutable.com/blog" }],
     'ETC': [{ title: "Ethereum Classic Reinforces Core Infrastructure", link: "#" }]
 };
