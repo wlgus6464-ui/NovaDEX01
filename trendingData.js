@@ -73,10 +73,10 @@ const coinHotTopics = {
         link: "https://www.globenewswire.com/news-release/2026/03/12/3254667/0/en/Global-Crypto-Card-Spending-Surges-to-18-Billion-Annually-as-House-of-Doge-Targets-Integration-of-Dogecoin-Into-Traditional-Payment-Rails.html"
     },
     'SHIB': {
-        title: "Shiba Inu’s Executives Reflects on Shibarium’s Journey: DApps, Ecosystem Expansion, and Overcoming Doubts",
-        comment: "Shiba Inu executives have highlighted the success of the Shibarium protocol after its launch. The Ethereum L2 has inked many milestones since its launch. An executive of the Shiba Inu (SHIB) ecosystem has been reflecting on Shibarium’s journey since its launch. Notably, the Shiba Inu team launched Shibarium , the Layer-2 scaling solution, four years after the network debuted. Since it launched, Shibarium has demonstrated outstanding performance and contributed to the network’s growth.​﻿‌​‌​​﻿​‍​﻿​‍​﻿‌‌​﻿‌‌​﻿‌‌‌‌‌​​﻿​‍​﻿​‌‌‍​‍‌‍​‍‌‍‌​​﻿‍‌​﻿‌﻿‌‍​‌‌﻿﻿​‌‍‍​‌﻿‌​‌﻿‌​‌﻿​​‌﻿​﻿​﻿‍‍​‍﻿﻿​‍﻿﻿‌‍﻿‍‌‍‌‌‌﻿‌﻿‌﻿​﻿​‍﻿‍‌﻿​﻿‌‍‍​‌‍‍‌‌‍​‍​‍﻿‍‌‍‍‌‌‍﻿﻿​‍﻿﻿​﻿​‍​﻿​​​﻿​‍​﻿‌‌​‍﻿﻿​﻿​​​﻿​﻿​‍﻿﻿​﻿​‍​﻿‌﻿​‍﻿﻿‌﻿​﻿‌‍‍​‌‍‍‌‌‍​‍‌‍​‌‌﻿​‍‌‍‍‌‌﻿‌‌‌‍﻿‌​‍﻿‌‌‍‌‌‌﻿​‍‌﻿‌‌‌﻿​​‌﻿‌​‌﻿​﻿​‍﻿‌​﻿‌​​﻿​​​﻿​​​﻿​​​‍﻿‌‌﻿‌‌‌﻿​﻿‌‍‌‌‌﻿​‍​‍﻿‌‌﻿​﻿‌﻿‌‌‌﻿​‍‌‍‌﻿‌‍‌‌​‍﻿‌‌﻿‌​‌﻿​‍‌‍​‌‌‍﻿‍‌﻿​﻿‌‍​‌‌‍​﻿‌﻿‌​‌‍‍‌‌‍﻿﻿‌‍﻿‍‌﻿​﻿​‍﻿‌‌﻿​﻿‌‍﻿﻿‌‍​‌‌﻿​‍​‍﻿﻿‍",
-        img: "https://public.bnbstatic.com/image/pgc/202308/983f9ff847c916e32b756239338d45d1.jpg",
-        link: "https://www.bitget.com/news/detail/12560604434763?utm_source=chatgpt.com"
+        title: "Dormant Shiba Inu Whale Ends Seven-Month Silence With 30 Billion SHIB Purchase From Binance",
+        comment: "A previously inactive Shiba Inu whale has resumed accumulating the token after spending more than seven months on the sidelines. According to on-chain data from Arkham Intelligence, the whale recently purchased 30.18 billion Shiba Inu in a single transaction valued at $125,270. The transaction quickly attracted the attention of the Shiba Inu community, as it marked the whale’s first significant purchase in months.​﻿‌​‌​​﻿​‍​﻿​‍​﻿‌‌​﻿‌‌​﻿‌‌‌‌‌​​﻿​‍​﻿​‌‌‍​‍‌‍​‍‌‍‌​​﻿‍‌​﻿‌﻿‌‍​‌‌﻿﻿​‌‍‍​‌﻿‌​‌﻿‌​‌﻿​​‌﻿​﻿​﻿‍‍​‍﻿﻿​‍﻿﻿‌‍﻿‍‌‍‌‌‌﻿‌﻿‌﻿​﻿​‍﻿‍‌﻿​﻿‌‍‍​‌‍‍‌‌‍​‍​‍﻿‍‌‍‍‌‌‍﻿﻿​‍﻿﻿​﻿​‍​﻿​​​﻿​‍​﻿‌‌​‍﻿﻿​﻿​​​﻿​﻿​‍﻿﻿​﻿​‍​﻿‌﻿​‍﻿﻿‌﻿​﻿‌‍‍​‌‍‍‌‌‍​‍‌‍​‌‌﻿​‍‌‍‍‌‌﻿‌‌‌‍﻿‌​‍﻿‌‌‍‌‌‌﻿​‍‌﻿‌‌‌﻿​​‌﻿‌​‌﻿​﻿​‍﻿‌​﻿‌​​﻿​​​﻿​​​﻿​​​‍﻿‌‌﻿‌‌‌﻿​﻿‌‍‌‌‌﻿​‍​‍﻿‌‌﻿​﻿‌﻿‌‌‌﻿​‍‌‍‌﻿‌‍‌‌​‍﻿‌‌﻿‌​‌﻿​‍‌‍​‌‌‍﻿‍‌﻿​﻿‌‍​‌‌‍​﻿‌﻿‌​‌‍‍‌‌‍﻿﻿‌‍﻿‍‌﻿​﻿​‍﻿‌‌﻿​﻿‌‍﻿﻿‌‍​‌‌﻿​‍​‍﻿﻿‍",
+        img: "https://thecryptobasic.com/wp-content/uploads/2023/01/Binance-Restakes-4T-Shiba-Inu-Tokens-741x450.png",
+        link: "https://thecryptobasic.com/2026/07/25/dormant-shiba-inu-whale-ends-seven-month-silence-with-30-billion-shib-purchase-from-binance/?utm_source=chatgpt.com"
     },
     'BTT': {
         title: "BitTorrent unveils long term BTT buyback and burn program for Q3 2026",
@@ -85,10 +85,10 @@ const coinHotTopics = {
         link: "https://crypto.news/bittorrent-unveils-long-term-btt-buyback-and-burn-program-for-q3-2026/"
     },
     'ALT': {
-        title: "Baby Doge Announces RealGo AI Partnership, Expanding Its AI-Powered Web3 Ecosystem",
-        comment: " Baby Doge announced a partnership with RealGo, unveiling a new strategic direction that combines AI technology with meme culture. Through the collaboration, the project plans to introduce AI-powered services and further expand its Web3 ecosystem. The announcement has attracted growing attention across global crypto communities, highlighting increasing interest in Baby Doge's evolving ecosystem and long-term development strategy.",
-        img: "https://media.licdn.com/dms/image/v2/D4E22AQG5Qi-OdndyBA/feedshare-shrink_800/B4EZgcmbreHgAg-/0/1752826495080?e=2147483647&v=beta&t=a-OVsa0GraVuHl6LNKufOHLVHWkvbjr-dC6ThqvoDyE",
-        link: "https://coinmarketcap.com/cmc-ai/baby-doge-coin/price-prediction/"
+        title: "The Sandbox keeps it cheerful with Smiley Factory game and avatars",
+        comment: " Best known for its smiley logo, clothes brand The Smiley Company has announced a partnership with The Sandbox. As part of the platform’s ongoing Season 7, the clothing brand has launched Smiley Factory, a business tycoon game in which players run a Smiley-branded production line. Within a 15-20 time-limit, players aim to expand their factory as much as possible – crafting apparel, investing earnings, expanding rooms, and producing higher-value products. ",
+        img: "https://www.blockchaingamer.biz/wp-content/uploads/2026/03/The_Sandbox_Smiley-750x430.png",
+        link: "https://www.blockchaingamer.biz/news/23033/the-sandbox-roundup/"
     },
     'ETC': {
         title: "Ethereum Classic Reinforces Core Infrastructure with Ongoing Network and Development Support",
@@ -104,9 +104,9 @@ const coinRelatedArticles = {
     'ETH': [{ title: "The Arbitrum Foundation 2025 Transparency Report", link: "https://blog.arbitrum.foundation/the-arbitrum-foundation-2025-transparency-report-the-year-of-institutional-adoption" }],
     'XRP': [{ title: "Stellar's payment volume hit $5.5 billion in Q1 2026, a 72% annual increase, and XLM surged 28% on the DTCC announcement while the broader crypto market fell sharply the same day.", link: "https://finance.yahoo.com/markets/crypto/articles/xrp-ripple-vs-stellar-xlm-185640141.html" }],
     'DOGE': [{ title: "From Meme Coin to Mass Retail: BONK Announces Strategic Partnership With Paxos", link: "https://chainwire.org/2026/04/30/from-meme-coin-to-mass-retail-bonk-announces-strategic-partnership-with-paxos/" }],
-    'SHIB': [{ title: "From Meme Coin to Mass Retail: BONK Announces Strategic Partnership With Paxos - Chainwire", link: "https://chainwire.org/2026/04/30/from-meme-coin-to-mass-retail-bonk-announces-strategic-partnership-with-paxos/" }],
+    'SHIB': [{ title: "PEPE Outpaces Memecoin Market as Whales Continue Accumulating", link: "https://www.coindesk.com/markets/2025/10/06/pepe-outpaces-memecoin-market-as-whales-continue-accumulating?utm_source=chatgpt.com" }],
     'BTT': [{ title: "The BNB Foundation has officially announced the successful completion of the 36th quarterly BNB token burn by BNB Chain.", link: "https://www.bnbchain.org/en/blog/36th-bnb-burn" }],
-    'ALT': [{ title: "Floki Expands Beyond Memes with AI Security, TokenFi Integration, and Cross-Ecosystem Growth", link: "https://www.tokenfi.com/" }],
+    'ALT': [{ title: "Immutable Expands Gaming Ecosystem as Major Titles and Developers Join Its Platform", link: "https://www.immutable.com/blog" }],
     'ETC': [{ title: "Ethereum Classic Reinforces Core Infrastructure", link: "#" }]
 };
 
