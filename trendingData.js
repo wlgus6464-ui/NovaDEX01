@@ -90,10 +90,10 @@ const coinHotTopics = {
         link: "https://www.globenewswire.com/news-release/2026/07/23/3332531/0/en/tron-included-in-s-p-pantera-digital-asset-index-as-institutional-benchmarking-expands-to-blockchain-networks.html"
     },
     'ALT': {
-        title: "Mini Dapps and the Dapp Portal are now available on LINE Messenger",
-        comment: " We are excited to announce that LINE NEXT is officially launching a Kaia-based mini Dapp and Dapp portal service on LINE Messenger today! Now, through LINE Messenger, you can access the Dapp portal to enjoy games, receive rewards, and use Kaia-based Web3 services, including the exchange of various digital assets and NFTs.",
-        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH50rnTM6SGISaP-yMWxYFfyraI9NRr3L4kAcfXwPQfsyePcSW4TnnRHdC&s=10",
-        link: "https://blog.kaia.io/mini-dapps-and-dapp-portal-are-now-live-in-line-messenger/?utm_source=chatgpt.com"
+        title: "Zilliqa 2.0 Transitions to Proof-of-Stake, Ending Traditional Mining",
+        comment: "Zilliqa 2.0 is designed as an entirely new protocol which will be backwards-compatible with Zilliqa 1.0, the original version of Zilliqa currently in production. When ready, the state and all accounts on the current production mainnet will seamlessly be migrated to Zilliqa 2.0.",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTZssIt97ZZKnwXTpqS0YD7dPyHQNROAVUgpYmdJgkQDNy9wpeHXZEldTh&s=10",
+        link: "https://dev.zilliqa.com/zilliqa2/changes/?utm_source=chatgpt.com"
     },
     'ETC': {
         title: "Ethereum Classic Reinforces Core Infrastructure with Ongoing Network and Development Support",
@@ -111,7 +111,7 @@ const coinRelatedArticles = {
     'SHIB': [{ title: "PEPE Outpaces Memecoin Market as Whales Continue Accumulating", link: "https://www.coindesk.com/markets/2025/10/06/pepe-outpaces-memecoin-market-as-whales-continue-accumulating?utm_source=chatgpt.com" }],
     'BABY.D': [{ title: "Litecoin Expands Real-World Utility Through Growing Global Payment Adoption", link: "https://litecoin.com/spend?utm_source=chatgpt.com" }],
     'BTT': [{ title: "Coinbase Strengthened Its Global Reputation Through Nasdaq Listing and Institutional Adoption.", link: "https://www.coinbase.com/blog" }],
-    'ALT': [{ title: "TON Foundation’s Justin Hyun tells Cointelegraph about the benefits of Tether’s launch on the TON chain.", link: "https://cointelegraph.com/news/new-telegram-mini-apps-convenient-users-crypto" }],
+    'ALT': [{ title: "Avalanche Launches Evergreen Subnets to Accelerate Institutional Blockchain Adoption.", link: "https://kr.avax.network/blog/avalanche-launches-evergreen-subnets-for-institutional-blockchain-deployments" }],
     'ETC': [{ title: "Ethereum Classic Reinforces Core Infrastructure", link: "#" }]
 };
 // Manual News (각 코인당 5개 이상)
