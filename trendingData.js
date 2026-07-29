@@ -78,10 +78,10 @@ const coinHotTopics = {
         link: "https://thecryptobasic.com/2026/07/25/dormant-shiba-inu-whale-ends-seven-month-silence-with-30-billion-shib-purchase-from-binance/?utm_source=chatgpt.com"
     },
     'BABY.D': {
-        title: "Baby Doge Coin Sees Renewed Community Interest",
-        comment: "Baby Doge continues to gain traction among meme coin holders with increased social activity and burn events.",
-        img: "https://picsum.photos/id/237/600/280",
-        link: "#"
+        title: "Memecoin Payment Cards Overshadow True Utility of Prepaid and Crypto",
+        comment: "“The official account of Baby Doge Coin (BabyDoge) has tweeted that less than 24 hours remain before the virtual crypto card of BabyDoge goes live, powered by Canadian crypto payments platform FCF Pay. Despite the big adoption news on the horizon, BabyDoge’s price is in the red, trading at $0.000000002642; that is, minus 2.45% over the period of the last 24 hours.”",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSu5WQXUHvTo4ZqHhr43b3pa94Nvt_flPC6e0GScg-9Gg&s",
+        link: "https://www.paymentsjournal.com/memecoin-payment-cards-overshadow-true-utility-of-prepaid-and-crypto/?utm_source=chatgpt.com"
     },
     'BTT': {
         title: "TRON Included in S&P Pantera Digital Asset Index as Institutional Benchmarking Expands to Blockchain Networks",
@@ -90,10 +90,10 @@ const coinHotTopics = {
         link: "https://www.globenewswire.com/news-release/2026/07/23/3332531/0/en/tron-included-in-s-p-pantera-digital-asset-index-as-institutional-benchmarking-expands-to-blockchain-networks.html"
     },
     'ALT': {
-        title: "The Sandbox keeps it cheerful with Smiley Factory game and avatars",
-        comment: " Best known for its smiley logo, clothes brand The Smiley Company has announced a partnership with The Sandbox. As part of the platform’s ongoing Season 7, the clothing brand has launched Smiley Factory, a business tycoon game in which players run a Smiley-branded production line. Within a 15-20 time-limit, players aim to expand their factory as much as possible – crafting apparel, investing earnings, expanding rooms, and producing higher-value products. ",
-        img: "https://www.blockchaingamer.biz/wp-content/uploads/2026/03/The_Sandbox_Smiley-750x430.png",
-        link: "https://www.blockchaingamer.biz/news/23033/the-sandbox-roundup/"
+        title: "Mini Dapps and the Dapp Portal are now available on LINE Messenger",
+        comment: " We are excited to announce that LINE NEXT is officially launching a Kaia-based mini Dapp and Dapp portal service on LINE Messenger today! Now, through LINE Messenger, you can access the Dapp portal to enjoy games, receive rewards, and use Kaia-based Web3 services, including the exchange of various digital assets and NFTs.",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTH50rnTM6SGISaP-yMWxYFfyraI9NRr3L4kAcfXwPQfsyePcSW4TnnRHdC&s=10",
+        link: "https://blog.kaia.io/mini-dapps-and-dapp-portal-are-now-live-in-line-messenger/?utm_source=chatgpt.com"
     },
     'ETC': {
         title: "Ethereum Classic Reinforces Core Infrastructure with Ongoing Network and Development Support",
@@ -109,9 +109,9 @@ const coinRelatedArticles = {
     'XRP': [{ title: "Stellar's payment volume hit $5.5 billion in Q1 2026, a 72% annual increase, and XLM surged 28% on the DTCC announcement while the broader crypto market fell sharply the same day.", link: "https://finance.yahoo.com/markets/crypto/articles/xrp-ripple-vs-stellar-xlm-185640141.html" }],
     'DOGE': [{ title: "From Meme Coin to Mass Retail: BONK Announces Strategic Partnership With Paxos", link: "https://chainwire.org/2026/04/30/from-meme-coin-to-mass-retail-bonk-announces-strategic-partnership-with-paxos/" }],
     'SHIB': [{ title: "PEPE Outpaces Memecoin Market as Whales Continue Accumulating", link: "https://www.coindesk.com/markets/2025/10/06/pepe-outpaces-memecoin-market-as-whales-continue-accumulating?utm_source=chatgpt.com" }],
-    'BABY.D': [{ title: "Baby Doge Community Drive Sparks Fresh Momentum", link: "#" }],
+    'BABY.D': [{ title: "Litecoin Expands Real-World Utility Through Growing Global Payment Adoption", link: "https://litecoin.com/spend?utm_source=chatgpt.com" }],
     'BTT': [{ title: "Coinbase Strengthened Its Global Reputation Through Nasdaq Listing and Institutional Adoption.", link: "https://www.coinbase.com/blog" }],
-    'ALT': [{ title: "Immutable Expands Gaming Ecosystem as Major Titles and Developers Join Its Platform", link: "https://www.immutable.com/blog" }],
+    'ALT': [{ title: "TON Foundation’s Justin Hyun tells Cointelegraph about the benefits of Tether’s launch on the TON chain.", link: "https://cointelegraph.com/news/new-telegram-mini-apps-convenient-users-crypto" }],
     'ETC': [{ title: "Ethereum Classic Reinforces Core Infrastructure", link: "#" }]
 };
 // Manual News (각 코인당 5개 이상)
