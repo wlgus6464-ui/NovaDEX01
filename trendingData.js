@@ -45,7 +45,6 @@ const trendingData = [
         participateLink: "https://www.upbit.com/exchange?code=CRIX.UPBIT.KRW-ALGO"
     }
 ];
-
 // 코인별 HOT TOPIC 데이터
 const coinHotTopics = {
     'BTC': {
@@ -78,6 +77,12 @@ const coinHotTopics = {
         img: "https://thecryptobasic.com/wp-content/uploads/2023/01/Binance-Restakes-4T-Shiba-Inu-Tokens-741x450.png",
         link: "https://thecryptobasic.com/2026/07/25/dormant-shiba-inu-whale-ends-seven-month-silence-with-30-billion-shib-purchase-from-binance/?utm_source=chatgpt.com"
     },
+    'BABY.D': {
+        title: "Baby Doge Coin Sees Renewed Community Interest",
+        comment: "Baby Doge continues to gain traction among meme coin holders with increased social activity and burn events.",
+        img: "https://picsum.photos/id/237/600/280",
+        link: "#"
+    },
     'BTT': {
         title: "TRON Included in S&P Pantera Digital Asset Index as Institutional Benchmarking Expands to Blockchain Networks",
         comment: " TRON DAO, the community-governed DAO dedicated to accelerating the decentralization of the internet through blockchain technology and decentralized applications (dApps), today welcomes the launch of the S&P Pantera Digital Asset Index and the inclusion of the TRON blockchain among the top protocols represented in the benchmark.",
@@ -97,7 +102,6 @@ const coinHotTopics = {
         link: "https://ethereumclassic.org/blog/2024-07-30-ethereum-classic-pathways-by-etc-cooperative-istora-and-donald-mcIntyre"
     }
 };
-
 // Related Articles (각 코인당 1개)
 const coinRelatedArticles = {
     'BTC': [{ title: "Bitcoin ETF Inflows Surpass $10B This Month", link: "#" }],
@@ -105,11 +109,11 @@ const coinRelatedArticles = {
     'XRP': [{ title: "Stellar's payment volume hit $5.5 billion in Q1 2026, a 72% annual increase, and XLM surged 28% on the DTCC announcement while the broader crypto market fell sharply the same day.", link: "https://finance.yahoo.com/markets/crypto/articles/xrp-ripple-vs-stellar-xlm-185640141.html" }],
     'DOGE': [{ title: "From Meme Coin to Mass Retail: BONK Announces Strategic Partnership With Paxos", link: "https://chainwire.org/2026/04/30/from-meme-coin-to-mass-retail-bonk-announces-strategic-partnership-with-paxos/" }],
     'SHIB': [{ title: "PEPE Outpaces Memecoin Market as Whales Continue Accumulating", link: "https://www.coindesk.com/markets/2025/10/06/pepe-outpaces-memecoin-market-as-whales-continue-accumulating?utm_source=chatgpt.com" }],
+    'BABY.D': [{ title: "Baby Doge Community Drive Sparks Fresh Momentum", link: "#" }],
     'BTT': [{ title: "Coinbase Strengthened Its Global Reputation Through Nasdaq Listing and Institutional Adoption.", link: "https://www.coinbase.com/blog" }],
     'ALT': [{ title: "Immutable Expands Gaming Ecosystem as Major Titles and Developers Join Its Platform", link: "https://www.immutable.com/blog" }],
     'ETC': [{ title: "Ethereum Classic Reinforces Core Infrastructure", link: "#" }]
 };
-
 // Manual News (각 코인당 5개 이상)
 const manualNews = {
     'BTC': [
@@ -147,6 +151,13 @@ const manualNews = {
         { title: "Shibarium Hits New Transaction Milestone", link: "#", time: "1 day ago" },
         { title: "Big Win for SHIB? Japan's Crypto Reforms Open New Doors", link: "https://u.today/big-win-for-shib-japans-crypto-reforms-open-new-doors", time: "2 days ago" }
     ],
+    'BABY.D': [
+        { title: "Baby Doge Burn Event Attracts Attention", link: "#", time: "1 hour ago" },
+        { title: "Community Pushes for Major Exchange Listings", link: "#", time: "3 hours ago" },
+        { title: "Baby Doge Volume Spikes on Social Media Buzz", link: "#", time: "8 hours ago" },
+        { title: "Meme Coin Season Benefits Baby Doge", link: "#", time: "1 day ago" },
+        { title: "Holders Await Next Major Announcement", link: "#", time: "2 days ago" }
+    ],
     'BTT': [
         { title: "Announcement on the Launch of BTT Buyback and Burn", link: "https://medium.com/@BitTorrent/announcement-on-the-launch-of-btt-buyback-and-burn-8b5a2b6af78d", time: "2 hours ago" },
         { title: "BitTorrent Sets Q3 Launch for BTT Buyback", link: "https://cfgi.io/bittorrent-news/", time: "6 hours ago" },
@@ -169,10 +180,8 @@ const manualNews = {
         { title: "ALT Ecosystem Growth", link: "#", time: "2 days ago" }
     ]
 };
-
 window.trendingData = trendingData;
 window.coinHotTopics = coinHotTopics;
 window.coinRelatedArticles = coinRelatedArticles;
 window.manualNews = manualNews;
-
 console.log("✅ trendingData.js 로드 완료! 총 " + trendingData.length + "개 아이템");
