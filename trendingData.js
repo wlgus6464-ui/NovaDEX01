@@ -72,10 +72,10 @@ const coinHotTopics = {
         link: "https://www.globenewswire.com/news-release/2026/03/12/3254667/0/en/Global-Crypto-Card-Spending-Surges-to-18-Billion-Annually-as-House-of-Doge-Targets-Integration-of-Dogecoin-Into-Traditional-Payment-Rails.html"
     },
     'SHIB': {
-        title: "Dormant Shiba Inu Whale Ends Seven-Month Silence With 30 Billion SHIB Purchase From Binance",
-        comment: "A previously inactive Shiba Inu whale has resumed accumulating the token after spending more than seven months on the sidelines. According to on-chain data from Arkham Intelligence, the whale recently purchased 30.18 billion Shiba Inu in a single transaction valued at $125,270. The transaction quickly attracted the attention of the Shiba Inu community, as it marked the whale’s first significant purchase in months.​﻿‌​‌​​﻿​‍​﻿​‍​﻿‌‌​﻿‌‌​﻿‌‌‌‌‌​​﻿​‍​﻿​‌‌‍​‍‌‍​‍‌‍‌​​﻿‍‌​﻿‌﻿‌‍​‌‌﻿﻿​‌‍‍​‌﻿‌​‌﻿‌​‌﻿​​‌﻿​﻿​﻿‍‍​‍﻿﻿​‍﻿﻿‌‍﻿‍‌‍‌‌‌﻿‌﻿‌﻿​﻿​‍﻿‍‌﻿​﻿‌‍‍​‌‍‍‌‌‍​‍​‍﻿‍‌‍‍‌‌‍﻿﻿​‍﻿﻿​﻿​‍​﻿​​​﻿​‍​﻿‌‌​‍﻿﻿​﻿​​​﻿​﻿​‍﻿﻿​﻿​‍​﻿‌﻿​‍﻿﻿‌﻿​﻿‌‍‍​‌‍‍‌‌‍​‍‌‍​‌‌﻿​‍‌‍‍‌‌﻿‌‌‌‍﻿‌​‍﻿‌‌‍‌‌‌﻿​‍‌﻿‌‌‌﻿​​‌﻿‌​‌﻿​﻿​‍﻿‌​﻿‌​​﻿​​​﻿​​​﻿​​​‍﻿‌‌﻿‌‌‌﻿​﻿‌‍‌‌‌﻿​‍​‍﻿‌‌﻿​﻿‌﻿‌‌‌﻿​‍‌‍‌﻿‌‍‌‌​‍﻿‌‌﻿‌​‌﻿​‍‌‍​‌‌‍﻿‍‌﻿​﻿‌‍​‌‌‍​﻿‌﻿‌​‌‍‍‌‌‍﻿﻿‌‍﻿‍‌﻿​﻿​‍﻿‌‌﻿​﻿‌‍﻿﻿‌‍​‌‌﻿​‍​‍﻿﻿‍",
-        img: "https://thecryptobasic.com/wp-content/uploads/2023/01/Binance-Restakes-4T-Shiba-Inu-Tokens-741x450.png",
-        link: "https://thecryptobasic.com/2026/07/25/dormant-shiba-inu-whale-ends-seven-month-silence-with-30-billion-shib-purchase-from-binance/?utm_source=chatgpt.com"
+        title: "SHIB Burn Rate Hits 6-Month High: Will Shiba Inu Price React?",
+        comment: "Shiba Inu’s community destroyed more than 117 million SHIB tokens on July 8, marking the largest single-day burn in six months. The deflationary spike, tracked by Shibburn, sent the tokens to a dead wallet, permanently removing them from circulation.﻿‍",
+        img: "https://assets.beincrypto.com/img/7hJmS5OuUN8vtKhVHcid9Wf4DEM=/smart/f52a3df1fc1c4524aa300cc0d5e15074",
+        link: "https://beincrypto.com/shib-burn-six-month-high-shiba-inu/?utm_source=chatgpt.com"
     },
     'BABY.D': {
         title: "Memecoin Payment Cards Overshadow True Utility of Prepaid and Crypto",
@@ -90,10 +90,10 @@ const coinHotTopics = {
         link: "https://www.globenewswire.com/news-release/2026/07/23/3332531/0/en/tron-included-in-s-p-pantera-digital-asset-index-as-institutional-benchmarking-expands-to-blockchain-networks.html"
     },
     'ALT': {
-        title: "Zilliqa 2.0 Transitions to Proof-of-Stake, Ending Traditional Mining",
-        comment: "Zilliqa 2.0 is designed as an entirely new protocol which will be backwards-compatible with Zilliqa 1.0, the original version of Zilliqa currently in production. When ready, the state and all accounts on the current production mainnet will seamlessly be migrated to Zilliqa 2.0.",
-        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTZssIt97ZZKnwXTpqS0YD7dPyHQNROAVUgpYmdJgkQDNy9wpeHXZEldTh&s=10",
-        link: "https://dev.zilliqa.com/zilliqa2/changes/?utm_source=chatgpt.com"
+        title: "Eightco Holdings (NASDAQ: ORBS) Announces its Participation in World Foundation's $52.5M funding round as World Shifts From Building the Network to Scaling Utility",
+        comment: "Eightco treasury composition as of July 26, 2026: $90M OpenAI equity (indirect), $18M Beast Industries equity, 16,278 ETH, nearly 302 million WLD holdings, and $142M cash and equivalents, totaling approximately $391 million. OpenAI recently announced that it submitted a confidential S-1, setting itself up for a potential future initial public offering. Eightco provides indirect exposure to some of the most innovative private companies including OpenAI and Beast Industries",
+        img: "https://cdn.bankless.com/openGraph/worldcoin-s-wld-up-100-as-eightco-launches-250m-dat-1758826745.png",
+        link: "https://www.newswire.ca/news-releases/eightco-holdings-nasdaq-orbs-announces-its-participation-in-world-foundation-s-52-5m-funding-round-as-world-shifts-from-building-the-network-to-scaling-utility-818850403.html?utm_source=chatgpt.com"
     },
     'ETC': {
         title: "Ethereum Classic Reinforces Core Infrastructure with Ongoing Network and Development Support",
@@ -108,10 +108,10 @@ const coinRelatedArticles = {
     'ETH': [{ title: "The Arbitrum Foundation 2025 Transparency Report", link: "https://blog.arbitrum.foundation/the-arbitrum-foundation-2025-transparency-report-the-year-of-institutional-adoption" }],
     'XRP': [{ title: "Stellar's payment volume hit $5.5 billion in Q1 2026, a 72% annual increase, and XLM surged 28% on the DTCC announcement while the broader crypto market fell sharply the same day.", link: "https://finance.yahoo.com/markets/crypto/articles/xrp-ripple-vs-stellar-xlm-185640141.html" }],
     'DOGE': [{ title: "From Meme Coin to Mass Retail: BONK Announces Strategic Partnership With Paxos", link: "https://chainwire.org/2026/04/30/from-meme-coin-to-mass-retail-bonk-announces-strategic-partnership-with-paxos/" }],
-    'SHIB': [{ title: "PEPE Outpaces Memecoin Market as Whales Continue Accumulating", link: "https://www.coindesk.com/markets/2025/10/06/pepe-outpaces-memecoin-market-as-whales-continue-accumulating?utm_source=chatgpt.com" }],
+    'SHIB': [{ title: "Exploring BNB Token: The Heart of BNB Chain", link: "https://www.bnbchain.org/en/blog/exploring-bnb-token-the-heart-of-bnb-chain?utm_source=chatgpt.com" }],
     'BABY.D': [{ title: "Litecoin Expands Real-World Utility Through Growing Global Payment Adoption", link: "https://litecoin.com/spend?utm_source=chatgpt.com" }],
     'BTT': [{ title: "Coinbase Strengthened Its Global Reputation Through Nasdaq Listing and Institutional Adoption.", link: "https://www.coinbase.com/blog" }],
-    'ALT': [{ title: "Avalanche Launches Evergreen Subnets to Accelerate Institutional Blockchain Adoption.", link: "https://kr.avax.network/blog/avalanche-launches-evergreen-subnets-for-institutional-blockchain-deployments" }],
+    'ALT': [{ title: "Santander Partners with Ripple to Bring Certainty and Speed to International Payments.", link: "https://ripple.com/insights/santander-partners-with-ripple-to-bring-certainty-and-speed-to-international-payments/?utm_source=chatgpt.com" }],
     'ETC': [{ title: "Ethereum Classic Reinforces Core Infrastructure", link: "#" }]
 };
 // Manual News (각 코인당 5개 이상)
