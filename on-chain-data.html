@@ -378,13 +378,32 @@
         let pulseTimers = [];
         let currentAsset = "BTC";
 
+        // OcdCoins 우선, 없으면 onChainData 폴백
+        function getCoinChartData(symbol) {
+            var fromOcd = coinList.find(function(c) {
+                return c.symbol === symbol && c.netflow && c.reserve && c.labels;
+            });
+            if (fromOcd) {
+                return {
+                    labels: fromOcd.labels,
+                    netflow: fromOcd.netflow,
+                    reserve: fromOcd.reserve
+                };
+            }
+            return duneData[symbol] || null;
+        }
+
         function createCharts(asset) {
-            const data = duneData[asset];
-            if (!data) return;
+            var data = getCoinChartData(asset);
+            if (!data) {
+                if (netflowChart) { netflowChart.destroy(); netflowChart = null; }
+                if (reserveChart) { reserveChart.destroy(); reserveChart = null; }
+                return;
+            }
             if (netflowChart) netflowChart.destroy();
             if (reserveChart) reserveChart.destroy();
 
-            const netCtx = document.getElementById("netflowChart").getContext("2d");
+            var netCtx = document.getElementById("netflowChart").getContext("2d");
             netflowChart = new Chart(netCtx, {
                 type: "line",
                 data: {
@@ -410,7 +429,7 @@
                 }
             });
 
-            const resCtx = document.getElementById("reserveChart").getContext("2d");
+            var resCtx = document.getElementById("reserveChart").getContext("2d");
             reserveChart = new Chart(resCtx, {
                 type: "line",
                 data: {
@@ -438,36 +457,33 @@
         }
 
         function renderMetrics(asset) {
-            const body = document.getElementById("metrics-body");
-            const data = duneData[asset];
+            var body = document.getElementById("metrics-body");
+            var data = duneData[asset];
             if (!data || !data.metrics) {
-                body.innerHTML = `
-                    <tr>
-                        <td colspan="4" class="no-data">
-                            "${asset}" 상세 온체인 데이터는 아직 준비되지 않았습니다.<br>
-                            (BTC / ETH / XRP / USDT 만 현재 지원)
-                        </td>
-                    </tr>
-                `;
+                body.innerHTML =
+                    '<tr><td colspan="4" class="no-data">' +
+                    '"' + asset + '" 상세 온체인 데이터는 아직 준비되지 않았습니다.<br>' +
+                    '(Metric 표는 onChainData.js 기준 · BTC / ETH / XRP / USDT)' +
+                    '</td></tr>';
                 return;
             }
-            body.innerHTML = data.metrics.map(item => {
-                const cls = item.change > 0 ? "change-up" : (item.change < 0 ? "change-down" : "");
-                const sign = item.change > 0 ? "+" : "";
-                return `
-                    <tr>
-                        <td class="metric-name">${item.name}</td>
-                        <td class="metric-desc">${item.desc}</td>
-                        <td class="value">${item.value}</td>
-                        <td class="${cls}">${sign}${item.change}%</td>
-                    </tr>
-                `;
+            body.innerHTML = data.metrics.map(function(item) {
+                var cls = item.change > 0 ? "change-up" : (item.change < 0 ? "change-down" : "");
+                var sign = item.change > 0 ? "+" : "";
+                return (
+                    '<tr>' +
+                    '<td class="metric-name">' + item.name + '</td>' +
+                    '<td class="metric-desc">' + item.desc + '</td>' +
+                    '<td class="value">' + item.value + '</td>' +
+                    '<td class="' + cls + '">' + sign + item.change + '%</td>' +
+                    '</tr>'
+                );
             }).join("");
         }
 
         function switchAsset(asset) {
             currentAsset = asset;
-            document.querySelectorAll(".asset-tab").forEach(t => {
+            document.querySelectorAll(".asset-tab").forEach(function(t) {
                 t.classList.toggle("active", t.dataset.asset === asset);
             });
             createCharts(asset);
@@ -475,59 +491,64 @@
         }
 
         function renderHotChains() {
-            const container = document.getElementById("hot-container");
+            var container = document.getElementById("hot-container");
             container.innerHTML = "";
-            hotCharts.forEach(c => c.destroy());
+            hotCharts.forEach(function(c) { c.destroy(); });
             hotCharts = [];
-            pulseTimers.forEach(t => clearInterval(t));
+            pulseTimers.forEach(function(t) { clearInterval(t); });
             pulseTimers = [];
 
             if (!hotList.length) {
-                container.innerHTML = `<div class="no-data">HOT.js 데이터가 없습니다.</div>`;
+                container.innerHTML = '<div class="no-data">HOT.js 데이터가 없습니다.</div>';
                 return;
             }
 
-            hotList.forEach((coin, idx) => {
-                const shortName = coin.name.split("(")[0].trim();
-                const block = document.createElement("div");
+            hotList.forEach(function(coin, idx) {
+                var shortName = coin.name.split("(")[0].trim();
+                var block = document.createElement("div");
                 block.className = "hot-coin-block";
-                block.innerHTML = `
-                    <div class="hot-coin-header">
-                        <div class="hot-coin-name">${coin.name}</div>
-                        <a class="goto-btn" href="${coin.goToLink || '#'}" target="_blank" rel="noopener">
-                            Go To ${shortName}
-                        </a>
-                    </div>
-                    <div class="charts-grid">
-                        <div class="chart-card">
-                            <h3>Exchange Netflow (7D)</h3>
-                            <div class="chart-wrap"><canvas id="hot-net-${idx}"></canvas></div>
-                        </div>
-                        <div class="chart-card">
-                            <h3>Exchange Reserve</h3>
-                            <div class="chart-wrap"><canvas id="hot-res-${idx}"></canvas></div>
-                        </div>
-                    </div>
-                `;
+                block.innerHTML =
+                    '<div class="hot-coin-header">' +
+                    '<div class="hot-coin-name">' + coin.name + '</div>' +
+                    '<a class="goto-btn" href="' + (coin.goToLink || '#') + '" target="_blank" rel="noopener">' +
+                    'Go To ' + shortName +
+                    '</a>' +
+                    '</div>' +
+                    '<div class="charts-grid">' +
+                    '<div class="chart-card">' +
+                    '<h3>Exchange Netflow (7D)</h3>' +
+                    '<div class="chart-wrap"><canvas id="hot-net-' + idx + '"></canvas></div>' +
+                    '</div>' +
+                    '<div class="chart-card">' +
+                    '<h3>Exchange Reserve</h3>' +
+                    '<div class="chart-wrap"><canvas id="hot-res-' + idx + '"></canvas></div>' +
+                    '</div>' +
+                    '</div>';
                 container.appendChild(block);
 
-                const netData = coin.netflow;
-                const maxVal = Math.max(...netData);
-                const maxIdx = netData.indexOf(maxVal);
+                var netData = coin.netflow;
+                var maxVal = Math.max.apply(null, netData);
+                var maxIdx = netData.indexOf(maxVal);
 
                 function makePeakStyles(radius) {
                     return {
-                        pointRadius: netData.map((_, i) => i === maxIdx ? radius : 3),
-                        pointHoverRadius: netData.map((_, i) => i === maxIdx ? radius + 1 : 4),
-                        pointBackgroundColor: netData.map((_, i) => i === maxIdx ? "rgba(17,20,31,0.85)" : "#7CFF6B"),
-                        pointBorderColor: netData.map((_, i) => i === maxIdx ? "#ffffff" : "#7CFF6B"),
-                        pointBorderWidth: netData.map((_, i) => i === maxIdx ? 3.5 : 1)
+                        pointRadius: netData.map(function(_, i) { return i === maxIdx ? radius : 3; }),
+                        pointHoverRadius: netData.map(function(_, i) { return i === maxIdx ? radius + 1 : 4; }),
+                        pointBackgroundColor: netData.map(function(_, i) {
+                            return i === maxIdx ? "rgba(17,20,31,0.85)" : "#7CFF6B";
+                        }),
+                        pointBorderColor: netData.map(function(_, i) {
+                            return i === maxIdx ? "#ffffff" : "#7CFF6B";
+                        }),
+                        pointBorderWidth: netData.map(function(_, i) {
+                            return i === maxIdx ? 3.5 : 1;
+                        })
                     };
                 }
 
-                const peakStyles = makePeakStyles(7);
+                var peakStyles = makePeakStyles(7);
 
-                const netChart = new Chart(document.getElementById("hot-net-" + idx).getContext("2d"), {
+                var netChart = new Chart(document.getElementById("hot-net-" + idx).getContext("2d"), {
                     type: "line",
                     data: {
                         labels: coin.labels,
@@ -623,7 +644,7 @@
                 }, 40);
                 pulseTimers.push(timer);
 
-                const resChart = new Chart(document.getElementById("hot-res-" + idx).getContext("2d"), {
+                var resChart = new Chart(document.getElementById("hot-res-" + idx).getContext("2d"), {
                     type: "line",
                     data: {
                         labels: coin.labels,
@@ -652,8 +673,8 @@
         }
 
         function switchView(view) {
-            const exchangeSec = document.getElementById("exchange-section");
-            const hotSec = document.getElementById("hot-section");
+            var exchangeSec = document.getElementById("exchange-section");
+            var hotSec = document.getElementById("hot-section");
             if (view === "hot") {
                 exchangeSec.classList.add("hide");
                 hotSec.classList.add("show");
@@ -682,8 +703,8 @@
             });
         });
 
-        const searchInput = document.getElementById("coinSearch");
-        const searchResults = document.getElementById("searchResults");
+        var searchInput = document.getElementById("coinSearch");
+        var searchResults = document.getElementById("searchResults");
 
         function getSortedCoins() {
             return coinList.slice().sort(function(a, b) {
@@ -696,7 +717,8 @@
                 searchResults.innerHTML = '<div class="search-item" style="color:#888;">결과 없음</div>';
             } else {
                 searchResults.innerHTML = list.map(function(c) {
-                    return '<div class="search-item" data-symbol="' + c.symbol + '">' + c.symbol + '<span>' + c.name + '</span></div>';
+                    return '<div class="search-item" data-symbol="' + c.symbol + '">' +
+                        c.symbol + '<span>' + c.name + '</span></div>';
                 }).join("");
             }
             searchResults.classList.add("show");
@@ -735,9 +757,9 @@
             }
         });
 
-        if (typeof window.onChainData === "undefined") {
+        if (typeof window.onChainData === "undefined" && (!coinList || !coinList.length)) {
             document.getElementById("metrics-body").innerHTML =
-                '<tr><td colspan="4" class="no-data" style="color:#FF5A73;">onChainData.js 로드 실패</td></tr>';
+                '<tr><td colspan="4" class="no-data" style="color:#FF5A73;">데이터 파일 로드 실패</td></tr>';
         } else {
             switchAsset("BTC");
         }
