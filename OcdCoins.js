@@ -72,7 +72,13 @@ const OcdCoins = [
         reserve: [0.85, 0.84, 0.88, 0.86, 0.90, 0.89, 0.92]
     },
     { symbol: "MATIC", name: "Polygon" },
-    { symbol: "SHIB", name: "Shiba Inu" },
+       {
+        symbol: "SHIB",
+        name: "Shiba Inu",
+        labels: ["Jul 28","Jul 29","Jul 30","Jul 31","Aug 1","Aug 2","Aug 3"],
+        netflow: [0.5, -0.7, -0.9, -0.7, 0.0, 0.2, 0.1],
+        reserve: [0.85, 0.74, 0.78, 0.76, 0.90, 0.89, 0.92]
+    },
     { symbol: "TRX", name: "TRON" },
     { symbol: "ATOM", name: "Cosmos" },
     { symbol: "UNI", name: "Uniswap" },
