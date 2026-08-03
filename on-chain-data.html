@@ -183,19 +183,18 @@
     <div class="main-layout">
         <div class="metrics-sidebar">
             <div style="padding:0 20px 16px; color:#666; font-size:0.8rem;">Metrics</div>
-            <div class="metric-category active" data-cat="exchange">Exchange Flows</div>
-            <div class="metric-category" data-cat="flow">Flow Indicator</div>
-            <div class="metric-category" data-cat="market">Market Indicator</div>
-            <div class="metric-category" data-cat="network">Network Indicator</div>
-            <div class="metric-category" data-cat="miner">Miner Flows</div>
-            <div class="metric-category" data-cat="deriv">Derivatives</div>
+            <div class="metric-category active">Exchange Flows</div>
+            <div class="metric-category">Flow Indicator</div>
+            <div class="metric-category">Market Indicator</div>
+            <div class="metric-category">Network Indicator</div>
+            <div class="metric-category">Miner Flows</div>
+            <div class="metric-category">Derivatives</div>
         </div>
 
         <div class="content-area">
             <div class="section-title">Exchange Flows</div>
 
-            <!-- 자산 탭 (제목 바로 아래) -->
-            <div class="asset-tabs" id="asset-tabs">
+            <div class="asset-tabs">
                 <div class="asset-tab active" data-asset="BTC">BTC</div>
                 <div class="asset-tab" data-asset="ETH">ETH</div>
                 <div class="asset-tab" data-asset="XRP">XRP</div>
@@ -227,109 +226,123 @@
         </div>
     </div>
 
+    <!-- 반드시 onChainData.js를 먼저 로드 -->
     <script src="onChainData.js"></script>
     <script>
-        const duneData = window.onChainData;
+        // onChainData.js가 로드되었는지 확인
+        if (typeof window.onChainData === "undefined") {
+            document.getElementById("metrics-body").innerHTML = `
+                <tr>
+                    <td colspan="4" style="text-align:center; padding:40px; color:#FF5A73;">
+                        onChainData.js 파일을 찾을 수 없습니다.<br>
+                        파일이 같은 폴더에 있는지 확인해주세요.
+                    </td>
+                </tr>
+            `;
+            console.error("❌ onChainData.js 로드 실패");
+        } else {
+            const duneData = window.onChainData;
+            let netflowChart, reserveChart;
 
-        let netflowChart, reserveChart;
+            function createCharts(asset) {
+                const data = duneData[asset];
+                if (!data) return;
 
-        function createCharts(asset) {
-            const data = duneData[asset];
+                if (netflowChart) netflowChart.destroy();
+                if (reserveChart) reserveChart.destroy();
 
-            if (netflowChart) netflowChart.destroy();
-            if (reserveChart) reserveChart.destroy();
-
-            const netCtx = document.getElementById("netflowChart").getContext("2d");
-            netflowChart = new Chart(netCtx, {
-                type: "line",
-                data: {
-                    labels: data.labels,
-                    datasets: [{
-                        label: "Netflow (K)",
-                        data: data.netflow,
-                        borderColor: "#7CFF6B",
-                        backgroundColor: "rgba(124,255,107,0.12)",
-                        fill: true,
-                        tension: 0.35,
-                        pointRadius: 3
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: { legend: { display: false } },
-                    scales: {
-                        x: { ticks: { color: "#8b95a8" }, grid: { color: "rgba(255,255,255,0.04)" } },
-                        y: { ticks: { color: "#8b95a8" }, grid: { color: "rgba(255,255,255,0.04)" } }
+                const netCtx = document.getElementById("netflowChart").getContext("2d");
+                netflowChart = new Chart(netCtx, {
+                    type: "line",
+                    data: {
+                        labels: data.labels,
+                        datasets: [{
+                            label: "Netflow (K)",
+                            data: data.netflow,
+                            borderColor: "#7CFF6B",
+                            backgroundColor: "rgba(124,255,107,0.12)",
+                            fill: true,
+                            tension: 0.35,
+                            pointRadius: 3
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { display: false } },
+                        scales: {
+                            x: { ticks: { color: "#8b95a8" }, grid: { color: "rgba(255,255,255,0.04)" } },
+                            y: { ticks: { color: "#8b95a8" }, grid: { color: "rgba(255,255,255,0.04)" } }
+                        }
                     }
-                }
-            });
+                });
 
-            const resCtx = document.getElementById("reserveChart").getContext("2d");
-            reserveChart = new Chart(resCtx, {
-                type: "line",
-                data: {
-                    labels: data.labels,
-                    datasets: [{
-                        label: "Reserve",
-                        data: data.reserve,
-                        borderColor: "#60a5fa",
-                        backgroundColor: "rgba(96,165,250,0.12)",
-                        fill: true,
-                        tension: 0.35,
-                        pointRadius: 3
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: { legend: { display: false } },
-                    scales: {
-                        x: { ticks: { color: "#8b95a8" }, grid: { color: "rgba(255,255,255,0.04)" } },
-                        y: { ticks: { color: "#8b95a8" }, grid: { color: "rgba(255,255,255,0.04)" } }
+                const resCtx = document.getElementById("reserveChart").getContext("2d");
+                reserveChart = new Chart(resCtx, {
+                    type: "line",
+                    data: {
+                        labels: data.labels,
+                        datasets: [{
+                            label: "Reserve",
+                            data: data.reserve,
+                            borderColor: "#60a5fa",
+                            backgroundColor: "rgba(96,165,250,0.12)",
+                            fill: true,
+                            tension: 0.35,
+                            pointRadius: 3
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { display: false } },
+                        scales: {
+                            x: { ticks: { color: "#8b95a8" }, grid: { color: "rgba(255,255,255,0.04)" } },
+                            y: { ticks: { color: "#8b95a8" }, grid: { color: "rgba(255,255,255,0.04)" } }
+                        }
                     }
-                }
+                });
+            }
+
+            function renderMetrics(asset) {
+                const body = document.getElementById("metrics-body");
+                const list = duneData[asset].metrics;
+                body.innerHTML = list.map(item => {
+                    const cls = item.change > 0 ? "change-up" : (item.change < 0 ? "change-down" : "");
+                    const sign = item.change > 0 ? "+" : "";
+                    return `
+                        <tr>
+                            <td class="metric-name">${item.name}</td>
+                            <td class="metric-desc">${item.desc}</td>
+                            <td class="value">${item.value}</td>
+                            <td class="${cls}">${sign}${item.change}%</td>
+                        </tr>
+                    `;
+                }).join("");
+            }
+
+            function switchAsset(asset) {
+                document.querySelectorAll(".asset-tab").forEach(t => {
+                    t.classList.toggle("active", t.dataset.asset === asset);
+                });
+                createCharts(asset);
+                renderMetrics(asset);
+            }
+
+            document.querySelectorAll(".asset-tab").forEach(tab => {
+                tab.addEventListener("click", () => switchAsset(tab.dataset.asset));
             });
-        }
 
-        function renderMetrics(asset) {
-            const body = document.getElementById("metrics-body");
-            const list = duneData[asset].metrics;
-            body.innerHTML = list.map(item => {
-                const cls = item.change > 0 ? "change-up" : (item.change < 0 ? "change-down" : "");
-                const sign = item.change > 0 ? "+" : "";
-                return `
-                    <tr>
-                        <td class="metric-name">${item.name}</td>
-                        <td class="metric-desc">${item.desc}</td>
-                        <td class="value">${item.value}</td>
-                        <td class="${cls}">${sign}${item.change}%</td>
-                    </tr>
-                `;
-            }).join("");
-        }
-
-        function switchAsset(asset) {
-            document.querySelectorAll(".asset-tab").forEach(t => {
-                t.classList.toggle("active", t.dataset.asset === asset);
+            document.querySelectorAll(".metric-category").forEach(cat => {
+                cat.addEventListener("click", () => {
+                    document.querySelectorAll(".metric-category").forEach(c => c.classList.remove("active"));
+                    cat.classList.add("active");
+                });
             });
-            createCharts(asset);
-            renderMetrics(asset);
+
+            // 초기 로드
+            switchAsset("BTC");
         }
-
-        document.querySelectorAll(".asset-tab").forEach(tab => {
-            tab.addEventListener("click", () => switchAsset(tab.dataset.asset));
-        });
-
-        document.querySelectorAll(".metric-category").forEach(cat => {
-            cat.addEventListener("click", () => {
-                document.querySelectorAll(".metric-category").forEach(c => c.classList.remove("active"));
-                cat.classList.add("active");
-            });
-        });
-
-        // 초기 로드
-        switchAsset("BTC");
     </script>
 </body>
 </html>
