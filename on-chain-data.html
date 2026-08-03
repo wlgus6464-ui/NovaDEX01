@@ -79,10 +79,16 @@
             font-weight: 700;
             margin-bottom: 16px;
         }
+        .asset-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 28px;
+            flex-wrap: wrap;
+        }
         .asset-tabs {
             display: flex;
             gap: 8px;
-            margin-bottom: 28px;
             flex-wrap: wrap;
         }
         .asset-tab {
@@ -98,6 +104,61 @@
             background: var(--primary);
             color: #000;
             font-weight: 600;
+        }
+        .search-box {
+            position: relative;
+            margin-left: 8px;
+        }
+        .search-box input {
+            background: #1f222b;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: 8px 16px 8px 36px;
+            color: white;
+            font-size: 0.9rem;
+            width: 200px;
+            outline: none;
+        }
+        .search-box input:focus {
+            border-color: var(--primary);
+        }
+        .search-box::before {
+            content: "🔍";
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.85rem;
+            opacity: 0.6;
+        }
+        .search-results {
+            position: absolute;
+            top: 110%;
+            left: 0;
+            width: 260px;
+            max-height: 280px;
+            overflow-y: auto;
+            background: #141B26;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            z-index: 50;
+            display: none;
+        }
+        .search-results.show { display: block; }
+        .search-item {
+            padding: 10px 14px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+        .search-item:hover {
+            background: rgba(124,255,107,0.1);
+            color: var(--primary);
+        }
+        .search-item span {
+            color: #888;
+            font-size: 0.8rem;
+            margin-left: 6px;
         }
         .charts-grid {
             display: grid;
@@ -155,13 +216,17 @@
         .value { font-weight: 600; font-variant-numeric: tabular-nums; }
         .change-up { color: var(--primary); }
         .change-down { color: var(--danger); }
+        .no-data {
+            text-align: center;
+            padding: 40px;
+            color: #888;
+        }
         @media (max-width: 1100px) {
             .charts-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-    <!-- Sidebar -->
     <aside class="glass" style="width:260px; position:fixed; height:100vh; background:var(--sidebar); padding:24px 0; border-right:1px solid #333; z-index:10;">
         <div style="padding:0 24px 40px; font-size:28px; font-weight:700; color:var(--primary);">🌟 NovaDEX</div>
         <nav>
@@ -188,11 +253,17 @@
         <div class="content-area">
             <div class="section-title">Exchange Flows</div>
 
-            <div class="asset-tabs">
-                <div class="asset-tab active" data-asset="BTC">BTC</div>
-                <div class="asset-tab" data-asset="ETH">ETH</div>
-                <div class="asset-tab" data-asset="XRP">XRP</div>
-                <div class="asset-tab" data-asset="USDT">USDT</div>
+            <div class="asset-row">
+                <div class="asset-tabs">
+                    <div class="asset-tab active" data-asset="BTC">BTC</div>
+                    <div class="asset-tab" data-asset="ETH">ETH</div>
+                    <div class="asset-tab" data-asset="XRP">XRP</div>
+                    <div class="asset-tab" data-asset="USDT">USDT</div>
+                </div>
+                <div class="search-box">
+                    <input type="text" id="coinSearch" placeholder="Search coin (Upbit/Bithumb)..." autocomplete="off">
+                    <div class="search-results" id="searchResults"></div>
+                </div>
             </div>
 
             <div class="charts-grid">
@@ -220,121 +291,172 @@
         </div>
     </div>
 
-    <!-- onChainData.js 먼저 로드 -->
+    <script src="OcdCoins.js"></script>
     <script src="onChainData.js"></script>
-
     <script>
+        const duneData = window.onChainData || {};
+        const coinList = window.OcdCoins || [];
+        let netflowChart, reserveChart;
+        let currentAsset = "BTC";
+
+        function createCharts(asset) {
+            const data = duneData[asset];
+            if (!data) return;
+
+            if (netflowChart) netflowChart.destroy();
+            if (reserveChart) reserveChart.destroy();
+
+            const netCtx = document.getElementById("netflowChart").getContext("2d");
+            netflowChart = new Chart(netCtx, {
+                type: "line",
+                data: {
+                    labels: data.labels,
+                    datasets: [{
+                        label: "Netflow (K)",
+                        data: data.netflow,
+                        borderColor: "#7CFF6B",
+                        backgroundColor: "rgba(124,255,107,0.12)",
+                        fill: true,
+                        tension: 0.35,
+                        pointRadius: 3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        x: { ticks: { color: "#8b95a8" }, grid: { color: "rgba(255,255,255,0.04)" } },
+                        y: { ticks: { color: "#8b95a8" }, grid: { color: "rgba(255,255,255,0.04)" } }
+                    }
+                }
+            });
+
+            const resCtx = document.getElementById("reserveChart").getContext("2d");
+            reserveChart = new Chart(resCtx, {
+                type: "line",
+                data: {
+                    labels: data.labels,
+                    datasets: [{
+                        label: "Reserve",
+                        data: data.reserve,
+                        borderColor: "#60a5fa",
+                        backgroundColor: "rgba(96,165,250,0.12)",
+                        fill: true,
+                        tension: 0.35,
+                        pointRadius: 3
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: { legend: { display: false } },
+                    scales: {
+                        x: { ticks: { color: "#8b95a8" }, grid: { color: "rgba(255,255,255,0.04)" } },
+                        y: { ticks: { color: "#8b95a8" }, grid: { color: "rgba(255,255,255,0.04)" } }
+                    }
+                }
+            });
+        }
+
+        function renderMetrics(asset) {
+            const body = document.getElementById("metrics-body");
+            const data = duneData[asset];
+
+            if (!data || !data.metrics) {
+                body.innerHTML = `
+                    <tr>
+                        <td colspan="4" class="no-data">
+                            "${asset}" 상세 온체인 데이터는 아직 준비되지 않았습니다.<br>
+                            (BTC / ETH / XRP / USDT 만 현재 지원)
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+
+            body.innerHTML = data.metrics.map(item => {
+                const cls = item.change > 0 ? "change-up" : (item.change < 0 ? "change-down" : "");
+                const sign = item.change > 0 ? "+" : "";
+                return `
+                    <tr>
+                        <td class="metric-name">${item.name}</td>
+                        <td class="metric-desc">${item.desc}</td>
+                        <td class="value">${item.value}</td>
+                        <td class="${cls}">${sign}${item.change}%</td>
+                    </tr>
+                `;
+            }).join("");
+        }
+
+        function switchAsset(asset) {
+            currentAsset = asset;
+            document.querySelectorAll(".asset-tab").forEach(t => {
+                t.classList.toggle("active", t.dataset.asset === asset);
+            });
+            createCharts(asset);
+            renderMetrics(asset);
+        }
+
+        // 탭 클릭
+        document.querySelectorAll(".asset-tab").forEach(tab => {
+            tab.addEventListener("click", () => switchAsset(tab.dataset.asset));
+        });
+
+        // 검색
+        const searchInput = document.getElementById("coinSearch");
+        const searchResults = document.getElementById("searchResults");
+
+        searchInput.addEventListener("input", () => {
+            const q = searchInput.value.trim().toUpperCase();
+            if (!q) {
+                searchResults.classList.remove("show");
+                searchResults.innerHTML = "";
+                return;
+            }
+            const filtered = coinList.filter(c =>
+                c.symbol.includes(q) || c.name.toUpperCase().includes(q)
+            ).slice(0, 12);
+
+            if (filtered.length === 0) {
+                searchResults.innerHTML = `<div class="search-item" style="color:#888;">결과 없음</div>`;
+            } else {
+                searchResults.innerHTML = filtered.map(c =>
+                    `<div class="search-item" data-symbol="${c.symbol}">${c.symbol}<span>${c.name}</span></div>`
+                ).join("");
+            }
+            searchResults.classList.add("show");
+        });
+
+        searchResults.addEventListener("click", (e) => {
+            const item = e.target.closest(".search-item");
+            if (!item || !item.dataset.symbol) return;
+            const symbol = item.dataset.symbol;
+            searchInput.value = symbol;
+            searchResults.classList.remove("show");
+            switchAsset(symbol);
+        });
+
+        document.addEventListener("click", (e) => {
+            if (!e.target.closest(".search-box")) {
+                searchResults.classList.remove("show");
+            }
+        });
+
+        // 카테고리 클릭 (시각만)
+        document.querySelectorAll(".metric-category").forEach(cat => {
+            cat.addEventListener("click", () => {
+                document.querySelectorAll(".metric-category").forEach(c => c.classList.remove("active"));
+                cat.classList.add("active");
+            });
+        });
+
+        // 초기 로드
         if (typeof window.onChainData === "undefined") {
             document.getElementById("metrics-body").innerHTML = `
-                <tr>
-                    <td colspan="4" style="text-align:center; padding:40px; color:#FF5A73;">
-                        onChainData.js 파일을 찾을 수 없습니다.<br>
-                        파일이 같은 폴더에 있는지 확인해주세요.
-                    </td>
-                </tr>
+                <tr><td colspan="4" class="no-data" style="color:#FF5A73;">onChainData.js 로드 실패</td></tr>
             `;
-            console.error("❌ onChainData.js 로드 실패");
         } else {
-            const duneData = window.onChainData;
-            let netflowChart, reserveChart;
-
-            function createCharts(asset) {
-                const data = duneData[asset];
-                if (!data) return;
-
-                if (netflowChart) netflowChart.destroy();
-                if (reserveChart) reserveChart.destroy();
-
-                const netCtx = document.getElementById("netflowChart").getContext("2d");
-                netflowChart = new Chart(netCtx, {
-                    type: "line",
-                    data: {
-                        labels: data.labels,
-                        datasets: [{
-                            label: "Netflow (K)",
-                            data: data.netflow,
-                            borderColor: "#7CFF6B",
-                            backgroundColor: "rgba(124,255,107,0.12)",
-                            fill: true,
-                            tension: 0.35,
-                            pointRadius: 3
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: { legend: { display: false } },
-                        scales: {
-                            x: { ticks: { color: "#8b95a8" }, grid: { color: "rgba(255,255,255,0.04)" } },
-                            y: { ticks: { color: "#8b95a8" }, grid: { color: "rgba(255,255,255,0.04)" } }
-                        }
-                    }
-                });
-
-                const resCtx = document.getElementById("reserveChart").getContext("2d");
-                reserveChart = new Chart(resCtx, {
-                    type: "line",
-                    data: {
-                        labels: data.labels,
-                        datasets: [{
-                            label: "Reserve",
-                            data: data.reserve,
-                            borderColor: "#60a5fa",
-                            backgroundColor: "rgba(96,165,250,0.12)",
-                            fill: true,
-                            tension: 0.35,
-                            pointRadius: 3
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: { legend: { display: false } },
-                        scales: {
-                            x: { ticks: { color: "#8b95a8" }, grid: { color: "rgba(255,255,255,0.04)" } },
-                            y: { ticks: { color: "#8b95a8" }, grid: { color: "rgba(255,255,255,0.04)" } }
-                        }
-                    }
-                });
-            }
-
-            function renderMetrics(asset) {
-                const body = document.getElementById("metrics-body");
-                const list = duneData[asset].metrics;
-                body.innerHTML = list.map(item => {
-                    const cls = item.change > 0 ? "change-up" : (item.change < 0 ? "change-down" : "");
-                    const sign = item.change > 0 ? "+" : "";
-                    return `
-                        <tr>
-                            <td class="metric-name">${item.name}</td>
-                            <td class="metric-desc">${item.desc}</td>
-                            <td class="value">${item.value}</td>
-                            <td class="${cls}">${sign}${item.change}%</td>
-                        </tr>
-                    `;
-                }).join("");
-            }
-
-            function switchAsset(asset) {
-                document.querySelectorAll(".asset-tab").forEach(t => {
-                    t.classList.toggle("active", t.dataset.asset === asset);
-                });
-                createCharts(asset);
-                renderMetrics(asset);
-            }
-
-            document.querySelectorAll(".asset-tab").forEach(tab => {
-                tab.addEventListener("click", () => switchAsset(tab.dataset.asset));
-            });
-
-            document.querySelectorAll(".metric-category").forEach(cat => {
-                cat.addEventListener("click", () => {
-                    document.querySelectorAll(".metric-category").forEach(c => c.classList.remove("active"));
-                    cat.classList.add("active");
-                });
-            });
-
-            // 초기 로드
             switchAsset("BTC");
         }
     </script>
