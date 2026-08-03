@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NovaDEX - On-Chain Data</title>
+    <style>
+        :root {
+            --bg: #090B11;
+            --sidebar: #0F141D;
+            --panel: #141B26;
+            --border: #232B38;
+            --primary: #7CFF6B;
+            --danger: #FF5A73;
+            --text-muted: #8b95a8;
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: white;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+        .glass {
+            background: rgba(20,27,38,0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+        }
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 14px 24px;
+            color: #aaa;
+            text-decoration: none;
+            transition: all 0.25s ease;
+        }
+        .nav-item:hover {
+            color: var(--primary);
+            background: rgba(124,255,107,0.12);
+            transform: translateX(6px);
+        }
+        .nav-item.active {
+            color: var(--primary);
+        }
+
+        /* Asset Tabs */
+        .asset-tabs {
+            display: flex;
+            gap: 8px;
+            padding: 16px 24px;
+            border-bottom: 1px solid var(--border);
+            overflow-x: auto;
+        }
+        .asset-tab {
+            padding: 8px 18px;
+            border-radius: 999px;
+            background: #1f222b;
+            color: #aaa;
+            cursor: pointer;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            transition: all 0.2s;
+        }
+        .asset-tab.active {
+            background: var(--primary);
+            color: #000;
+            font-weight: 600;
+        }
+
+        /* Layout */
+        .main-layout {
+            display: flex;
+            margin-left: 260px;
+            min-height: 100vh;
+        }
+        .metrics-sidebar {
+            width: 240px;
+            background: var(--sidebar);
+            border-right: 1px solid var(--border);
+            padding: 20px 0;
+            flex-shrink: 0;
+        }
+        .metric-category {
+            padding: 10px 20px;
+            color: #aaa;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: all 0.2s;
+        }
+        .metric-category:hover,
+        .metric-category.active {
+            color: var(--primary);
+            background: rgba(124,255,107,0.08);
+        }
+        .metric-category.active {
+            border-left: 3px solid var(--primary);
+        }
+
+        .content-area {
+            flex: 1;
+            padding: 30px 40px;
+        }
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        .section-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 28px;
+        }
+
+        /* Table */
+        .metrics-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #11141f;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+        .metrics-table th {
+            text-align: left;
+            padding: 16px 20px;
+            background: #0f141d;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 500;
+            border-bottom: 1px solid var(--border);
+        }
+        .metrics-table td {
+            padding: 18px 20px;
+            border-bottom: 1px solid rgba(35,43,56,0.6);
+            vertical-align: middle;
+        }
+        .metrics-table tr:last-child td {
+            border-bottom: none;
+        }
+        .metrics-table tr:hover td {
+            background: rgba(124,255,107,0.04);
+        }
+        .metric-name {
+            font-weight: 600;
+            color: #fff;
+        }
+        .metric-desc {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            max-width: 420px;
+            line-height: 1.45;
+        }
+        .value {
+            font-weight: 600;
+            font-variant-numeric: tabular-nums;
+        }
+        .change-up { color: var(--primary); }
+        .change-down { color: var(--danger); }
+        .change-flat { color: var(--text-muted); }
+
+        /* Mini sparkline */
+        .sparkline {
+            width: 90px;
+            height: 28px;
+            display: inline-block;
+        }
+        .sparkline svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .ad-banner {
+            background: linear-gradient(90deg, #0d1a2f, #132a45);
+            border: 1px solid #1e3a5f;
+            border-radius: 12px;
+            padding: 18px 24px;
+            margin-bottom: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .ad-banner button {
+            background: #00c2a8;
+            color: #000;
+            border: none;
+            padding: 10px 22px;
+            border-radius: 8px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="glass" style="width:260px; position:fixed; height:100vh; background:var(--sidebar); padding:24px 0; border-right:1px solid #333; z-index:10;">
+        <div style="padding:0 24px 40px; font-size:28px; font-weight:700; color:var(--primary);">🌟 NovaDEX</div>
+        <nav>
+            <a href="index.html" class="nav-item">🌟 <span>Top</span></a>
+            <a href="trending.html" class="nav-item">🔥 <span>Trending</span></a>
+            <a href="#" class="nav-item">🌱 <span>Most Visited</span></a>
+            <a href="#" class="nav-item">💰 <span>Prediction Markets</span></a>
+            <a href="news.html" class="nav-item">📰 <span>News</span></a>
+            <a href="on-chain-data.html" class="nav-item active">📊 <span>On-Chain Data</span></a>
+        </nav>
+    </aside>
+
+    <div class="main-layout">
+        <!-- Metrics Sidebar -->
+        <div class="metrics-sidebar">
+            <div style="padding:0 20px 16px; color:#666; font-size:0.8rem;">Metrics</div>
+            <div class="metric-category">Favorites</div>
+            <div class="metric-category">Summary</div>
+            <div class="metric-category active">Exchange Flows</div>
+            <div class="metric-category">Flow Indicator</div>
+            <div class="metric-category">Market Indicator</div>
+            <div class="metric-category">Network Indicator</div>
+            <div class="metric-category">Miner Flows</div>
+            <div class="metric-category">Derivatives</div>
+            <div class="metric-category">Fund Data</div>
+            <div class="metric-category">Market Data</div>
+            <div class="metric-category">Addresses</div>
+            <div class="metric-category">Fees And Revenue</div>
+            <div class="metric-category">Network Stats</div>
+            <div class="metric-category">Supply</div>
+            <div class="metric-category">Transactions</div>
+            <div class="metric-category">Inter Entity Flows</div>
+        </div>
+
+        <!-- Content -->
+        <div class="content-area">
+            <!-- Asset Tabs -->
+            <div class="asset-tabs" style="margin:-30px -40px 24px; padding:16px 40px; background:#0c0f16;">
+                <div class="asset-tab active" data-asset="BTC">BTC</div>
+                <div class="asset-tab" data-asset="ETH">ETH</div>
+                <div class="asset-tab" data-asset="XRP">XRP</div>
+                <div class="asset-tab" data-asset="USDT">USDT</div>
+                <div class="asset-tab" data-asset="USDC">USDC</div>
+            </div>
+
+            <div class="ad-banner">
+                <div>
+                    <div style="font-weight:700; font-size:1.05rem;">On-Chain Insights</div>
+                    <div style="color:#8b95a8; font-size:0.9rem; margin-top:4px;">Track exchange flows, reserves and investor behavior in real time.</div>
+                </div>
+                <button>Explore</button>
+            </div>
+
+            <div class="section-title">Exchange Flows</div>
+            <div class="section-desc">A money flow of crypto assets transferred to and from exchange wallets to evaluate investors' behavior.</div>
+
+            <table class="metrics-table">
+                <thead>
+                    <tr>
+                        <th style="width:22%;">Metric</th>
+                        <th style="width:38%;">Description</th>
+                        <th style="width:12%;">Last Value</th>
+                        <th style="width:10%;">24H (%)</th>
+                        <th style="width:18%;">Last 7 Days</th>
+                    </tr>
+                </thead>
+                <tbody id="metrics-body">
+                    <!-- filled by JS -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        // Sample On-Chain Data (BTC default)
+        const onChainData = {
+            BTC: [
+                {
+                    name: "Exchange Reserve",
+                    desc: "Exchange Reserve tracks the total amount of a crypto asset held across exchange wallets at any given time.",
+                    value: "2.7171M",
+                    change: 0.09,
+                    spark: [40,42,41,45,48,47,52]
+                },
+                {
+                    name: "Exchange Reserve USD",
+                    desc: "Exchange Reserve USD measures the total USD-denominated value of a crypto asset held across exchange wallets.",
+                    value: "$176.8B",
+                    change: 1.2,
+                    spark: [35,38,37,42,44,43,48]
+                },
+                {
+                    name: "Exchange Inflow (Total)",
+                    desc: "Exchange Inflow (Total) measures the total amount of a crypto asset transferred into exchange wallets within a given time.",
+                    value: "18.4K",
+                    change: -2.1,
+                    spark: [55,50,48,45,42,40,38]
+                },
+                {
+                    name: "Exchange Outflow (Total)",
+                    desc: "The total amount of coins transferred from the exchange. High value indicates decreasing selling pressure in the spot market.",
+                    value: "21.6K",
+                    change: 3.8,
+                    spark: [30,32,35,38,42,45,50]
+                },
+                {
+                    name: "Exchange Netflow (Total)",
+                    desc: "Exchange Netflow measures the net difference between coins flowing into and out of exchanges (Inflow – Outflow).",
+                    value: "-3.2K",
+                    change: 3.39,
+                    spark: [60,55,50,45,40,35,30]
+                },
+                {
+                    name: "Exchange Inflow (Mean)",
+                    desc: "Exchange Inflow (Mean) measures the average amount of a crypto asset sent to exchanges per transaction.",
+                    value: "0.82",
+                    change: -0.5,
+                    spark: [45,46,44,47,45,48,46]
+                }
+            ],
+            ETH: [
+                {
+                    name: "Exchange Reserve",
+                    desc: "Exchange Reserve tracks the total amount of ETH held across exchange wallets.",
+                    value: "15.82M",
+                    change: -0.4,
+                    spark: [50,48,47,45,44,43,42]
+                },
+                {
+                    name: "Exchange Netflow (Total)",
+                    desc: "Net difference of ETH flowing into and out of exchanges.",
+                    value: "-12.1K",
+                    change: 2.7,
+                    spark: [55,50,48,42,38,35,30]
+                },
+                {
+                    name: "Exchange Inflow (Total)",
+                    desc: "Total ETH transferred into exchange wallets.",
+                    value: "48.3K",
+                    change: 1.1,
+                    spark: [40,42,45,43,48,50,52]
+                }
+            ],
+            XRP: [
+                {
+                    name: "Exchange Reserve",
+                    desc: "Total XRP held on exchanges.",
+                    value: "4.12B",
+                    change: 0.3,
+                    spark: [40,41,42,43,44,45,46]
+                },
+                {
+                    name: "Exchange Netflow (Total)",
+                    desc: "Net XRP flow to/from exchanges.",
+                    value: "+8.7M",
+                    change: -1.8,
+                    spark: [30,35,40,45,50,48,52]
+                }
+            ],
+            USDT: [
+                {
+                    name: "Exchange Reserve",
+                    desc: "USDT held across major exchanges.",
+                    value: "52.4B",
+                    change: 0.1,
+                    spark: [45,45,46,45,46,45,46]
+                }
+            ],
+            USDC: [
+                {
+                    name: "Exchange Reserve",
+                    desc: "USDC held across major exchanges.",
+                    value: "28.1B",
+                    change: -0.2,
+                    spark: [50,49,48,49,48,47,48]
+                }
+            ]
+        };
+
+        function createSparkline(data) {
+            const max = Math.max(...data);
+            const min = Math.min(...data);
+            const range = max - min || 1;
+            const points = data.map((v, i) => {
+                const x = (i / (data.length - 1)) * 90;
+                const y = 28 - ((v - min) / range) * 24;
+                return `${x},${y}`;
+            }).join(' ');
+            const color = data[data.length-1] >= data[0] ? '#7CFF6B' : '#FF5A73';
+            return `
+                <svg viewBox="0 0 90 28" class="sparkline">
+                    <polyline fill="none" stroke="${color}" stroke-width="2" points="${points}" />
+                </svg>
+            `;
+        }
+
+        function renderMetrics(asset) {
+            const body = document.getElementById('metrics-body');
+            const list = onChainData[asset] || onChainData.BTC;
+            body.innerHTML = list.map(item => {
+                const changeClass = item.change > 0 ? 'change-up' : (item.change < 0 ? 'change-down' : 'change-flat');
+                const sign = item.change > 0 ? '+' : '';
+                return `
+                    <tr>
+                        <td class="metric-name">${item.name}</td>
+                        <td class="metric-desc">${item.desc}</td>
+                        <td class="value">${item.value}</td>
+                        <td class="${changeClass}">${sign}${item.change}%</td>
+                        <td>${createSparkline(item.spark)}</td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        // Asset tab click
+        document.querySelectorAll('.asset-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.asset-tab').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                renderMetrics(tab.dataset.asset);
+            });
+        });
+
+        // Metric category click (visual only for now)
+        document.querySelectorAll('.metric-category').forEach(cat => {
+            cat.addEventListener('click', () => {
+                document.querySelectorAll('.metric-category').forEach(c => c.classList.remove('active'));
+                cat.classList.add('active');
+            });
+        });
+
+        // Initial render
+        renderMetrics('BTC');
+    </script>
+</body>
+</html>
