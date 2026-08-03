@@ -37,7 +37,6 @@
             color: var(--primary);
             background: rgba(124,255,107,0.12);
         }
-
         /* Top Navigation */
         .top-nav {
             display: flex;
@@ -70,7 +69,6 @@
             color: black;
             font-weight: 600;
         }
-
         .trend-card {
             min-width: 340px;
             border-radius: 16px;
@@ -105,16 +103,15 @@
     <!-- Left Sidebar -->
     <aside class="glass" style="width:260px; position:fixed; height:100vh; background:var(--sidebar); padding:24px 0; border-right:1px solid #333;">
         <div style="padding:0 24px 40px; font-size:28px; font-weight:700; color:var(--primary);">🌟 NovaDEX</div>
-<nav>
-    <a href="index.html" class="nav-item">🌟 <span>Top</span></a>
-    <a href="trending.html" class="nav-item">🔥 <span>Trending</span></a>
-    <a href="#" class="nav-item">🌱 <span>Most Visited</span></a>
-    <a href="#" class="nav-item">💰 <span>Prediction Markets</span></a>
-    <a href="news.html" class="nav-item">📰 <span>News</span></a>
-    <a href="on-chain-data.html" class="nav-item">📊 <span>On-Chain Data</span></a>
-</nav>
+        <nav>
+            <a href="index.html" class="nav-item active">🌟 <span>Top</span></a>
+            <a href="trending.html" class="nav-item">🔥 <span>Trending</span></a>
+            <a href="#" class="nav-item">🌱 <span>Most Visited</span></a>
+            <a href="#" class="nav-item">💰 <span>Prediction Markets</span></a>
+            <a href="news.html" class="nav-item">📰 <span>News</span></a>
+            <a href="on-chain-data.html" class="nav-item">📊 <span>On-Chain Data</span></a>
+        </nav>
     </aside>
-
     <main style="margin-left:260px; padding:30px;">
         <!-- Trending Now -->
         <h2 style="margin-bottom:20px;">🔥 Trending Now</h2>
@@ -122,12 +119,12 @@
 
         <!-- Top Navigation (Explore Coins 바로 위) -->
         <div class="top-nav">
-            <a href="#" class="active">🌟 Top</a>
+            <a href="index.html" class="active">🌟 Top</a>
             <a href="trending.html">🔥 Trending</a>
             <a href="#">🌱 Most Visited</a>
             <a href="#">💰 Prediction Markets</a>
             <a href="news.html">📰 News</a>
-            <a href="#">📊 On-Chain Data</a>
+            <a href="on-chain-data.html">📊 On-Chain Data</a>
         </div>
 
         <!-- Explore Coins -->
@@ -148,18 +145,15 @@
             </table>
         </div>
     </main>
-
     <script src="trendingData.js"></script>
     <script>
         function renderTrendingNow() {
             const trendContainer = document.getElementById('trending');
             trendContainer.innerHTML = '';
-
             if (typeof window.trendingData === 'undefined' || window.trendingData.length === 0) {
                 trendContainer.innerHTML = `<div style="padding:40px; color:#888; text-align:center;">Trending 데이터를 불러오는 중...</div>`;
                 return;
             }
-
             window.trendingData.forEach(item => {
                 const card = document.createElement('div');
                 card.className = 'glass trend-card';
@@ -173,7 +167,6 @@
                 trendContainer.appendChild(card);
             });
         }
-
         async function loadCoins() {
             const tbody = document.getElementById('coin-table');
             tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:60px; color:#888;">Loading coins...</td></tr>';
@@ -200,7 +193,6 @@
                 tbody.innerHTML = `<tr><td colspan="6" style="text-align:center; padding:60px; color:#FF5A73;">Failed to load coins.json</td></tr>`;
             }
         }
-
         window.onload = function() {
             renderTrendingNow();
             loadCoins();
