@@ -375,6 +375,7 @@
         const hotList = window.hotChains || [];
         let netflowChart, reserveChart;
         let hotCharts = [];
+        let pulseTimers = [];
         let currentAsset = "BTC";
 
         function createCharts(asset) {
@@ -478,6 +479,8 @@
             container.innerHTML = "";
             hotCharts.forEach(c => c.destroy());
             hotCharts = [];
+            pulseTimers.forEach(t => clearInterval(t));
+            pulseTimers = [];
 
             if (!hotList.length) {
                 container.innerHTML = `<div class="no-data">HOT.js 데이터가 없습니다.</div>`;
@@ -508,15 +511,18 @@
                 `;
                 container.appendChild(block);
 
-                // Netflow - 최고점 강조
+                // Netflow - 최고점 링 + 펄스 + 후광
                 const netData = coin.netflow;
                 const maxVal = Math.max(...netData);
                 const maxIdx = netData.indexOf(maxVal);
 
-                const pointRadius = netData.map((_, i) => i === maxIdx ? 7 : 3);
-                const pointBackground = netData.map((_, i) => i === maxIdx ? "#ffffff" : "#7CFF6B");
-                const pointBorder = netData.map((_, i) => i === maxIdx ? "#ffffff" : "#7CFF6B");
-                const pointBorderWidth = netData.map((_, i) => i === maxIdx ? 3 : 1);
+                const makePeakStyles = (radius) => ({
+                    pointRadius: netData.map((_, i) => i === maxIdx ? radius : 3),
+                    pointHoverRadius: netData.map((_, i) => i === maxIdx ? radius + 1 : 4),
+                    pointBackgroundColor: netData.map((_, i) => i === maxIdx ? "rgba(17,20,31,0.85)" : "#7CFF6B"),
+                    pointBorderColor: netData.map((_, i) => i === maxIdx ? "#ffffff" : "#7CFF6B"),
+                    pointBorderWidth: netData.map((_, i) => i === maxIdx ? 3.5 : 1)
+                });
 
                 const netChart = new Chart(document.getElementById(`hot-net-${idx}`).getContext("2d"), {
                     type: "line",
@@ -528,11 +534,7 @@
                             backgroundColor: "rgba(124,255,107,0.12)",
                             fill: true,
                             tension: 0.35,
-                            pointRadius: pointRadius,
-                            pointBackgroundColor: pointBackground,
-                            pointBorderColor: pointBorder,
-                            pointBorderWidth: pointBorderWidth,
-                            pointHoverRadius: 8
+                            ...makePeakStyles(7)
                         }]
                     },
                     options: {
@@ -565,8 +567,42 @@
                                 grid: { color: "rgba(255,255,255,0.04)" }
                             }
                         }
-                    }
+                    },
+                    plugins: [{
+                        id: "peakGlow",
+                        afterDatasetsDraw(chart) {
+                            const meta = chart.getDatasetMeta(0);
+                            const pt = meta.data[maxIdx];
+                            if (!pt) return;
+                            const { x, y } = pt.getProps(["x", "y"], true);
+                            const ctx = chart.ctx;
+                            const r = chart.data.datasets[0].pointRadius[maxIdx] || 7;
+
+                            // 은은한 흰 후광
+                            ctx.save();
+                            ctx.beginPath();
+                            ctx.arc(x, y, r + 6, 0, Math.PI * 2);
+                            const grad = ctx.createRadialGradient(x, y, r * 0.4, x, y, r + 8);
+                            grad.addColorStop(0, "rgba(255,255,255,0.22)");
+                            grad.addColorStop(0.6, "rgba(255,255,255,0.08)");
+                            grad.addColorStop(1, "rgba(255,255,255,0)");
+                            ctx.fillStyle = grad;
+                            ctx.fill();
+                            ctx.restore();
+                        }
+                    }]
                 });
+
+                // 살짝 커졌다 작아지는 펄스
+                let t = 0;
+                const timer = setInterval(() => {
+                    t += 0.08;
+                    const r = 6.5 + Math.sin(t) * 1.1;
+                    const styles = makePeakStyles(r);
+                    Object.assign(netChart.data.datasets[0], styles);
+                    netChart.update("none");
+                }, 40);
+                pulseTimers.push(timer);
 
                 // Reserve
                 const resChart = new Chart(document.getElementById(`hot-res-${idx}`).getContext("2d"), {
@@ -607,6 +643,8 @@
             } else {
                 hotSec.classList.remove("show");
                 exchangeSec.classList.remove("hide");
+                pulseTimers.forEach(t => clearInterval(t));
+                pulseTimers = [];
             }
         }
 
