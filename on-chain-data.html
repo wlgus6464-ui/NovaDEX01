@@ -477,30 +477,67 @@
                 `;
                 container.appendChild(block);
 
+                // Netflow - 최고점 강조
+                const netData = coin.netflow;
+                const maxVal = Math.max(...netData);
+                const maxIdx = netData.indexOf(maxVal);
+
+                const pointRadius = netData.map((_, i) => i === maxIdx ? 7 : 3);
+                const pointBackground = netData.map((_, i) => i === maxIdx ? "#ffffff" : "#7CFF6B");
+                const pointBorder = netData.map((_, i) => i === maxIdx ? "#ffffff" : "#7CFF6B");
+                const pointBorderWidth = netData.map((_, i) => i === maxIdx ? 3 : 1);
+
                 const netChart = new Chart(document.getElementById(`hot-net-${idx}`).getContext("2d"), {
                     type: "line",
                     data: {
                         labels: coin.labels,
                         datasets: [{
-                            data: coin.netflow,
+                            data: netData,
                             borderColor: "#7CFF6B",
                             backgroundColor: "rgba(124,255,107,0.12)",
                             fill: true,
                             tension: 0.35,
-                            pointRadius: 3
+                            pointRadius: pointRadius,
+                            pointBackgroundColor: pointBackground,
+                            pointBorderColor: pointBorder,
+                            pointBorderWidth: pointBorderWidth,
+                            pointHoverRadius: 8
                         }]
                     },
                     options: {
                         responsive: true,
                         maintainAspectRatio: false,
-                        plugins: { legend: { display: false } },
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: {
+                                callbacks: {
+                                    title: (items) => {
+                                        const i = items[0].dataIndex;
+                                        return i === maxIdx ? `🔥 ${coin.labels[i]} (Peak)` : coin.labels[i];
+                                    }
+                                }
+                            }
+                        },
                         scales: {
-                            x: { ticks: { color: "#8b95a8" }, grid: { color: "rgba(255,255,255,0.04)" } },
-                            y: { ticks: { color: "#8b95a8" }, grid: { color: "rgba(255,255,255,0.04)" } }
+                            x: {
+                                ticks: {
+                                    color: (ctx) => ctx.index === maxIdx ? "#ffffff" : "#8b95a8",
+                                    font: {
+                                        weight: (ctx) => ctx.index === maxIdx ? "700" : "400",
+                                        size: (ctx) => ctx.index === maxIdx ? 13 : 11
+                                    }
+                                },
+                                grid: { color: "rgba(255,255,255,0.04)" }
+                            },
+                            y: {
+                                ticks: { color: "#8b95a8" },
+                                grid: { color: "rgba(255,255,255,0.04)" }
+                            }
                         }
                     }
                 });
 
+                // Reserve
                 const resChart = new Chart(document.getElementById(`hot-res-${idx}`).getContext("2d"), {
                     type: "line",
                     data: {
