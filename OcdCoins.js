@@ -1,5 +1,4 @@
 // OcdCoins.js
-// 업비트 + 빗썸 주요 상장 코인 리스트
 const OcdCoins = [
     { symbol: "BTC", name: "Bitcoin" },
     { symbol: "ETH", name: "Ethereum" },
