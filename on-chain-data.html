@@ -70,6 +70,29 @@
         .metric-category.active {
             border-left: 3px solid var(--primary);
         }
+        .flame {
+            display: inline-block;
+            animation: flameBurn 0.6s ease-in-out infinite alternate;
+            filter: drop-shadow(0 0 4px #ff6b00) drop-shadow(0 0 8px #ff4500);
+            margin-right: 4px;
+        }
+        @keyframes flameBurn {
+            0% {
+                transform: scale(1) translateY(0);
+                filter: drop-shadow(0 0 3px #ff6b00) drop-shadow(0 0 6px #ff4500);
+                opacity: 0.9;
+            }
+            50% {
+                transform: scale(1.15) translateY(-1px);
+                filter: drop-shadow(0 0 6px #ff8c00) drop-shadow(0 0 12px #ff4500);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1.05) translateY(-2px);
+                filter: drop-shadow(0 0 4px #ffaa00) drop-shadow(0 0 10px #ff6600);
+                opacity: 0.95;
+            }
+        }
         .content-area {
             flex: 1;
             padding: 30px 40px;
@@ -260,6 +283,9 @@
             <div class="metric-category">Network Indicator</div>
             <div class="metric-category">Miner Flows</div>
             <div class="metric-category">Derivatives</div>
+            <div class="metric-category">
+                <span class="flame">🔥</span> Hot Chains
+            </div>
         </div>
 
         <div class="content-area">
