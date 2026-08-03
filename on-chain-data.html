@@ -401,17 +401,9 @@
             exchangePulseTimers = [];
         }
 
-        // 심장박동 곡선 (천천히 두 번 두근 + 쉬는 구간)
-        function heartbeat(t) {
-            var period = 1.8;
-            var phase = (t % period) / period;
-            if (phase < 0.12) {
-                return Math.sin(phase / 0.12 * Math.PI);
-            }
-            if (phase < 0.26) {
-                return 0.45 * Math.sin((phase - 0.12) / 0.14 * Math.PI);
-            }
-            return 0;
+        // 잔잔하고 느린 호흡 같은 펄스 (약 3.5초 주기)
+        function softPulse(t) {
+            return (Math.sin(t * 0.55) + 1) / 2;
         }
 
         function startLastPointPulse(chart, baseColor) {
@@ -422,9 +414,9 @@
             var t = 0;
 
             var timer = setInterval(function() {
-                t += 0.04;
-                var beat = heartbeat(t);
-                var r = 3.2 + beat * 4.5;
+                t += 0.035;
+                var beat = softPulse(t);
+                var r = 3.2 + beat * 1.4;
 
                 var radii = [];
                 var hover = [];
@@ -434,10 +426,10 @@
                 for (var i = 0; i < n; i++) {
                     if (i === lastIdx) {
                         radii.push(r);
-                        hover.push(r + 1.5);
+                        hover.push(r + 1);
                         bg.push(baseColor);
                         border.push("#ffffff");
-                        bw.push(2 + beat * 1.5);
+                        bw.push(1.5 + beat * 0.6);
                     } else {
                         radii.push(3);
                         hover.push(4);
@@ -452,7 +444,7 @@
                 chart.data.datasets[0].pointBorderColor = border;
                 chart.data.datasets[0].pointBorderWidth = bw;
                 chart.update("none");
-            }, 40);
+            }, 50);
 
             exchangePulseTimers.push(timer);
         }
@@ -505,7 +497,7 @@
                         backgroundColor: "rgba(124,255,107,0.12)",
                         fill: true,
                         tension: 0.35,
-                        pointRadius: data.netflow.map(function(_, i) { return i === lastIdx ? 5 : 3; }),
+                        pointRadius: data.netflow.map(function(_, i) { return i === lastIdx ? 4 : 3; }),
                         pointBackgroundColor: "#7CFF6B",
                         pointBorderColor: data.netflow.map(function(_, i) { return i === lastIdx ? "#ffffff" : "#7CFF6B"; }),
                         pointBorderWidth: data.netflow.map(function(_, i) { return i === lastIdx ? 2 : 1; })
@@ -534,7 +526,7 @@
                         backgroundColor: "rgba(96,165,250,0.12)",
                         fill: true,
                         tension: 0.35,
-                        pointRadius: data.reserve.map(function(_, i) { return i === lastIdx ? 5 : 3; }),
+                        pointRadius: data.reserve.map(function(_, i) { return i === lastIdx ? 4 : 3; }),
                         pointBackgroundColor: "#60a5fa",
                         pointBorderColor: data.reserve.map(function(_, i) { return i === lastIdx ? "#ffffff" : "#60a5fa"; }),
                         pointBorderWidth: data.reserve.map(function(_, i) { return i === lastIdx ? 2 : 1; })
@@ -551,7 +543,6 @@
                 }
             });
 
-            // 마지막 점 심장박동 시작
             startLastPointPulse(netflowChart, "#7CFF6B");
             startLastPointPulse(reserveChart, "#60a5fa");
         }
