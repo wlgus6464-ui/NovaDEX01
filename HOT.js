@@ -15,11 +15,11 @@ const hotChains = [
         goToLink: "https://www.upbit.com/exchange?code=CRIX.UPBIT.KRW-META2"
     },
     {
-        name: "Zilliqa (ZIL)",
+        name: "Definitive (EDGE)",
         labels: ["Jul 28","Jul 29","Jul 30","Jul 31","Aug 1","Aug 2","Aug 3"],
-        netflow: [0.6, -1.1, 1.9, 0.2, -0.8, 2.5, 1.3],
-        reserve: [5.12, 5.05, 5.18, 5.22, 5.09, 5.30, 5.28],
-        goToLink: "https://www.upbit.com/exchange?code=CRIX.UPBIT.KRW-RENDER"
+        netflow: [0.6, -1.1, -0.5, -0.8, -0.2, 0.0, 1.3],
+        reserve: [5.12, 5.05, 5.09, 5.14, 5.11, 5.07, 5.28],
+        goToLink: "https://www.upbit.com/exchange?code=CRIX.UPBIT.KRW-EDGE"
     }
 ];
 
