@@ -1,10 +1,10 @@
 // HOT.js
 const hotChains = [
     {
-        name: "Solana (SOL)",
+        name: "Momentum (MMT)",
         labels: ["Jul 28","Jul 29","Jul 30","Jul 31","Aug 1","Aug 2","Aug 3"],
-        netflow: [1.8, -0.9, 2.4, -1.2, 3.1, 0.5, -0.7],
-        reserve: [42.1, 42.3, 41.9, 42.8, 43.2, 42.7, 43.5],
+        netflow: [-1.0, 3.0, 1.4, 0.7, 0.1, -0.5, -1.2],
+        reserve: [42.1, 43.0, 41.9, 40.8, 40.2, 41.7, 40.5],
         goToLink: "https://www.upbit.com/exchange?code=CRIX.UPBIT.KRW-SOL"
     },
     {
