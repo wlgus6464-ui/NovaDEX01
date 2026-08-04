@@ -373,7 +373,7 @@
         const coinList = window.OcdCoins || [];
         const hotList = window.hotChains || [];
 
-        const inlineMetrics = {
+       const inlineMetrics = {
             SHIB: {
                 metrics: [
                     { name: "Exchange Reserve", desc: "Total SHIB held on exchanges", value: "920T", change: 1.8 },
@@ -383,6 +383,18 @@
                     { name: "Exchange Whale Ratio", desc: "Share of large deposits in total exchange inflows", value: "0.29", change: -1.1 },
                     { name: "Exchange Inflow (Mean)", desc: "Average size of deposits to exchanges", value: "1.2B SHIB", change: 0.7 },
                     { name: "Exchange Deposit Count", desc: "Number of deposit transactions to exchanges", value: "9,840", change: 3.5 },
+                    { name: "Stablecoin Exchange Reserve", desc: "USDT+USDC held on major exchanges (proxy)", value: "$48.2B", change: 0.4 }
+                ]
+            },
+            BTT: {
+                metrics: [
+                    { name: "Exchange Reserve", desc: "Total BTT held on exchanges", value: "412T", change: 0.9 },
+                    { name: "Exchange Inflow", desc: "BTT sent to exchanges", value: "18.6T", change: -2.3 },
+                    { name: "Exchange Outflow", desc: "BTT withdrawn from exchanges", value: "21.4T", change: 3.1 },
+                    { name: "Exchange Netflow", desc: "Inflow − Outflow", value: "-2.8T", change: 2.7 },
+                    { name: "Exchange Whale Ratio", desc: "Share of large deposits in total exchange inflows", value: "0.34", change: -0.8 },
+                    { name: "Exchange Inflow (Mean)", desc: "Average size of deposits to exchanges", value: "890M BTT", change: 1.2 },
+                    { name: "Exchange Deposit Count", desc: "Number of deposit transactions to exchanges", value: "6,120", change: 2.4 },
                     { name: "Stablecoin Exchange Reserve", desc: "USDT+USDC held on major exchanges (proxy)", value: "$48.2B", change: 0.4 }
                 ]
             }
