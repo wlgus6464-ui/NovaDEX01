@@ -72,10 +72,10 @@ const coinHotTopics = {
         link: "https://www.globenewswire.com/news-release/2026/03/12/3254667/0/en/Global-Crypto-Card-Spending-Surges-to-18-Billion-Annually-as-House-of-Doge-Targets-Integration-of-Dogecoin-Into-Traditional-Payment-Rails.html"
     },
     'SHIB': {
-        title: "SHIB Burn Rate Hits 6-Month High: Will Shiba Inu Price React?",
-        comment: "Shiba Inu’s community destroyed more than 117 million SHIB tokens on July 8, marking the largest single-day burn in six months. The deflationary spike, tracked by Shibburn, sent the tokens to a dead wallet, permanently removing them from circulation.﻿‍",
-        img: "https://assets.beincrypto.com/img/7hJmS5OuUN8vtKhVHcid9Wf4DEM=/smart/f52a3df1fc1c4524aa300cc0d5e15074",
-        link: "https://beincrypto.com/shib-burn-six-month-high-shiba-inu/?utm_source=chatgpt.com"
+        title: "Shiba Inu Burn: A Complete Guide to How the Shiba Inu (SHIB) Burn Work",
+        comment: "Shiba Inu started out as a meme coin, but that’s old news now—the ecosystem’s way bigger, and the buzz these days is all about token burning. Investors, traders, and those who just never let go of their SHIB keep hearing about how burning tokens cuts supply, makes SHIB a bit more rare, and maybe boosts confidence in the whole project. The community’s grown a lot with Shibarium and other tools, and burns are now a big piece of what people talk about. For starters, official Shibarium docs talk about a burn process linked to activity on the network, and plenty of market watchers are tracking how these burns actually change the supply over time.﻿‍",
+        img: "https://assets.staticimg.com/cms/media/0KPoDjo6P3nYN7lMQ46W4waCwoZlqvm4TS5txMFxg.png",
+        link: "https://www.kucoin.com/blog/shiba-inu-burn?utm_source=chatgpt.com"
     },
     'BABY.D': {
         title: "Memecoin Payment Cards Overshadow True Utility of Prepaid and Crypto",
@@ -108,7 +108,7 @@ const coinRelatedArticles = {
     'ETH': [{ title: "The Arbitrum Foundation 2025 Transparency Report", link: "https://blog.arbitrum.foundation/the-arbitrum-foundation-2025-transparency-report-the-year-of-institutional-adoption" }],
     'XRP': [{ title: "Stellar's payment volume hit $5.5 billion in Q1 2026, a 72% annual increase, and XLM surged 28% on the DTCC announcement while the broader crypto market fell sharply the same day.", link: "https://finance.yahoo.com/markets/crypto/articles/xrp-ripple-vs-stellar-xlm-185640141.html" }],
     'DOGE': [{ title: "From Meme Coin to Mass Retail: BONK Announces Strategic Partnership With Paxos", link: "https://chainwire.org/2026/04/30/from-meme-coin-to-mass-retail-bonk-announces-strategic-partnership-with-paxos/" }],
-    'SHIB': [{ title: "Exploring BNB Token: The Heart of BNB Chain", link: "https://www.bnbchain.org/en/blog/exploring-bnb-token-the-heart-of-bnb-chain?utm_source=chatgpt.com" }],
+    'SHIB': [{ title: "Shibarium Achieves New Milestones, Surges with 100% Spike in Daily Transactions", link: "https://news.shib.io/2024/07/02/shibarium-achieves-new-milestones-surges-with-100-spike-in-daily-transactions/" }],
     'BABY.D': [{ title: "Litecoin Expands Real-World Utility Through Growing Global Payment Adoption", link: "https://litecoin.com/spend?utm_source=chatgpt.com" }],
     'BTT': [{ title: "Coinbase Strengthened Its Global Reputation Through Nasdaq Listing and Institutional Adoption.", link: "https://www.coinbase.com/blog" }],
     'ALT': [{ title: "Santander Partners with Ripple to Bring Certainty and Speed to International Payments.", link: "https://ripple.com/insights/santander-partners-with-ripple-to-bring-certainty-and-speed-to-international-payments/?utm_source=chatgpt.com" }],
