@@ -84,10 +84,10 @@ const coinHotTopics = {
         link: "https://www.paymentsjournal.com/memecoin-payment-cards-overshadow-true-utility-of-prepaid-and-crypto/?utm_source=chatgpt.com"
     },
     'BTT': {
-        title: "TRON Included in S&P Pantera Digital Asset Index as Institutional Benchmarking Expands to Blockchain Networks",
-        comment: " TRON DAO, the community-governed DAO dedicated to accelerating the decentralization of the internet through blockchain technology and decentralized applications (dApps), today welcomes the launch of the S&P Pantera Digital Asset Index and the inclusion of the TRON blockchain among the top protocols represented in the benchmark.",
-        img: "https://ml.globenewswire.com/Resource/Download/76deb509-773e-4935-a804-1e587b451799/39-1784827197cwxez8zs0n.jpg",
-        link: "https://www.globenewswire.com/news-release/2026/07/23/3332531/0/en/tron-included-in-s-p-pantera-digital-asset-index-as-institutional-benchmarking-expands-to-blockchain-networks.html"
+        title: "Staking Mechanism of the BTTC Network",
+        comment: "The BTTC Network is secured by a set of validators, who produce blocks and submit Checkpoints. This mechanism guarantees stable transactions on the BTTC Network. Validators will receive rewards in BTT once they have fulfilled their obligations. As a result, a validator who produces blocks and submits Checkpoints at a steady pace will help secure the network and receive consistent rewards in return. Validators that produce blocks sporadically (e.g., frequently offline) or fail to submit Checkpoints on time, on the other hand, may cause network congestion and receive fewer rewards.",
+        img: "https://bttc.zendesk.com/hc/article_attachments/10234995808409/mceclip3.png",
+        link: "https://bttc.zendesk.com/hc/en-us/articles/9736926279065-Staking-Mechanism-of-the-BTTC-Network?utm_source=chatgpt.com"
     },
     'ALT': {
         title: "Eightco Holdings (NASDAQ: ORBS) Announces its Participation in World Foundation's $52.5M funding round as World Shifts From Building the Network to Scaling Utility",
@@ -110,7 +110,7 @@ const coinRelatedArticles = {
     'DOGE': [{ title: "From Meme Coin to Mass Retail: BONK Announces Strategic Partnership With Paxos", link: "https://chainwire.org/2026/04/30/from-meme-coin-to-mass-retail-bonk-announces-strategic-partnership-with-paxos/" }],
     'SHIB': [{ title: "Shibarium Achieves New Milestones, Surges with 100% Spike in Daily Transactions", link: "https://news.shib.io/2024/07/02/shibarium-achieves-new-milestones-surges-with-100-spike-in-daily-transactions/" }],
     'BABY.D': [{ title: "Litecoin Expands Real-World Utility Through Growing Global Payment Adoption", link: "https://litecoin.com/spend?utm_source=chatgpt.com" }],
-    'BTT': [{ title: "Coinbase Strengthened Its Global Reputation Through Nasdaq Listing and Institutional Adoption.", link: "https://www.coinbase.com/blog" }],
+    'BTT': [{ title: "The BTT community is quietly building through staking and ecosystem growth while traders watch for a breakout.", link: "https://coinmarketcap.com/cmc-ai/bittorrent-new/latest-updates/?utm_source=chatgpt.com" }],
     'ALT': [{ title: "Santander Partners with Ripple to Bring Certainty and Speed to International Payments.", link: "https://ripple.com/insights/santander-partners-with-ripple-to-bring-certainty-and-speed-to-international-payments/?utm_source=chatgpt.com" }],
     'ETC': [{ title: "Ethereum Classic Reinforces Core Infrastructure", link: "#" }]
 };
