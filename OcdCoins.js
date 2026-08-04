@@ -128,7 +128,13 @@ const OcdCoins = [
     { symbol: "ANKR", name: "Ankr" },
     { symbol: "CRO", name: "Cronos" },
     { symbol: "KLAY", name: "Klaytn" },
-    { symbol: "BTT", name: "BitTorrent" },
+    {
+        symbol: "BTT",
+        name: "Bittorrent",
+        labels: ["Jul 28","Jul 29","Jul 30","Jul 31","Aug 1","Aug 2","Aug 3"],
+        netflow: [0.8, -1.0, 0.3, 1.5, -0.6, 0.9, -0.2],
+        reserve: [3.4, 3.35, 3.5, 3.45, 3.6, 3.55, 3.7]
+    },
     { symbol: "HOT", name: "Holo" },
     { symbol: "STEEM", name: "Steem" },
     { symbol: "SXP", name: "Solar" },
