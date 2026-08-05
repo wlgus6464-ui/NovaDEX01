@@ -30,15 +30,15 @@ const OcdCoins = [
         reserve: [51.8, 52.0, 51.9, 52.2, 52.1, 52.3, 52.4]
     },
     {
-        symbol: "SOL",
-        name: "Solana",
+        symbol: "XLM",
+        name: "Stella Lumes",
         labels: ["Jul 28","Jul 29","Jul 30","Jul 31","Aug 1","Aug 2","Aug 3"],
         netflow: [1.8, -0.9, 2.4, -1.2, 3.1, 0.5, -0.7],
         reserve: [42.1, 42.3, 41.9, 42.8, 43.2, 42.7, 43.5]
     },
     {
-        symbol: "DOGE",
-        name: "Dogecoin",
+        symbol: "BABYDOGE",
+        name: "Babydoge",
         labels: ["Jul 28","Jul 29","Jul 30","Jul 31","Aug 1","Aug 2","Aug 3"],
         netflow: [0.5, -0.3, 1.1, -0.8, 0.9, 0.2, -0.4],
         reserve: [18.2, 18.1, 18.4, 18.0, 18.5, 18.3, 18.6]
