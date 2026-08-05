@@ -31,14 +31,14 @@ const OcdCoins = [
     },
     {
         symbol: "XLM",
-        name: "Stella Lumes",
+        name: "Stellar",
         labels: ["Jul 28","Jul 29","Jul 30","Jul 31","Aug 1","Aug 2","Aug 3"],
         netflow: [1.8, -0.9, 2.4, -1.2, 3.1, 0.5, -0.7],
         reserve: [42.1, 42.3, 41.9, 42.8, 43.2, 42.7, 43.5]
     },
     {
         symbol: "BABYDOGE",
-        name: "Babydoge",
+        name: "Baby Doge Coin",
         labels: ["Jul 28","Jul 29","Jul 30","Jul 31","Aug 1","Aug 2","Aug 3"],
         netflow: [0.5, -0.3, 1.1, -0.8, 0.9, 0.2, -0.4],
         reserve: [18.2, 18.1, 18.4, 18.0, 18.5, 18.3, 18.6]
@@ -71,19 +71,25 @@ const OcdCoins = [
         netflow: [0.3, -0.5, 0.9, -0.2, 1.1, 0.4, -0.7],
         reserve: [0.85, 0.84, 0.88, 0.86, 0.90, 0.89, 0.92]
     },
-    { symbol: "MATIC", name: "Polygon" },
-       {
+    {
         symbol: "SHIB",
         name: "Shiba Inu",
         labels: ["Jul 28","Jul 29","Jul 30","Jul 31","Aug 1","Aug 2","Aug 3"],
         netflow: [0.5, -0.7, -0.9, -0.7, 0.0, 0.2, 0.1],
         reserve: [0.85, 0.74, 0.78, 0.76, 0.90, 0.89, 0.92]
     },
+    {
+        symbol: "BTT",
+        name: "BitTorrent",
+        labels: ["Jul 28","Jul 29","Jul 30","Jul 31","Aug 1","Aug 2","Aug 3"],
+        netflow: [0.8, -1.0, 0.3, 1.5, -0.6, 0.9, -0.2],
+        reserve: [3.4, 3.35, 3.5, 3.45, 3.6, 3.55, 3.7]
+    },
+    { symbol: "MATIC", name: "Polygon" },
     { symbol: "TRX", name: "TRON" },
     { symbol: "ATOM", name: "Cosmos" },
     { symbol: "UNI", name: "Uniswap" },
     { symbol: "ETC", name: "Ethereum Classic" },
-    { symbol: "XLM", name: "Stellar" },
     { symbol: "BCH", name: "Bitcoin Cash" },
     { symbol: "NEAR", name: "NEAR Protocol" },
     { symbol: "APT", name: "Aptos" },
@@ -128,13 +134,6 @@ const OcdCoins = [
     { symbol: "ANKR", name: "Ankr" },
     { symbol: "CRO", name: "Cronos" },
     { symbol: "KLAY", name: "Klaytn" },
-    {
-        symbol: "BTT",
-        name: "Bittorrent",
-        labels: ["Jul 28","Jul 29","Jul 30","Jul 31","Aug 1","Aug 2","Aug 3"],
-        netflow: [0.8, -1.0, 0.3, 1.5, -0.6, 0.9, -0.2],
-        reserve: [3.4, 3.35, 3.5, 3.45, 3.6, 3.55, 3.7]
-    },
     { symbol: "HOT", name: "Holo" },
     { symbol: "STEEM", name: "Steem" },
     { symbol: "SXP", name: "Solar" },
