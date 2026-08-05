@@ -72,10 +72,10 @@ const coinHotTopics = {
         link: "https://www.globenewswire.com/news-release/2026/03/12/3254667/0/en/Global-Crypto-Card-Spending-Surges-to-18-Billion-Annually-as-House-of-Doge-Targets-Integration-of-Dogecoin-Into-Traditional-Payment-Rails.html"
     },
     'SHIB': {
-        title: "Shiba Inu Burn: A Complete Guide to How the Shiba Inu (SHIB) Burn Work",
-        comment: "Shiba Inu started out as a meme coin, but that’s old news now—the ecosystem’s way bigger, and the buzz these days is all about token burning. Investors, traders, and those who just never let go of their SHIB keep hearing about how burning tokens cuts supply, makes SHIB a bit more rare, and maybe boosts confidence in the whole project. The community’s grown a lot with Shibarium and other tools, and burns are now a big piece of what people talk about. For starters, official Shibarium docs talk about a burn process linked to activity on the network, and plenty of market watchers are tracking how these burns actually change the supply over time.﻿‍",
-        img: "https://assets.staticimg.com/cms/media/0KPoDjo6P3nYN7lMQ46W4waCwoZlqvm4TS5txMFxg.png",
-        link: "https://www.kucoin.com/blog/shiba-inu-burn?utm_source=chatgpt.com"
+        title: "Rakuten Wallet adds XRP and SHIB—exchanges from Rakuten Points are also possible",
+        comment: "On the 15th, Rakuten Wallet added five assets—XRP, DOGE, XLM, SHIB, and TON—to spot trading, and through its share in Rakuten Cash, it also supports payments at Rakuten Pay merchants﻿‍",
+        img: "https://crypto-economy.com//wp-content/uploads/2026/06/Rakuten-Wallet-Launches-SHIB-and-DOGE-Giveaway.jpg",
+        link: "https://jinacoin.ne.jp/kuratenpay-xrp-doge-20260415/?utm_source=chatgpt.com"
     },
     'BABY.D': {
         title: "Accept BabyDoge Payments",
@@ -108,7 +108,7 @@ const coinRelatedArticles = {
     'ETH': [{ title: "The Arbitrum Foundation 2025 Transparency Report", link: "https://blog.arbitrum.foundation/the-arbitrum-foundation-2025-transparency-report-the-year-of-institutional-adoption" }],
     'XRP': [{ title: "The headline number in Q1 was tokenized real-world assets on Stellar. Shortly after quarter-end, onchain RWAs crossed $2 billion.", link: "https://stellar.org/blog/foundation-news/q1-2026-execution-at-network-scale?utm_source=chatgpt.com" }],
     'DOGE': [{ title: "From Meme Coin to Mass Retail: BONK Announces Strategic Partnership With Paxos", link: "https://chainwire.org/2026/04/30/from-meme-coin-to-mass-retail-bonk-announces-strategic-partnership-with-paxos/" }],
-    'SHIB': [{ title: "Shibarium Achieves New Milestones, Surges with 100% Spike in Daily Transactions", link: "https://news.shib.io/2024/07/02/shibarium-achieves-new-milestones-surges-with-100-spike-in-daily-transactions/" }],
+    'SHIB': [{ title: "Shiba Inu Holder Growth Sparks Controversy as Holder Count Surpasses 1.67M.", link: "https://cryptonews.net/news/altcoins/33114053/?utm_source=chatgpt.com" }],
     'BABY.D': [{ title: "Litecoin Expands Real-World Utility Through Growing Global Payment Adoption", link: "https://bscscan.com/token/0xc748673057861a797275cd8a068abb95a902e8de?utm_source=chatgpt.com" }],
     'BTT': [{ title: "The BTT community is quietly building through staking and ecosystem growth while traders watch for a breakout.", link: "https://coinmarketcap.com/cmc-ai/bittorrent-new/latest-updates/?utm_source=chatgpt.com" }],
     'ALT': [{ title: "Santander Partners with Ripple to Bring Certainty and Speed to International Payments.", link: "https://ripple.com/insights/santander-partners-with-ripple-to-bring-certainty-and-speed-to-international-payments/?utm_source=chatgpt.com" }],
