@@ -78,10 +78,10 @@ const coinHotTopics = {
         link: "https://www.kucoin.com/blog/shiba-inu-burn?utm_source=chatgpt.com"
     },
     'BABY.D': {
-        title: "Memecoin Payment Cards Overshadow True Utility of Prepaid and Crypto",
-        comment: "“The official account of Baby Doge Coin (BabyDoge) has tweeted that less than 24 hours remain before the virtual crypto card of BabyDoge goes live, powered by Canadian crypto payments platform FCF Pay. Despite the big adoption news on the horizon, BabyDoge’s price is in the red, trading at $0.000000002642; that is, minus 2.45% over the period of the last 24 hours.”",
-        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSu5WQXUHvTo4ZqHhr43b3pa94Nvt_flPC6e0GScg-9Gg&s",
-        link: "https://www.paymentsjournal.com/memecoin-payment-cards-overshadow-true-utility-of-prepaid-and-crypto/?utm_source=chatgpt.com"
+        title: "Accept BabyDoge Payments",
+        comment: "NOWPayments is a crypto payment gateway that lets you accept Baby Doge payments and donations in an easy and convenient way. Try this Baby Doge payment gateway NOW!",
+        img: "https://nowpayments.io/images/main/header.png",
+        link: "https://nowpayments.io/supported-coins/babydoge-payments?utm_source=chatgpt.com"
     },
     'BTT': {
         title: "Staking Mechanism of the BTTC Network",
@@ -109,7 +109,7 @@ const coinRelatedArticles = {
     'XRP': [{ title: "The headline number in Q1 was tokenized real-world assets on Stellar. Shortly after quarter-end, onchain RWAs crossed $2 billion.", link: "https://stellar.org/blog/foundation-news/q1-2026-execution-at-network-scale?utm_source=chatgpt.com" }],
     'DOGE': [{ title: "From Meme Coin to Mass Retail: BONK Announces Strategic Partnership With Paxos", link: "https://chainwire.org/2026/04/30/from-meme-coin-to-mass-retail-bonk-announces-strategic-partnership-with-paxos/" }],
     'SHIB': [{ title: "Shibarium Achieves New Milestones, Surges with 100% Spike in Daily Transactions", link: "https://news.shib.io/2024/07/02/shibarium-achieves-new-milestones-surges-with-100-spike-in-daily-transactions/" }],
-    'BABY.D': [{ title: "Litecoin Expands Real-World Utility Through Growing Global Payment Adoption", link: "https://litecoin.com/spend?utm_source=chatgpt.com" }],
+    'BABY.D': [{ title: "Litecoin Expands Real-World Utility Through Growing Global Payment Adoption", link: "https://bscscan.com/token/0xc748673057861a797275cd8a068abb95a902e8de?utm_source=chatgpt.com" }],
     'BTT': [{ title: "The BTT community is quietly building through staking and ecosystem growth while traders watch for a breakout.", link: "https://coinmarketcap.com/cmc-ai/bittorrent-new/latest-updates/?utm_source=chatgpt.com" }],
     'ALT': [{ title: "Santander Partners with Ripple to Bring Certainty and Speed to International Payments.", link: "https://ripple.com/insights/santander-partners-with-ripple-to-bring-certainty-and-speed-to-international-payments/?utm_source=chatgpt.com" }],
     'ETC': [{ title: "Ethereum Classic Reinforces Core Infrastructure", link: "#" }]
