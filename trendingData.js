@@ -60,10 +60,10 @@ const coinHotTopics = {
         link: "https://www.coindesk.com/markets/2026/04/14/ether-outpaces-bitcoin-as-etf-flows-split-and-ethereum-activity-jumps-41-on-week"
     },
     'XRP': {
-        title: "“껍데기만 블록체인”...SWIFT 결제망 출시에 터진 리플 커뮤니티의 분노",
-        comment: "“Explosive growth in crypto card usage signals a new era of real-world digital currency adoption.",
-        img: "https://cdn.pinpointnews.co.kr/news/photo/202607/469261_457126_3823.png",
-        link: "https://www.pinpointnews.co.kr/news/articleView.html?idxno=469261"
+        title: "“MoneyGram, Figure Markets, and Range to Help Secure the Stellar Network by joining as Tier 1 Validators",
+        comment: "The Stellar Development Foundation (SDF), the non-profit organization that supports the development and growth of Stellar, the blockchain network built to run regulated finance, today announced that MoneyGram, Figure Markets, and Range will operate Tier 1 validators on the Stellar network. The addition of these three organizations, spanning capital markets, global money movement, and blockchain security infrastructure, marks a significant step in expanding the decentralization and resilience of the network’s core infrastructure.",
+        img: "https://cdn.sanity.io/images/e2r40yh6/production-i18n/cab834e0c314ae2fb0eff1edc48226a2c1c6d560-1238x697.png?w=748&h=421&auto=format&dpr=2",
+        link: "https://stellar.org/press/moneygram-figure-markets-and-range-to-help-secure-the-stellar-network-by-joining-as-tier-1-validators?utm_source=chatgpt.com"
     },
     'DOGE': {
         title: "Global Crypto Card Spending Surges to $18 Billion Annually as House of Doge Targets Integration of Dogecoin Into Traditional Payment Rails",
@@ -106,7 +106,7 @@ const coinHotTopics = {
 const coinRelatedArticles = {
     'BTC': [{ title: "Bitcoin ETF Inflows Surpass $10B This Month", link: "#" }],
     'ETH': [{ title: "The Arbitrum Foundation 2025 Transparency Report", link: "https://blog.arbitrum.foundation/the-arbitrum-foundation-2025-transparency-report-the-year-of-institutional-adoption" }],
-    'XRP': [{ title: "Stellar's payment volume hit $5.5 billion in Q1 2026, a 72% annual increase, and XLM surged 28% on the DTCC announcement while the broader crypto market fell sharply the same day.", link: "https://finance.yahoo.com/markets/crypto/articles/xrp-ripple-vs-stellar-xlm-185640141.html" }],
+    'XRP': [{ title: "The headline number in Q1 was tokenized real-world assets on Stellar. Shortly after quarter-end, onchain RWAs crossed $2 billion.", link: "https://stellar.org/blog/foundation-news/q1-2026-execution-at-network-scale?utm_source=chatgpt.com" }],
     'DOGE': [{ title: "From Meme Coin to Mass Retail: BONK Announces Strategic Partnership With Paxos", link: "https://chainwire.org/2026/04/30/from-meme-coin-to-mass-retail-bonk-announces-strategic-partnership-with-paxos/" }],
     'SHIB': [{ title: "Shibarium Achieves New Milestones, Surges with 100% Spike in Daily Transactions", link: "https://news.shib.io/2024/07/02/shibarium-achieves-new-milestones-surges-with-100-spike-in-daily-transactions/" }],
     'BABY.D': [{ title: "Litecoin Expands Real-World Utility Through Growing Global Payment Adoption", link: "https://litecoin.com/spend?utm_source=chatgpt.com" }],
