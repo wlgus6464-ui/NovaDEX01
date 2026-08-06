@@ -65,9 +65,9 @@ const OcdCoins = [
         reserve: [1.12, 1.10, 1.15, 1.13, 1.18, 1.16, 1.20]
     },
     {
-        symbol: "LINK",
-        name: "Chainlink",
-        labels: ["Jul 28","Jul 29","Jul 30","Jul 31","Aug 1","Aug 2","Aug 3"],
+        symbol: "KAIA",
+        name: "Kaia",
+        labels: ["Aug 1","Aug 2","Aug 3","Aug 4","Aug 5","Aug 6","Aug 7"],
         netflow: [0.3, -0.5, 0.9, -0.2, 1.1, 0.4, -0.7],
         reserve: [0.85, 0.84, 0.88, 0.86, 0.90, 0.89, 0.92]
     },
@@ -178,6 +178,8 @@ const OcdCoins = [
     { symbol: "EOS", name: "EOS" },
     { symbol: "BSV", name: "Bitcoin SV" },
     { symbol: "BTG", name: "Bitcoin Gold" }
+    
+    
 ];
 
 window.OcdCoins = OcdCoins;
