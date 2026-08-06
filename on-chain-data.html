@@ -373,7 +373,7 @@
         const coinList = window.OcdCoins || [];
         const hotList = window.hotChains || [];
 
-       const inlineMetrics = {
+              const inlineMetrics = {
             SHIB: {
                 metrics: [
                     { name: "Exchange Reserve", desc: "Total SHIB held on exchanges", value: "920T", change: 1.8 },
@@ -419,6 +419,30 @@
                     { name: "Exchange Whale Ratio", desc: "Share of large deposits in total exchange inflows", value: "0.22", change: -1.7 },
                     { name: "Exchange Inflow (Mean)", desc: "Average size of deposits to exchanges", value: "2.1T BABYDOGE", change: 0.8 },
                     { name: "Exchange Deposit Count", desc: "Number of deposit transactions to exchanges", value: "11,340", change: 4.0 },
+                    { name: "Stablecoin Exchange Reserve", desc: "USDT+USDC held on major exchanges (proxy)", value: "$48.2B", change: 0.4 }
+                ]
+            },
+            WLD: {
+                metrics: [
+                    { name: "Exchange Reserve", desc: "Total WLD held on exchanges", value: "48.6M", change: -1.2 },
+                    { name: "Exchange Inflow", desc: "WLD sent to exchanges", value: "1.85M", change: 2.7 },
+                    { name: "Exchange Outflow", desc: "WLD withdrawn from exchanges", value: "2.14M", change: -0.9 },
+                    { name: "Exchange Netflow", desc: "Inflow − Outflow", value: "-0.29M", change: 3.4 },
+                    { name: "Exchange Whale Ratio", desc: "Share of large deposits in total exchange inflows", value: "0.38", change: 0.6 },
+                    { name: "Exchange Inflow (Mean)", desc: "Average size of deposits to exchanges", value: "12.4K WLD", change: -1.5 },
+                    { name: "Exchange Deposit Count", desc: "Number of deposit transactions to exchanges", value: "3,280", change: 1.8 },
+                    { name: "Stablecoin Exchange Reserve", desc: "USDT+USDC held on major exchanges (proxy)", value: "$48.2B", change: 0.4 }
+                ]
+            },
+            KAIA: {
+                metrics: [
+                    { name: "Exchange Reserve", desc: "Total KAIA held on exchanges", value: "1.24B", change: 1.5 },
+                    { name: "Exchange Inflow", desc: "KAIA sent to exchanges", value: "28.4M", change: -2.8 },
+                    { name: "Exchange Outflow", desc: "KAIA withdrawn from exchanges", value: "31.9M", change: 2.1 },
+                    { name: "Exchange Netflow", desc: "Inflow − Outflow", value: "-3.5M", change: 4.0 },
+                    { name: "Exchange Whale Ratio", desc: "Share of large deposits in total exchange inflows", value: "0.31", change: -0.4 },
+                    { name: "Exchange Inflow (Mean)", desc: "Average size of deposits to exchanges", value: "95K KAIA", change: 0.9 },
+                    { name: "Exchange Deposit Count", desc: "Number of deposit transactions to exchanges", value: "5,670", change: 2.2 },
                     { name: "Stablecoin Exchange Reserve", desc: "USDT+USDC held on major exchanges (proxy)", value: "$48.2B", change: 0.4 }
                 ]
             }
