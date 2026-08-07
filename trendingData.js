@@ -84,16 +84,16 @@ const coinHotTopics = {
         link: "https://nowpayments.io/supported-coins/babydoge-payments?utm_source=chatgpt.com"
     },
     'BTT': {
-        title: "Staking Mechanism of the BTTC Network",
-        comment: "The BTTC Network is secured by a set of validators, who produce blocks and submit Checkpoints. This mechanism guarantees stable transactions on the BTTC Network. Validators will receive rewards in BTT once they have fulfilled their obligations. As a result, a validator who produces blocks and submits Checkpoints at a steady pace will help secure the network and receive consistent rewards in return. Validators that produce blocks sporadically (e.g., frequently offline) or fail to submit Checkpoints on time, on the other hand, may cause network congestion and receive fewer rewards.",
-        img: "https://bttc.zendesk.com/hc/article_attachments/10234995808409/mceclip3.png",
-        link: "https://bttc.zendesk.com/hc/en-us/articles/9736926279065-Staking-Mechanism-of-the-BTTC-Network?utm_source=chatgpt.com"
+        title: "4BitTorrent Launches BTTInferGrid: The Decentralized Infrastructure Layer for Scalable AI Inference",
+        comment: "BTTInferGrid is a decentralized GPU computing network purpose-built for AI inference. By bridging the global supply of idle GPU capacity with the surging demand for AI workloads, BTTInferGrid delivers an open-access, verifiably secure, and pay-as-you-go computing infrastructure for AI developers worldwide.   ",
+        img: "https://ml.globenewswire.com/Resource/Download/09ab6648-d83b-46f3-94c0-13a29ef12639/hdhgds.jpg",
+        link: "https://www.globenewswire.com/news-release/2026/06/17/3313261/0/en/4BitTorrent-Launches-BTTInferGrid-The-Decentralized-Infrastructure-Layer-for-Scalable-ai-Inference.html"
     },
     'ALT': {
-        title: "Eightco Holdings (NASDAQ: ORBS) Announces its Participation in World Foundation's $52.5M funding round as World Shifts From Building the Network to Scaling Utility",
-        comment: "Eightco treasury composition as of July 26, 2026: $90M OpenAI equity (indirect), $18M Beast Industries equity, 16,278 ETH, nearly 302 million WLD holdings, and $142M cash and equivalents, totaling approximately $391 million. OpenAI recently announced that it submitted a confidential S-1, setting itself up for a potential future initial public offering. Eightco provides indirect exposure to some of the most innovative private companies including OpenAI and Beast Industries",
-        img: "https://cdn.bankless.com/openGraph/worldcoin-s-wld-up-100-as-eightco-launches-250m-dat-1758826745.png",
-        link: "https://www.newswire.ca/news-releases/eightco-holdings-nasdaq-orbs-announces-its-participation-in-world-foundation-s-52-5m-funding-round-as-world-shifts-from-building-the-network-to-scaling-utility-818850403.html?utm_source=chatgpt.com"
+        title: "Eightco updates $391M treasury, highlights $90M OpenAI exposure and 302M WLD holdings",
+        comment: "Announced participation in World Foundation’s $52.5M funding round alongside Pantera and others, signaling continued strategic support. Treasury composition as of July 26, 2026: $90M OpenAI (indirect), $18M Beast Industries, $1M Mythical Games, 16,278 ETH, ~302M WLD, $142M cash.",
+        img: "https://coingape.com/wp-content/uploads/2025/09/wld_price_surges_20_.webp",
+        link: "https://www.tradingview.com/news/tradingview%3Aab482235efaec%3A0-eightco-updates-391m-treasury-highlights-90m-openai-exposure-and-302m-wld-holdings/"
     },
     'ETC': {
         title: "Ethereum Classic Reinforces Core Infrastructure with Ongoing Network and Development Support",
@@ -110,8 +110,8 @@ const coinRelatedArticles = {
     'DOGE': [{ title: "From Meme Coin to Mass Retail: BONK Announces Strategic Partnership With Paxos", link: "https://chainwire.org/2026/04/30/from-meme-coin-to-mass-retail-bonk-announces-strategic-partnership-with-paxos/" }],
     'SHIB': [{ title: "Shiba Inu Holder Growth Sparks Controversy as Holder Count Surpasses 1.67M.", link: "https://cryptonews.net/news/altcoins/33114053/?utm_source=chatgpt.com" }],
     'BABY.D': [{ title: "Litecoin Expands Real-World Utility Through Growing Global Payment Adoption", link: "https://bscscan.com/token/0xc748673057861a797275cd8a068abb95a902e8de?utm_source=chatgpt.com" }],
-    'BTT': [{ title: "The BTT community is quietly building through staking and ecosystem growth while traders watch for a breakout.", link: "https://coinmarketcap.com/cmc-ai/bittorrent-new/latest-updates/?utm_source=chatgpt.com" }],
-    'ALT': [{ title: "Santander Partners with Ripple to Bring Certainty and Speed to International Payments.", link: "https://ripple.com/insights/santander-partners-with-ripple-to-bring-certainty-and-speed-to-international-payments/?utm_source=chatgpt.com" }],
+    'BTT': [{ title: "BitTorrent Chain Surpasses 335 Million Transactions as On-Chain Activity Continues to Grow", link: "https://bttcscan.com/txs?utm_source=chatgpt.com" }],
+    'ALT': [{ title: "Sam Altman-backed World Network secures $52.5 million in fresh funding to fight online AI deepfakes", link: "https://www.coindesk.com/business/2026/07/24/sam-altman-backed-world-network-secures-fresh-funding-to-fight-online-ai-deepfakes" }],
     'ETC': [{ title: "Ethereum Classic Reinforces Core Infrastructure", link: "#" }]
 };
 // Manual News (각 코인당 5개 이상)
