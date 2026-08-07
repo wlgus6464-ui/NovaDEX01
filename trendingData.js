@@ -78,10 +78,10 @@ const coinHotTopics = {
         link: "https://jinacoin.ne.jp/kuratenpay-xrp-doge-20260415/?utm_source=chatgpt.com"
     },
     'BABY.D': {
-        title: "Accept BabyDoge Payments",
-        comment: "NOWPayments is a crypto payment gateway that lets you accept Baby Doge payments and donations in an easy and convenient way. Try this Baby Doge payment gateway NOW!",
-        img: "https://nowpayments.io/images/main/header.png",
-        link: "https://nowpayments.io/supported-coins/babydoge-payments?utm_source=chatgpt.com"
+        title: "BabyDoge Burns 75,000,000,000 Tokens in April as Activity-Driven Mechanism Continues",
+        comment: "BabyDoge burned 75.15 billion tokens in April through trading activity, marking a shift from large coordinated burns to continuous, ecosystem-driven deflation.",
+        img: "https://coinremark.com/wp-content/uploads/ChatGPT-Image-Jan-7-2026-11_14_30-AM-1.png",
+        link: "https://coinremark.com/babydoge-burns-75000000000-tokens-in-april-as-activity-driven-mechanism-continues/"
     },
     'BTT': {
         title: "4BitTorrent Launches BTTInferGrid: The Decentralized Infrastructure Layer for Scalable AI Inference",
@@ -90,10 +90,10 @@ const coinHotTopics = {
         link: "https://www.globenewswire.com/news-release/2026/06/17/3313261/0/en/4BitTorrent-Launches-BTTInferGrid-The-Decentralized-Infrastructure-Layer-for-Scalable-ai-Inference.html"
     },
     'ALT': {
-        title: "Eightco updates $391M treasury, highlights $90M OpenAI exposure and 302M WLD holdings",
-        comment: "Announced participation in World Foundation’s $52.5M funding round alongside Pantera and others, signaling continued strategic support. Treasury composition as of July 26, 2026: $90M OpenAI (indirect), $18M Beast Industries, $1M Mythical Games, 16,278 ETH, ~302M WLD, $142M cash.",
-        img: "https://coingape.com/wp-content/uploads/2025/09/wld_price_surges_20_.webp",
-        link: "https://www.tradingview.com/news/tradingview%3Aab482235efaec%3A0-eightco-updates-391m-treasury-highlights-90m-openai-exposure-and-302m-wld-holdings/"
+        title: "From Infrastructure to Onchain Finance: Kaia’s 2025 Recap and 2026 Direction",
+        comment: "If 2025 was about foundation, 2026 is about activating capital. We are shifting from infrastructure to execution, creating a venue where institutional capital meets retail agility. Learn how LINE integration, DeFi primitives, and RWAs are positioning Kaia as the engine for Asian capital markets.",
+        img: "https://storage.ghost.io/c/e5/2f/e52fcac7-62db-40bd-a733-39d00209d57d/content/images/size/w2000/2026/02/1-20260106_2025-recap---2026-plans.png",
+        link: "https://blog.kaia.io/from-infrastructure-to-onchain-finance-kaias-2025-recap-and-2026-direction/"
     },
     'ETC': {
         title: "Ethereum Classic Reinforces Core Infrastructure with Ongoing Network and Development Support",
@@ -109,9 +109,9 @@ const coinRelatedArticles = {
     'XRP': [{ title: "The headline number in Q1 was tokenized real-world assets on Stellar. Shortly after quarter-end, onchain RWAs crossed $2 billion.", link: "https://stellar.org/blog/foundation-news/q1-2026-execution-at-network-scale?utm_source=chatgpt.com" }],
     'DOGE': [{ title: "From Meme Coin to Mass Retail: BONK Announces Strategic Partnership With Paxos", link: "https://chainwire.org/2026/04/30/from-meme-coin-to-mass-retail-bonk-announces-strategic-partnership-with-paxos/" }],
     'SHIB': [{ title: "Shiba Inu Holder Growth Sparks Controversy as Holder Count Surpasses 1.67M.", link: "https://cryptonews.net/news/altcoins/33114053/?utm_source=chatgpt.com" }],
-    'BABY.D': [{ title: "Litecoin Expands Real-World Utility Through Growing Global Payment Adoption", link: "https://bscscan.com/token/0xc748673057861a797275cd8a068abb95a902e8de?utm_source=chatgpt.com" }],
+    'BABY.D': [{ title: "Los holders de Baby Doge Coin ya poseen más de $3,9 billones", link: "https://es.beincrypto.com/holders-baby-doge-coin-poseen-mas-39-billones/?utm_source=chatgpt.com" }],
     'BTT': [{ title: "BitTorrent Chain Surpasses 335 Million Transactions as On-Chain Activity Continues to Grow", link: "https://bttcscan.com/txs?utm_source=chatgpt.com" }],
-    'ALT': [{ title: "Sam Altman-backed World Network secures $52.5 million in fresh funding to fight online AI deepfakes", link: "https://www.coindesk.com/business/2026/07/24/sam-altman-backed-world-network-secures-fresh-funding-to-fight-online-ai-deepfakes" }],
+    'ALT': [{ title: "Kaia Mini Dapp on LINE Messenger attracts 35 million users in its first month of launch", link: "https://blog.kaia.io/kaia-mini-dapp-on-line-messenger-attracts-35-million-users-in-its-first-month-of-launch/" }],
     'ETC': [{ title: "Ethereum Classic Reinforces Core Infrastructure", link: "#" }]
 };
 // Manual News (각 코인당 5개 이상)
