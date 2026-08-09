@@ -4,86 +4,93 @@ const OcdCoins = [
     {
         symbol: "BTC",
         name: "Bitcoin",
-        labels: ["Aug 1","Aug 2","Aug 3","Aug 4","Aug 5","Aug 6","Aug 7"],
-        netflow: [2.1, -1.4, 0.8, -3.2, 1.5, -0.6, -2.4],
-        reserve: [2.71, 2.705, 2.712, 2.698, 2.715, 2.709, 2.717]
+        labels: ["Aug 3","Aug 4","Aug 5","Aug 6","Aug 7","Aug 8","Aug 9"],
+        netflow: [-1.8, 2.4, -0.9, 1.2, -2.7, 0.5, 1.6],
+        reserve: [2.708, 2.714, 2.701, 2.719, 2.705, 2.722, 2.711]
     },
     {
         symbol: "ETH",
         name: "Ethereum",
-        labels: ["Aug 1","Aug 2","Aug 3","Aug 4","Aug 5","Aug 6","Aug 7"],
-        netflow: [-5.2, 1.1, -3.4, 2.8, -1.9, 0.4, -2.7],
-        reserve: [15.92, 15.88, 15.85, 15.87, 15.83, 15.81, 15.82]
+        labels: ["Aug 3","Aug 4","Aug 5","Aug 6","Aug 7","Aug 8","Aug 9"],
+        netflow: [1.4, -2.8, 3.1, -0.6, -1.9, 2.2, -0.8],
+        reserve: [15.79, 15.84, 15.81, 15.88, 15.76, 15.90, 15.83]
     },
     {
         symbol: "XRP",
         name: "XRP",
-        labels: ["Aug 1","Aug 2","Aug 3","Aug 4","Aug 5","Aug 6","Aug 7"],
-        netflow: [12, -4, 8, -15, 6, 3, -7],
-        reserve: [4.08, 4.09, 4.10, 4.11, 4.10, 4.12, 4.12]
+        labels: ["Aug 3","Aug 4","Aug 5","Aug 6","Aug 7","Aug 8","Aug 9"],
+        netflow: [-9, 14, -3, 7, -11, 5, 2],
+        reserve: [4.09, 4.13, 4.07, 4.15, 4.11, 4.14, 4.10]
     },
     {
         symbol: "USDT",
         name: "Tether",
-        labels: ["Aug 1","Aug 2","Aug 3","Aug 4","Aug 5","Aug 6","Aug 7"],
-        netflow: [120, -80, 45, -30, 90, -50, 20],
-        reserve: [51.8, 52.0, 51.9, 52.2, 52.1, 52.3, 52.4]
+        labels: ["Aug 3","Aug 4","Aug 5","Aug 6","Aug 7","Aug 8","Aug 9"],
+        netflow: [-55, 95, -30, 70, -110, 40, 15],
+        reserve: [52.1, 52.4, 51.9, 52.6, 52.2, 52.5, 52.3]
     },
     {
         symbol: "XLM",
         name: "Stellar",
-        labels: ["Aug 1","Aug 2","Aug 3","Aug 4","Aug 5","Aug 6","Aug 7"],
-        netflow: [1.8, -0.9, 2.4, -1.2, 3.1, 0.5, -0.7],
-        reserve: [42.1, 42.3, 41.9, 42.8, 43.2, 42.7, 43.5]
+        labels: ["Aug 3","Aug 4","Aug 5","Aug 6","Aug 7","Aug 8","Aug 9"],
+        netflow: [0.6, -1.5, 2.0, -0.4, 1.3, -0.9, 0.8],
+        reserve: [42.5, 42.0, 42.9, 42.4, 43.1, 42.6, 42.8]
     },
     {
         symbol: "BABYDOGE",
         name: "Baby Doge Coin",
-        labels: ["Aug 1","Aug 2","Aug 3","Aug 4","Aug 5","Aug 6","Aug 7"],
-        netflow: [0.5, -0.3, 1.1, -0.8, 0.9, 0.2, -0.4],
-        reserve: [18.2, 18.1, 18.4, 18.0, 18.5, 18.3, 18.6]
+        labels: ["Aug 3","Aug 4","Aug 5","Aug 6","Aug 7","Aug 8","Aug 9"],
+        netflow: [-0.6, 0.9, -0.2, 1.0, -0.7, 0.4, -0.1],
+        reserve: [18.3, 18.0, 18.6, 18.2, 18.7, 18.4, 18.5]
     },
     {
         symbol: "ADA",
         name: "Cardano",
-        labels: ["Jul 28","Jul 29","Jul 30","Jul 31","Aug 1","Aug 2","Aug 3"],
-        netflow: [-0.2, 0.6, -0.5, 1.0, -0.3, 0.4, 0.1],
-        reserve: [9.1, 9.2, 9.0, 9.3, 9.15, 9.25, 9.4]
+        labels: ["Aug 3","Aug 4","Aug 5","Aug 6","Aug 7","Aug 8","Aug 9"],
+        netflow: [0.4, -0.7, 0.9, -0.3, 0.6, -0.5, 0.2],
+        reserve: [9.2, 9.05, 9.35, 9.18, 9.42, 9.28, 9.31]
     },
     {
         symbol: "AVAX",
         name: "Avalanche",
-        labels: ["Jul 28","Jul 29","Jul 30","Jul 31","Aug 1","Aug 2","Aug 3"],
-        netflow: [0.8, -1.0, 0.3, 1.5, -0.6, 0.9, -0.2],
-        reserve: [3.4, 3.35, 3.5, 3.45, 3.6, 3.55, 3.7]
+        labels: ["Aug 3","Aug 4","Aug 5","Aug 6","Aug 7","Aug 8","Aug 9"],
+        netflow: [-0.8, 1.3, -0.4, 0.7, -1.1, 0.5, 0.3],
+        reserve: [3.45, 3.38, 3.55, 3.48, 3.62, 3.52, 3.58]
     },
     {
         symbol: "DOT",
         name: "Polkadot",
-        labels: ["Jul 28","Jul 29","Jul 30","Jul 31","Aug 1","Aug 2","Aug 3"],
-        netflow: [-0.4, 0.7, -0.9, 0.5, 1.2, -0.3, 0.6],
-        reserve: [1.12, 1.10, 1.15, 1.13, 1.18, 1.16, 1.20]
+        labels: ["Aug 3","Aug 4","Aug 5","Aug 6","Aug 7","Aug 8","Aug 9"],
+        netflow: [0.5, -0.6, 1.0, -0.3, 0.8, -0.4, 0.2],
+        reserve: [1.14, 1.11, 1.17, 1.13, 1.19, 1.15, 1.16]
     },
     {
         symbol: "KAIA",
         name: "Kaia",
-        labels: ["Aug 1","Aug 2","Aug 3","Aug 4","Aug 5","Aug 6","Aug 7"],
-        netflow: [0.3, -0.5, 0.9, -0.2, 1.1, 0.4, -0.7],
-        reserve: [0.85, 0.84, 0.88, 0.86, 0.90, 0.89, 0.92]
+        labels: ["Aug 3","Aug 4","Aug 5","Aug 6","Aug 7","Aug 8","Aug 9"],
+        netflow: [-0.4, 0.8, -0.2, 0.6, -0.9, 0.3, 0.5],
+        reserve: [0.87, 0.83, 0.91, 0.86, 0.93, 0.88, 0.90]
     },
     {
         symbol: "SHIB",
         name: "Shiba Inu",
-        labels: ["Aug 1","Aug 2","Aug 3","Aug 4","Aug 5","Aug 6","Aug 7"],
-        netflow: [0.5, -0.7, -0.9, -0.7, 0.0, 0.2, 0.1],
-        reserve: [0.85, 0.74, 0.78, 0.76, 0.90, 0.89, 0.92]
+        labels: ["Aug 3","Aug 4","Aug 5","Aug 6","Aug 7","Aug 8","Aug 9"],
+        netflow: [0.2, -0.8, 0.5, -0.3, 0.7, -0.5, 0.1],
+        reserve: [0.82, 0.76, 0.88, 0.80, 0.91, 0.85, 0.87]
     },
     {
         symbol: "BTT",
         name: "BitTorrent",
-        labels: ["Aug 1","Aug 2","Aug 3","Aug 4","Aug 5","Aug 6","Aug 7"],
-        netflow: [0.8, -1.0, 0.3, 1.5, -0.6, 0.9, -0.2],
-        reserve: [3.4, 3.35, 3.5, 3.45, 3.6, 3.55, 3.7]
+        labels: ["Aug 3","Aug 4","Aug 5","Aug 6","Aug 7","Aug 8","Aug 9"],
+        netflow: [-0.5, 1.2, -0.8, 0.4, 0.9, -0.3, 0.6],
+        reserve: [3.42, 3.36, 3.55, 3.48, 3.61, 3.52, 3.58]
+    },
+    {
+        symbol: "WLD",
+        name: "World Coin",
+        labels: ["Aug 3","Aug 4","Aug 5","Aug 6","Aug 7","Aug 8","Aug 9"],
+        netflow: [0.3, -0.8, 1.1, -0.2, 0.7, -0.5, 0.4],
+        reserve: [1.13, 1.09, 1.16, 1.12, 1.19, 1.14, 1.17]
     },
     { symbol: "MATIC", name: "Polygon" },
     { symbol: "TRX", name: "TRON" },
@@ -97,13 +104,6 @@ const OcdCoins = [
     { symbol: "OP", name: "Optimism" },
     { symbol: "SUI", name: "Sui" },
     { symbol: "PEPE", name: "Pepe" },
-      {
-        symbol: "WLD",
-        name: "World Coin",
-        labels: ["Aug 1","Aug 2","Aug 3","Aug 4","Aug 5","Aug 6","Aug 7"],
-        netflow: [-0.4, 0.7, -0.9, 0.5, 1.2, -0.3, 0.6],
-        reserve: [1.12, 1.10, 1.15, 1.13, 1.18, 1.16, 1.20]
-    },
     { symbol: "INJ", name: "Injective" },
     { symbol: "SEI", name: "Sei" },
     { symbol: "TIA", name: "Celestia" },
@@ -178,8 +178,6 @@ const OcdCoins = [
     { symbol: "EOS", name: "EOS" },
     { symbol: "BSV", name: "Bitcoin SV" },
     { symbol: "BTG", name: "Bitcoin Gold" }
-    
-    
 ];
 
 window.OcdCoins = OcdCoins;
