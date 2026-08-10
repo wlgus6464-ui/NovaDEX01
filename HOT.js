@@ -10,7 +10,7 @@ const hotChains = [
     {
         name: "Cysic (CYS)",
         labels: ["Aug 3","Aug 4","Aug 5","Aug 6","Aug 7","Aug 8","Aug 9",],
-        netflow: [3.0, 2.8, 2.0, 2.3, 1.1, 0.5, -0.3],
+        netflow: [2.8, 3.0, 2.0, 2.3, 1.1, 0.5, -0.3],
         reserve: [5.14, 5.11, 5.07, 5.28, 5.19, 5.22, 5.01],
         goToLink: "https://www.bithumb.com/react/trade/order/CYS-KRW"
     },
