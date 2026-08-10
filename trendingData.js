@@ -72,10 +72,10 @@ const coinHotTopics = {
         link: "https://www.globenewswire.com/news-release/2026/03/12/3254667/0/en/Global-Crypto-Card-Spending-Surges-to-18-Billion-Annually-as-House-of-Doge-Targets-Integration-of-Dogecoin-Into-Traditional-Payment-Rails.html"
     },
     'SHIB': {
-        title: "Rakuten Wallet adds XRP and SHIB—exchanges from Rakuten Points are also possible",
-        comment: "On the 15th, Rakuten Wallet added five assets—XRP, DOGE, XLM, SHIB, and TON—to spot trading, and through its share in Rakuten Cash, it also supports payments at Rakuten Pay merchants﻿‍",
-        img: "https://crypto-economy.com//wp-content/uploads/2026/06/Rakuten-Wallet-Launches-SHIB-and-DOGE-Giveaway.jpg",
-        link: "https://jinacoin.ne.jp/kuratenpay-xrp-doge-20260415/?utm_source=chatgpt.com"
+        title: "Shiba Inu Dev Invites Builders To Back To Shibarium",
+        comment: "After a relaunch & full re-sync of Shibarium’s ‘Puppynet’, this crucial testnet is back up & running after a two-year hiatus. At block height 15.16 million, new transactions are finally landing on the testnet with immediate success.﻿‍",
+        img: "https://pbs.twimg.com/media/HNETf7FW0AAP3FT?format=jpg&name=900x900",
+        link: "https://dailycoin.com/shiba-inu-dev-invites-builders-to-back-to-shibarium/"
     },
     'BABY.D': {
         title: "DAO Proposal: Bridging BabyDoge Treasury Tokens for Solana Liquidity",
@@ -108,7 +108,7 @@ const coinRelatedArticles = {
     'ETH': [{ title: "The Arbitrum Foundation 2025 Transparency Report", link: "https://blog.arbitrum.foundation/the-arbitrum-foundation-2025-transparency-report-the-year-of-institutional-adoption" }],
     'XRP': [{ title: "The headline number in Q1 was tokenized real-world assets on Stellar. Shortly after quarter-end, onchain RWAs crossed $2 billion.", link: "https://stellar.org/blog/foundation-news/q1-2026-execution-at-network-scale?utm_source=chatgpt.com" }],
     'DOGE': [{ title: "From Meme Coin to Mass Retail: BONK Announces Strategic Partnership With Paxos", link: "https://chainwire.org/2026/04/30/from-meme-coin-to-mass-retail-bonk-announces-strategic-partnership-with-paxos/" }],
-    'SHIB': [{ title: "Shiba Inu Holder Growth Sparks Controversy as Holder Count Surpasses 1.67M.", link: "https://cryptonews.net/news/altcoins/33114053/?utm_source=chatgpt.com" }],
+    'SHIB': [{ title: "Puppynet Resumes On-Chain Activity as New Blocks and Transactions Begin to Return.", link: "https://puppyscan.shib.io/" }],
     'BABY.D': [{ title: "BabyDoge Bridge Holds Over $547,000 in Cross-Chain Assets Across Four Networks", link: "https://defillama.com/protocol/babydoge-bridge?utm_source=chatgpt.com#protocol-information" }],
     'BTT': [{ title: "BitTorrent Chain Surpasses 335 Million Transactions as On-Chain Activity Continues to Grow", link: "https://bttcscan.com/txs?utm_source=chatgpt.com" }],
     'ALT': [{ title: "Kaia Mini Dapp on LINE Messenger attracts 35 million users in its first month of launch", link: "https://blog.kaia.io/kaia-mini-dapp-on-line-messenger-attracts-35-million-users-in-its-first-month-of-launch/" }],
