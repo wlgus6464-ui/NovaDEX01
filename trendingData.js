@@ -84,10 +84,10 @@ const coinHotTopics = {
         link: "https://www.binance.com/en/square/post/16727071147361?utm_source=chatgpt.com"
     },
     'BTT': {
-        title: "4BitTorrent Launches BTTInferGrid: The Decentralized Infrastructure Layer for Scalable AI Inference",
-        comment: "BTTInferGrid is a decentralized GPU computing network purpose-built for AI inference. By bridging the global supply of idle GPU capacity with the surging demand for AI workloads, BTTInferGrid delivers an open-access, verifiably secure, and pay-as-you-go computing infrastructure for AI developers worldwide.   ",
-        img: "https://ml.globenewswire.com/Resource/Download/09ab6648-d83b-46f3-94c0-13a29ef12639/hdhgds.jpg",
-        link: "https://www.globenewswire.com/news-release/2026/06/17/3313261/0/en/4BitTorrent-Launches-BTTInferGrid-The-Decentralized-Infrastructure-Layer-for-Scalable-ai-Inference.html"
+        title: "BitTorrent to Begin Phased Shutdown of BTTC Bridge",
+        comment: "BitTorrent announced a phased shutdown of the BTTC Bridge. According to the post, deposits will close on June 13, and all withdrawals will end by June 18. Users are advised to migrate mapped tokens such as TRX_e and TRX_b back to their native source chains before the deadline, while BTTC operations, block generation, staking, delegation and validator rewards will not be affected.",
+        img: "https://pbs.twimg.com/media/HKmrxAzWEAAf5bv?format=jpg&name=medium",
+        link: "https://www.tradingview.com/news/coindar%3Ab39822935094b%3A0-bittorrent-to-begin-phased-shutdown-of-bttc-bridge-on-june-13/"
     },
     'ALT': {
         title: "From Infrastructure to Onchain Finance: Kaia’s 2025 Recap and 2026 Direction",
@@ -110,7 +110,7 @@ const coinRelatedArticles = {
     'DOGE': [{ title: "From Meme Coin to Mass Retail: BONK Announces Strategic Partnership With Paxos", link: "https://chainwire.org/2026/04/30/from-meme-coin-to-mass-retail-bonk-announces-strategic-partnership-with-paxos/" }],
     'SHIB': [{ title: "Puppynet Resumes On-Chain Activity as New Blocks and Transactions Begin to Return.", link: "https://puppyscan.shib.io/" }],
     'BABY.D': [{ title: "BabyDoge Bridge Holds Over $547,000 in Cross-Chain Assets Across Four Networks", link: "https://defillama.com/protocol/babydoge-bridge?utm_source=chatgpt.com#protocol-information" }],
-    'BTT': [{ title: "BitTorrent Chain Surpasses 335 Million Transactions as On-Chain Activity Continues to Grow", link: "https://bttcscan.com/txs?utm_source=chatgpt.com" }],
+    'BTT': [{ title: "Blockaid withdraws BTTC bridge exploit alert after shutdown operation confirmed", link: "https://ambcrypto.com/blockaid-withdraws-bttc-bridge-exploit-alert-after-shutdown-operation-confirmed/" }],
     'ALT': [{ title: "Kaia Mini Dapp on LINE Messenger attracts 35 million users in its first month of launch", link: "https://blog.kaia.io/kaia-mini-dapp-on-line-messenger-attracts-35-million-users-in-its-first-month-of-launch/" }],
     'ETC': [{ title: "Ethereum Classic Reinforces Core Infrastructure", link: "#" }]
 };
