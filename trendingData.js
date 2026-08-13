@@ -60,10 +60,10 @@ const coinHotTopics = {
         link: "https://www.coindesk.com/markets/2026/04/14/ether-outpaces-bitcoin-as-etf-flows-split-and-ethereum-activity-jumps-41-on-week"
     },
     'XRP': {
-        title: "“MoneyGram, Figure Markets, and Range to Help Secure the Stellar Network by joining as Tier 1 Validators",
-        comment: "The Stellar Development Foundation (SDF), the non-profit organization that supports the development and growth of Stellar, the blockchain network built to run regulated finance, today announced that MoneyGram, Figure Markets, and Range will operate Tier 1 validators on the Stellar network. The addition of these three organizations, spanning capital markets, global money movement, and blockchain security infrastructure, marks a significant step in expanding the decentralization and resilience of the network’s core infrastructure.",
-        img: "https://cdn.sanity.io/images/e2r40yh6/production-i18n/cab834e0c314ae2fb0eff1edc48226a2c1c6d560-1238x697.png?w=748&h=421&auto=format&dpr=2",
-        link: "https://stellar.org/press/moneygram-figure-markets-and-range-to-help-secure-the-stellar-network-by-joining-as-tier-1-validators?utm_source=chatgpt.com"
+        title: "Tradable Agrees to Bring Up to $1 Billion in Tokenized Private Credit Assets to Stellar",
+        comment: "Tradable, a leading private asset marketplace and tokenization platform, today announced an integration with the Stellar network to tokenize up to $1 billion of private credit assets onchain.The integration builds on Tradable’s mission to bring blockchain technology to traditional asset managers through tokenized institutional-grade investment opportunities across high-quality asset classes including private credit. The platform supports workflows that matter in real markets, including deal lifecycle management, compliance controls, investor onboarding, and ongoing operations. ",
+        img: "https://cdn.sanity.io/images/e2r40yh6/production-i18n/09c9c72ad95e7838fbc66d1ecfc013a09b5f67de-1200x630.png?rect=41,0,1119,630&w=748&h=421&auto=format&dpr=2",
+        link: "https://stellar.org/press/tradable-agrees-to-bring-up-to-usd1-billion-in-tokenized-private-credit-assets-to-stellar?utm_source=chatgpt.com"
     },
     'DOGE': {
         title: "Global Crypto Card Spending Surges to $18 Billion Annually as House of Doge Targets Integration of Dogecoin Into Traditional Payment Rails",
@@ -106,7 +106,7 @@ const coinHotTopics = {
 const coinRelatedArticles = {
     'BTC': [{ title: "Bitcoin ETF Inflows Surpass $10B This Month", link: "#" }],
     'ETH': [{ title: "The Arbitrum Foundation 2025 Transparency Report", link: "https://blog.arbitrum.foundation/the-arbitrum-foundation-2025-transparency-report-the-year-of-institutional-adoption" }],
-    'XRP': [{ title: "The headline number in Q1 was tokenized real-world assets on Stellar. Shortly after quarter-end, onchain RWAs crossed $2 billion.", link: "https://stellar.org/blog/foundation-news/q1-2026-execution-at-network-scale?utm_source=chatgpt.com" }],
+    'XRP': [{ title: "Shortly after quarter-end, onchain RWAs crossed $2 billion, up from $785 million at year-end 2025.", link: "https://stellar.org/blog/foundation-news/q1-2026-execution-at-network-scale?utm_source=chatgpt.com" }],
     'DOGE': [{ title: "From Meme Coin to Mass Retail: BONK Announces Strategic Partnership With Paxos", link: "https://chainwire.org/2026/04/30/from-meme-coin-to-mass-retail-bonk-announces-strategic-partnership-with-paxos/" }],
     'SHIB': [{ title: "Puppynet Resumes On-Chain Activity as New Blocks and Transactions Begin to Return.", link: "https://puppyscan.shib.io/" }],
     'BABY.D': [{ title: "BabyDoge Bridge Holds Over $547,000 in Cross-Chain Assets Across Four Networks", link: "https://defillama.com/protocol/babydoge-bridge?utm_source=chatgpt.com#protocol-information" }],
