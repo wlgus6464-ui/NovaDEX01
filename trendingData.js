@@ -78,10 +78,10 @@ const coinHotTopics = {
         link: "https://u.today/shibarium-posts-74-growth-but-shib-bulls-still-waiting"
     },
     'BABY.D': {
-        title: "DAO Proposal: Bridging BabyDoge Treasury Tokens for Solana Liquidity",
-        comment: "Proposal Summary This proposal seeks to withdraw either $500,000 or $1 million worth of BabyDoge tokens from the treasury to bridge and deploy as liquidity on the Solana network. The goal is to enhance BabyDoge’s presence within the Solana ecosystem, creating better trading options and cross-chain functionality for the community.",
+        title: "BabyDoge`s Real-World Applications and Utility Features",
+        comment: "The ecosystem's main hub is BabyDoge Swap, where users can trade tokens, provide liquidity, and earn in yield farms and staking. Recent upgrades brought Algebra Integral technology into the mix. The integration delivers concentrated liquidity and dynamic fees, cutting gas costs by up to 80% while boosting returns for liquidity providers. These upgrades align BabyDogeSwap with established DEX protocols.",
         img: "https://public.bnbstatic.com/image-proxy/rs_lg_webp/static/content/square/images/7af6495af5c44b768581fae49cbdf888.jpg",
-        link: "https://www.binance.com/en/square/post/16727071147361?utm_source=chatgpt.com"
+        link: "https://bsc.news/post/babydoge-token-price-analysis-2025"
     },
     'BTT': {
         title: "TRON Network - Q2 2026",
@@ -109,7 +109,7 @@ const coinRelatedArticles = {
     'XRP': [{ title: "Shortly after quarter-end, onchain RWAs crossed $2 billion, up from $785 million at year-end 2025.", link: "https://stellar.org/blog/foundation-news/q1-2026-execution-at-network-scale?utm_source=chatgpt.com" }],
     'DOGE': [{ title: "From Meme Coin to Mass Retail: BONK Announces Strategic Partnership With Paxos", link: "https://chainwire.org/2026/04/30/from-meme-coin-to-mass-retail-bonk-announces-strategic-partnership-with-paxos/" }],
     'SHIB': [{ title: "Shibarium DEX Volume Jumps 1,517% But Still Barely Registers", link: "https://adbytes.media/blog/shibarium-dex-volume-jumps-1517-but-still-barely-registers" }],
-    'BABY.D': [{ title: "BabyDoge Bridge Holds Over $547,000 in Cross-Chain Assets Across Four Networks", link: "https://defillama.com/protocol/babydoge-bridge?utm_source=chatgpt.com#protocol-information" }],
+    'BABY.D': [{ title: "BabyDoge Swap Holds Nearly $1.88 Million in TVL as DEX Activity Continues", link: "https://defillama.com/protocol/babydogeswap" }],
     'BTT': [{ title: "BTT Token Guide: BitTorrent Chain on TRON", link: "https://tronwiki.tech/en/articles/btt-token-guide/" }],
     'ALT': [{ title: "카이아, JPYC 유통액 31억원 돌파…온보딩 한 달 만에 1위", link: "https://www.edaily.co.kr/News/Read?mediaCodeNo=257&newsId=03647366645483032" }],
     'ETC': [{ title: "Ethereum Classic Reinforces Core Infrastructure", link: "#" }]
