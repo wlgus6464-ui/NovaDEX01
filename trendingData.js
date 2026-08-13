@@ -90,10 +90,10 @@ const coinHotTopics = {
         link: "https://www.coindesk.com/research/tron-network-q2-2026"
     },
     'ALT': {
-        title: "From Infrastructure to Onchain Finance: Kaia’s 2025 Recap and 2026 Direction",
-        comment: "If 2025 was about foundation, 2026 is about activating capital. We are shifting from infrastructure to execution, creating a venue where institutional capital meets retail agility. Learn how LINE integration, DeFi primitives, and RWAs are positioning Kaia as the engine for Asian capital markets.",
-        img: "https://storage.ghost.io/c/e5/2f/e52fcac7-62db-40bd-a733-39d00209d57d/content/images/size/w2000/2026/02/1-20260106_2025-recap---2026-plans.png",
-        link: "https://blog.kaia.io/from-infrastructure-to-onchain-finance-kaias-2025-recap-and-2026-direction/"
+        title: "카이아, 日 규제 '키맨' 품었다…스테이블코인 공략 속도",
+        comment: "카이아가 일본 가상자산 규제 전문가들이 설립한 컨설팅 기업 피노젝트(finoject)와 손잡고 일본 스테이블코인과 토큰화(Tokenization) 시장 공략에 나선다. 24일 카이아는 피노젝트와 일본 내 스테이블코인과 토큰화, 디지털자산 사업 기회 발굴을 위한 전략적 업무협약(MOU)을 체결했다고 밝혔다. 이번 협약을 통해 피노젝트는 카이아의 일본 사업 확대와 금융 규제 대응을 지원할 예정이다.",
+        img: "https://img.hankyung.com/photo/202607/10bbc858-f744-438f-861d-575d02cd2a75.webp",
+        link: "https://www.hankyung.com/article/202607243596B"
     },
     'ETC': {
         title: "Ethereum Classic Reinforces Core Infrastructure with Ongoing Network and Development Support",
@@ -111,7 +111,7 @@ const coinRelatedArticles = {
     'SHIB': [{ title: "Shibarium DEX Volume Jumps 1,517% But Still Barely Registers", link: "https://adbytes.media/blog/shibarium-dex-volume-jumps-1517-but-still-barely-registers" }],
     'BABY.D': [{ title: "BabyDoge Bridge Holds Over $547,000 in Cross-Chain Assets Across Four Networks", link: "https://defillama.com/protocol/babydoge-bridge?utm_source=chatgpt.com#protocol-information" }],
     'BTT': [{ title: "BTT Token Guide: BitTorrent Chain on TRON", link: "https://tronwiki.tech/en/articles/btt-token-guide/" }],
-    'ALT': [{ title: "Kaia Mini Dapp on LINE Messenger attracts 35 million users in its first month of launch", link: "https://blog.kaia.io/kaia-mini-dapp-on-line-messenger-attracts-35-million-users-in-its-first-month-of-launch/" }],
+    'ALT': [{ title: "카이아, JPYC 유통액 31억원 돌파…온보딩 한 달 만에 1위", link: "https://www.edaily.co.kr/News/Read?mediaCodeNo=257&newsId=03647366645483032" }],
     'ETC': [{ title: "Ethereum Classic Reinforces Core Infrastructure", link: "#" }]
 };
 // Manual News (각 코인당 5개 이상)
