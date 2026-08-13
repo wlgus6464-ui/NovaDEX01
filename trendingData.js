@@ -84,10 +84,10 @@ const coinHotTopics = {
         link: "https://www.binance.com/en/square/post/16727071147361?utm_source=chatgpt.com"
     },
     'BTT': {
-        title: "BitTorrent to Begin Phased Shutdown of BTTC Bridge",
-        comment: "BitTorrent announced a phased shutdown of the BTTC Bridge. According to the post, deposits will close on June 13, and all withdrawals will end by June 18. Users are advised to migrate mapped tokens such as TRX_e and TRX_b back to their native source chains before the deadline, while BTTC operations, block generation, staking, delegation and validator rewards will not be affected.",
-        img: "https://pbs.twimg.com/media/HKmrxAzWEAAf5bv?format=jpg&name=medium",
-        link: "https://www.tradingview.com/news/coindar%3Ab39822935094b%3A0-bittorrent-to-begin-phased-shutdown-of-bttc-bridge-on-june-13/"
+        title: "TRON Network - Q2 2026",
+        comment: "Payments & stablecoins: Daily active users averaged 3.5M (2nd to Solana); ~93% of stablecoin transfer volume was P2P, the highest of any chain. TRON's stablecoin market cap share rose to 28.7%, with USDT on the network hitting an all-time high of ~$89B (47% of USDT dominance).",
+        img: "https://miro.medium.com/v2/resize:fit:1100/format:webp/1*Dj2XWI3kM_E64XxQYKvMWA.png",
+        link: "https://www.coindesk.com/research/tron-network-q2-2026"
     },
     'ALT': {
         title: "From Infrastructure to Onchain Finance: Kaia’s 2025 Recap and 2026 Direction",
@@ -110,7 +110,7 @@ const coinRelatedArticles = {
     'DOGE': [{ title: "From Meme Coin to Mass Retail: BONK Announces Strategic Partnership With Paxos", link: "https://chainwire.org/2026/04/30/from-meme-coin-to-mass-retail-bonk-announces-strategic-partnership-with-paxos/" }],
     'SHIB': [{ title: "Shibarium DEX Volume Jumps 1,517% But Still Barely Registers", link: "https://adbytes.media/blog/shibarium-dex-volume-jumps-1517-but-still-barely-registers" }],
     'BABY.D': [{ title: "BabyDoge Bridge Holds Over $547,000 in Cross-Chain Assets Across Four Networks", link: "https://defillama.com/protocol/babydoge-bridge?utm_source=chatgpt.com#protocol-information" }],
-    'BTT': [{ title: "Blockaid withdraws BTTC bridge exploit alert after shutdown operation confirmed", link: "https://ambcrypto.com/blockaid-withdraws-bttc-bridge-exploit-alert-after-shutdown-operation-confirmed/" }],
+    'BTT': [{ title: "BTT Token Guide: BitTorrent Chain on TRON", link: "https://tronwiki.tech/en/articles/btt-token-guide/" }],
     'ALT': [{ title: "Kaia Mini Dapp on LINE Messenger attracts 35 million users in its first month of launch", link: "https://blog.kaia.io/kaia-mini-dapp-on-line-messenger-attracts-35-million-users-in-its-first-month-of-launch/" }],
     'ETC': [{ title: "Ethereum Classic Reinforces Core Infrastructure", link: "#" }]
 };
