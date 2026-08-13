@@ -80,7 +80,7 @@ const coinHotTopics = {
     'BABY.D': {
         title: "BabyDoge`s Real-World Applications and Utility Features",
         comment: "The ecosystem's main hub is BabyDoge Swap, where users can trade tokens, provide liquidity, and earn in yield farms and staking. Recent upgrades brought Algebra Integral technology into the mix. The integration delivers concentrated liquidity and dynamic fees, cutting gas costs by up to 80% while boosting returns for liquidity providers. These upgrades align BabyDogeSwap with established DEX protocols.",
-        img: "https://public.bnbstatic.com/image-proxy/rs_lg_webp/static/content/square/images/7af6495af5c44b768581fae49cbdf888.jpg",
+        img: "https://public.bnbstatic.com/static/content/square/images/aeee5b57b27240e7888704547ffa5f17.jpg",
         link: "https://bsc.news/post/babydoge-token-price-analysis-2025"
     },
     'BTT': {
