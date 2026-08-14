@@ -84,10 +84,10 @@ const coinHotTopics = {
         link: "https://bsc.news/post/babydoge-token-price-analysis-2025"
     },
     'BTT': {
-        title: "TRON Network - Q2 2026",
-        comment: "Payments & stablecoins: Daily active users averaged 3.5M (2nd to Solana); ~93% of stablecoin transfer volume was P2P, the highest of any chain. TRON's stablecoin market cap share rose to 28.7%, with USDT on the network hitting an all-time high of ~$89B (47% of USDT dominance).",
-        img: "https://miro.medium.com/v2/resize:fit:1100/format:webp/1*Dj2XWI3kM_E64XxQYKvMWA.png",
-        link: "https://www.coindesk.com/research/tron-network-q2-2026"
+        title: "River Secures $8M Strategic Investment from TRON DAO to Accelerate Ecosystem Integrations",
+        comment: "River announced an $8 million strategic investment from TRON DAO, supporting the deployment of River’s chain-abstraction stablecoin infrastructure and accelerating its integration across the TRON ecosystem.",
+        img: "https://chainwire.org/wp-content/uploads/2026/01/Strategic_Round-tronDAO_1769013689RYraUc2GpK.jpg",
+        link: "https://chainwire.org/2026/01/22/river-secures-8m-strategic-investment-from-tron-dao-to-accelerate-ecosystem-integrations/"
     },
     'ALT': {
         title: "카이아, 日 규제 '키맨' 품었다…스테이블코인 공략 속도",
@@ -110,7 +110,7 @@ const coinRelatedArticles = {
     'DOGE': [{ title: "From Meme Coin to Mass Retail: BONK Announces Strategic Partnership With Paxos", link: "https://chainwire.org/2026/04/30/from-meme-coin-to-mass-retail-bonk-announces-strategic-partnership-with-paxos/" }],
     'SHIB': [{ title: "Shibarium Erupts: 4,000% User Surge, Transactions Soar", link: "https://news.shib.io/2025/03/27/shibarium-erupts-4000-user-surge-transactions-soar/" }],
     'BABY.D': [{ title: "BabyDoge Swap Holds Nearly $1.88 Million in TVL as DEX Activity Continues", link: "https://defillama.com/protocol/babydogeswap" }],
-    'BTT': [{ title: "BTT Token Guide: BitTorrent Chain on TRON", link: "https://tronwiki.tech/en/articles/btt-token-guide/" }],
+    'BTT': [{ title: "BitTorrent Records Nearly 250,000 Holders as On-Chain Transfers Surpass 3.3 Million", link: "https://tronscan.org/token20/TAFjULxiVgT4qWk6UZwjqwZXTSaGaqnVp4/holders" }],
     'ALT': [{ title: "카이아, JPYC 유통액 31억원 돌파…온보딩 한 달 만에 1위", link: "https://www.edaily.co.kr/News/Read?mediaCodeNo=257&newsId=03647366645483032" }],
     'ETC': [{ title: "Ethereum Classic Reinforces Core Infrastructure", link: "#" }]
 };
