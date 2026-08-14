@@ -72,10 +72,10 @@ const coinHotTopics = {
         link: "https://www.globenewswire.com/news-release/2026/03/12/3254667/0/en/Global-Crypto-Card-Spending-Surges-to-18-Billion-Annually-as-House-of-Doge-Targets-Integration-of-Dogecoin-Into-Traditional-Payment-Rails.html"
     },
     'SHIB': {
-        title: "Shibarium Posts 74% Growth, but SHIB Bulls Still Waiting",
-        comment: "Shiba Inu's layer 2 blockchain, Shibarium, saw a 74% increase in transactions in the last 24 hours while the wider Shiba Inu ecosystem was quiet. According to Shibarium Scan data, Shibarium's daily transaction count surged from 661 on July 21 to 1,151 on July 22, a 74% increase. While the jump is small, it is nevertheless significant as the SHIB price awaits a bullish market catalyst.﻿‍",
-        img: "https://u.today/sites/default/files/styles/1200x/public/2026-07/1000068957.jpg.webp",
-        link: "https://u.today/shibarium-posts-74-growth-but-shib-bulls-still-waiting"
+        title: "Shibarium DappStore Now Open: Builder’s Big Chance",
+        comment: "A new chapter opens quietly — not with hype, but with architecture. The Shibarium DappStore, a curated hub for decentralized applications, is now live. And with it, Shiba Inu begins turning a sprawling meme-fueled movement into something more structured: a working platform with open doors.‍‌‌​﻿‌​﻿‌​﻿​﻿​﻿​﻿​﻿‌‍​﻿​﻿‌‌‌​​﻿‌​​﻿‌‌​﻿​​‌‍‌‌‌‍​﻿‌‍‌‌‌‍​﻿​﻿​​‌﻿﻿​‌‍‍​‌﻿‌​‌﻿‌​‌﻿​​‌﻿​﻿​﻿‍‍​‍﻿﻿​‍﻿﻿‌‍﻿‌‌‍​‌‌‍‌﻿‌‍​‌‌﻿‍‍‌‍‍‌‌‍﻿‍‌‍‌‌​‍﻿‍‌﻿​﻿‌‍‍​‌‍‍‌‌‍​‍​‍﻿‍‌‍‍‌‌‍﻿﻿​‍﻿﻿‌﻿​﻿‌‍‍​‌‍‍‌‌‍​‍‌‍​‌‌﻿​‍‌‍‍‌‌﻿‌‌‌‍﻿‌​‍﻿‌‌‍‌​‌‍​‌‌﻿​​‌﻿​​‌﻿​﻿‌﻿‌​‌‍﻿﻿‌﻿​‍‌‍‌‌​‍﻿‌‌‍﻿​‌‍‍‌‌﻿‌‍‌‍‌‌​‍﻿﻿‍﻿‍",
+        img: "https://magazine.shib.io/wp-content/uploads/2025/04/Shib-Spotlight-6.png.png",
+        link: "https://magazine.shib.io/shibarium-dappstore-live/"
     },
     'BABY.D': {
         title: "BabyDoge`s Real-World Applications and Utility Features",
@@ -108,7 +108,7 @@ const coinRelatedArticles = {
     'ETH': [{ title: "The Arbitrum Foundation 2025 Transparency Report", link: "https://blog.arbitrum.foundation/the-arbitrum-foundation-2025-transparency-report-the-year-of-institutional-adoption" }],
     'XRP': [{ title: "Shortly after quarter-end, onchain RWAs crossed $2 billion, up from $785 million at year-end 2025.", link: "https://stellar.org/blog/foundation-news/q1-2026-execution-at-network-scale?utm_source=chatgpt.com" }],
     'DOGE': [{ title: "From Meme Coin to Mass Retail: BONK Announces Strategic Partnership With Paxos", link: "https://chainwire.org/2026/04/30/from-meme-coin-to-mass-retail-bonk-announces-strategic-partnership-with-paxos/" }],
-    'SHIB': [{ title: "Shibarium DEX Volume Jumps 1,517% But Still Barely Registers", link: "https://adbytes.media/blog/shibarium-dex-volume-jumps-1517-but-still-barely-registers" }],
+    'SHIB': [{ title: "Shibarium Erupts: 4,000% User Surge, Transactions Soar", link: "https://news.shib.io/2025/03/27/shibarium-erupts-4000-user-surge-transactions-soar/" }],
     'BABY.D': [{ title: "BabyDoge Swap Holds Nearly $1.88 Million in TVL as DEX Activity Continues", link: "https://defillama.com/protocol/babydogeswap" }],
     'BTT': [{ title: "BTT Token Guide: BitTorrent Chain on TRON", link: "https://tronwiki.tech/en/articles/btt-token-guide/" }],
     'ALT': [{ title: "카이아, JPYC 유통액 31억원 돌파…온보딩 한 달 만에 1위", link: "https://www.edaily.co.kr/News/Read?mediaCodeNo=257&newsId=03647366645483032" }],
