@@ -72,10 +72,10 @@ const coinHotTopics = {
         link: "https://www.globenewswire.com/news-release/2026/03/12/3254667/0/en/Global-Crypto-Card-Spending-Surges-to-18-Billion-Annually-as-House-of-Doge-Targets-Integration-of-Dogecoin-Into-Traditional-Payment-Rails.html"
     },
     'SHIB': {
-        title: "Shibarium DappStore Now Open: Builder’s Big Chance",
-        comment: "A new chapter opens quietly — not with hype, but with architecture. The Shibarium DappStore, a curated hub for decentralized applications, is now live. And with it, Shiba Inu begins turning a sprawling meme-fueled movement into something more structured: a working platform with open doors.‍‌‌​﻿‌​﻿‌​﻿​﻿​﻿​﻿​﻿‌‍​﻿​﻿‌‌‌​​﻿‌​​﻿‌‌​﻿​​‌‍‌‌‌‍​﻿‌‍‌‌‌‍​﻿​﻿​​‌﻿﻿​‌‍‍​‌﻿‌​‌﻿‌​‌﻿​​‌﻿​﻿​﻿‍‍​‍﻿﻿​‍﻿﻿‌‍﻿‌‌‍​‌‌‍‌﻿‌‍​‌‌﻿‍‍‌‍‍‌‌‍﻿‍‌‍‌‌​‍﻿‍‌﻿​﻿‌‍‍​‌‍‍‌‌‍​‍​‍﻿‍‌‍‍‌‌‍﻿﻿​‍﻿﻿‌﻿​﻿‌‍‍​‌‍‍‌‌‍​‍‌‍​‌‌﻿​‍‌‍‍‌‌﻿‌‌‌‍﻿‌​‍﻿‌‌‍‌​‌‍​‌‌﻿​​‌﻿​​‌﻿​﻿‌﻿‌​‌‍﻿﻿‌﻿​‍‌‍‌‌​‍﻿‌‌‍﻿​‌‍‍‌‌﻿‌‍‌‍‌‌​‍﻿﻿‍﻿‍",
-        img: "https://magazine.shib.io/wp-content/uploads/2025/04/Shib-Spotlight-6.png.png",
-        link: "https://magazine.shib.io/shibarium-dappstore-live/"
+        title: "Shiba Inu Incineration Rate Surges 2,842%... Is a Supply Shock Coming?",
+        comment: "Through SivaTorch, the automated burning portal for Layer 2 Sybarium, 113.63 million SHIB were permanently excluded in a single day, recording a weekly burn volume of 147.05 million SHIB and demonstrating a 579% surge in the burning rate compared to the previous week. With the number of on-chain holding addresses surpassing 1.6 million, a steady influx of investors continues amidst a trading slump.​﻿‌​﻿‌​﻿​﻿​﻿​﻿​﻿‌‍​﻿​﻿‌‌‌​​﻿‌​​﻿‌‌​﻿​​‌‍‌‌‌‍​﻿‌‍‌‌‌‍​﻿​﻿​​‌﻿﻿​‌‍‍​‌﻿‌​‌﻿‌​‌﻿​​‌﻿​﻿​﻿‍‍​‍﻿﻿​‍﻿﻿‌‍﻿‌‌‍​‌‌‍‌﻿‌‍​‌‌﻿‍‍‌‍‍‌‌‍﻿‍‌‍‌‌​‍﻿‍‌﻿​﻿‌‍‍​‌‍‍‌‌‍​‍​‍﻿‍‌‍‍‌‌‍﻿﻿​‍﻿﻿‌﻿​﻿‌‍‍​‌‍‍‌‌‍​‍‌‍​‌‌﻿​‍‌‍‍‌‌﻿‌‌‌‍﻿‌​‍﻿‌‌‍‌​‌‍​‌‌﻿​​‌﻿​​‌﻿​﻿‌﻿‌​‌‍﻿﻿‌﻿​‍‌‍‌‌​‍﻿‌‌‍﻿​‌‍‍‌‌﻿‌‍‌‍‌‌​‍﻿﻿‍﻿‍",
+        img: "https://nimage.g-enews.com/phpwas/restmb_allidxmake.php?idx=5&simg=2026061705515002905e7e8286d563912477188.jpg",
+        link: "https://www.g-enews.com/article/Securities/2026/08/202608170354112971e7e8286d56_1?shem=dsdf,sharefoc,agadiscoversdl,,sh/x/discover/m1/4"
     },
     'BABY.D': {
         title: "Baby Doge Teases Major Q3 Development After Surviving Three Market Crashes",
@@ -108,7 +108,7 @@ const coinRelatedArticles = {
     'ETH': [{ title: "The Arbitrum Foundation 2025 Transparency Report", link: "https://blog.arbitrum.foundation/the-arbitrum-foundation-2025-transparency-report-the-year-of-institutional-adoption" }],
     'XRP': [{ title: "Shortly after quarter-end, onchain RWAs crossed $2 billion, up from $785 million at year-end 2025.", link: "https://stellar.org/blog/foundation-news/q1-2026-execution-at-network-scale?utm_source=chatgpt.com" }],
     'DOGE': [{ title: "From Meme Coin to Mass Retail: BONK Announces Strategic Partnership With Paxos", link: "https://chainwire.org/2026/04/30/from-meme-coin-to-mass-retail-bonk-announces-strategic-partnership-with-paxos/" }],
-    'SHIB': [{ title: "Shibarium Erupts: 4,000% User Surge, Transactions Soar", link: "https://news.shib.io/2025/03/27/shibarium-erupts-4000-user-surge-transactions-soar/" }],
+    'SHIB': [{ title: "The BNB Foundation has officially announced the successful completion of the 36th quarterly BNB token burn by BNB Chain.", link: "https://www.bnbchain.org/en/blog/36th-bnb-burn" }],
     'BABY.D': [{ title: "Floki Expands Beyond Meme Coin Origins With a Growing Web3 Ecosystem", link: "https://floki.com/" }],
     'BTT': [{ title: "BitTorrent Records Nearly 250,000 Holders as On-Chain Transfers Surpass 3.3 Million", link: "https://tronscan.org/token20/TAFjULxiVgT4qWk6UZwjqwZXTSaGaqnVp4/holders" }],
     'ALT': [{ title: "카이아, JPYC 유통액 31억원 돌파…온보딩 한 달 만에 1위", link: "https://www.edaily.co.kr/News/Read?mediaCodeNo=257&newsId=03647366645483032" }],
