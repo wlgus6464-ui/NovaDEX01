@@ -1,37 +1,37 @@
 // trendingData.js
 const trendingData = [
     {
-        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTNKZoQyhsuxeP60iXRTQQX7pUlvBcvTO230x8ta7Stqyb0X5GMw7K31sKJ&s=10",
-        title: "Dexe (DEXE)",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-tu7mkTwSKwPlruCcUrqYmorvvykhp6EWeFQcK7JACH3APsOcD6UPzuuh&s=10",
+        title: "Biconomy (BICO)",
         price: "$302B",
-        startDate: "2026-07-24T00:00:00",
-        endDate: "2026-07-31T23:59:59",
-        prediction: "+260%",
-        bannerImage: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoAz2lVSy2n8WzpLRzUNj4btnBWcxvC2P0o4xGg-3pcb0bTQtNVXTUgtq7&s=10",
-        bannerText: "In the alt-coin market, some stocks are showing strength based on individual materials. While Bitcoin (BTC) does not have a clear direction, selective buying is flowing in, centering on artificial intelligence (AI), on-chain infrastructure, and governance-related stocks. DEXE showed the most prominent trend, rising 19.04 percent in the top 24 hours of increase based on the coin market cap on the 22nd. DEXE is a decentralized autonomous organization (DAO) governance tooling project, which recently rebounded with the listing of virtual asset (cryptocurrency) exchanges such as CEX and expectations for upgrading DAO governance. The flow to incorporate AI agents into DAO operations is also cited as a factor that strengthened related narratives.",
-        participateLink: "https://www.bithumb.com/react/trade/order/DEXE-KRW"
+        startDate: "2026-08-02T00:00:00",
+        endDate: "2026-08-09T23:59:59",
+        prediction: "+612%",
+        bannerImage: "https://i.ytimg.com/vi/Ta2rAwX3kVg/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCXkDZ7ads-4qCykZuVTEtLW34HqQ",
+        bannerText: "Data from global cryptocurrency exchange Binance on June 21 showed BICO up more than 90% from 24 hours earlier. The token traded at $0.0632, with a market capitalization of about $64 million. The rally has been linked to news that Biconomy plans to list Dream Bowl I Meme Coin Tokens. Nasdaq-listed Scilex Holding Company said on June 16 that the Dream Bowl token could be listed on the Biconomy exchange as early as June 23. Scilex previously said the listing could provide liquidity to Dream Bowl token holders and support broader distribution of the token.",
+        participateLink: "https://www.bithumb.com/react/trade/order/BICO-KRW"
     },
     {
-        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSwhpEQds0CNKnT7pxYzb9KU46UhAHkY-Z7J9hlqHgAYXfFhGMuKY3VOIE&s=10",
-        title: "Euler (EUL)",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNQ5Q7c0SnlrAYhyDUIZUHZwWdx_ME2lrwOTk46o9GVeKF1wM8Zj2f6Q8k&s=10",
+        title: "Cysic (CYS)",
         price: "$225B",
-        startDate: "2026-07-24T00:00:00",
-        endDate: "2026-07-31T23:59:59",
-        prediction: "+180%",
-        bannerImage: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlNEDmCOfrUxAwoPFqrS2GoZIvpmRXt21IjS0Fgymj7oAjXzBKV5VdyX4&s=10",
-        bannerText: "Euler (EUL) is a digital token of the Euler platform, a decentralized finance (DeFi) protocol built on Ethereum. Users can borrow and lend various digital assets through functions such as unauthorized lending and efficient risk management. The EUL token is used for governance, allowing holders to vote on platform decisions and to use it in a reward structure. The platform was founded in 2021 by Michael Bentley, Doug Hoyte, and Jack Prior. Euler (EUL) is a digital token that operates within the Euler ecosystem, a platform designed primarily for various financial activities in decentralized finance (DeFi). As an encryption token, EUL functions as the default utility token of the Euler platform. The token is built on Ethereum and follows the widely accepted ERC-20 token standard that guarantees compatibility with a wide range of wallets and exchanges.",
-        participateLink: "https://www.bithumb.com/react/trade/order/EUL-KRW"
+        startDate: "2026-08-04T00:00:00",
+        endDate: "2026-08-15T23:59:59",
+        prediction: "+518%",
+        bannerImage: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR66EDLlOzf1FO91MpRCAHPNGovkFFmhSsBJqCcuPVh1Q&s",
+        bannerText: "Something is stirring around Cysic again, and traders who blinked yesterday missed a wild ride. A zero-knowledge proving token, which most people had never heard of six months ago, is suddenly one of the loudest names in crypto chats. Nobody seems fully sure where this goes next.",
+        participateLink: "https://www.bithumb.com/react/trade/order/CYS-KRW"
     },
     {
         img: "https://public.bnbstatic.com/static/content/square/images/2fd06595c2c343298c933984d2492fb5.png",
         title: "Pudgy Penguins (PENGU)",
         price: "$223B",
-        startDate: "2026-07-27T00:00:00",
-        endDate: "2026-08-03T23:59:59",
-        prediction: "+255%",
+        startDate: "2026-08-18T00:00:00",
+        endDate: "2026-08-24T23:59:59",
+        prediction: "+511%",
         bannerImage: "https://img.bgstatic.com/multiLang/image/social/41085086361f5f913e0fc3ad474cf5911734708802965.jpeg",
         bannerText: "The Pudgy Penguins ecosystem has recently experienced large price volatility and increased trading volumes, which on-chain data has attributed to both underlying growth and technical market mechanisms. While some analysts point to the timing of the token unlocking as the main reason for the recent liquidity, others are highlighting the project's recent expansion into the mainstream financial and gaming sectors. The PENGU token, a cryptocurrency endemic to the Pudgy Penguins ecosystem, is up more than 30% over the past month since hitting a 12-month low earlier this year.",
-        participateLink: "https://www.upbit.com/exchange?code=CRIX.UPBIT.KRW-MIRA"
+        participateLink: "https://www.upbit.com/exchange?code=CRIX.UPBIT.KRW-0G"
     },
     {
         img: "https://img.magnific.com/free-vector/modern-coming-soon-new-arrival-background-with-spot-light-effect_1017-57496.jpg?semt=ais_hybrid&w=740&q=80",
