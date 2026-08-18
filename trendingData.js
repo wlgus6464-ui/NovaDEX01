@@ -60,10 +60,10 @@ const coinHotTopics = {
         link: "https://www.coindesk.com/markets/2026/04/14/ether-outpaces-bitcoin-as-etf-flows-split-and-ethereum-activity-jumps-41-on-week"
     },
     'XRP': {
-        title: "Tradable Agrees to Bring Up to $1 Billion in Tokenized Private Credit Assets to Stellar",
-        comment: "Tradable, a leading private asset marketplace and tokenization platform, today announced an integration with the Stellar network to tokenize up to $1 billion of private credit assets onchain.The integration builds on Tradable’s mission to bring blockchain technology to traditional asset managers through tokenized institutional-grade investment opportunities across high-quality asset classes including private credit. The platform supports workflows that matter in real markets, including deal lifecycle management, compliance controls, investor onboarding, and ongoing operations. ",
-        img: "https://cdn.sanity.io/images/e2r40yh6/production-i18n/09c9c72ad95e7838fbc66d1ecfc013a09b5f67de-1200x630.png?rect=41,0,1119,630&w=748&h=421&auto=format&dpr=2",
-        link: "https://stellar.org/press/tradable-agrees-to-bring-up-to-usd1-billion-in-tokenized-private-credit-assets-to-stellar?utm_source=chatgpt.com"
+        title: "XRP ETFs: The Institutional Era Has Begun",
+        comment: "U.S. spot XRP ETFs did not record a single net outflow day in their first month. By December 16, 2025, cumulative inflows had crossed $1 billion, making XRP the fastest digital asset to reach that milestone since Ethereum's ETF launch.",
+        img: "https://cdn.blockmedia.co.kr/wp-content/uploads/2025/11/20251116-084700-1200x800.png",
+        link: "https://ripple.com/insights/xrp-etfs-the-institutional-era-has-begun/?utm_source=chatgpt.com"
     },
     'DOGE': {
         title: "Global Crypto Card Spending Surges to $18 Billion Annually as House of Doge Targets Integration of Dogecoin Into Traditional Payment Rails",
@@ -106,7 +106,7 @@ const coinHotTopics = {
 const coinRelatedArticles = {
     'BTC': [{ title: "Bitcoin ETF Inflows Surpass $10B This Month", link: "#" }],
     'ETH': [{ title: "The Arbitrum Foundation 2025 Transparency Report", link: "https://blog.arbitrum.foundation/the-arbitrum-foundation-2025-transparency-report-the-year-of-institutional-adoption" }],
-    'XRP': [{ title: "Shortly after quarter-end, onchain RWAs crossed $2 billion, up from $785 million at year-end 2025.", link: "https://stellar.org/blog/foundation-news/q1-2026-execution-at-network-scale?utm_source=chatgpt.com" }],
+    'XRP': [{ title: "Solana's monthly ETF inflows dropped from $419 million in November 2025 to $38.69 million in April 2026, but May has rebounded to $103 million.", link: "https://finance.yahoo.com/markets/crypto/articles/why-xrp-etfs-pulling-more-144944588.html?utm_source=chatgpt.com&guccounter=1" }],
     'DOGE': [{ title: "From Meme Coin to Mass Retail: BONK Announces Strategic Partnership With Paxos", link: "https://chainwire.org/2026/04/30/from-meme-coin-to-mass-retail-bonk-announces-strategic-partnership-with-paxos/" }],
     'SHIB': [{ title: "The BNB Foundation has officially announced the successful completion of the 36th quarterly BNB token burn by BNB Chain.", link: "https://www.bnbchain.org/en/blog/36th-bnb-burn" }],
     'BABY.D': [{ title: "Floki Expands Beyond Meme Coin Origins With a Growing Web3 Ecosystem", link: "https://floki.com/" }],
