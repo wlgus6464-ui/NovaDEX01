@@ -62,7 +62,7 @@ const coinHotTopics = {
     'XRP': {
         title: "XRP futures open interest surges…The selling bias continues",
         comment: "As XRP recently tested the long-term low in the $0.98 range again amid a correction, open interest (OI) in the Binance futures market surged 28.6% over the past two weeks. According to blockchain media outlet U.Today on the 17th (local time), Binance’s outstanding XRP positions increased from about $181 million on August 3 to $232.7 million on August 17. Accordingly, XRP open interest rose to its highest level since June 2026.",
-        img: "https://thumbnews.nateimg.co.kr/view610///news.nateimg.co.kr/orgImg/iu/2026/08/18/693662_641527_1150.jpg",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBYwvJ1fSdWJ8nXh3J-AUIpGqzTocajSEv0PgOFq86CDBkcK9xyM5YqkQ&s=10",
         link: "https://news.nate.com/view/20260818n14473"
     },
     'DOGE': {
