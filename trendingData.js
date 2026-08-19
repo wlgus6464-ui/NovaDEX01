@@ -60,10 +60,10 @@ const coinHotTopics = {
         link: "https://www.coindesk.com/markets/2026/04/14/ether-outpaces-bitcoin-as-etf-flows-split-and-ethereum-activity-jumps-41-on-week"
     },
     'XRP': {
-        title: "XRP ETFs: The Institutional Era Has Begun",
-        comment: "U.S. spot XRP ETFs did not record a single net outflow day in their first month. By December 16, 2025, cumulative inflows had crossed $1 billion, making XRP the fastest digital asset to reach that milestone since Ethereum's ETF launch.",
-        img: "https://cdn.blockmedia.co.kr/wp-content/uploads/2025/11/20251116-084700-1200x800.png",
-        link: "https://ripple.com/insights/xrp-etfs-the-institutional-era-has-begun/?utm_source=chatgpt.com"
+        title: "XRP futures open interest surges…The selling bias continues",
+        comment: "As XRP recently tested the long-term low in the $0.98 range again amid a correction, open interest (OI) in the Binance futures market surged 28.6% over the past two weeks. According to blockchain media outlet U.Today on the 17th (local time), Binance’s outstanding XRP positions increased from about $181 million on August 3 to $232.7 million on August 17. Accordingly, XRP open interest rose to its highest level since June 2026.",
+        img: "https://thumbnews.nateimg.co.kr/view610///news.nateimg.co.kr/orgImg/iu/2026/08/18/693662_641527_1150.jpg",
+        link: "https://news.nate.com/view/20260818n14473"
     },
     'DOGE': {
         title: "Global Crypto Card Spending Surges to $18 Billion Annually as House of Doge Targets Integration of Dogecoin Into Traditional Payment Rails",
@@ -84,10 +84,10 @@ const coinHotTopics = {
         link: "https://x.com/BabyDoge/status/2086003982670213440"
     },
     'BTT': {
-        title: "River Secures $8M Strategic Investment from TRON DAO to Accelerate Ecosystem Integrations",
-        comment: "River announced an $8 million strategic investment from TRON DAO, supporting the deployment of River’s chain-abstraction stablecoin infrastructure and accelerating its integration across the TRON ecosystem.",
-        img: "https://chainwire.org/wp-content/uploads/2026/01/Strategic_Round-tronDAO_1769013689RYraUc2GpK.jpg",
-        link: "https://chainwire.org/2026/01/22/river-secures-8m-strategic-investment-from-tron-dao-to-accelerate-ecosystem-integrations/"
+        title: "BitTorrent Chain Enables BTT Holders to Support Network Security Through Staking and Validator Delegation",
+        comment: "BitTorrent Chain allows BTT holders to participate in network operations and security by staking their tokens and delegating them to validators. Through this structure, token holders can contribute to the network's Proof-of-Stake ecosystem without directly operating validator infrastructure, supporting the decentralization and security of the BitTorrent Chain.",
+        img: "https://miro.medium.com/v2/0*9wQmGcrlKPne8_d3",
+        link: "https://bt.io/"
     },
     'ALT': {
         title: "카이아, 日 규제 '키맨' 품었다…스테이블코인 공략 속도",
@@ -106,11 +106,11 @@ const coinHotTopics = {
 const coinRelatedArticles = {
     'BTC': [{ title: "Bitcoin ETF Inflows Surpass $10B This Month", link: "#" }],
     'ETH': [{ title: "The Arbitrum Foundation 2025 Transparency Report", link: "https://blog.arbitrum.foundation/the-arbitrum-foundation-2025-transparency-report-the-year-of-institutional-adoption" }],
-    'XRP': [{ title: "Solana's monthly ETF inflows dropped from $419 million in November 2025 to $38.69 million in April 2026, but May has rebounded to $103 million.", link: "https://finance.yahoo.com/markets/crypto/articles/why-xrp-etfs-pulling-more-144944588.html?utm_source=chatgpt.com&guccounter=1" }],
+    'XRP': [{ title: "AVAX Open Interest Climbs 10.4% To $224 Million, Is $30 Possible?", link: "https://www.newsbtc.com/news/avax-open-interest-224-million/?utm_source=chatgpt.com" }],
     'DOGE': [{ title: "From Meme Coin to Mass Retail: BONK Announces Strategic Partnership With Paxos", link: "https://chainwire.org/2026/04/30/from-meme-coin-to-mass-retail-bonk-announces-strategic-partnership-with-paxos/" }],
     'SHIB': [{ title: "The BNB Foundation has officially announced the successful completion of the 36th quarterly BNB token burn by BNB Chain.", link: "https://www.bnbchain.org/en/blog/36th-bnb-burn" }],
     'BABY.D': [{ title: "Floki Expands Beyond Meme Coin Origins With a Growing Web3 Ecosystem", link: "https://floki.com/" }],
-    'BTT': [{ title: "BitTorrent Records Nearly 250,000 Holders as On-Chain Transfers Surpass 3.3 Million", link: "https://tronscan.org/token20/TAFjULxiVgT4qWk6UZwjqwZXTSaGaqnVp4/holders" }],
+    'BTT': [{ title: "Staking Parameters on Avalanche​", link: "https://build.avax.network/docs/primary-network/validate/how-to-stake" }],
     'ALT': [{ title: "카이아, JPYC 유통액 31억원 돌파…온보딩 한 달 만에 1위", link: "https://www.edaily.co.kr/News/Read?mediaCodeNo=257&newsId=03647366645483032" }],
     'ETC': [{ title: "Ethereum Classic Reinforces Core Infrastructure", link: "#" }]
 };
