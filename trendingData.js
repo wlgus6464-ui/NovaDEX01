@@ -60,10 +60,10 @@ const coinHotTopics = {
         link: "https://www.coindesk.com/markets/2026/04/14/ether-outpaces-bitcoin-as-etf-flows-split-and-ethereum-activity-jumps-41-on-week"
     },
     'XRP': {
-        title: "XRP futures open interest surges…The selling bias continues",
-        comment: "As XRP recently tested the long-term low in the $0.98 range again amid a correction, open interest (OI) in the Binance futures market surged 28.6% over the past two weeks. According to blockchain media outlet U.Today on the 17th (local time), Binance’s outstanding XRP positions increased from about $181 million on August 3 to $232.7 million on August 17. Accordingly, XRP open interest rose to its highest level since June 2026.",
-        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBYwvJ1fSdWJ8nXh3J-AUIpGqzTocajSEv0PgOFq86CDBkcK9xyM5YqkQ&s=10",
-        link: "https://news.nate.com/view/20260818n14473"
+        title: "리플·전북은행 맞손…국내 은행 최초 '리플 페이먼츠' 도입",
+        comment: "리플이 JB금융그룹 전북은행과 전략적 파트너십을 체결하고 블록체인 기반 국경 간 결제 등 차세대 디지털 금융 생태계 구축에 협력한다고 18일 밝혔다. 이번 파트너십 체결식에는 피오나 머레이 리플 아시아태평양(APAC) 총괄을 비롯한 리플 주요 경영진과 박춘원 전북은행장 등 양사 관계자들이 참석했다. 양사는 디지털자산의 제도권 편입과 금융산업의 디지털 전환에 대응해 국경 간 결제 시스템을 비롯한 주요 디지털 금융 분야에서 포괄적인 협력을 추진할 계획이다.",
+        img: "https://s3.tradingview.com/news/image/bloomingbit:c8dc24f5065a7-32250994d8f8e58378eff9532e6e1011-resized.webp",
+        link: "https://kr.tradingview.com/news/bloomingbit:c8dc24f5065a7:0/"
     },
     'DOGE': {
         title: "Global Crypto Card Spending Surges to $18 Billion Annually as House of Doge Targets Integration of Dogecoin Into Traditional Payment Rails",
@@ -106,7 +106,7 @@ const coinHotTopics = {
 const coinRelatedArticles = {
     'BTC': [{ title: "Bitcoin ETF Inflows Surpass $10B This Month", link: "#" }],
     'ETH': [{ title: "The Arbitrum Foundation 2025 Transparency Report", link: "https://blog.arbitrum.foundation/the-arbitrum-foundation-2025-transparency-report-the-year-of-institutional-adoption" }],
-    'XRP': [{ title: "AVAX Open Interest Climbs 10.4% To $224 Million, Is $30 Possible?", link: "https://www.newsbtc.com/news/avax-open-interest-224-million/?utm_source=chatgpt.com" }],
+    'XRP': [{ title: "As a Hedera Council member, Standard Bank leverages Hedera to revolutionize financial services.", link: "https://hedera.com/case-study/standard-bank/" }],
     'DOGE': [{ title: "From Meme Coin to Mass Retail: BONK Announces Strategic Partnership With Paxos", link: "https://chainwire.org/2026/04/30/from-meme-coin-to-mass-retail-bonk-announces-strategic-partnership-with-paxos/" }],
     'SHIB': [{ title: "The BNB Foundation has officially announced the successful completion of the 36th quarterly BNB token burn by BNB Chain.", link: "https://www.bnbchain.org/en/blog/36th-bnb-burn" }],
     'BABY.D': [{ title: "Floki Expands Beyond Meme Coin Origins With a Growing Web3 Ecosystem", link: "https://floki.com/" }],
