@@ -60,10 +60,10 @@ const coinHotTopics = {
         link: "https://www.coindesk.com/markets/2026/04/14/ether-outpaces-bitcoin-as-etf-flows-split-and-ethereum-activity-jumps-41-on-week"
     },
     'XRP': {
-        title: "리플·전북은행 맞손…국내 은행 최초 '리플 페이먼츠' 도입",
-        comment: "리플이 JB금융그룹 전북은행과 전략적 파트너십을 체결하고 블록체인 기반 국경 간 결제 등 차세대 디지털 금융 생태계 구축에 협력한다고 18일 밝혔다. 이번 파트너십 체결식에는 피오나 머레이 리플 아시아태평양(APAC) 총괄을 비롯한 리플 주요 경영진과 박춘원 전북은행장 등 양사 관계자들이 참석했다. 양사는 디지털자산의 제도권 편입과 금융산업의 디지털 전환에 대응해 국경 간 결제 시스템을 비롯한 주요 디지털 금융 분야에서 포괄적인 협력을 추진할 계획이다.",
-        img: "https://s3.tradingview.com/news/image/bloomingbit:c8dc24f5065a7-32250994d8f8e58378eff9532e6e1011-resized.webp",
-        link: "https://kr.tradingview.com/news/bloomingbit:c8dc24f5065a7:0/"
+        title: "XRP ETFs: The Institutional Era Has Begun",
+        comment: "Perhaps no data point captures the moment better than a routine regulatory filing. In March 2026, Goldman Sachs disclosed a $153.8 million position in spot XRP ETFs through its Q4 2025 13F filing, making it the single largest known institutional holder of XRP ETF shares in the United States. Of the top 30 institutional holders collectively controlling just over $211 million in XRP ETF exposure, Goldman accounts for roughly 73%.",
+        img: "https://cdn.blockmedia.co.kr/wp-content/uploads/2025/11/20251116-084700-1200x800.png",
+        link: "https://ripple.com/insights/xrp-etfs-the-institutional-era-has-begun/?utm_source=chatgpt.com"
     },
     'DOGE': {
         title: "Global Crypto Card Spending Surges to $18 Billion Annually as House of Doge Targets Integration of Dogecoin Into Traditional Payment Rails",
@@ -106,7 +106,7 @@ const coinHotTopics = {
 const coinRelatedArticles = {
     'BTC': [{ title: "Bitcoin ETF Inflows Surpass $10B This Month", link: "#" }],
     'ETH': [{ title: "The Arbitrum Foundation 2025 Transparency Report", link: "https://blog.arbitrum.foundation/the-arbitrum-foundation-2025-transparency-report-the-year-of-institutional-adoption" }],
-    'XRP': [{ title: "As a Hedera Council member, Standard Bank leverages Hedera to revolutionize financial services.", link: "https://hedera.com/case-study/standard-bank/" }],
+    'XRP': [{ title: "Why XRP ETFs Are Pulling in More Money Than Solana ETFs Despite the Price Lag", link: "https://finance.yahoo.com/markets/crypto/articles/why-xrp-etfs-pulling-more-144944588.html?utm_source=chatgpt.com" }],
     'DOGE': [{ title: "From Meme Coin to Mass Retail: BONK Announces Strategic Partnership With Paxos", link: "https://chainwire.org/2026/04/30/from-meme-coin-to-mass-retail-bonk-announces-strategic-partnership-with-paxos/" }],
     'SHIB': [{ title: "The BNB Foundation has officially announced the successful completion of the 36th quarterly BNB token burn by BNB Chain.", link: "https://www.bnbchain.org/en/blog/36th-bnb-burn" }],
     'BABY.D': [{ title: "Floki Expands Beyond Meme Coin Origins With a Growing Web3 Ecosystem", link: "https://floki.com/" }],
