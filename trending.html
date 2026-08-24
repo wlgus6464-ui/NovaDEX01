@@ -42,252 +42,200 @@
         .nav-item.active {
             color: var(--primary);
         }
+        .main {
+            margin-left: 260px;
+            padding: 40px;
+        }
         .pool-card {
             background: #11141f;
             border-radius: 16px;
             padding: 28px;
             margin-bottom: 40px;
+            border: 1px solid var(--border);
         }
         .card-content {
             display: flex;
             gap: 30px;
+            flex-wrap: wrap;
         }
         .card-left {
             flex: 1;
+            min-width: 280px;
         }
         .card-right {
-            flex: 1;
+            flex: 1.2;
+            min-width: 300px;
         }
-        .coin-logo {
-            width: 80px;
-            height: 80px;
-            object-fit: contain;
-            border-radius: 50%;
-            margin-bottom: 16px;
+        .coin-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 8px;
         }
-        .banner-image {
-            width: 100%;
-            height: 220px;
+        .coin-header img {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
             object-fit: cover;
-            border-radius: 12px;
-            margin-bottom: 12px;
         }
-        .banner-text {
-            background: rgba(255,255,255,0.08);
-            color: #ddd;
-            padding: 18px;
-            border-radius: 12px;
+        .coin-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+        }
+        .status-ongoing {
+            color: var(--primary);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .status-end {
+            color: var(--danger);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .prediction-label {
+            color: #aaa;
+            font-size: 0.9rem;
+            margin-top: 18px;
+        }
+        .prediction-value {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin: 4px 0;
+        }
+        .price-sub {
+            color: #888;
             font-size: 0.95rem;
-            line-height: 1.5;
-            white-space: pre-wrap;
-            word-break: break-word;
         }
-        .progress-bar-container {
-            margin: 12px 0;
-            height: 10px;
-            background: #1f222b;
+        .date-row {
+            margin-top: 20px;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+        .progress-track {
+            height: 8px;
+            background: #2a3140;
             border-radius: 999px;
+            margin: 18px 0 16px;
             overflow: hidden;
-            position: relative;
         }
         .progress-bar {
             height: 100%;
             border-radius: 999px;
-            transition: width 4s ease-in-out;
-            position: relative;
-        }
-        .progress-bar.end {
-            background: var(--primary);
-            width: 100%;
-        }
-        .progress-bar.ongoing {
-            background: linear-gradient(90deg, #FFD700, #FFA500, #FFD700);
-            background-size: 200% 100%;
-            animation: goldShimmer 3s linear infinite;
-            box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-        }
-        .progress-bar.ongoing::after {
-            content: '';
-            position: absolute;
-            right: -2px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 18px;
-            height: 18px;
-            background: #fff;
-            border-radius: 50%;
-            box-shadow: 0 0 12px #fff, 0 0 24px #FFD700, 0 0 40px #FFA500;
-            animation: tipGlow 1.5s ease-in-out infinite;
-            z-index: 5;
-        }
-        @keyframes goldShimmer {
-            0% { background-position: 200% 0; }
-            100% { background-position: -200% 0; }
-        }
-        @keyframes tipGlow {
-            0%, 100% {
-                box-shadow: 0 0 12px #fff, 0 0 24px #FFD700, 0 0 40px #FFA500;
-                transform: translateY(-50%) scale(1);
-            }
-            50% {
-                box-shadow: 0 0 20px #fff, 0 0 36px #FFD700, 0 0 60px #FFA500;
-                transform: translateY(-50%) scale(1.15);
-            }
+            width: 0%;
+            transition: width 3.5s ease-in-out;
         }
         .countdown {
             display: flex;
-            gap: 12px;
-            margin: 20px 0 30px;
+            gap: 10px;
+            margin-bottom: 20px;
         }
         .countdown-box {
-            background: #1f222b;
-            padding: 12px 16px;
-            border-radius: 8px;
+            background: #1a1f2b;
+            border-radius: 10px;
+            padding: 10px 14px;
             text-align: center;
-            min-width: 60px;
+            min-width: 52px;
         }
         .countdown-box .number {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 700;
+            display: block;
         }
-        button {
+        .countdown-box div:last-child {
+            font-size: 0.75rem;
+            color: #888;
+        }
+        .participate-btn {
+            display: block;
             width: 100%;
-            padding: 16px;
+            padding: 14px;
             background: var(--primary);
-            color: black;
+            color: #000;
             border: none;
             border-radius: 999px;
             font-weight: 700;
-            font-size: 1.1rem;
-            transition: all 0.3s;
+            font-size: 1.05rem;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            transition: all 0.25s;
         }
-        button:hover {
+        .participate-btn:hover {
             transform: scale(1.02);
+            box-shadow: 0 0 18px rgba(124,255,107,0.4);
         }
-        @media (max-width: 768px) {
-            .card-content {
-                flex-direction: column;
-            }
-            .card-right {
-                order: -1;
-            }
-            .banner-image {
-                height: 180px;
-            }
-            .banner-text {
-                font-size: 0.9rem;
-            }
+        .banner-img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 14px;
+            margin-bottom: 16px;
+        }
+        .banner-text {
+            background: #1a1f2b;
+            border-radius: 14px;
+            padding: 18px 20px;
+            font-size: 0.92rem;
+            line-height: 1.65;
+            color: #ccc;
+            max-height: 220px;
+            overflow-y: auto;
+        }
+        @media (max-width: 900px) {
+            .main { margin-left: 0; padding: 20px; }
+            .card-content { flex-direction: column; }
         }
     </style>
 </head>
 <body>
-    <!-- Sidebar -->
-    <aside class="glass" style="width:260px; position:fixed; height:100vh; background:var(--sidebar); padding:24px 0; border-right:1px solid #333;">
+    <aside class="glass" style="width:260px; position:fixed; height:100vh; background:var(--sidebar); padding:24px 0; border-right:1px solid #333; z-index:10;">
         <div style="padding:0 24px 40px; font-size:28px; font-weight:700; color:var(--primary);">🌟 NovaDEX</div>
         <nav>
-    <a href="index.html" class="nav-item">🌟 <span>Top</span></a>
-    <a href="trending.html" class="nav-item">🔥 <span>Trending</span></a>
-    <a href="#" class="nav-item">🌱 <span>Most Visited</span></a>
-    <a href="#" class="nav-item">💰 <span>Prediction Markets</span></a>
-    <a href="news.html" class="nav-item">📰 <span>News</span></a>
-    <a href="on-chain-data.html" class="nav-item">📊 <span>On-Chain Data</span></a>
-</nav>
+            <a href="index.html" class="nav-item">🌟 <span>Top</span></a>
+            <a href="trending.html" class="nav-item active">🔥 <span>Trending</span></a>
+            <a href="#" class="nav-item">🌱 <span>Most Visited</span></a>
+            <a href="#" class="nav-item">💰 <span>Prediction Markets</span></a>
+            <a href="news.html" class="nav-item">📰 <span>News</span></a>
+            <a href="on-chain-data.html" class="nav-item">📊 <span>On-Chain Data</span></a>
+        </nav>
     </aside>
-    <main style="margin-left:260px; padding:40px;">
-        <h1 style="margin-bottom:40px;">🔥 Trending</h1>
-        <div id="trending-cards"></div>
-    </main>
+
+    <div class="main">
+        <h1 style="margin:0 0 30px; font-size:1.8rem;">🔥 Trending Now</h1>
+        <div id="trending-container"></div>
+    </div>
+
     <script src="trendingData.js"></script>
     <script>
-        const container = document.getElementById('trending-cards');
         function getDateColor(dateStr) {
-            const targetDate = new Date(dateStr);
             const now = new Date();
-            return targetDate < now ? 'var(--danger)' : '#7CFF6B';
+            const d = new Date(dateStr);
+            if (d < now) return 'var(--danger)';
+            return 'var(--primary)';
         }
-        trendingData.forEach((item, index) => {
-            const endTime = new Date(item.endDate).getTime();
-            let isEnded = endTime < Date.now();
-            if (item.title === "Algoland (ALGO)") {
-                isEnded = false;
-            }
-            const card = document.createElement('div');
-            card.className = 'pool-card glass';
-            card.innerHTML = `
-                <div class="card-content">
-                    <div class="card-left">
-                        <div style="display:flex; align-items:center; gap:16px; margin-bottom:16px;">
-                            <img src="${item.img}" class="coin-logo" alt="${item.title}">
-                            <div>
-                                <div style="font-size:1.8rem; font-weight:700;">${item.title}</div>
-                                <div style="color:${(index === 0 || index === 1) ? 'var(--danger)' : (isEnded ? 'var(--danger)' : '#7CFF6B')}; font-size:1rem; font-weight:600;">
-                                    ${(index === 0 || index === 1) ? 'END' : (isEnded ? 'END' : 'Ongoing')}
-                                </div>
-                            </div>
-                        </div>
-                        <div style="margin-bottom:20px;">
-                            <div style="color:#aaa;">Upward Prediction</div>
-                            <div style="font-size:2.4rem; font-weight:700; color:var(--primary);">${item.prediction}</div>
-                            <div style="color:#aaa;">≈ ${item.price} USDT</div>
-                        </div>
-                        <div style="margin-bottom:12px; line-height:1.6;">
-                            <div style="color:#aaa; font-size:0.95rem;">
-                                Start In <span style="color:${getDateColor(item.startDate)};">${item.startDate.split('T')[0]}</span>
-                            </div>
-                            <div style="color:#aaa; font-size:0.95rem;">
-                                Ends In <span style="color:${getDateColor(item.endDate)};">${item.endDate.split('T')[0]}</span>
-                            </div>
-                        </div>
-                        <div class="progress-bar-container">
-                            <div class="progress-bar ${isEnded ? 'end' : 'ongoing'}" id="progress-${index}"></div>
-                        </div>
-                        <div class="countdown" id="countdown${index}">
-                            <div class="countdown-box"><span class="number">0</span><div>D</div></div>
-                            <div class="countdown-box"><span class="number">0</span><div>H</div></div>
-                            <div class="countdown-box"><span class="number">0</span><div>M</div></div>
-                            <div class="countdown-box"><span class="number">0</span><div>S</div></div>
-                        </div>
-                        <button onclick="window.open('${item.participateLink}', '_blank')">Participate</button>
-                    </div>
-                    <div class="card-right">
-                        <img src="${item.bannerImage}" class="banner-image" alt="Banner">
-                        <div class="banner-text">${item.bannerText}</div>
-                    </div>
-                </div>
-            `;
-            container.appendChild(card);
-            const progressBar = document.getElementById(`progress-${index}`);
-            if (index === 0 || index === 1) {
-                // 첫 번째, 두 번째 → 초록색 꽉찬 바
-                progressBar.style.background = 'var(--primary)';
-                progressBar.style.width = '100%';
-            } else if (index === 2) {
-                // 세 번째 항목만 → 70~75% 사이에서 천천히 랜덤 움직임
-                let current = 72;
-                progressBar.style.width = current + '%';
-                setInterval(() => {
-                    current = 70 + Math.random() * 5;
-                    progressBar.style.width = current + '%';
-                }, 4000);
-            } else if (index === 3) {
-                // COMING SOON → 0% 빈 바
-                progressBar.style.width = '0%';
-            } else {
-                progressBar.style.width = '70%';
-            }
-            startCountdown(`countdown${index}`, item.endDate);
-        });
-        function startCountdown(id, endTimeStr) {
-            const endTime = new Date(endTimeStr).getTime();
+
+        function startCountdown(id, endDate) {
+            const end = new Date(endDate).getTime();
             setInterval(() => {
                 const now = new Date().getTime();
-                let distance = endTime - now;
-                if (distance < 0) distance = 0;
+                const distance = end - now;
+                const el = document.getElementById(id);
+                if (!el) return;
+                if (distance < 0) {
+                    el.innerHTML = `
+                        <div class="countdown-box"><span class="number">0</span><div>D</div></div>
+                        <div class="countdown-box"><span class="number">0</span><div>H</div></div>
+                        <div class="countdown-box"><span class="number">0</span><div>M</div></div>
+                        <div class="countdown-box"><span class="number">0</span><div>S</div></div>
+                    `;
+                    return;
+                }
                 const days = Math.floor(distance / (1000 * 60 * 60 * 24));
                 const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
                 const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
                 const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-                document.getElementById(id).innerHTML = `
+                el.innerHTML = `
                     <div class="countdown-box"><span class="number">${days}</span><div>D</div></div>
                     <div class="countdown-box"><span class="number">${hours}</span><div>H</div></div>
                     <div class="countdown-box"><span class="number">${minutes}</span><div>M</div></div>
@@ -295,6 +243,103 @@
                 `;
             }, 1000);
         }
+
+        function renderTrending() {
+            const container = document.getElementById('trending-container');
+            const data = window.trendingData || [];
+            if (!data.length) {
+                container.innerHTML = '<div style="color:#888; padding:40px;">trendingData.js를 확인해주세요</div>';
+                return;
+            }
+
+            container.innerHTML = '';
+            data.forEach((item, index) => {
+                const card = document.createElement('div');
+                card.className = 'pool-card';
+
+                // 상태 텍스트
+                let statusHtml = '';
+                if (index === 0 || index === 1) {
+                    statusHtml = '<div class="status-end">End</div>';
+                } else if (index === 3) {
+                    statusHtml = '<div class="status-ongoing" style="color:#888;">COMING SOON</div>';
+                } else {
+                    statusHtml = '<div class="status-ongoing">Ongoing</div>';
+                }
+
+                card.innerHTML = `
+                    <div class="card-content">
+                        <div class="card-left">
+                            <div class="coin-header">
+                                <img src="${item.img}" alt="${item.title}">
+                                <div>
+                                    <div class="coin-title">${item.title}</div>
+                                    ${statusHtml}
+                                </div>
+                            </div>
+                            <div class="prediction-label">Upward Prediction</div>
+                            <div class="prediction-value">${item.prediction}</div>
+                            <div class="price-sub">≈ ${item.price} USDT</div>
+                            <div class="date-row">
+                                <div>Start In <span style="color:${getDateColor(item.startDate)}">${item.startDate.slice(0,10)}</span></div>
+                                <div>Ends In <span style="color:${getDateColor(item.endDate)}">${item.endDate.slice(0,10)}</span></div>
+                            </div>
+                            <div class="progress-track">
+                                <div class="progress-bar" id="progress${index}"></div>
+                            </div>
+                            <div class="countdown" id="countdown${index}"></div>
+                            <a class="participate-btn" href="${item.participateLink}" target="_blank" rel="noopener">Participate</a>
+                        </div>
+                        <div class="card-right">
+                            <img class="banner-img" src="${item.bannerImage}" alt="banner">
+                            <div class="banner-text">${item.bannerText}</div>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+
+                const progressBar = document.getElementById(`progress${index}`);
+
+                if (index === 0 || index === 1) {
+                    // 1, 2번째 → 초록색 꽉 찬 바
+                    progressBar.style.background = 'var(--primary)';
+                    progressBar.style.width = '100%';
+                } else if (index === 2) {
+                    // 3번째 Pharos → 황금색 바, 25~30% 사이 천천히 랜덤
+                    progressBar.style.background = 'linear-gradient(90deg, #f5c542, #ffd700)';
+                    let current = 27.5;
+                    progressBar.style.width = current + '%';
+                    progressBar.style.transition = 'width 3.5s ease-in-out';
+                    setInterval(() => {
+                        current = 25 + Math.random() * 5;
+                        progressBar.style.width = current + '%';
+                    }, 4000);
+                } else if (index === 3) {
+                    // COMING SOON → 0% 회색
+                    progressBar.style.background = '#3a4150';
+                    progressBar.style.width = '0%';
+                } else {
+                    progressBar.style.background = 'linear-gradient(90deg, #f5c542, #ffd700)';
+                    progressBar.style.width = '70%';
+                }
+
+                startCountdown(`countdown${index}`, item.endDate);
+            });
+        }
+
+        // 날짜 색상 주기적 갱신
+        setInterval(() => {
+            const cards = document.querySelectorAll('.pool-card');
+            cards.forEach((card, idx) => {
+                const item = (window.trendingData || [])[idx];
+                if (!item) return;
+                const spans = card.querySelectorAll('.date-row span');
+                if (spans[0]) spans[0].style.color = getDateColor(item.startDate);
+                if (spans[1]) spans[1].style.color = getDateColor(item.endDate);
+            });
+        }, 60000);
+
+        window.onload = renderTrending;
     </script>
 </body>
 </html>
