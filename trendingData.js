@@ -1,37 +1,37 @@
 // trendingData.js
 const trendingData = [
     {
-        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-tu7mkTwSKwPlruCcUrqYmorvvykhp6EWeFQcK7JACH3APsOcD6UPzuuh&s=10",
-        title: "Biconomy (BICO)",
-        price: "$302B",
-        startDate: "2026-08-02T00:00:00",
-        endDate: "2026-08-09T23:59:59",
-        prediction: "+612%",
-        bannerImage: "https://i.ytimg.com/vi/Ta2rAwX3kVg/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLCXkDZ7ads-4qCykZuVTEtLW34HqQ",
-        bannerText: "Data from global cryptocurrency exchange Binance on June 21 showed BICO up more than 90% from 24 hours earlier. The token traded at $0.0632, with a market capitalization of about $64 million. The rally has been linked to news that Biconomy plans to list Dream Bowl I Meme Coin Tokens. Nasdaq-listed Scilex Holding Company said on June 16 that the Dream Bowl token could be listed on the Biconomy exchange as early as June 23. Scilex previously said the listing could provide liquidity to Dream Bowl token holders and support broader distribution of the token.",
-        participateLink: "https://www.bithumb.com/react/trade/order/BICO-KRW"
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_WvCEjNlUcfGtHvUgkOyvBp1odzERLjAyNK60u1thsMI30aDh3ry2X00&s=10",
+        title: "Official Trump (TRUMP)",
+        price: "$160B",
+        startDate: "2026-08-13T00:00:00",
+        endDate: "2026-08-22T23:59:59",
+        prediction: "+160%",
+        bannerImage: "https://media.bloomingbit.io/news/af36e49e-cfc8-4178-a8e8-c4e3cd168ae7.webp?w=800",
+        bannerText: " The team behind President Donald Trump’s meme coin Official Trump (TRUMP) deposited a large amount of its own tokens to an exchange. According to Lookonchain, the Official Trump team deposited about 646,000 Official Trump tokens to global cryptocurrency exchange OKX in two transactions. The deposit was worth about $15.5 million at current prices, and deposits to exchanges are typically interpreted as a sell signal.",
+        participateLink: "https://www.upbit.com/exchange?code=CRIX.UPBIT.KRW-TRUMP"
     },
     {
-        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNQ5Q7c0SnlrAYhyDUIZUHZwWdx_ME2lrwOTk46o9GVeKF1wM8Zj2f6Q8k&s=10",
-        title: "Cysic (CYS)",
-        price: "$225B",
-        startDate: "2026-08-04T00:00:00",
-        endDate: "2026-08-15T23:59:59",
-        prediction: "+518%",
-        bannerImage: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR66EDLlOzf1FO91MpRCAHPNGovkFFmhSsBJqCcuPVh1Q&s",
-        bannerText: "Something is stirring around Cysic again, and traders who blinked yesterday missed a wild ride. A zero-knowledge proving token, which most people had never heard of six months ago, is suddenly one of the loudest names in crypto chats. Nobody seems fully sure where this goes next.",
-        participateLink: "https://www.bithumb.com/react/trade/order/CYS-KRW"
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiv0LwEW1NyXttEq9Gt3FayJCqFZtDrxN-PIGpaGvrKzKnuN8Dg3rYu9E&s=10",
+        title: "Hemi (HEMI)",
+        price: "$195B",
+        startDate: "2026-08-14T00:00:00",
+        endDate: "2026-08-21T23:59:59",
+        prediction: "+250%",
+        bannerImage: "https://i.ytimg.com/vi/QgES-e5LtLY/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDfKA-y6EQ9z2PAznlCatqUXygxNQ",
+        bannerText: "Hemi (HEMI) is a modular Layer-2 blockchain network designed to merge Bitcoin's security with Ethereum's programmability. The native HEMI token is used for network governance, transaction fees, and staking incentives within this cross-chain ecosystem. Hemi Virtual Machine (hVM): Embeds a full Bitcoin node inside an Ethereum-compatible environment, giving smart contracts direct access to Bitcoin data. Anchors Hemi's network state to the Bitcoin blockchain to achieve high security and fast settlement finality.",
+        participateLink: "https://www.bithumb.com/react/trade/order/HEMI-KRW"
     },
     {
-        img: "https://public.bnbstatic.com/static/content/square/images/2fd06595c2c343298c933984d2492fb5.png",
-        title: "Pudgy Penguins (PENGU)",
-        price: "$223B",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8L78781SEl3cZepEkQBRSa-l2Kn0n6o-TmhyxXb4r1SYdL0vXStlylL0&s=10",
+        title: "Pharos (PROS)",
+        price: "$571B",
         startDate: "2026-08-18T00:00:00",
-        endDate: "2026-08-24T23:59:59",
-        prediction: "+511%",
-        bannerImage: "https://img.bgstatic.com/multiLang/image/social/41085086361f5f913e0fc3ad474cf5911734708802965.jpeg",
+        endDate: "2026-09-01T23:59:59",
+        prediction: "+705%",
+        bannerImage: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRE83trkACkcpnM2O4pBK4hIvglVX00n25gTuZemlQrFyFVKclQfDoC8w4&s=10",
         bannerText: "The Pudgy Penguins ecosystem has recently experienced large price volatility and increased trading volumes, which on-chain data has attributed to both underlying growth and technical market mechanisms. While some analysts point to the timing of the token unlocking as the main reason for the recent liquidity, others are highlighting the project's recent expansion into the mainstream financial and gaming sectors. The PENGU token, a cryptocurrency endemic to the Pudgy Penguins ecosystem, is up more than 30% over the past month since hitting a 12-month low earlier this year.",
-        participateLink: "https://www.upbit.com/exchange?code=CRIX.UPBIT.KRW-0G"
+        participateLink: "https://www.upbit.com/exchange?code=CRIX.UPBIT.KRW-PROS"
     },
     {
         img: "https://img.magnific.com/free-vector/modern-coming-soon-new-arrival-background-with-spot-light-effect_1017-57496.jpg?semt=ais_hybrid&w=740&q=80",
