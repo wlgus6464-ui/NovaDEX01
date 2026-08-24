@@ -90,10 +90,10 @@ const coinHotTopics = {
         link: "https://bt.io/"
     },
     'ALT': {
-        title: "카이아, 日 규제 '키맨' 품었다…스테이블코인 공략 속도",
-        comment: "카이아가 일본 가상자산 규제 전문가들이 설립한 컨설팅 기업 피노젝트(finoject)와 손잡고 일본 스테이블코인과 토큰화(Tokenization) 시장 공략에 나선다. 24일 카이아는 피노젝트와 일본 내 스테이블코인과 토큰화, 디지털자산 사업 기회 발굴을 위한 전략적 업무협약(MOU)을 체결했다고 밝혔다. 이번 협약을 통해 피노젝트는 카이아의 일본 사업 확대와 금융 규제 대응을 지원할 예정이다.",
-        img: "https://img.hankyung.com/photo/202607/10bbc858-f744-438f-861d-575d02cd2a75.webp",
-        link: "https://www.hankyung.com/article/202607243596B"
+        title: "KB금융, 원화 스테이블코인 기반 '결제·정산·해외송금' 전 과정 기술 검증 완료",
+        comment: "KB금융그룹(회장 양종희)이 전자결제 전문 기업 KG이니시스, 글로벌 레이어1 블록체인 플랫폼 카이아(Kaia), 디지털자산 솔루션 기업 오픈에셋(OpenAsset)과 함께 원화 스테이블코인 결제· 정산·입금에 이르는 전 단계를 통합한 기술 검증(PoC)을 성공적으로 마무리했다. 이번 검증은 원화 스테이블코인 발행부터 오프라인 결제, 가맹점 정산, 해외 송금까지 금융서비스 전 과정을 하나의 흐름으로 연결한 통합 실증 사례다. 고객의 기존 금융서비스 이용 방식은 그대로 유지한 채 내부 정산 구조를 블록체인 기반으로 전환한 것으로, KB금융은 디지털자산의 실생활 결제 모델 구현을 통해 실질적인 금융서비스 적용 가능성을 확인했다.",
+        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtpRWEW04vY5I6jTuh2X6I59W6TAp53LcwgeYt7QA86WFky3sGqvYoVcP5&s=10",
+        link: "https://www.kbfg.com/kor/pr/press/view.htm?B=8&CONTENT=15055&utm_source=chatgpt.com"
     },
     'ETC': {
         title: "Ethereum Classic Reinforces Core Infrastructure with Ongoing Network and Development Support",
@@ -111,7 +111,7 @@ const coinRelatedArticles = {
     'SHIB': [{ title: "The BNB Foundation has officially announced the successful completion of the 36th quarterly BNB token burn by BNB Chain.", link: "https://www.bnbchain.org/en/blog/36th-bnb-burn" }],
     'BABY.D': [{ title: "Floki Expands Beyond Meme Coin Origins With a Growing Web3 Ecosystem", link: "https://floki.com/" }],
     'BTT': [{ title: "Staking Parameters on Avalanche​", link: "https://build.avax.network/docs/primary-network/validate/how-to-stake" }],
-    'ALT': [{ title: "카이아, JPYC 유통액 31억원 돌파…온보딩 한 달 만에 1위", link: "https://www.edaily.co.kr/News/Read?mediaCodeNo=257&newsId=03647366645483032" }],
+    'ALT': [{ title: "Algorand has recently begun focusing on building infrastructure that financial institutions can use.", link: "https://www.algorand.co/?utm_source=chatgpt.com" }],
     'ETC': [{ title: "Ethereum Classic Reinforces Core Infrastructure", link: "#" }]
 };
 // Manual News (각 코인당 5개 이상)
