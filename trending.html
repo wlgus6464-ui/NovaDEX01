@@ -304,16 +304,16 @@
                     // 1, 2번째 → 초록색 꽉 찬 바
                     progressBar.style.background = 'var(--primary)';
                     progressBar.style.width = '100%';
-                } else if (index === 2) {
-                    // 3번째 Pharos → 황금색 바, 25~30% 사이 천천히 랜덤
-                    progressBar.style.background = 'linear-gradient(90deg, #f5c542, #ffd700)';
+                              } else if (index === 2) {
+                    // Pharos → 황금 바 + 끝 빛, 25~30% 천천히 랜덤
+                    progressBar.classList.add('gold-glow');
                     let current = 27.5;
                     progressBar.style.width = current + '%';
-                    progressBar.style.transition = 'width 3.5s ease-in-out';
+                    progressBar.style.transition = 'width 3.8s ease-in-out';
                     setInterval(() => {
                         current = 25 + Math.random() * 5;
                         progressBar.style.width = current + '%';
-                    }, 4000);
+                    }, 4200);
                 } else if (index === 3) {
                     // COMING SOON → 0% 회색
                     progressBar.style.background = '#3a4150';
