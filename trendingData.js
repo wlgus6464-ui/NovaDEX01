@@ -23,15 +23,15 @@ const trendingData = [
         participateLink: "https://www.bithumb.com/react/trade/order/HEMI-KRW"
     },
     {
-        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8L78781SEl3cZepEkQBRSa-l2Kn0n6o-TmhyxXb4r1SYdL0vXStlylL0&s=10",
-        title: "Pharos (PROS)",
-        price: "$571B",
-        startDate: "2026-08-18T00:00:00",
-        endDate: "2026-09-01T23:59:59",
-        prediction: "+705%",
-        bannerImage: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRE83trkACkcpnM2O4pBK4hIvglVX00n25gTuZemlQrFyFVKclQfDoC8w4&s=10",
+        img: "https://coingape.com/wp-content/uploads/2025/02/Kaito-Price-Prediction-1.webp",
+        title: "KAITO (KAITO)",
+        price: "$488B",
+        startDate: "2026-08-24T00:00:00",
+        endDate: "2026-09-02T23:59:59",
+        prediction: "+571%",
+        bannerImage: "https://coingape.com/wp-content/uploads/2025/05/Why-Kaito-Token-Price-Exploded-50-Today-Whats-Next.webp",
         bannerText: "The Pudgy Penguins ecosystem has recently experienced large price volatility and increased trading volumes, which on-chain data has attributed to both underlying growth and technical market mechanisms. While some analysts point to the timing of the token unlocking as the main reason for the recent liquidity, others are highlighting the project's recent expansion into the mainstream financial and gaming sectors. The PENGU token, a cryptocurrency endemic to the Pudgy Penguins ecosystem, is up more than 30% over the past month since hitting a 12-month low earlier this year.",
-        participateLink: "https://www.upbit.com/exchange?code=CRIX.UPBIT.KRW-PROS"
+        participateLink: "https://www.upbit.com/exchange?code=CRIX.UPBIT.KRW-KAITO"
     },
     {
         img: "https://img.magnific.com/free-vector/modern-coming-soon-new-arrival-background-with-spot-light-effect_1017-57496.jpg?semt=ais_hybrid&w=740&q=80",
