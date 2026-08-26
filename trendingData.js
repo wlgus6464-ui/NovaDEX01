@@ -1,17 +1,6 @@
 // trendingData.js
 const trendingData = [
     {
-        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_WvCEjNlUcfGtHvUgkOyvBp1odzERLjAyNK60u1thsMI30aDh3ry2X00&s=10",
-        title: "Official Trump (TRUMP)",
-        price: "$160B",
-        startDate: "2026-08-13T00:00:00",
-        endDate: "2026-08-22T23:59:59",
-        prediction: "+160%",
-        bannerImage: "https://media.bloomingbit.io/news/af36e49e-cfc8-4178-a8e8-c4e3cd168ae7.webp?w=800",
-        bannerText: " The team behind President Donald Trump’s meme coin Official Trump (TRUMP) deposited a large amount of its own tokens to an exchange. According to Lookonchain, the Official Trump team deposited about 646,000 Official Trump tokens to global cryptocurrency exchange OKX in two transactions. The deposit was worth about $15.5 million at current prices, and deposits to exchanges are typically interpreted as a sell signal.",
-        participateLink: "https://www.upbit.com/exchange?code=CRIX.UPBIT.KRW-TRUMP"
-    },
-    {
         img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiv0LwEW1NyXttEq9Gt3FayJCqFZtDrxN-PIGpaGvrKzKnuN8Dg3rYu9E&s=10",
         title: "Hemi (HEMI)",
         price: "$195B",
@@ -21,6 +10,17 @@ const trendingData = [
         bannerImage: "https://i.ytimg.com/vi/QgES-e5LtLY/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDfKA-y6EQ9z2PAznlCatqUXygxNQ",
         bannerText: "Hemi (HEMI) is a modular Layer-2 blockchain network designed to merge Bitcoin's security with Ethereum's programmability. The native HEMI token is used for network governance, transaction fees, and staking incentives within this cross-chain ecosystem. Hemi Virtual Machine (hVM): Embeds a full Bitcoin node inside an Ethereum-compatible environment, giving smart contracts direct access to Bitcoin data. Anchors Hemi's network state to the Bitcoin blockchain to achieve high security and fast settlement finality.",
         participateLink: "https://www.bithumb.com/react/trade/order/HEMI-KRW"
+    },
+    {
+        img: "https://blog.btcc.com/wp-content/uploads/2024/04/%EB%8D%B8%EB%A6%AC%EC%8B%9C%EC%9B%80Delysium.jpg",
+        title: "Delysium (AGI)",
+        price: "$301B",
+        startDate: "2026-08-21T00:00:00",
+        endDate: "2026-08-28T23:59:59",
+        prediction: "+302%",
+        bannerImage: "https://academy-public.coinmarketcap.com/srd-optimized-uploads/9314a923f8f4431eb0021b264abff8a8.jpeg",
+        bannerText: "When Lex Fridman asked Jensen Huang how long it would take AI to autonomously innovate, find customers, and build a billion-dollar company, the CEO of the world's most valuable public company gave a three-word answer that traveled at the speed of light through financial markets. NVIDIA shares gained 1.7% on the first trading session after the podcast aired. AI-linked crypto tokens — FET, TAO, RNDR, NEAR — rallied 10–20% in the same window. And a debate that the AI research community had been trying to move past for years was yanked back into the center of public discourse.",
+        participateLink: "https://www.bithumb.com/react/trade/order/AGI-KRW"
     },
     {
         img: "https://coingape.com/wp-content/uploads/2025/02/Kaito-Price-Prediction-1.webp",
