@@ -18,8 +18,8 @@ const trendingData = [
         startDate: "2026-08-21T00:00:00",
         endDate: "2026-08-28T23:59:59",
         prediction: "+302%",
-        bannerImage: "https://academy-public.coinmarketcap.com/srd-optimized-uploads/9314a923f8f4431eb0021b264abff8a8.jpeg",
-        bannerText: "When Lex Fridman asked Jensen Huang how long it would take AI to autonomously innovate, find customers, and build a billion-dollar company, the CEO of the world's most valuable public company gave a three-word answer that traveled at the speed of light through financial markets. NVIDIA shares gained 1.7% on the first trading session after the podcast aired. AI-linked crypto tokens — FET, TAO, RNDR, NEAR — rallied 10–20% in the same window. And a debate that the AI research community had been trying to move past for years was yanked back into the center of public discourse.",
+        bannerImage: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTeICl4IiVNC2IZMUJv5sOd3OWw9RFIKo_Fp6FC8wy8ulj4hi0ylhIk6AM&s=10",
+        bannerText: "When Lex Fridman asked Jensen Huang how long it would take AI to autonomously innovate, find customers, and build a billion-dollar company, the CEO of the world's most valuable public company gave a three-word answer that traveled at the speed of light through financial markets.",
         participateLink: "https://www.bithumb.com/react/trade/order/AGI-KRW"
     },
     {
