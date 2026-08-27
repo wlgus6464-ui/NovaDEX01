@@ -1,17 +1,6 @@
 // trendingData.js
 const trendingData = [
     {
-        img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiv0LwEW1NyXttEq9Gt3FayJCqFZtDrxN-PIGpaGvrKzKnuN8Dg3rYu9E&s=10",
-        title: "Hemi (HEMI)",
-        price: "$195B",
-        startDate: "2026-08-14T00:00:00",
-        endDate: "2026-08-21T23:59:59",
-        prediction: "+250%",
-        bannerImage: "https://i.ytimg.com/vi/QgES-e5LtLY/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDfKA-y6EQ9z2PAznlCatqUXygxNQ",
-        bannerText: "Hemi (HEMI) is a modular Layer-2 blockchain network designed to merge Bitcoin's security with Ethereum's programmability. The native HEMI token is used for network governance, transaction fees, and staking incentives within this cross-chain ecosystem. Hemi Virtual Machine (hVM): Embeds a full Bitcoin node inside an Ethereum-compatible environment, giving smart contracts direct access to Bitcoin data. Anchors Hemi's network state to the Bitcoin blockchain to achieve high security and fast settlement finality.",
-        participateLink: "https://www.bithumb.com/react/trade/order/HEMI-KRW"
-    },
-    {
         img: "https://blog.btcc.com/wp-content/uploads/2024/04/%EB%8D%B8%EB%A6%AC%EC%8B%9C%EC%9B%80Delysium.jpg",
         title: "Delysium (AGI)",
         price: "$301B",
@@ -21,6 +10,17 @@ const trendingData = [
         bannerImage: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTeICl4IiVNC2IZMUJv5sOd3OWw9RFIKo_Fp6FC8wy8ulj4hi0ylhIk6AM&s=10",
         bannerText: "When Lex Fridman asked Jensen Huang how long it would take AI to autonomously innovate, find customers, and build a billion-dollar company, the CEO of the world's most valuable public company gave a three-word answer that traveled at the speed of light through financial markets.",
         participateLink: "https://www.bithumb.com/react/trade/order/AGI-KRW"
+    },
+    {
+        img: "https://public.bnbstatic.com/static/content/square/images/ad3ba92d0c7947e8ba8307aa32569edc.png",
+        title: "Bitlayer (BTR)",
+        price: "$532B",
+        startDate: "2026-08-22T00:00:00",
+        endDate: "2026-08-31T23:59:59",
+        prediction: "+612%",
+        bannerImage: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUyStCyu9Gcp9erlpYo4QOFk2iTTZabumkpISQOhKWhwhTBChXbzxDsKQ&s=10",
+        bannerText: "Bitlayer (BTR) is the native token of Bitlayer, a Bitcoin Layer-2 network that combines BitVM, an optimistic rollup mechanism, and zero-knowledge (ZK) proofs to provide Bitcoin-level security for smart contracts, DeFi, and transactions with higher throughput. As of mid-February 2026, BTR is trading at around $0.13–$0.16, close to the snapshot price of $0.1395. The circulating supply is about 261.6 million tokens (about 26.16% of the total supply), with a market capitalization of 36–40 million USD and a fully diluted value (FDV) of about 135–140 million USD.",
+        participateLink: "https://www.bithumb.com/react/trade/order/BTR-KRW"
     },
     {
         img: "https://coingape.com/wp-content/uploads/2025/02/Kaito-Price-Prediction-1.webp",
