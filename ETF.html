@@ -83,6 +83,10 @@
             border-radius: 50%;
             vertical-align: middle;
             margin-right: 12px;
+            flex-shrink: 0;
+        }
+        td.coin-cell {
+            white-space: nowrap;
         }
         .positive { color: var(--primary); }
         .negative { color: var(--danger); }
@@ -160,9 +164,9 @@
                 const arrow7 = item.change7d > 0 ? "▲ " : (item.change7d < 0 ? "▼ " : "");
                 const row = document.createElement("tr");
                 row.innerHTML =
-                    '<td class="' + (sortKey === "rank" ? "col-active" : "") + '" style="display:flex; align-items:center;">' +
+                    '<td class="coin-cell' + (sortKey === "rank" ? " col-active" : "") + '" style="display:flex; align-items:center;">' +
                     '<img src="' + (item.image || "") + '" class="coin-logo" alt="' + (item.name || "") + '">' +
-                    (item.name || "") + " (" + (item.symbol || "") + ")" +
+                    '<span style="white-space:nowrap;">' + (item.name || "") + " (" + (item.symbol || "") + ")</span>" +
                     "</td>" +
                     '<td class="' + (sortKey === "price" ? "col-active" : "") + '">' + formatPrice(item.price) + "</td>" +
                     '<td class="' + cls24 + (sortKey === "change24h" ? " col-active" : "") + '">' + arrow24 + item.change24h + "%</td>" +
