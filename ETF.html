@@ -100,87 +100,15 @@
             <table>
                 <thead>
                     <tr style="color:#aaa;">
-                        <th>#</th>
-                        <th class="sortable" data-sort="marketCap">Coin</th>
-                        <th class="sortable" data-sort="price">Price</th>
-                        <th class="sortable" data-sort="change24h">24h %</th>
-                        <th class="sortable" data-sort="marketCap">ETF Market Cap</th>
-                        <th class="sortable" data-sort="volume">ETF Volume (24h)</th>
+                        <th style="color:var(--primary);">Coin</th>
+                        <th>Price</th>
+                        <th>24h %</th>
+                        <th>ETF Market Cap</th>
+                        <th>ETF Volume (24h)</th>
                     </tr>
                 </thead>
-                <tbody id="etf-table"></tbody>
             </table>
         </div>
     </div>
-
-    <script src="ETF.js"></script>
-    <script>
-        let sortKey = "marketCap";
-        let sortDir = "desc";
-
-        function formatPrice(n) {
-            return "$" + Number(n).toLocaleString();
-        }
-
-        function formatBillions(n) {
-            return "$" + (n / 1e9).toFixed(2) + "B";
-        }
-
-        function getSortedList() {
-            const data = (window.etfList || []).slice();
-            data.sort(function(a, b) {
-                var av = a[sortKey];
-                var bv = b[sortKey];
-                if (av < bv) return sortDir === "desc" ? 1 : -1;
-                if (av > bv) return sortDir === "desc" ? -1 : 1;
-                return 0;
-            });
-            return data;
-        }
-
-        function renderEtfTable() {
-            const tbody = document.getElementById("etf-table");
-            const data = getSortedList();
-            if (!data.length) {
-                tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:60px; color:#888;">ETF.js를 확인해주세요</td></tr>';
-                return;
-            }
-            tbody.innerHTML = "";
-            data.forEach(function(item, i) {
-                const row = document.createElement("tr");
-                const cls = item.change24h > 0 ? "positive" : (item.change24h < 0 ? "negative" : "");
-                row.innerHTML =
-                    "<td>" + (i + 1) + "</td>" +
-                    '<td style="display:flex; align-items:center;">' +
-                    '<img src="' + item.image + '" class="coin-logo" alt="' + item.name + '">' +
-                    item.name + " (" + item.symbol + ")" +
-                    "</td>" +
-                    '<td style="font-weight:600;">' + formatPrice(item.price) + "</td>" +
-                    '<td class="' + cls + '">' + item.change24h + "%</td>" +
-                    "<td>" + formatBillions(item.marketCap) + "</td>" +
-                    "<td>" + formatBillions(item.volume) + "</td>";
-                tbody.appendChild(row);
-            });
-        }
-
-        document.querySelectorAll("th.sortable").forEach(function(th) {
-            th.addEventListener("click", function() {
-                const key = th.getAttribute("data-sort");
-                if (sortKey === key) {
-                    sortDir = sortDir === "desc" ? "asc" : "desc";
-                } else {
-                    sortKey = key;
-                    sortDir = "desc";
-                }
-                document.querySelectorAll("th.sortable").forEach(function(h) {
-                    h.classList.remove("active");
-                });
-                th.classList.add("active");
-                renderEtfTable();
-            });
-        });
-
-        window.onload = renderEtfTable;
-    </script>
 </body>
 </html>
