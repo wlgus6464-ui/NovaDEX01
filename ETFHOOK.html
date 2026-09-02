@@ -212,18 +212,72 @@
                 item.symbol + " US Equity  –  Turnover / Traded Value" + (last ? " " + last : "");
 
             var series = buildSeries(item);
+            var maxIndex = 0;
+            var maxVal = series.values[0] || 0;
+            for (var i = 1; i < series.values.length; i++) {
+                if (series.values[i] > maxVal) {
+                    maxVal = series.values[i];
+                    maxIndex = i;
+                }
+            }
+            var barColors = [];
+            for (var c = 0; c < series.values.length; c++) {
+                barColors.push(c === maxIndex ? "#7CFF6B" : "#F4F6F8");
+            }
+            var maxLabelText = item.lastVolumeLabel || (maxVal + "M");
+
             new Chart(document.getElementById("hook-chart"), {
                 type: "bar",
                 data: {
                     labels: series.labels,
                     datasets: [{
                         data: series.values,
-                        backgroundColor: "#F4F6F8",
+                        backgroundColor: barColors,
                         borderWidth: 0,
                         barPercentage: 0.85,
                         categoryPercentage: 0.9
                     }]
                 },
+                plugins: [{
+                    id: "maxBarLabel",
+                    afterDatasetsDraw: function(chart) {
+                        var meta = chart.getDatasetMeta(0);
+                        if (!meta || !meta.data || !meta.data[maxIndex]) return;
+                        var bar = meta.data[maxIndex];
+                        var ctx = chart.ctx;
+                        var x = bar.x;
+                        var y = bar.y;
+                        ctx.save();
+                        ctx.font = "700 12px system-ui, sans-serif";
+                        var text = maxLabelText;
+                        var padX = 8;
+                        var padY = 5;
+                        var tw = ctx.measureText(text).width;
+                        var boxW = tw + padX * 2;
+                        var boxH = 20;
+                        var boxX = x + 10;
+                        var boxY = y - boxH / 2;
+                        if (boxX + boxW > chart.chartArea.right) {
+                            boxX = x - 10 - boxW;
+                        }
+                        ctx.fillStyle = "#F4F6F8";
+                        ctx.strokeStyle = "#C8CDD4";
+                        ctx.lineWidth = 1;
+                        ctx.beginPath();
+                        if (ctx.roundRect) ctx.roundRect(boxX, boxY, boxW, boxH, 4);
+                        else ctx.rect(boxX, boxY, boxW, boxH);
+                        ctx.fill();
+                        ctx.stroke();
+                        ctx.beginPath();
+                        ctx.moveTo(boxX <= x ? boxX + boxW : boxX, y);
+                        ctx.lineTo(x, y);
+                        ctx.stroke();
+                        ctx.fillStyle = "#111";
+                        ctx.textBaseline = "middle";
+                        ctx.fillText(text, boxX + padX, boxY + boxH / 2);
+                        ctx.restore();
+                    }
+                }],
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
