@@ -169,8 +169,13 @@
 
         function renderEtfTable() {
             const body = document.getElementById("etf-body");
+            if (!body) return;
             const data = getSortedList();
             body.innerHTML = "";
+            if (!data.length) {
+                body.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:40px; color:#888;">ETF.js가 없거나 비어 있습니다. ETF.js를 ETF.html과 같은 폴더에 올려 주세요.</td></tr>';
+                return;
+            }
             data.forEach(function(item) {
                 const cls24 = item.change24h > 0 ? "positive" : (item.change24h < 0 ? "negative" : "");
                 const cls7 = item.change7d > 0 ? "positive" : (item.change7d < 0 ? "negative" : "");
@@ -209,11 +214,10 @@
             });
         });
 
-        window.onload = function() {
-            var first = document.querySelector('th.sortable[data-sort="rank"]');
-            if (first) first.classList.add("active");
-            renderEtfTable();
-        };
+        var first = document.querySelector('th.sortable[data-sort="rank"]');
+        if (first) first.classList.add("active");
+        renderEtfTable();
+        window.addEventListener("load", renderEtfTable);
     </script>
 </body>
 </html>
