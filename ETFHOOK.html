@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NovaDEX - ETF</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/hammerjs@2.0.8/hammer.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-zoom@2.2.0/dist/chartjs-plugin-zoom.min.js"></script>
     <style>
         :root {
             --bg: #090B11;
@@ -99,7 +101,9 @@
             position: relative;
             height: 420px;
             padding: 12px 8px 8px;
+            cursor: grab;
         }
+        .chart-body:active { cursor: grabbing; }
     </style>
 </head>
 <body>
@@ -208,7 +212,6 @@
                 item.symbol + " US Equity  –  Turnover / Traded Value" + (last ? " " + last : "");
 
             var series = buildSeries(item);
-            var lastVal = series.values[series.values.length - 1];
             new Chart(document.getElementById("hook-chart"), {
                 type: "bar",
                 data: {
@@ -229,8 +232,27 @@
                         tooltip: {
                             callbacks: {
                                 label: function(ctx) {
-                                    return ctx.parsed.y.toFixed(3) + "M";
+                                    return ctx.parsed.y + "M";
                                 }
+                            }
+                        },
+                        zoom: {
+                            pan: {
+                                enabled: true,
+                                mode: "x",
+                                modifierKey: null
+                            },
+                            zoom: {
+                                wheel: {
+                                    enabled: true,
+                                    speed: 0.12
+                                },
+                                pinch: { enabled: true },
+                                mode: "x"
+                            },
+                            limits: {
+                                x: { min: "original", max: "original" },
+                                y: { min: 0, max: "original" }
                             }
                         }
                     },
