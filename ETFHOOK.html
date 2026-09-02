@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NovaDEX - ETF</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --bg: #090B11;
+            --sidebar: #0F141D;
+            --panel: #141B26;
+            --border: #232B38;
+            --primary: #7CFF6B;
+            --danger: #FF5A73;
+        }
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: white;
+            font-family: system-ui, sans-serif;
+        }
+        .glass {
+            background: rgba(20,27,38,0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+        }
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 14px 24px;
+            color: #aaa;
+            text-decoration: none;
+            transition: all 0.25s ease;
+        }
+        .nav-item:hover {
+            color: var(--primary);
+            background: rgba(124,255,107,0.12);
+            transform: translateX(6px);
+        }
+        .nav-item.active { color: var(--primary); }
+        .main {
+            margin-left: 260px;
+            padding: 40px;
+        }
+        .chart-wrap {
+            background: #0B0F16;
+            border: 1px solid #1C2430;
+            border-radius: 14px;
+            overflow: hidden;
+        }
+        .chart-toolbar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            padding: 10px 14px;
+            background: #10151E;
+            border-bottom: 1px solid #1C2430;
+            font-size: 12px;
+            color: #c8c8c8;
+        }
+        .date-box {
+            background: #F5A623;
+            color: #111;
+            font-weight: 700;
+            padding: 4px 8px;
+            border-radius: 3px;
+        }
+        .chip {
+            padding: 4px 8px;
+            border-radius: 3px;
+            color: #aaa;
+        }
+        .chip.on {
+            background: #2B5CFF;
+            color: #fff;
+            font-weight: 700;
+        }
+        .legend {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 4px 8px;
+            border: 1px solid #3A4454;
+            border-radius: 3px;
+            font-size: 12px;
+            color: #ddd;
+        }
+        .legend i {
+            width: 10px;
+            height: 10px;
+            background: #fff;
+            display: inline-block;
+        }
+        .chart-body {
+            position: relative;
+            height: 420px;
+            padding: 12px 8px 8px;
+        }
+    </style>
+</head>
+<body>
+    <aside class="glass" style="width:260px; position:fixed; height:100vh; background:var(--sidebar); padding:24px 0; border-right:1px solid #333; z-index:10;">
+        <div style="padding:0 24px 40px; font-size:28px; font-weight:700; color:var(--primary);">🌟 NovaDEX</div>
+        <nav>
+            <a href="index.html" class="nav-item">🌟 <span>Top</span></a>
+            <a href="trending.html" class="nav-item">🔥 <span>Trending</span></a>
+            <a href="#" class="nav-item">🌱 <span>Most Visited</span></a>
+            <a href="#" class="nav-item">💰 <span>Prediction Markets</span></a>
+            <a href="news.html" class="nav-item">📰 <span>News</span></a>
+            <a href="on-chain-data.html" class="nav-item">📊 <span>On-Chain Data</span></a>
+            <a href="ETF.html" class="nav-item active">💵 <span>ETF (Exchange Traded Fund)</span></a>
+        </nav>
+    </aside>
+
+    <div class="main">
+        <h1 style="margin:0 0 30px; font-size:1.8rem;">💵 ETF (Exchange Traded Fund)</h1>
+        <div class="chart-wrap">
+            <div class="chart-toolbar">
+                <span class="date-box" id="date-from">11/20/2025</span>
+                <span>-</span>
+                <span class="date-box" id="date-to">08/24/2026</span>
+                <span class="chip">1D</span>
+                <span class="chip">3D</span>
+                <span class="chip">1M</span>
+                <span class="chip">6M</span>
+                <span class="chip">YTD</span>
+                <span class="chip">1Y</span>
+                <span class="chip">5Y</span>
+                <span class="chip">Max</span>
+                <span class="chip on">Daily</span>
+                <span class="legend"><i></i> <span id="legend-text">Turnover / Traded Value</span></span>
+            </div>
+            <div class="chart-body">
+                <canvas id="hook-chart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script src="ETFHOOK.js"></script>
+    <script>
+        function getQuery(key) {
+            var q = new URLSearchParams(window.location.search);
+            return q.get(key);
+        }
+
+        function findHook() {
+            var id = getQuery("id");
+            var list = window.etfHookList || [];
+            for (var i = 0; i < list.length; i++) {
+                if (list[i].id === id || list[i].symbol === id) return list[i];
+            }
+            return list[0] || null;
+        }
+
+        function buildSeries(item) {
+            if (item.volumeBars && item.volumeBars.length) {
+                var labels = item.chartLabels || [];
+                if (!labels.length) {
+                    for (var i = 0; i < item.volumeBars.length; i++) labels.push("");
+                }
+                return { labels: labels, values: item.volumeBars };
+            }
+            var labels = [];
+            var values = [];
+            var start = new Date("2025-11-20");
+            var end = new Date("2026-08-24");
+            var d = new Date(start);
+            var seed = 1;
+            function rnd() {
+                seed = (seed * 16807) % 2147483647;
+                return seed / 2147483647;
+            }
+            while (d <= end) {
+                var day = Math.floor((d - start) / 86400000);
+                var v = 8 + rnd() * 6;
+                if (day < 8) v = 16 + rnd() * 10;
+                if (day === 3) v = 40;
+                if (day > 22 && day < 34) v = 15 + rnd() * 5;
+                if (day > 40 && day < 50) v = 18 + rnd() * 10;
+                if (day > 68 && day < 80) v = 20 + rnd() * 16;
+                if (day > 96 && day < 108) v = 14 + rnd() * 10;
+                if (day > 140 && day < 155) v = 12 + rnd() * 16;
+                if (day > 170 && day < 185) v = 10 + rnd() * 12;
+                if (day > 250 && day < 265) v = 8 + rnd() * 6;
+                var left = Math.floor((end - d) / 86400000);
+                if (left === 12) v = 22;
+                if (left === 9) v = 66;
+                if (left === 6) v = 80.901;
+                if (left === 3) v = 77.2;
+                labels.push(d.toLocaleDateString("en-US", { month: "short", day: "numeric" }));
+                values.push(Math.round(v * 1000) / 1000);
+                d.setDate(d.getDate() + 3);
+            }
+            return { labels: labels, values: values };
+        }
+
+        window.onload = function() {
+            var item = findHook();
+            if (!item) return;
+            if (item.chartFrom) document.getElementById("date-from").textContent = item.chartFrom;
+            if (item.chartTo) document.getElementById("date-to").textContent = item.chartTo;
+            var last = item.lastVolumeLabel || "";
+            document.getElementById("legend-text").textContent =
+                item.symbol + " US Equity  –  Turnover / Traded Value" + (last ? " " + last : "");
+
+            var series = buildSeries(item);
+            var lastVal = series.values[series.values.length - 1];
+            new Chart(document.getElementById("hook-chart"), {
+                type: "bar",
+                data: {
+                    labels: series.labels,
+                    datasets: [{
+                        data: series.values,
+                        backgroundColor: "#F4F6F8",
+                        borderWidth: 0,
+                        barPercentage: 0.85,
+                        categoryPercentage: 0.9
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function(ctx) {
+                                    return ctx.parsed.y.toFixed(3) + "M";
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            grid: { color: "rgba(255,255,255,0.06)" },
+                            ticks: {
+                                color: "#8A93A3",
+                                maxRotation: 0,
+                                autoSkip: true,
+                                maxTicksLimit: 12
+                            }
+                        },
+                        y: {
+                            position: "right",
+                            min: 0,
+                            grid: { color: "rgba(255,255,255,0.08)" },
+                            ticks: {
+                                color: "#8A93A3",
+                                callback: function(v) {
+                                    if (v === 0) return "0";
+                                    return v + "M";
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        };
+    </script>
+</body>
+</html>
