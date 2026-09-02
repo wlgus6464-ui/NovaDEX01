@@ -49,12 +49,20 @@
         table {
             width: 100%;
             border-collapse: collapse;
+            table-layout: fixed;
         }
         th, td {
             padding: 16px 12px;
             text-align: left;
             border-bottom: 1px solid #222;
+            vertical-align: middle;
         }
+        th:nth-child(1), td:nth-child(1) { width: 24%; }
+        th:nth-child(2), td:nth-child(2) { width: 14%; }
+        th:nth-child(3), td:nth-child(3) { width: 12%; }
+        th:nth-child(4), td:nth-child(4) { width: 12%; }
+        th:nth-child(5), td:nth-child(5) { width: 19%; }
+        th:nth-child(6), td:nth-child(6) { width: 19%; }
         th.sortable {
             cursor: pointer;
             user-select: none;
@@ -78,21 +86,7 @@
         }
         .positive { color: var(--primary); }
         .negative { color: var(--danger); }
-        .etf-card {
-            display: grid;
-            grid-template-columns: 1.4fr 1fr 0.8fr 0.8fr 1.2fr 1.2fr;
-            align-items: center;
-            padding: 16px 12px;
-            border-bottom: 1px solid #222;
-        }
-        .etf-card:last-child { border-bottom: none; }
-        .etf-card:hover {
-            background: rgba(124,255,107,0.08);
-        }
-        .etf-coin {
-            display: flex;
-            align-items: center;
-        }
+        tbody tr:last-child td { border-bottom: none; }
     </style>
 </head>
 <body>
@@ -123,8 +117,8 @@
                         <th class="sortable" data-sort="volume" data-dir="desc">ETF Volume (24h)</th>
                     </tr>
                 </thead>
+                <tbody id="etf-body"></tbody>
             </table>
-            <div id="etf-cards"></div>
         </div>
     </div>
 
@@ -153,28 +147,27 @@
             return data;
         }
 
-        function renderEtfCards() {
-            const box = document.getElementById("etf-cards");
+        function renderEtfTable() {
+            const body = document.getElementById("etf-body");
             const data = getSortedList();
-            box.innerHTML = "";
+            body.innerHTML = "";
             data.forEach(function(item) {
                 const cls24 = item.change24h > 0 ? "positive" : (item.change24h < 0 ? "negative" : "");
                 const cls7 = item.change7d > 0 ? "positive" : (item.change7d < 0 ? "negative" : "");
                 const arrow24 = item.change24h > 0 ? "▲ " : (item.change24h < 0 ? "▼ " : "");
                 const arrow7 = item.change7d > 0 ? "▲ " : (item.change7d < 0 ? "▼ " : "");
-                const card = document.createElement("div");
-                card.className = "etf-card";
-                card.innerHTML =
-                    '<div class="etf-coin">' +
+                const row = document.createElement("tr");
+                row.innerHTML =
+                    '<td style="display:flex; align-items:center;">' +
                     '<img src="' + (item.image || "") + '" class="coin-logo" alt="' + (item.name || "") + '">' +
                     (item.name || "") + " (" + (item.symbol || "") + ")" +
-                    "</div>" +
-                    '<div style="font-weight:600;">' + formatPrice(item.price) + "</div>" +
-                    '<div class="' + cls24 + '">' + arrow24 + item.change24h + "%</div>" +
-                    '<div class="' + cls7 + '">' + arrow7 + item.change7d + "%</div>" +
-                    "<div>" + formatBillions(item.marketCap) + "</div>" +
-                    "<div>" + formatBillions(item.volume) + "</div>";
-                box.appendChild(card);
+                    "</td>" +
+                    '<td style="font-weight:600;">' + formatPrice(item.price) + "</td>" +
+                    '<td class="' + cls24 + '">' + arrow24 + item.change24h + "%</td>" +
+                    '<td class="' + cls7 + '">' + arrow7 + item.change7d + "%</td>" +
+                    "<td>" + formatBillions(item.marketCap) + "</td>" +
+                    "<td>" + formatBillions(item.volume) + "</td>";
+                body.appendChild(row);
             });
         }
 
@@ -186,11 +179,11 @@
                     h.classList.remove("active");
                 });
                 th.classList.add("active");
-                renderEtfCards();
+                renderEtfTable();
             });
         });
 
-        window.onload = renderEtfCards;
+        window.onload = renderEtfTable;
     </script>
 </body>
 </html>
