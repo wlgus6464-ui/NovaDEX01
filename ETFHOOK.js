@@ -9,8 +9,8 @@ const etfHookList = [
         name: "Hook One",
         symbol: "HOOK1",
         price: 0,
-        change24h: 0,
-        change7d: 0,
+        change24h: 50,
+        change7d: 720,
         marketCap: 0,
         volume: 0,
         image: ""
@@ -20,8 +20,8 @@ const etfHookList = [
         name: "Hook Two",
         symbol: "HOOK2",
         price: 0,
-        change24h: 0,
-        change7d: 0,
+        change24h: 70,
+        change7d: 500,
         marketCap: 0,
         volume: 0,
         image: ""
