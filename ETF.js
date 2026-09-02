@@ -7,9 +7,9 @@ const etfList = [
         rank: 1,
         name: "Bitcoin",
         symbol: "BTC",
-        price: 77507.11,
-        change24h: 1.4,
-        change7d: 2.0,
+        price: 77460.37,
+        change24h: -1.1,
+        change7d: -2.0,
         marketCap: 1556238190141,
         volume: 30759628108,
         image: "https://coin-images.coingecko.com/coins/images/1/large/bitcoin.png?1696501400"
