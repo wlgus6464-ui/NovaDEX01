@@ -156,7 +156,12 @@
         function getSortedList() {
             const data = sortRows((window.etfList || []).slice());
             if (sortKey === "change24h" || sortKey === "change7d" || sortKey === "marketCap" || sortKey === "volume") {
-                const hooks = sortRows((window.etfHookList || []).slice());
+                const hooks = sortRows((window.etfHookList || []).slice()).map(function(h) {
+                    var copy = {};
+                    for (var k in h) copy[k] = h[k];
+                    copy._hook = true;
+                    return copy;
+                });
                 return hooks.concat(data);
             }
             return data;
@@ -172,6 +177,12 @@
                 const arrow24 = item.change24h > 0 ? "▲ " : (item.change24h < 0 ? "▼ " : "");
                 const arrow7 = item.change7d > 0 ? "▲ " : (item.change7d < 0 ? "▼ " : "");
                 const row = document.createElement("tr");
+                if (item._hook) {
+                    row.style.cursor = "pointer";
+                    row.addEventListener("click", function() {
+                        window.location.href = "ETFHOOK.html?id=" + encodeURIComponent(item.id || item.symbol);
+                    });
+                }
                 row.innerHTML =
                     '<td class="coin-cell' + (sortKey === "rank" ? " col-active" : "") + '" style="display:flex; align-items:center;">' +
                     '<img src="' + (item.image || "") + '" class="coin-logo" alt="' + (item.name || "") + '">' +
