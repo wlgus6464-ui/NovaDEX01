@@ -242,24 +242,37 @@
                     id: "maxBarLabel",
                     afterDatasetsDraw: function(chart) {
                         var meta = chart.getDatasetMeta(0);
-                        if (!meta || !meta.data || !meta.data[maxIndex]) return;
-                        var bar = meta.data[maxIndex];
+                        var data = chart.data.datasets[0].data;
+                        if (!meta || !meta.data || !data || !data.length) return;
+                        var xScale = chart.scales.x;
+                        var minI = Math.ceil(xScale.min);
+                        var maxI = Math.floor(xScale.max);
+                        if (minI < 0) minI = 0;
+                        if (maxI > data.length - 1) maxI = data.length - 1;
+                        var visIdx = -1;
+                        var visMax = -Infinity;
+                        for (var i = minI; i <= maxI; i++) {
+                            if (data[i] > visMax) {
+                                visMax = data[i];
+                                visIdx = i;
+                            }
+                        }
+                        if (visIdx < 0 || !meta.data[visIdx]) return;
+                        var bar = meta.data[visIdx];
                         var ctx = chart.ctx;
                         var x = bar.x;
                         var y = bar.y;
+                        if (x < chart.chartArea.left || x > chart.chartArea.right) return;
                         ctx.save();
                         ctx.font = "700 12px system-ui, sans-serif";
-                        var text = maxLabelText;
+                        var text = (visIdx === maxIndex && maxLabelText) ? maxLabelText : (visMax + "M");
                         var padX = 8;
-                        var padY = 5;
                         var tw = ctx.measureText(text).width;
                         var boxW = tw + padX * 2;
                         var boxH = 20;
                         var boxX = x + 10;
                         var boxY = y - boxH / 2;
-                        if (boxX + boxW > chart.chartArea.right) {
-                            boxX = x - 10 - boxW;
-                        }
+                        if (boxX + boxW > chart.chartArea.right) boxX = x - 10 - boxW;
                         ctx.fillStyle = "#F4F6F8";
                         ctx.strokeStyle = "#C8CDD4";
                         ctx.lineWidth = 1;
