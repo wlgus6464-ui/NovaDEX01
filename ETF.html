@@ -87,6 +87,8 @@
         .positive { color: var(--primary); }
         .negative { color: var(--danger); }
         tbody tr:last-child td { border-bottom: none; }
+        td { font-weight: 400; }
+        td.col-active { font-weight: 700; }
     </style>
 </head>
 <body>
@@ -158,15 +160,15 @@
                 const arrow7 = item.change7d > 0 ? "▲ " : (item.change7d < 0 ? "▼ " : "");
                 const row = document.createElement("tr");
                 row.innerHTML =
-                    '<td style="display:flex; align-items:center;">' +
+                    '<td class="' + (sortKey === "rank" ? "col-active" : "") + '" style="display:flex; align-items:center;">' +
                     '<img src="' + (item.image || "") + '" class="coin-logo" alt="' + (item.name || "") + '">' +
                     (item.name || "") + " (" + (item.symbol || "") + ")" +
                     "</td>" +
-                    '<td style="font-weight:600;">' + formatPrice(item.price) + "</td>" +
-                    '<td class="' + cls24 + '">' + arrow24 + item.change24h + "%</td>" +
-                    '<td class="' + cls7 + '">' + arrow7 + item.change7d + "%</td>" +
-                    "<td>" + formatBillions(item.marketCap) + "</td>" +
-                    "<td>" + formatBillions(item.volume) + "</td>";
+                    '<td class="' + (sortKey === "price" ? "col-active" : "") + '">' + formatPrice(item.price) + "</td>" +
+                    '<td class="' + cls24 + (sortKey === "change24h" ? " col-active" : "") + '">' + arrow24 + item.change24h + "%</td>" +
+                    '<td class="' + cls7 + (sortKey === "change7d" ? " col-active" : "") + '">' + arrow7 + item.change7d + "%</td>" +
+                    '<td class="' + (sortKey === "marketCap" ? "col-active" : "") + '">' + formatBillions(item.marketCap) + "</td>" +
+                    '<td class="' + (sortKey === "volume" ? "col-active" : "") + '">' + formatBillions(item.volume) + "</td>";
                 body.appendChild(row);
             });
         }
@@ -183,7 +185,11 @@
             });
         });
 
-        window.onload = renderEtfTable;
+        window.onload = function() {
+            var first = document.querySelector('th.sortable[data-sort="rank"]');
+            if (first) first.classList.add("active");
+            renderEtfTable();
+        };
     </script>
 </body>
 </html>
