@@ -160,6 +160,8 @@
             data.forEach(function(item) {
                 const cls24 = item.change24h > 0 ? "positive" : (item.change24h < 0 ? "negative" : "");
                 const cls7 = item.change7d > 0 ? "positive" : (item.change7d < 0 ? "negative" : "");
+                const arrow24 = item.change24h > 0 ? "▲ " : (item.change24h < 0 ? "▼ " : "");
+                const arrow7 = item.change7d > 0 ? "▲ " : (item.change7d < 0 ? "▼ " : "");
                 const card = document.createElement("div");
                 card.className = "etf-card";
                 card.innerHTML =
@@ -168,8 +170,8 @@
                     (item.name || "") + " (" + (item.symbol || "") + ")" +
                     "</div>" +
                     '<div style="font-weight:600;">' + formatPrice(item.price) + "</div>" +
-                    '<div class="' + cls24 + '">' + item.change24h + "%</div>" +
-                    '<div class="' + cls7 + '">' + item.change7d + "%</div>" +
+                    '<div class="' + cls24 + '">' + arrow24 + item.change24h + "%</div>" +
+                    '<div class="' + cls7 + '">' + arrow7 + item.change7d + "%</div>" +
                     "<div>" + formatBillions(item.marketCap) + "</div>" +
                     "<div>" + formatBillions(item.volume) + "</div>";
                 box.appendChild(card);
