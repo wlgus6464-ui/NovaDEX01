@@ -100,7 +100,7 @@ const etfList = [
         change7d: 3.5,
         marketCap: 23032966120,
         volume: 261146903,
-        image: "https://coin-images.coingecko.com/coins/images/54458/large/figure-heloc.png"
+        image: "https://s2.coinmarketcap.com/static/img/coins/64x64/39361.png"
     },
     {
         rank: 10,
@@ -111,7 +111,7 @@ const etfList = [
         change7d: 1.9,
         marketCap: 18478469328,
         volume: 1417266656,
-        image: "https://coin-images.coingecko.com/coins/images/50882/large/hyperliquid.png"
+        image: "https://s2.coinmarketcap.com/static/img/coins/64x64/32196.png"
     },
     {
         rank: 11,
