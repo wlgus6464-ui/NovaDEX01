@@ -144,7 +144,7 @@ const etfList = [
         change7d: 5.1,
         marketCap: 12224149159,
         volume: 41771920,
-        image: "https://coin-images.coingecko.com/coins/images/65374/large/rain.png"
+        image: "https://s2.coinmarketcap.com/static/img/coins/64x64/38341.png"
     },
     {
         rank: 14,
