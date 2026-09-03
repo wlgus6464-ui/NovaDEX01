@@ -194,6 +194,33 @@
             color: #8B93A1;
             font-weight: 400;
         }
+    
+        .m-tabbar { display: none; }
+        @media (max-width: 860px) {
+            aside { display: none !important; }
+            main, .main { margin-left: 0 !important; padding: 16px 12px 96px !important; width: auto !important; }
+            body { overflow-x: hidden; }
+            .m-tabbar {
+                display: flex;
+                position: fixed;
+                left: 0; right: 0; bottom: 0;
+                z-index: 40;
+                background: #0F141D;
+                border-top: 1px solid #232B38;
+                padding: 8px 2px calc(8px + env(safe-area-inset-bottom));
+                justify-content: space-around;
+            }
+            .m-tabbar a {
+                flex: 1;
+                text-align: center;
+                text-decoration: none;
+                color: #8B93A1;
+                font-size: 11px;
+                line-height: 1.2;
+            }
+            .m-tabbar a span.ico { display: block; font-size: 16px; margin-bottom: 2px; }
+            .m-tabbar a.on { color: #7CFF6B; }
+        }
     </style>
 </head>
 <body>
@@ -511,5 +538,12 @@
             });
         };
     </script>
+    <nav class="m-tabbar">
+        <a href="index.html"><span class="ico">🌟</span>Top</a>
+        <a href="trending.html"><span class="ico">🔥</span>Trending</a>
+        <a href="news.html"><span class="ico">📰</span>News</a>
+        <a href="on-chain-data.html"><span class="ico">📊</span>On-Chain</a>
+        <a href="Application.html" class="on"><span class="ico">💵</span>ETF</a>
+    </nav>
 </body>
 </html>
