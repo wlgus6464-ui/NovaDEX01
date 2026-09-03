@@ -111,6 +111,10 @@
         .coin-title.has-link {
             cursor: pointer;
         }
+        a.coin-title {
+            color: inherit;
+            text-decoration: none;
+        }
         .coin-title img {
             width: 52px;
             height: 52px;
@@ -200,10 +204,10 @@
 
     <div class="main">
         <h1 style="margin:0 0 18px; font-size:1.8rem;">💵 ETF (Exchange Traded Fund)</h1>
-        <div class="coin-title" id="coin-title">
+        <a class="coin-title has-link" id="coin-title" href="#" target="_blank" rel="noopener">
             <img id="coin-logo" alt="">
             <h2 id="coin-heading">ETF – Capital inflow / Traded Value</h2>
-        </div>
+        </a>
         <div class="chart-wrap">
             <div class="chart-toolbar">
                 <span class="date-box" id="date-from">11/20/2025</span>
@@ -343,13 +347,11 @@
             }
             var titleCard = document.getElementById("coin-title");
             if (item.link) {
+                titleCard.href = item.link;
                 titleCard.classList.add("has-link");
-                titleCard.onclick = function() {
-                    window.open(item.link, "_blank");
-                };
             } else {
+                titleCard.removeAttribute("href");
                 titleCard.classList.remove("has-link");
-                titleCard.onclick = null;
             }
 
             var series = buildSeries(item);
