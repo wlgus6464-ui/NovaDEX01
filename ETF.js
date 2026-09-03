@@ -26,17 +26,6 @@ const etfList = [
         image: "https://coin-images.coingecko.com/coins/images/279/large/ethereum.png?1696501628"
     },
     {
-        rank: 3,
-        name: "Tether",
-        symbol: "USDT",
-        price: 0.9997,
-        change24h: 0,
-        change7d: 0,
-        marketCap: 183326861111,
-        volume: 47255523773,
-        image: "https://coin-images.coingecko.com/coins/images/325/large/Tether.png?1696501661"
-    },
-    {
         rank: 4,
         name: "BNB",
         symbol: "BNB",
@@ -57,17 +46,6 @@ const etfList = [
         marketCap: 84697820740,
         volume: 2252855050,
         image: "https://coin-images.coingecko.com/coins/images/44/large/xrp-symbol-white-128.png?1696501442"
-    },
-    {
-        rank: 6,
-        name: "USDC",
-        symbol: "USDC",
-        price: 0.9998,
-        change24h: 0,
-        change7d: 0,
-        marketCap: 73731841173,
-        volume: 12774752313,
-        image: "https://coin-images.coingecko.com/coins/images/6319/large/USDC.png?1769615602"
     },
     {
         rank: 7,
