@@ -129,6 +129,49 @@
             cursor: grab;
         }
         .chart-body:active { cursor: grabbing; }
+        .ticker-wrap {
+            margin-top: 18px;
+            overflow: hidden;
+            padding: 14px 0;
+            background: rgba(20,27,38,0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+        }
+        .ticker-track {
+            display: flex;
+            width: max-content;
+            animation: ticker-move 40s linear infinite;
+        }
+        .ticker-item {
+            flex: 0 0 auto;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0 22px;
+            white-space: nowrap;
+        }
+        .ticker-item img {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+        .ticker-sym {
+            font-weight: 700;
+            font-size: 15px;
+        }
+        .ticker-vol {
+            color: #d8d8d8;
+            font-size: 15px;
+        }
+        .ticker-up { color: var(--primary); font-weight: 600; }
+        .ticker-down { color: var(--danger); font-weight: 600; }
+        @keyframes ticker-move {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
     </style>
 </head>
 <body>
@@ -170,8 +213,12 @@
                 <canvas id="hook-chart"></canvas>
             </div>
         </div>
+        <div class="ticker-wrap">
+            <div class="ticker-track" id="etf-ticker"></div>
+        </div>
     </div>
 
+    <script src="ETF.js"></script>
     <script src="ETFHOOK.js"></script>
     <script>
         function getQuery(key) {
@@ -230,7 +277,44 @@
             return { labels: labels, values: values };
         }
 
+        function formatTickerVol(n) {
+            n = Number(n) || 0;
+            if (Math.abs(n) >= 1e9) return "$" + (n / 1e9).toFixed(2) + "B";
+            return "$" + (n / 1e6).toFixed(2) + "M";
+        }
+
+        function buildTicker() {
+            var track = document.getElementById("etf-ticker");
+            if (!track) return;
+            var list = (window.etfList || []).slice().sort(function(a, b) {
+                return (b.marketCap || 0) - (a.marketCap || 0);
+            }).slice(0, 10);
+            if (!list.length) return;
+            function oneItem(c) {
+                var up = c.change24h > 0;
+                var down = c.change24h < 0;
+                var cls = up ? "ticker-up" : (down ? "ticker-down" : "");
+                var arrow = up ? "▲ " : (down ? "▼ " : "");
+                return '<div class="ticker-item">' +
+                    '<img src="' + (c.image || "") + '" alt="' + (c.symbol || "") + '">' +
+                    '<span class="ticker-sym">' + (c.symbol || "") + "</span>" +
+                    '<span class="ticker-vol">' + formatTickerVol(c.volume) + "</span>" +
+                    '<span class="' + cls + '">' + arrow + c.change24h + "%</span>" +
+                    "</div>";
+            }
+            var html = "";
+            for (var r = 0; r < 2; r++) {
+                for (var i = 0; i < list.length; i++) html += oneItem(list[i]);
+            }
+            track.innerHTML = html;
+            var wrap = track.parentElement;
+            var w = wrap.clientWidth / 5;
+            var nodes = track.querySelectorAll(".ticker-item");
+            for (var n = 0; n < nodes.length; n++) nodes[n].style.width = w + "px";
+        }
+
         window.onload = function() {
+            buildTicker();
             var item = findHook();
             if (!item) return;
             if (item.chartFrom) document.getElementById("date-from").textContent = item.chartFrom;
