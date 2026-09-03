@@ -59,11 +59,15 @@
         th, td {
             padding: 8px 2px;
             text-align: left;
-            border-bottom: 1px solid #1c2430;
+            border-bottom: none;
             vertical-align: middle;
             font-size: 10px;
             line-height: 1.2;
             word-break: break-word;
+        }
+        thead tr,
+        tbody tr {
+            border-bottom: 1px solid #1c2430;
         }
         th:nth-child(1), td:nth-child(1) { width: 40px; }
         th:nth-child(2), td:nth-child(2) { width: 22%; }
@@ -75,22 +79,18 @@
         th.active, th:hover { color: var(--primary); }
         tbody tr { height: 44px; }
         tbody tr:last-child { height: 44px; }
-        tbody tr:last-child td { border-bottom: none; }
+        tbody tr:last-child { border-bottom: none; }
         td.coin-cell {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: visible;
+            text-align: center;
+            vertical-align: middle;
         }
         td.coin-cell span { display: none; }
         .coin-logo {
             width: 22px;
             height: 22px;
-            min-width: 22px;
-            min-height: 22px;
             border-radius: 50%;
             margin: 0;
-            flex-shrink: 0;
+            vertical-align: middle;
             object-fit: cover;
         }
         .mosaic-box {
