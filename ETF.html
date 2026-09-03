@@ -183,11 +183,11 @@
         }
 
         function getSortedList() {
-            const data = sortRows((window.etfList || []).slice().filter(function(c) {
+            const data = (window.etfList || []).slice().filter(function(c) {
                 return c.symbol !== "USDT" && c.symbol !== "USDC";
-            }));
+            });
             if (sortKey === "change24h" || sortKey === "change7d" || sortKey === "marketCap" || sortKey === "volume") {
-                const hooks = sortRows((window.etfHookList || []).slice()).map(function(h) {
+                const hooks = (window.etfHookList || []).slice().map(function(h) {
                     var copy = {};
                     for (var k in h) copy[k] = h[k];
                     copy._hook = true;
@@ -195,9 +195,9 @@
                     if (h.etfVolume != null) copy.volume = h.etfVolume;
                     return copy;
                 });
-                return hooks.concat(data);
+                return sortRows(hooks.concat(data));
             }
-            return data;
+            return sortRows(data);
         }
 
         function renderEtfTable() {
