@@ -88,6 +88,15 @@
         td.coin-cell {
             white-space: nowrap;
         }
+        a.hook-link {
+            color: inherit;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        a.hook-link:hover {
+            color: var(--primary);
+        }
         .positive { color: var(--primary); }
         .negative { color: var(--danger); }
         tbody tr:last-child td { border-bottom: none; }
@@ -139,7 +148,9 @@
         }
 
         function formatBillions(n) {
-            return "$" + (n / 1e9).toFixed(2) + "B";
+            n = Number(n) || 0;
+            if (Math.abs(n) >= 1e9) return "$" + (n / 1e9).toFixed(2) + "B";
+            return "$" + (n / 1e6).toFixed(2) + "M";
         }
 
         function sortRows(list) {
@@ -160,6 +171,8 @@
                     var copy = {};
                     for (var k in h) copy[k] = h[k];
                     copy._hook = true;
+                    if (h.etfMarketCap != null) copy.marketCap = h.etfMarketCap;
+                    if (h.etfVolume != null) copy.volume = h.etfVolume;
                     return copy;
                 });
                 return hooks.concat(data);
@@ -182,16 +195,17 @@
                 const arrow24 = item.change24h > 0 ? "▲ " : (item.change24h < 0 ? "▼ " : "");
                 const arrow7 = item.change7d > 0 ? "▲ " : (item.change7d < 0 ? "▼ " : "");
                 const row = document.createElement("tr");
-                if (item._hook) {
+                var hookId = item._hook ? (item.id || item.symbol) : "";
+                var coinHtml = '<img src="' + (item.image || "") + '" class="coin-logo" alt="' + (item.name || "") + '">' +
+                    '<span style="white-space:nowrap;">' + (item.name || "") + " (" + (item.symbol || "") + ")</span>";
+                if (hookId) {
                     row.style.cursor = "pointer";
-                    row.addEventListener("click", function() {
-                        window.location.href = "ETFHOOK.html?id=" + encodeURIComponent(item.id || item.symbol);
-                    });
+                    row.setAttribute("data-hook-id", hookId);
+                    coinHtml = '<a class="hook-link" href="ETFHOOK.html?id=' + encodeURIComponent(hookId) + '">' + coinHtml + "</a>";
                 }
                 row.innerHTML =
                     '<td class="coin-cell' + (sortKey === "rank" ? " col-active" : "") + '" style="display:flex; align-items:center;">' +
-                    '<img src="' + (item.image || "") + '" class="coin-logo" alt="' + (item.name || "") + '">' +
-                    '<span style="white-space:nowrap;">' + (item.name || "") + " (" + (item.symbol || "") + ")</span>" +
+                    coinHtml +
                     "</td>" +
                     '<td class="' + (sortKey === "price" ? "col-active" : "") + '">' + formatPrice(item.price) + "</td>" +
                     '<td class="' + cls24 + (sortKey === "change24h" ? " col-active" : "") + '">' + arrow24 + item.change24h + "%</td>" +
@@ -212,6 +226,13 @@
                 th.classList.add("active");
                 renderEtfTable();
             });
+        });
+
+        document.getElementById("etf-body").addEventListener("click", function(e) {
+            var tr = e.target.closest("tr[data-hook-id]");
+            if (!tr) return;
+            if (e.target.closest("a.hook-link")) return;
+            window.location.href = "ETFHOOK.html?id=" + encodeURIComponent(tr.getAttribute("data-hook-id"));
         });
 
         var first = document.querySelector('th.sortable[data-sort="rank"]');
