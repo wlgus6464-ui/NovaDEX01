@@ -23,7 +23,7 @@ const etfHookList = [
         image: "https://s2.coinmarketcap.com/static/img/coins/64x64/36277.png",
         chartFrom: "11/20/2025",
         chartTo: "09/03/2026",
-        lastVolumeLabel: "80.901M",
+        lastVolumeLabel: "80.901B",
         chartLabels: [
             "Nov 20", "Nov 23", "Nov 26", "Nov 29", "Dec 2", "Dec 5", "Dec 8", "Dec 11", "Dec 14", "Dec 17", "Dec 20", "Dec 23", "Dec 26", "Dec 29", "Jan 1", "Jan 4", "Jan 7", "Jan 10", "Jan 13", "Jan 16", "Jan 19", "Jan 22", "Jan 25", "Jan 28", "Jan 31", "Feb 3", "Feb 6", "Feb 9", "Feb 12", "Feb 15", "Feb 18", "Feb 21", "Feb 24", "Feb 27", "Mar 2", "Mar 5", "Mar 8", "Mar 11", "Mar 14", "Mar 17", "Mar 20", "Mar 23", "Mar 26", "Mar 29", "Apr 1", "Apr 4", "Apr 7", "Apr 10", "Apr 13", "Apr 16", "Apr 19", "Apr 22", "Apr 25", "Apr 28", "May 1", "May 4", "May 7", "May 10", "May 13", "May 16", "May 19", "May 22", "May 25", "May 28", "May 31", "Jun 3", "Jun 6", "Jun 9", "Jun 12", "Jun 15", "Jun 18", "Jun 21", "Jun 24", "Jun 27", "Jun 30", "Jul 3", "Jul 6", "Jul 9", "Jul 12", "Jul 15", "Jul 18", "Jul 21", "Jul 24", "Jul 27", "Jul 30", "Aug 2", "Aug 5", "Aug 8", "Aug 11", "Aug 14", "Aug 17", "Aug 20", "Aug 22", "Aug 25", "Aug 29", "Sep 1", "Sep 3"
         ],
@@ -47,7 +47,7 @@ const etfHookList = [
         image: "https://s2.coinmarketcap.com/static/img/coins/64x64/39377.png",
         chartFrom: "11/20/2025",
         chartTo: "09/03/2026",
-        lastVolumeLabel: "71.4M",
+        lastVolumeLabel: "71.4B",
         chartLabels: [
             "Nov 20", "Nov 23", "Nov 26", "Nov 29", "Dec 2", "Dec 5", "Dec 8", "Dec 11", "Dec 14", "Dec 17", "Dec 20", "Dec 23", "Dec 26", "Dec 29", "Jan 1", "Jan 4", "Jan 7", "Jan 10", "Jan 13", "Jan 16", "Jan 19", "Jan 22", "Jan 25", "Jan 28", "Jan 31", "Feb 3", "Feb 6", "Feb 9", "Feb 12", "Feb 15", "Feb 18", "Feb 21", "Feb 24", "Feb 27", "Mar 2", "Mar 5", "Mar 8", "Mar 11", "Mar 14", "Mar 17", "Mar 20", "Mar 23", "Mar 26", "Mar 29", "Apr 1", "Apr 4", "Apr 7", "Apr 10", "Apr 13", "Apr 16", "Apr 19", "Apr 22", "Apr 25", "Apr 28", "May 1", "May 4", "May 7", "May 10", "May 13", "May 16", "May 19", "May 22", "May 25", "May 28", "May 31", "Jun 3", "Jun 6", "Jun 9", "Jun 12", "Jun 15", "Jun 18", "Jun 21", "Jun 24", "Jun 27", "Jun 30", "Jul 3", "Jul 6", "Jul 9", "Jul 12", "Jul 15", "Jul 18", "Jul 21", "Jul 24", "Jul 27", "Jul 30", "Aug 2", "Aug 5", "Aug 8", "Aug 11", "Aug 14", "Aug 17", "Aug 20", "Aug 22", "Aug 25", "Aug 29", "Sep 1", "Sep 3"
         ],
@@ -58,28 +58,28 @@ const etfHookList = [
     },
     {
         id: "hook3",
-        rank: 3,
-        name: "Hook Three",
-        symbol: "HOOK3",
-        price: 0,
-        change24h: 0,
-        change7d: 0,
-        marketCap: 0,
-        volume: 0,
-        etfMarketCap: 0,
-        etfVolume: 0,
-        image: "https://s2.coinmarketcap.com/static/img/coins/64x64/5426.png",
+        rank: 96,
+        name: "Ether.fi",
+        symbol: "ETHFI",
+        price: 0.6055,
+        change24h: 5.7,
+        change7d: 4.1,
+        marketCap: 584529846,
+        volume: 64056442,
+        etfMarketCap: 22452984600,
+        etfVolume: 22405644200,
+        image: "https://coin-images.coingecko.com/coins/images/35958/large/etherfi.jpeg",
         mosaic: true,
         chartFrom: "11/20/2025",
         chartTo: "09/03/2026",
-        lastVolumeLabel: "55.2M",
+        lastVolumeLabel: "55.2B",
         chartLabels: [
             "Nov 20", "Nov 23", "Nov 26", "Nov 29", "Dec 2", "Dec 5", "Dec 8", "Dec 11", "Dec 14", "Dec 17", "Dec 20", "Dec 23", "Dec 26", "Dec 29", "Jan 1", "Jan 4", "Jan 7", "Jan 10", "Jan 13", "Jan 16", "Jan 19", "Jan 22", "Jan 25", "Jan 28", "Jan 31", "Feb 3", "Feb 6", "Feb 9", "Feb 12", "Feb 15", "Feb 18", "Feb 21", "Feb 24", "Feb 27", "Mar 2", "Mar 5", "Mar 8", "Mar 11", "Mar 14", "Mar 17", "Mar 20", "Mar 23", "Mar 26", "Mar 29", "Apr 1", "Apr 4", "Apr 7", "Apr 10", "Apr 13", "Apr 16", "Apr 19", "Apr 22", "Apr 25", "Apr 28", "May 1", "May 4", "May 7", "May 10", "May 13", "May 16", "May 19", "May 22", "May 25", "May 28", "May 31", "Jun 3", "Jun 6", "Jun 9", "Jun 12", "Jun 15", "Jun 18", "Jun 21", "Jun 24", "Jun 27", "Jun 30", "Jul 3", "Jul 6", "Jul 9", "Jul 12", "Jul 15", "Jul 18", "Jul 21", "Jul 24", "Jul 27", "Jul 30", "Aug 2", "Aug 5", "Aug 8", "Aug 11", "Aug 14", "Aug 17", "Aug 20", "Aug 22", "Aug 25", "Aug 29", "Sep 1", "Sep 3"
         ],
         volumeBars: [
-            11.2, 8.4, 14.1, 9.7, 16.3, 12.8, 7.9, 18.2, 13.5, 10.1, 15.4, 9.2, 12.6, 8.8, 14.7, 11.3, 9.5, 16.8, 13.1, 7.4, 12.2, 10.8, 15.9, 11.7, 8.3, 13.8, 17.1, 9.9, 12.4, 14.6, 8.1, 11.9, 16.2, 10.5, 13.3, 9.1, 15.2, 12.1, 7.8, 14.4, 10.9, 16.5, 11.6, 8.6, 13.7, 9.4, 15.8, 12.3, 10.2, 14.9, 8.7, 11.4, 16.1, 13.2, 9.8, 12.7, 7.6, 15.3, 11.1, 14.2, 10.4, 13.6, 8.9, 16.4, 12.5, 9.3, 14.8, 11.8, 7.7, 15.6, 10.7, 13.4, 16.9, 12.9, 8.5, 14.3, 11.2, 9.6, 15.1, 10.6, 13.9, 8.2, 16.7, 12.0, 11.5, 14.5, 9.0, 15.7, 13.0, 10.3, 16.0, 12.8, 8.4, 55.2, 11.9, 14.1, 10.8
+            11.2, 8.4, 14.1, 9.7, 16.3, 12.8, 7.9, 18.2, 13.5, 10.1, 15.4, 9.2, 12.6, 8.8, 14.7, 11.3, 9.5, 16.8, 13.1, 7.4, 12.2, 10.8, 15.9, 11.7, 8.3, 13.8, 17.1, 9.9, 12.4, 14.6, 8.1, 11.9, 16.2, 10.5, 13.3, 9.1, 15.2, 12.1, 7.8, 14.4, 10.9, 16.5, 11.6, 8.6, 13.7, 9.4, 15.8, 12.3, 10.2, 14.9, 8.7, 11.4, 16.1, 13.2, 9.8, 12.7, 7.6, 15.3, 11.1, 14.2, 10.4, 13.6, 8.9, 16.4, 12.5, 9.3, 14.8, 11.8, 7.7, 15.6, 10.7, 13.4, 16.9, 12.9, 8.5, 14.3, 11.2, 9.6, 15.1, 10.6, 13.9, 8.2, 16.7, 12.0, 11.5, 14.5, 9.0, 15.7, 13.0, 10.3, 16.0, 12.8, 8.4, 11.9, 14.1, 10.8, 55.2
         ],
-        link: ""
+        link: "https://www.upbit.com/exchange?code=CRIX.UPBIT.KRW-IOST"
     }
 ];
 
