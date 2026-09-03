@@ -97,6 +97,26 @@
             background: #fff;
             display: inline-block;
         }
+        .coin-title {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin: 0 0 22px;
+        }
+        .coin-title img {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: #1a2130;
+            flex-shrink: 0;
+        }
+        .coin-title h2 {
+            margin: 0;
+            font-size: 1.55rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.25;
+        }
         .chart-body {
             position: relative;
             height: 420px;
@@ -121,12 +141,16 @@
     </aside>
 
     <div class="main">
-        <h1 style="margin:0 0 30px; font-size:1.8rem;">💵 ETF (Exchange Traded Fund)</h1>
+        <h1 style="margin:0 0 18px; font-size:1.8rem;">💵 ETF (Exchange Traded Fund)</h1>
+        <div class="coin-title">
+            <img id="coin-logo" alt="">
+            <h2 id="coin-heading">ETF – Capital inflow / Traded Value</h2>
+        </div>
         <div class="chart-wrap">
             <div class="chart-toolbar">
                 <span class="date-box" id="date-from">11/20/2025</span>
                 <span>-</span>
-                <span class="date-box" id="date-to">08/24/2026</span>
+                <span class="date-box" id="date-to">09/02/2026</span>
                 <span class="chip">1D</span>
                 <span class="chip">3D</span>
                 <span class="chip">1M</span>
@@ -136,7 +160,6 @@
                 <span class="chip">5Y</span>
                 <span class="chip">Max</span>
                 <span class="chip on">Daily</span>
-                <span class="legend"><i></i> <span id="legend-text">Turnover / Traded Value</span></span>
             </div>
             <div class="chart-body">
                 <canvas id="hook-chart"></canvas>
@@ -208,8 +231,16 @@
             if (item.chartFrom) document.getElementById("date-from").textContent = item.chartFrom;
             if (item.chartTo) document.getElementById("date-to").textContent = item.chartTo;
             var last = item.lastVolumeLabel || "";
-            document.getElementById("legend-text").textContent =
-                item.symbol + " US Equity  –  Turnover / Traded Value" + (last ? " " + last : "");
+            var heading = (item.symbol || "") + " ETF – Capital inflow / Traded Value" + (last ? " " + last : "");
+            document.getElementById("coin-heading").textContent = heading;
+            var logo = document.getElementById("coin-logo");
+            if (item.image) {
+                logo.src = item.image;
+                logo.alt = item.symbol || item.name || "";
+                logo.style.display = "";
+            } else {
+                logo.style.display = "none";
+            }
 
             var series = buildSeries(item);
             var maxIndex = 0;
@@ -273,8 +304,8 @@
                         var boxX = x + 10;
                         var boxY = y - boxH / 2;
                         if (boxX + boxW > chart.chartArea.right) boxX = x - 10 - boxW;
-                        ctx.fillStyle = "#F4F6F8";
-                        ctx.strokeStyle = "#C8CDD4";
+                        ctx.fillStyle = "#7CFF6B";
+                        ctx.strokeStyle = "#7CFF6B";
                         ctx.lineWidth = 1;
                         ctx.beginPath();
                         if (ctx.roundRect) ctx.roundRect(boxX, boxY, boxW, boxH, 4);
@@ -285,7 +316,7 @@
                         ctx.moveTo(boxX <= x ? boxX + boxW : boxX, y);
                         ctx.lineTo(x, y);
                         ctx.stroke();
-                        ctx.fillStyle = "#111";
+                        ctx.fillStyle = "#FFFFFF";
                         ctx.textBaseline = "middle";
                         ctx.fillText(text, boxX + padX, boxY + boxH / 2);
                         ctx.restore();
