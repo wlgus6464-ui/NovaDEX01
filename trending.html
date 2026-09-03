@@ -235,7 +235,22 @@
             .card-right img, .card-right video { width: 96px !important; height: 72px !important; object-fit: cover; }
             .banner-text { max-height: none; font-size: 0.82rem; padding: 12px; }
             h1, .page-title { font-size: 1.15rem !important; }
-            .pool-card { padding: 16px; overflow: hidden; }
+            .pool-card {
+                padding: 16px;
+                overflow: hidden;
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+            .card-left {
+                min-width: 0;
+                width: 100%;
+                max-width: 100%;
+            }
+            .participate-btn {
+                width: 100%;
+                max-width: 100%;
+                box-sizing: border-box;
+            }
             .countdown {
                 gap: 6px;
                 width: 100%;
