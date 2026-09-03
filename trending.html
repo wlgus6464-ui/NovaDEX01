@@ -230,10 +230,6 @@
             }
             .m-tabbar a span.ico { display: block; font-size: 16px; margin-bottom: 2px; }
             .m-tabbar a.on { color: #7CFF6B; }
-            .card-content { flex-direction: row; align-items: flex-start; gap: 10px; }
-            .card-right { width: 96px; flex-shrink: 0; }
-            .card-right img, .card-right video { width: 96px !important; height: 72px !important; object-fit: cover; }
-            .banner-text { max-height: none; font-size: 0.82rem; padding: 12px; }
             h1, .page-title { font-size: 1.15rem !important; }
             .pool-card {
                 padding: 16px;
@@ -241,10 +237,29 @@
                 max-width: 100%;
                 box-sizing: border-box;
             }
-            .card-left {
+            .card-content {
+                flex-direction: column;
+                gap: 14px;
+            }
+            .card-left,
+            .card-right {
                 min-width: 0;
                 width: 100%;
                 max-width: 100%;
+                flex: none;
+            }
+            .date-row { white-space: nowrap; }
+            .banner-img {
+                width: 100%;
+                height: auto;
+                max-height: 140px;
+                object-fit: cover;
+                border-radius: 12px;
+            }
+            .banner-text {
+                max-height: none;
+                font-size: 0.82rem;
+                padding: 12px;
             }
             .participate-btn {
                 width: 100%;
