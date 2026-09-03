@@ -56,22 +56,24 @@
         }
         thead tr { color: #9aa3b2; }
         th, td {
-            padding: 9px 4px;
+            padding: 8px 2px;
             text-align: left;
             border-bottom: 1px solid #1c2430;
             vertical-align: middle;
-            font-size: 11px;
+            font-size: 10px;
+            line-height: 1.2;
+            word-break: break-word;
         }
-        th:nth-child(1), td:nth-child(1) { width: 26%; }
-        th:nth-child(2), td:nth-child(2) { width: 16%; }
-        th:nth-child(3), td:nth-child(3) { width: 12%; }
-        th:nth-child(4), td:nth-child(4) { width: 12%; }
-        th:nth-child(5), td:nth-child(5) { width: 17%; }
-        th:nth-child(6), td:nth-child(6) { width: 17%; }
-        th { font-weight: 600; cursor: pointer; white-space: nowrap; }
+        th:nth-child(1), td:nth-child(1) { width: 16%; }
+        th:nth-child(2), td:nth-child(2) { width: 20%; }
+        th:nth-child(3), td:nth-child(3) { width: 14%; }
+        th:nth-child(4), td:nth-child(4) { width: 14%; }
+        th:nth-child(5), td:nth-child(5) { width: 18%; }
+        th:nth-child(6), td:nth-child(6) { width: 18%; }
+        th { font-weight: 600; cursor: pointer; white-space: normal; }
         th.active, th:hover { color: var(--primary); }
         tbody tr:last-child td { border-bottom: none; }
-        td.coin-cell { display: flex; align-items: center; white-space: nowrap; overflow: hidden; }
+        td.coin-cell { display: flex; align-items: center; overflow: hidden; }
         .coin-logo {
             width: 22px;
             height: 22px;
@@ -138,10 +140,10 @@
                     <tr>
                         <th class="sortable" data-sort="rank" data-dir="asc">Coin</th>
                         <th class="sortable" data-sort="price" data-dir="desc">Price</th>
-                        <th class="sortable" data-sort="change24h" data-dir="desc">24h %</th>
-                        <th class="sortable" data-sort="change7d" data-dir="desc">7D %</th>
-                        <th class="sortable" data-sort="marketCap" data-dir="desc">ETF Market Cap</th>
-                        <th class="sortable" data-sort="volume" data-dir="desc">ETF Volume (HIGH)</th>
+                        <th class="sortable" data-sort="change24h" data-dir="desc">24h</th>
+                        <th class="sortable" data-sort="change7d" data-dir="desc">7D</th>
+                        <th class="sortable" data-sort="marketCap" data-dir="desc">Cap</th>
+                        <th class="sortable" data-sort="volume" data-dir="desc">Vol</th>
                     </tr>
                 </thead>
                 <tbody id="etf-body"></tbody>
@@ -164,7 +166,10 @@
         let sortDir = "asc";
 
         function formatPrice(n) {
-            return "$" + Number(n).toLocaleString();
+            n = Number(n) || 0;
+            if (n >= 1000) return "$" + Math.round(n).toLocaleString();
+            if (n >= 1) return "$" + n.toFixed(2);
+            return "$" + n.toPrecision(3);
         }
         function formatBillions(n) {
             n = Number(n) || 0;
@@ -227,7 +232,7 @@
                 var hookId = hookIdOf(item);
                 var mosaic = !!(item.mosaic || item.id === "hook3" || item.symbol === "HOOK3");
                 var coinHtml = '<img src="' + (item.image || "") + '" class="coin-logo" alt="">' +
-                    '<span style="white-space:nowrap;">' + (item.name || "") + " (" + (item.symbol || "") + ")</span>";
+                    '<span>' + (item.symbol || "") + "</span>";
                 if (mosaic) {
                     coinHtml = '<span class="mosaic-box" style="filter:blur(10px);user-select:none;">' + coinHtml + "</span>";
                 }
