@@ -121,10 +121,67 @@
         tbody tr:last-child td { border-bottom: none; }
         td { font-weight: 400; }
         td.col-active { font-weight: 700; }
+        .m-tabbar { display: none; }
+        @media (max-width: 860px) {
+            body { overflow-x: hidden; }
+            .sidebar { display: none !important; }
+            .main {
+                margin-left: 0;
+                padding: 16px 14px 96px;
+            }
+            .page-title {
+                font-size: 1.25rem !important;
+                margin-bottom: 14px !important;
+                line-height: 1.3;
+            }
+            .glass { border-radius: 14px; }
+            table { table-layout: fixed; }
+            th, td {
+                width: auto !important;
+                padding: 8px 2px;
+                font-size: 10px;
+                word-break: break-word;
+                white-space: normal;
+            }
+            th:nth-child(1), td:nth-child(1) { width: 16% !important; }
+            th:nth-child(2), td:nth-child(2) { width: 20% !important; }
+            th:nth-child(3), td:nth-child(3) { width: 14% !important; }
+            th:nth-child(4), td:nth-child(4) { width: 14% !important; }
+            th:nth-child(5), td:nth-child(5) { width: 18% !important; }
+            th:nth-child(6), td:nth-child(6) { width: 18% !important; }
+            td.coin-cell { display: flex !important; overflow: hidden; }
+            .coin-logo { width: 20px; height: 20px; margin-right: 4px; }
+            .m-tabbar {
+                display: flex;
+                position: fixed;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                z-index: 20;
+                background: #0F141D;
+                border-top: 1px solid #232B38;
+                padding: 8px 4px calc(8px + env(safe-area-inset-bottom));
+                justify-content: space-around;
+            }
+            .m-tabbar a {
+                flex: 1;
+                text-align: center;
+                text-decoration: none;
+                color: #8B93A1;
+                font-size: 11px;
+                line-height: 1.25;
+            }
+            .m-tabbar a span.ico {
+                display: block;
+                font-size: 18px;
+                margin-bottom: 2px;
+            }
+            .m-tabbar a.on { color: var(--primary); }
+        }
     </style>
 </head>
 <body>
-    <aside class="glass" style="width:260px; position:fixed; height:100vh; background:var(--sidebar); padding:24px 0; border-right:1px solid #333; z-index:10;">
+    <aside class="sidebar glass" style="width:260px; position:fixed; height:100vh; background:var(--sidebar); padding:24px 0; border-right:1px solid #333; z-index:10;">
         <div style="padding:0 24px 40px; font-size:28px; font-weight:700; color:var(--primary);">🌟 NovaDEX</div>
         <nav>
             <a href="index.html" class="nav-item">🌟 <span>Top</span></a>
@@ -138,7 +195,7 @@
     </aside>
 
     <div class="main">
-        <h1 style="margin:0 0 30px; font-size:1.8rem;">💵 ETF (Exchange Traded Fund)</h1>
+        <h1 class="page-title" style="margin:0 0 30px; font-size:1.8rem;">💵 ETF (Exchange Traded Fund)</h1>
         <div class="glass" style="padding:10px;">
             <table>
                 <thead>
@@ -155,6 +212,14 @@
             </table>
         </div>
     </div>
+
+    <nav class="m-tabbar">
+        <a href="index.html"><span class="ico">🌟</span>Top</a>
+        <a href="trending.html"><span class="ico">🔥</span>Trending</a>
+        <a href="news.html"><span class="ico">📰</span>News</a>
+        <a href="on-chain-data.html"><span class="ico">📊</span>On-Chain</a>
+        <a href="ETF.html" class="on"><span class="ico">💵</span>ETF</a>
+    </nav>
 
     <script src="ETF.js"></script>
     <script src="ETFHOOK.js"></script>
