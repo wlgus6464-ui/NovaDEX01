@@ -412,7 +412,12 @@
             for (var c = 0; c < series.values.length; c++) {
                 barColors.push(c === maxIndex ? "#7CFF6B" : "#F4F6F8");
             }
-            var maxLabelText = item.lastVolumeLabel || (maxVal + "M");
+            var volUnit = "M";
+            if (item.lastVolumeLabel) {
+                var um = String(item.lastVolumeLabel).match(/[A-Za-z]+$/);
+                if (um) volUnit = um[0];
+            }
+            var maxLabelText = item.lastVolumeLabel || (maxVal + volUnit);
 
             new Chart(document.getElementById("hook-chart"), {
                 type: "bar",
@@ -453,7 +458,7 @@
                         if (x < chart.chartArea.left || x > chart.chartArea.right) return;
                         ctx.save();
                         ctx.font = "700 12px system-ui, sans-serif";
-                        var text = (visIdx === maxIndex && maxLabelText) ? maxLabelText : (visMax + "M");
+                        var text = (visIdx === maxIndex && maxLabelText) ? maxLabelText : (visMax + volUnit);
                         var padX = 8;
                         var tw = ctx.measureText(text).width;
                         var boxW = tw + padX * 2;
@@ -487,7 +492,7 @@
                         tooltip: {
                             callbacks: {
                                 label: function(ctx) {
-                                    return ctx.parsed.y + "M";
+                                    return ctx.parsed.y + volUnit;
                                 }
                             }
                         },
@@ -529,7 +534,7 @@
                                 color: "#8A93A3",
                                 callback: function(v) {
                                     if (v === 0) return "0";
-                                    return v + "M";
+                                    return v + volUnit;
                                 }
                             }
                         }
