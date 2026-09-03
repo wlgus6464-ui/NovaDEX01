@@ -43,7 +43,7 @@ const etfHookList = [
         marketCap: 166967000,
         volume: 43725000,
         etfMarketCap: 16696700000,
-        etfVolume: 1372500000,
+        etfVolume: 13725000000,
         image: "https://s2.coinmarketcap.com/static/img/coins/64x64/39377.png",
         chartFrom: "11/20/2025",
         chartTo: "09/03/2026",
