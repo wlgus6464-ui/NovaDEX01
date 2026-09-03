@@ -345,11 +345,11 @@
             if (item.chartFrom) document.getElementById("date-from").textContent = item.chartFrom;
             if (item.chartTo) document.getElementById("date-to").textContent = item.chartTo;
             var last = item.lastVolumeLabel || "";
-            var mosaic = item.mosaic || item.id === "hook3";
+            var mosaic = !!(item.mosaic || item.id === "hook3" || item.symbol === "HOOK3");
             var headingRest = " ETF – Capital inflow / Traded Value" + (last ? " " + last : "");
             var headingEl = document.getElementById("coin-heading");
             if (mosaic) {
-                headingEl.innerHTML = '<span class="mosaic-name">' + (item.symbol || "") + "</span>" + headingRest;
+                headingEl.innerHTML = '<span class="mosaic-name" style="filter:blur(10px);user-select:none;">' + (item.symbol || "") + "</span>" + headingRest;
             } else {
                 headingEl.textContent = (item.symbol || "") + headingRest;
             }
