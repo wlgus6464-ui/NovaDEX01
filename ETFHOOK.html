@@ -100,19 +100,24 @@
         .coin-title {
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 18px;
             margin: 0 0 22px;
+            padding: 18px 22px;
+            background: rgba(20,27,38,0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 18px;
         }
         .coin-title img {
-            width: 46px;
-            height: 46px;
+            width: 52px;
+            height: 52px;
             border-radius: 50%;
             background: #1a2130;
             flex-shrink: 0;
         }
         .coin-title h2 {
             margin: 0;
-            font-size: 1.55rem;
+            font-size: 1.7rem;
             font-weight: 700;
             letter-spacing: -0.02em;
             line-height: 1.25;
@@ -316,7 +321,7 @@
                         ctx.moveTo(boxX <= x ? boxX + boxW : boxX, y);
                         ctx.lineTo(x, y);
                         ctx.stroke();
-                        ctx.fillStyle = "#FFFFFF";
+                        ctx.fillStyle = "#111111";
                         ctx.textBaseline = "middle";
                         ctx.fillText(text, boxX + padX, boxY + boxH / 2);
                         ctx.restore();
