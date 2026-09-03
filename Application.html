@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>NovaDEX - App</title>
+    <style>
+        :root {
+            --bg: #090B11;
+            --sidebar: #0F141D;
+            --panel: #141B26;
+            --border: #232B38;
+            --primary: #7CFF6B;
+            --danger: #FF5A73;
+        }
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: #fff;
+            font-family: system-ui, sans-serif;
+            overflow-x: hidden;
+        }
+        .top {
+            position: sticky;
+            top: 0;
+            z-index: 12;
+            background: var(--bg);
+            padding: 12px 14px 8px;
+        }
+        .brand {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 0 0 10px;
+        }
+        .page-title {
+            margin: 0 0 10px;
+            font-size: 1.2rem;
+            line-height: 1.3;
+        }
+        .top-nav {
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+            -webkit-overflow-scrolling: touch;
+        }
+        .top-nav a {
+            flex: 0 0 auto;
+            text-decoration: none;
+            color: #9aa3b2;
+            background: #141B26;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: 7px 10px;
+            font-size: 12px;
+            white-space: nowrap;
+        }
+        .top-nav a.on {
+            color: var(--primary);
+            border-color: rgba(124,255,107,0.45);
+        }
+        .wrap {
+            padding: 0 12px 118px;
+        }
+        .panel {
+            background: rgba(20,27,38,0.95);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 6px 8px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        thead tr {
+            display: flex;
+            gap: 6px;
+            overflow-x: auto;
+            color: #9aa3b2;
+        }
+        th {
+            border: none;
+            padding: 10px 8px;
+            font-size: 12px;
+            font-weight: 600;
+            flex: 0 0 auto;
+            text-align: left;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        th.active, th:hover { color: var(--primary); }
+        tbody tr {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            padding: 12px 2px;
+            border-bottom: 1px solid #1c2430;
+        }
+        tbody tr:last-child { border-bottom: none; }
+        td {
+            border: none;
+            padding: 2px 6px;
+        }
+        td.coin-cell {
+            grid-column: 1;
+            grid-row: 1 / span 2;
+            display: flex;
+            align-items: center;
+        }
+        td:nth-child(2) {
+            grid-column: 2;
+            grid-row: 1;
+            text-align: right;
+            font-weight: 700;
+        }
+        td:nth-child(3) {
+            grid-column: 2;
+            grid-row: 2;
+            text-align: right;
+            font-size: 13px;
+        }
+        td:nth-child(4),
+        td:nth-child(5),
+        td:nth-child(6) { display: none; }
+        .coin-logo {
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+        .mosaic-box {
+            display: inline-flex;
+            align-items: center;
+            filter: blur(10px);
+            user-select: none;
+            pointer-events: none;
+        }
+        a.hook-link {
+            color: inherit;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        tr.hook-row { cursor: pointer; }
+        .positive { color: var(--primary); }
+        .negative { color: var(--danger); }
+        td.col-active { font-weight: 700; }
+        .m-tabbar {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 20;
+            background: #0F141D;
+            border-top: 1px solid #232B38;
+            padding: 8px 4px calc(8px + env(safe-area-inset-bottom));
+            display: flex;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        .m-tabbar a {
+            flex: 0 0 auto;
+            min-width: 72px;
+            text-align: center;
+            text-decoration: none;
+            color: #8B93A1;
+            font-size: 11px;
+            line-height: 1.2;
+        }
+        .m-tabbar a span.ico {
+            display: block;
+            font-size: 16px;
+            margin-bottom: 2px;
+        }
+        .m-tabbar a.on { color: var(--primary); }
+    </style>
+</head>
+<body>
+    <div class="top">
+        <div class="brand">🌟 NovaDEX</div>
+        <h1 class="page-title">💵 ETF (Exchange Traded Fund)</h1>
+        <nav class="top-nav">
+            <a href="index.html">🌟 Top</a>
+            <a href="trending.html">🔥 Trending</a>
+            <a href="#">🌱 Most Visited</a>
+            <a href="#">💰 Prediction Markets</a>
+            <a href="news.html">📰 News</a>
+            <a href="on-chain-data.html">📊 On-Chain Data</a>
+            <a href="Application.html" class="on">💵 ETF</a>
+        </nav>
+    </div>
+
+    <div class="wrap">
+        <div class="panel">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="sortable" data-sort="rank" data-dir="asc">Coin</th>
+                        <th class="sortable" data-sort="price" data-dir="desc">Price</th>
+                        <th class="sortable" data-sort="change24h" data-dir="desc">24h %</th>
+                        <th class="sortable" data-sort="change7d" data-dir="desc">7D %</th>
+                        <th class="sortable" data-sort="marketCap" data-dir="desc">ETF Market Cap</th>
+                        <th class="sortable" data-sort="volume" data-dir="desc">ETF Volume (HIGH)</th>
+                    </tr>
+                </thead>
+                <tbody id="etf-body"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <nav class="m-tabbar">
+        <a href="index.html"><span class="ico">🌟</span>Top</a>
+        <a href="trending.html"><span class="ico">🔥</span>Trending</a>
+        <a href="#"><span class="ico">🌱</span>Most Visited</a>
+        <a href="#"><span class="ico">💰</span>Prediction</a>
+        <a href="news.html"><span class="ico">📰</span>News</a>
+        <a href="on-chain-data.html"><span class="ico">📊</span>On-Chain</a>
+        <a href="Application.html" class="on"><span class="ico">💵</span>ETF</a>
+    </nav>
+
+    <script src="ETF.js"></script>
+    <script src="ETFHOOK.js"></script>
+    <script>
+        let sortKey = "rank";
+        let sortDir = "asc";
+
+        function formatPrice(n) {
+            return "$" + Number(n).toLocaleString();
+        }
+        function formatBillions(n) {
+            n = Number(n) || 0;
+            if (Math.abs(n) >= 1e9) return "$" + (n / 1e9).toFixed(2) + "B";
+            return "$" + (n / 1e6).toFixed(2) + "M";
+        }
+        function sortRows(list) {
+            list.sort(function(a, b) {
+                var av = a[sortKey];
+                var bv = b[sortKey];
+                if (av < bv) return sortDir === "desc" ? 1 : -1;
+                if (av > bv) return sortDir === "desc" ? -1 : 1;
+                return 0;
+            });
+            return list;
+        }
+        function hookPageUrl(id) {
+            return "https://wlgus6464-ui.github.io/NovaDEX01/ETFHOOK.html?id=" + encodeURIComponent(id);
+        }
+        function hookIdOf(item) {
+            if (item && item._hook) return item.id || item.symbol;
+            var list = window.etfHookList || [];
+            for (var i = 0; i < list.length; i++) {
+                if (item && (item.id === list[i].id || item.symbol === list[i].symbol)) return list[i].id;
+            }
+            return "";
+        }
+        function getSortedList() {
+            const data = (window.etfList || []).slice().filter(function(c) {
+                return c.symbol !== "USDT" && c.symbol !== "USDC";
+            });
+            if (sortKey === "change24h" || sortKey === "change7d" || sortKey === "marketCap" || sortKey === "volume") {
+                const hooks = (window.etfHookList || []).slice().map(function(h) {
+                    var copy = {};
+                    for (var k in h) copy[k] = h[k];
+                    copy._hook = true;
+                    if (h.etfMarketCap != null) copy.marketCap = h.etfMarketCap;
+                    if (h.etfVolume != null) copy.volume = h.etfVolume;
+                    return copy;
+                });
+                return sortRows(hooks.concat(data));
+            }
+            return sortRows(data);
+        }
+        function renderEtfTable() {
+            const body = document.getElementById("etf-body");
+            if (!body) return;
+            const data = getSortedList();
+            body.innerHTML = "";
+            if (!data.length) {
+                body.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:40px; color:#888;">ETF.js가 없거나 비어 있습니다.</td></tr>';
+                return;
+            }
+            data.forEach(function(item) {
+                const cls24 = item.change24h > 0 ? "positive" : (item.change24h < 0 ? "negative" : "");
+                const cls7 = item.change7d > 0 ? "positive" : (item.change7d < 0 ? "negative" : "");
+                const arrow24 = item.change24h > 0 ? "▲ " : (item.change24h < 0 ? "▼ " : "");
+                const arrow7 = item.change7d > 0 ? "▲ " : (item.change7d < 0 ? "▼ " : "");
+                const row = document.createElement("tr");
+                var hookId = hookIdOf(item);
+                var mosaic = !!(item.mosaic || item.id === "hook3" || item.symbol === "HOOK3");
+                var coinHtml = '<img src="' + (item.image || "") + '" class="coin-logo" alt="">' +
+                    '<span style="white-space:nowrap;">' + (item.name || "") + " (" + (item.symbol || "") + ")</span>";
+                if (mosaic) {
+                    coinHtml = '<span class="mosaic-box" style="filter:blur(10px);user-select:none;">' + coinHtml + "</span>";
+                }
+                if (hookId) {
+                    var href = hookPageUrl(hookId);
+                    row.className = "hook-row";
+                    row.setAttribute("data-hook-id", hookId);
+                    row.setAttribute("onclick", "window.location.href='" + href.replace(/'/g, "") + "'");
+                    coinHtml = '<a class="hook-link" href="' + href + '">' + coinHtml + "</a>";
+                }
+                row.innerHTML =
+                    '<td class="coin-cell' + (sortKey === "rank" ? " col-active" : "") + '">' + coinHtml + "</td>" +
+                    '<td class="' + (sortKey === "price" ? "col-active" : "") + '">' + formatPrice(item.price) + "</td>" +
+                    '<td class="' + cls24 + (sortKey === "change24h" ? " col-active" : "") + '">' + arrow24 + item.change24h + "%</td>" +
+                    '<td class="' + cls7 + (sortKey === "change7d" ? " col-active" : "") + '">' + arrow7 + item.change7d + "%</td>" +
+                    '<td class="' + (sortKey === "marketCap" ? "col-active" : "") + '">' + formatBillions(item.marketCap) + "</td>" +
+                    '<td class="' + (sortKey === "volume" ? "col-active" : "") + '">' + formatBillions(item.volume) + "</td>";
+                body.appendChild(row);
+            });
+        }
+        document.querySelectorAll("th.sortable").forEach(function(th) {
+            th.addEventListener("click", function() {
+                sortKey = th.getAttribute("data-sort");
+                sortDir = th.getAttribute("data-dir") || "desc";
+                document.querySelectorAll("th.sortable").forEach(function(h) {
+                    h.classList.remove("active");
+                });
+                th.classList.add("active");
+                renderEtfTable();
+            });
+        });
+        window.onload = renderEtfTable;
+    </script>
+</body>
+</html>
