@@ -19,12 +19,12 @@ const etfHookList = [
         change7d: 65.7,
         marketCap: 19038203,
         volume: 102410470,
-        etfMarketCap: 19038203,
-        etfVolume: 102410470,
+        etfMarketCap: 1903820300,
+        etfVolume: 10241047000,
         image: "https://s2.coinmarketcap.com/static/img/coins/64x64/36277.png",
         chartFrom: "11/20/2025",
         chartTo: "09/03/2026",
-        lastVolumeLabel: "80.901M",
+        lastVolumeLabel: "80.901B",
         chartLabels: [
             "Nov 20", "Nov 23", "Nov 26", "Nov 29", "Dec 2", "Dec 5", "Dec 8", "Dec 11", "Dec 14", "Dec 17", "Dec 20", "Dec 23", "Dec 26", "Dec 29", "Jan 1", "Jan 4", "Jan 7", "Jan 10", "Jan 13", "Jan 16", "Jan 19", "Jan 22", "Jan 25", "Jan 28", "Jan 31", "Feb 3", "Feb 6", "Feb 9", "Feb 12", "Feb 15", "Feb 18", "Feb 21", "Feb 24", "Feb 27", "Mar 2", "Mar 5", "Mar 8", "Mar 11", "Mar 14", "Mar 17", "Mar 20", "Mar 23", "Mar 26", "Mar 29", "Apr 1", "Apr 4", "Apr 7", "Apr 10", "Apr 13", "Apr 16", "Apr 19", "Apr 22", "Apr 25", "Apr 28", "May 1", "May 4", "May 7", "May 10", "May 13", "May 16", "May 19", "May 22", "May 25", "May 28", "May 31", "Jun 3", "Jun 6", "Jun 9", "Jun 12", "Jun 15", "Jun 18", "Jun 21", "Jun 24", "Jun 27", "Jun 30", "Jul 3", "Jul 6", "Jul 9", "Jul 12", "Jul 15", "Jul 18", "Jul 21", "Jul 24", "Jul 27", "Jul 30", "Aug 2", "Aug 5", "Aug 8", "Aug 11", "Aug 14", "Aug 17", "Aug 20", "Aug 23", "Aug 26", "Aug 29", "Sep 1", "Sep 3"
         ],
@@ -42,12 +42,12 @@ const etfHookList = [
         change7d: 188.9,
         marketCap: 166967000,
         volume: 43725000,
-        etfMarketCap: 166967000,
-        etfVolume: 43725000,
+        etfMarketCap: 16696700000,
+        etfVolume: 4372500000,
         image: "https://s2.coinmarketcap.com/static/img/coins/64x64/39377.png",
         chartFrom: "11/20/2025",
         chartTo: "09/03/2026",
-        lastVolumeLabel: "71.4M",
+        lastVolumeLabel: "71.4B",
         chartLabels: [
             "Nov 20", "Nov 23", "Nov 26", "Nov 29", "Dec 2", "Dec 5", "Dec 8", "Dec 11", "Dec 14", "Dec 17", "Dec 20", "Dec 23", "Dec 26", "Dec 29", "Jan 1", "Jan 4", "Jan 7", "Jan 10", "Jan 13", "Jan 16", "Jan 19", "Jan 22", "Jan 25", "Jan 28", "Jan 31", "Feb 3", "Feb 6", "Feb 9", "Feb 12", "Feb 15", "Feb 18", "Feb 21", "Feb 24", "Feb 27", "Mar 2", "Mar 5", "Mar 8", "Mar 11", "Mar 14", "Mar 17", "Mar 20", "Mar 23", "Mar 26", "Mar 29", "Apr 1", "Apr 4", "Apr 7", "Apr 10", "Apr 13", "Apr 16", "Apr 19", "Apr 22", "Apr 25", "Apr 28", "May 1", "May 4", "May 7", "May 10", "May 13", "May 16", "May 19", "May 22", "May 25", "May 28", "May 31", "Jun 3", "Jun 6", "Jun 9", "Jun 12", "Jun 15", "Jun 18", "Jun 21", "Jun 24", "Jun 27", "Jun 30", "Jul 3", "Jul 6", "Jul 9", "Jul 12", "Jul 15", "Jul 18", "Jul 21", "Jul 24", "Jul 27", "Jul 30", "Aug 2", "Aug 5", "Aug 8", "Aug 11", "Aug 14", "Aug 17", "Aug 20", "Aug 23", "Aug 26", "Aug 29", "Sep 1", "Sep 3"
         ],
