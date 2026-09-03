@@ -39,28 +39,7 @@
             font-size: 1.2rem;
             line-height: 1.3;
         }
-        .top-nav {
-            display: flex;
-            gap: 8px;
-            overflow-x: auto;
-            padding-bottom: 8px;
-            -webkit-overflow-scrolling: touch;
-        }
-        .top-nav a {
-            flex: 0 0 auto;
-            text-decoration: none;
-            color: #9aa3b2;
-            background: #141B26;
-            border: 1px solid var(--border);
-            border-radius: 999px;
-            padding: 7px 10px;
-            font-size: 12px;
-            white-space: nowrap;
-        }
-        .top-nav a.on {
-            color: var(--primary);
-            border-color: rgba(124,255,107,0.45);
-        }
+        .top-nav { display: none; }
         .wrap {
             padding: 0 12px 118px;
         }
@@ -73,62 +52,31 @@
         table {
             width: 100%;
             border-collapse: collapse;
+            table-layout: fixed;
         }
-        thead tr {
-            display: flex;
-            gap: 6px;
-            overflow-x: auto;
-            color: #9aa3b2;
-        }
-        th {
-            border: none;
-            padding: 10px 8px;
-            font-size: 12px;
-            font-weight: 600;
-            flex: 0 0 auto;
+        thead tr { color: #9aa3b2; }
+        th, td {
+            padding: 9px 4px;
             text-align: left;
-            cursor: pointer;
-            white-space: nowrap;
-        }
-        th.active, th:hover { color: var(--primary); }
-        tbody tr {
-            display: grid;
-            grid-template-columns: 1fr auto;
-            align-items: center;
-            padding: 12px 2px;
             border-bottom: 1px solid #1c2430;
+            vertical-align: middle;
+            font-size: 11px;
         }
-        tbody tr:last-child { border-bottom: none; }
-        td {
-            border: none;
-            padding: 2px 6px;
-        }
-        td.coin-cell {
-            grid-column: 1;
-            grid-row: 1 / span 2;
-            display: flex;
-            align-items: center;
-        }
-        td:nth-child(2) {
-            grid-column: 2;
-            grid-row: 1;
-            text-align: right;
-            font-weight: 700;
-        }
-        td:nth-child(3) {
-            grid-column: 2;
-            grid-row: 2;
-            text-align: right;
-            font-size: 13px;
-        }
-        td:nth-child(4),
-        td:nth-child(5),
-        td:nth-child(6) { display: none; }
+        th:nth-child(1), td:nth-child(1) { width: 26%; }
+        th:nth-child(2), td:nth-child(2) { width: 16%; }
+        th:nth-child(3), td:nth-child(3) { width: 12%; }
+        th:nth-child(4), td:nth-child(4) { width: 12%; }
+        th:nth-child(5), td:nth-child(5) { width: 17%; }
+        th:nth-child(6), td:nth-child(6) { width: 17%; }
+        th { font-weight: 600; cursor: pointer; white-space: nowrap; }
+        th.active, th:hover { color: var(--primary); }
+        tbody tr:last-child td { border-bottom: none; }
+        td.coin-cell { display: flex; align-items: center; white-space: nowrap; overflow: hidden; }
         .coin-logo {
-            width: 28px;
-            height: 28px;
+            width: 22px;
+            height: 22px;
             border-radius: 50%;
-            margin-right: 10px;
+            margin-right: 6px;
             flex-shrink: 0;
         }
         .mosaic-box {
@@ -156,14 +104,12 @@
             z-index: 20;
             background: #0F141D;
             border-top: 1px solid #232B38;
-            padding: 8px 4px calc(8px + env(safe-area-inset-bottom));
+            padding: 8px 2px calc(8px + env(safe-area-inset-bottom));
             display: flex;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch;
+            justify-content: space-around;
         }
         .m-tabbar a {
-            flex: 0 0 auto;
-            min-width: 72px;
+            flex: 1;
             text-align: center;
             text-decoration: none;
             color: #8B93A1;
@@ -182,15 +128,7 @@
     <div class="top">
         <div class="brand">🌟 NovaDEX</div>
         <h1 class="page-title">💵 ETF (Exchange Traded Fund)</h1>
-        <nav class="top-nav">
-            <a href="index.html">🌟 Top</a>
-            <a href="trending.html">🔥 Trending</a>
-            <a href="#">🌱 Most Visited</a>
-            <a href="#">💰 Prediction Markets</a>
-            <a href="news.html">📰 News</a>
-            <a href="on-chain-data.html">📊 On-Chain Data</a>
-            <a href="Application.html" class="on">💵 ETF</a>
-        </nav>
+        <nav class="top-nav"></nav>
     </div>
 
     <div class="wrap">
@@ -214,8 +152,6 @@
     <nav class="m-tabbar">
         <a href="index.html"><span class="ico">🌟</span>Top</a>
         <a href="trending.html"><span class="ico">🔥</span>Trending</a>
-        <a href="#"><span class="ico">🌱</span>Most Visited</a>
-        <a href="#"><span class="ico">💰</span>Prediction</a>
         <a href="news.html"><span class="ico">📰</span>News</a>
         <a href="on-chain-data.html"><span class="ico">📊</span>On-Chain</a>
         <a href="Application.html" class="on"><span class="ico">💵</span>ETF</a>
