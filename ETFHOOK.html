@@ -122,6 +122,14 @@
             background: #1a2130;
             flex-shrink: 0;
         }
+        .mosaic-logo {
+            filter: blur(9px);
+            transform: scale(1.12);
+        }
+        .mosaic-name {
+            filter: blur(10px);
+            user-select: none;
+        }
         .coin-title h2 {
             margin: 0;
             font-size: 1.7rem;
@@ -337,16 +345,24 @@
             if (item.chartFrom) document.getElementById("date-from").textContent = item.chartFrom;
             if (item.chartTo) document.getElementById("date-to").textContent = item.chartTo;
             var last = item.lastVolumeLabel || "";
-            var heading = (item.symbol || "") + " ETF – Capital inflow / Traded Value" + (last ? " " + last : "");
-            document.getElementById("coin-heading").textContent = heading;
+            var mosaic = item.mosaic || item.id === "hook3";
+            var headingRest = " ETF – Capital inflow / Traded Value" + (last ? " " + last : "");
+            var headingEl = document.getElementById("coin-heading");
+            if (mosaic) {
+                headingEl.innerHTML = '<span class="mosaic-name">' + (item.symbol || "") + "</span>" + headingRest;
+            } else {
+                headingEl.textContent = (item.symbol || "") + headingRest;
+            }
             var logo = document.getElementById("coin-logo");
             if (item.image) {
                 logo.src = item.image;
-                logo.alt = item.symbol || item.name || "";
+                logo.alt = mosaic ? "" : (item.symbol || item.name || "");
                 logo.style.display = "";
             } else {
                 logo.style.display = "none";
             }
+            if (mosaic) logo.classList.add("mosaic-logo");
+            else logo.classList.remove("mosaic-logo");
             var titleCard = document.getElementById("coin-title");
             if (item.link) {
                 titleCard.href = item.link;
