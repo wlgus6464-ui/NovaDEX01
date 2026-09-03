@@ -102,12 +102,18 @@
         tr.hook-row {
             cursor: pointer;
         }
+        .mosaic-box {
+            display: inline-flex;
+            align-items: center;
+            filter: blur(10px);
+            user-select: none;
+            pointer-events: none;
+        }
         .mosaic-logo {
-            filter: blur(7px);
-            transform: scale(1.12);
+            filter: blur(10px);
         }
         .mosaic-name {
-            filter: blur(8px);
+            filter: blur(10px);
             user-select: none;
         }
         .positive { color: var(--primary); }
@@ -224,9 +230,12 @@
                 const arrow7 = item.change7d > 0 ? "▲ " : (item.change7d < 0 ? "▼ " : "");
                 const row = document.createElement("tr");
                 var hookId = hookIdOf(item);
-                var mosaic = item.mosaic || item.id === "hook3";
-                var coinHtml = '<img src="' + (item.image || "") + '" class="coin-logo' + (mosaic ? " mosaic-logo" : "") + '" alt="">' +
-                    '<span class="' + (mosaic ? "mosaic-name" : "") + '" style="white-space:nowrap;">' + (item.name || "") + " (" + (item.symbol || "") + ")</span>";
+                var mosaic = !!(item.mosaic || item.id === "hook3" || item.symbol === "HOOK3");
+                var coinHtml = '<img src="' + (item.image || "") + '" class="coin-logo" alt="">' +
+                    '<span style="white-space:nowrap;">' + (item.name || "") + " (" + (item.symbol || "") + ")</span>";
+                if (mosaic) {
+                    coinHtml = '<span class="mosaic-box" style="filter:blur(10px);user-select:none;">' + coinHtml + "</span>";
+                }
                 if (hookId) {
                     var href = hookPageUrl(hookId);
                     row.className = "hook-row";
