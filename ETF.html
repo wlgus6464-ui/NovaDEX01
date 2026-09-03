@@ -102,6 +102,14 @@
         tr.hook-row {
             cursor: pointer;
         }
+        .mosaic-logo {
+            filter: blur(7px);
+            transform: scale(1.12);
+        }
+        .mosaic-name {
+            filter: blur(8px);
+            user-select: none;
+        }
         .positive { color: var(--primary); }
         .negative { color: var(--danger); }
         tbody tr:last-child td { border-bottom: none; }
@@ -216,8 +224,9 @@
                 const arrow7 = item.change7d > 0 ? "▲ " : (item.change7d < 0 ? "▼ " : "");
                 const row = document.createElement("tr");
                 var hookId = hookIdOf(item);
-                var coinHtml = '<img src="' + (item.image || "") + '" class="coin-logo" alt="' + (item.name || "") + '">' +
-                    '<span style="white-space:nowrap;">' + (item.name || "") + " (" + (item.symbol || "") + ")</span>";
+                var mosaic = item.mosaic || item.id === "hook3";
+                var coinHtml = '<img src="' + (item.image || "") + '" class="coin-logo' + (mosaic ? " mosaic-logo" : "") + '" alt="">' +
+                    '<span class="' + (mosaic ? "mosaic-name" : "") + '" style="white-space:nowrap;">' + (item.name || "") + " (" + (item.symbol || "") + ")</span>";
                 if (hookId) {
                     var href = hookPageUrl(hookId);
                     row.className = "hook-row";
