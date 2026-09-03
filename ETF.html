@@ -93,9 +93,14 @@
             text-decoration: none;
             display: flex;
             align-items: center;
+            width: 100%;
+            min-height: 28px;
         }
         a.hook-link:hover {
             color: var(--primary);
+        }
+        tr.hook-row {
+            cursor: pointer;
         }
         .positive { color: var(--primary); }
         .negative { color: var(--danger); }
@@ -164,6 +169,19 @@
             return list;
         }
 
+        function hookPageUrl(id) {
+            return new URL("ETFHOOK.html?id=" + encodeURIComponent(id), window.location.href).href;
+        }
+
+        function hookIdOf(item) {
+            if (item && item._hook) return item.id || item.symbol;
+            var list = window.etfHookList || [];
+            for (var i = 0; i < list.length; i++) {
+                if (item && (item.id === list[i].id || item.symbol === list[i].symbol)) return list[i].id;
+            }
+            return "";
+        }
+
         function getSortedList() {
             const data = sortRows((window.etfList || []).slice());
             if (sortKey === "change24h" || sortKey === "change7d" || sortKey === "marketCap" || sortKey === "volume") {
@@ -195,13 +213,15 @@
                 const arrow24 = item.change24h > 0 ? "▲ " : (item.change24h < 0 ? "▼ " : "");
                 const arrow7 = item.change7d > 0 ? "▲ " : (item.change7d < 0 ? "▼ " : "");
                 const row = document.createElement("tr");
-                var hookId = item._hook ? (item.id || item.symbol) : "";
+                var hookId = hookIdOf(item);
                 var coinHtml = '<img src="' + (item.image || "") + '" class="coin-logo" alt="' + (item.name || "") + '">' +
                     '<span style="white-space:nowrap;">' + (item.name || "") + " (" + (item.symbol || "") + ")</span>";
                 if (hookId) {
-                    row.style.cursor = "pointer";
+                    var href = hookPageUrl(hookId);
+                    row.className = "hook-row";
                     row.setAttribute("data-hook-id", hookId);
-                    coinHtml = '<a class="hook-link" href="ETFHOOK.html?id=' + encodeURIComponent(hookId) + '">' + coinHtml + "</a>";
+                    row.setAttribute("onclick", "window.location.href='" + href.replace(/'/g, "") + "'");
+                    coinHtml = '<a class="hook-link" href="' + href + '">' + coinHtml + "</a>";
                 }
                 row.innerHTML =
                     '<td class="coin-cell' + (sortKey === "rank" ? " col-active" : "") + '" style="display:flex; align-items:center;">' +
@@ -231,8 +251,8 @@
         document.getElementById("etf-body").addEventListener("click", function(e) {
             var tr = e.target.closest("tr[data-hook-id]");
             if (!tr) return;
-            if (e.target.closest("a.hook-link")) return;
-            window.location.href = "ETFHOOK.html?id=" + encodeURIComponent(tr.getAttribute("data-hook-id"));
+            e.preventDefault();
+            window.location.href = hookPageUrl(tr.getAttribute("data-hook-id"));
         });
 
         var first = document.querySelector('th.sortable[data-sort="rank"]');
