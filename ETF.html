@@ -183,7 +183,9 @@
         }
 
         function getSortedList() {
-            const data = sortRows((window.etfList || []).slice());
+            const data = sortRows((window.etfList || []).slice().filter(function(c) {
+                return c.symbol !== "USDT" && c.symbol !== "USDC";
+            }));
             if (sortKey === "change24h" || sortKey === "change7d" || sortKey === "marketCap" || sortKey === "volume") {
                 const hooks = sortRows((window.etfHookList || []).slice()).map(function(h) {
                     var copy = {};
