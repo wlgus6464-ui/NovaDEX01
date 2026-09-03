@@ -172,6 +172,13 @@
             from { transform: translateX(0); }
             to { transform: translateX(-50%); }
         }
+        .etf-warn {
+            margin: 16px 2px 0;
+            font-size: 12px;
+            line-height: 1.65;
+            color: #8B93A1;
+            font-weight: 400;
+        }
     </style>
 </head>
 <body>
@@ -216,6 +223,7 @@
         <div class="ticker-wrap">
             <div class="ticker-track" id="etf-ticker"></div>
         </div>
+        <p class="etf-warn">⚠️ ETFs are performance-based dividend products not protected by the Deposit Insurance Corporation, so principal loss may occur. The value of an asset changes in accordance with price fluctuations of the underlying asset being tracked (such as an index, commodity, or exchange rate). Discrepancy—the difference between the market price and the net asset value (NAV)—or tracking error, which prevents the index from being properly followed, may occur. Derivative ETFs that seek multiple (2x, 3x, etc.) returns are classified as high-risk because, in the case of long-term investment, the compound interest effect can cause the returns to track significantly differently from those of the underlying assets. It may be delisted if the total net assets are low (e.g., less than 5 billion KRW) or if the trading volume is extremely insufficient. When investing in overseas assets, you are exposed to exchange rate fluctuations, and for currency-hedged products, you should check for the (H) mark. ⚠️</p>
     </div>
 
     <script src="ETF.js"></script>
