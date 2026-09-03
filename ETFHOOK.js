@@ -61,7 +61,3 @@ const etfHookList = [
 
 window.etfHookList = etfHookList;
 console.log("✅ ETFHOOK.js 로드 완료! 총 " + etfHookList.length + "개");
-
-// 카드 외부 링크 (각 hook 객체의 link 에 넣으세요)
-// hook1 (BTR): link: "https://www.bithumb.com/react/trade/order/BTR-KRW"
-// hook2 (SKR): link: "https://www.upbit.com/exchange?code=CRIX.UPBIT.KRW-SKR"
