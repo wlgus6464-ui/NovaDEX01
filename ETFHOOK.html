@@ -301,7 +301,9 @@
         function buildTicker() {
             var track = document.getElementById("etf-ticker");
             if (!track) return;
-            var list = (window.etfList || []).slice().sort(function(a, b) {
+            var list = (window.etfList || []).slice().filter(function(c) {
+                return c.symbol !== "USDT" && c.symbol !== "USDC";
+            }).sort(function(a, b) {
                 return (b.marketCap || 0) - (a.marketCap || 0);
             }).slice(0, 10);
             if (!list.length) return;
