@@ -67,12 +67,12 @@ const etfHookList = [
         marketCap: 19161886,
         volume: 7377291,
         etfMarketCap: 1916180086,
-        etfVolume: 811620091,
+        etfVolume: 8316020091,
         image: "https://s2.coinmarketcap.com/static/img/coins/64x64/40814.png",
         mosaic: true,
         chartFrom: "11/20/2025",
         chartTo: "09/08/2026",
-        lastVolumeLabel: "8.116B",
+        lastVolumeLabel: "8.316B",
         chartLabels: [
             "Nov 20", "Nov 23", "Nov 26", "Nov 29", "Dec 2", "Dec 5", "Dec 8", "Dec 11", "Dec 14", "Dec 17", "Dec 20", "Dec 23", "Dec 26", "Dec 29", "Jan 1", "Jan 4", "Jan 7", "Jan 10", "Jan 13", "Jan 16", "Jan 19", "Jan 22", "Jan 25", "Jan 28", "Jan 31", "Feb 3", "Feb 6", "Feb 9", "Feb 12", "Feb 15", "Feb 18", "Feb 21", "Feb 24", "Feb 27", "Mar 2", "Mar 5", "Mar 8", "Mar 11", "Mar 14", "Mar 17", "Mar 20", "Mar 23", "Mar 26", "Mar 29", "Apr 1", "Apr 4", "Apr 7", "Apr 10", "Apr 13", "Apr 16", "Apr 19", "Apr 22", "Apr 25", "Apr 28", "May 1", "May 4", "May 7", "May 10", "May 13", "May 16", "May 19", "May 22", "May 25", "May 28", "May 31", "Jun 3", "Jun 6", "Jun 9", "Jun 12", "Jun 15", "Jun 18", "Jun 21", "Jun 24", "Jun 27", "Jun 30", "Jul 3", "Jul 6", "Jul 9", "Jul 12", "Jul 15", "Jul 18", "Jul 21", "Jul 24", "Jul 27", "Jul 30", "Aug 2", "Aug 5", "Aug 8", "Aug 11", "Aug 14", "Aug 17", "Aug 20", "Aug 22", "Aug 25", "Aug 29", "Sep 1", "Sep 3", "Sep 6", "Sep 8"
         ],
