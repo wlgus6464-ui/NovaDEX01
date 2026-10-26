@@ -1,0 +1,1635 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>NovaDEX 관리자</title>
+    <!-- admin.html
+         홈페이지 데이터(js·json)를 입력칸으로 고치고 GitHub 에 바로 저장하는 관리자 페이지.
+         저장하려면 [⚙ 연결 설정]에 GitHub 비밀 키(Contents: Read and write)를 넣는다. -->
+    <style>
+        :root {
+            color-scheme: dark;
+            --bg: #090B11;
+            --sidebar: #0F141D;
+            --panel: #141B26;
+            --panel2: #1A2230;
+            --field: #0B0F16;
+            --border: #232B38;
+            --text: #E8ECF2;
+            --muted: #8B93A1;
+            --primary: #7CFF6B;
+            --danger: #FF5A73;
+            --warn: #FFC857;
+        }
+        * { box-sizing: border-box; }
+        [hidden] { display: none !important; }
+        html, body { margin: 0; }
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: system-ui, -apple-system, "Malgun Gothic", sans-serif;
+            font-size: 15px;
+            line-height: 1.45;
+        }
+        button, input, textarea, select { font: inherit; color: inherit; }
+        a { color: var(--primary); }
+        code { background: rgba(255,255,255,0.08); padding: 1px 6px; border-radius: 6px; }
+
+        .topbar {
+            position: sticky; top: 0; z-index: 30;
+            display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+            padding: 12px 18px;
+            background: var(--sidebar);
+            border-bottom: 1px solid var(--border);
+        }
+        .brand { font-size: 20px; font-weight: 700; color: var(--primary); white-space: nowrap; }
+        .conn { font-size: 13px; padding: 5px 11px; border-radius: 999px; background: rgba(255,255,255,0.06); color: var(--muted); white-space: nowrap; }
+        .conn.ok { color: var(--primary); background: rgba(124,255,107,0.1); }
+        .conn.warn { color: var(--warn); background: rgba(255,200,87,0.1); }
+        .conn.bad { color: var(--danger); background: rgba(255,90,115,0.1); }
+        .spacer { flex: 1; }
+
+        .btn {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 8px 14px;
+            border: 1px solid var(--border); border-radius: 10px;
+            background: rgba(255,255,255,0.06);
+            color: var(--text); text-decoration: none; white-space: nowrap;
+            cursor: pointer;
+        }
+        .btn:hover { border-color: var(--primary); color: var(--primary); }
+        .btn.primary { background: var(--primary); border-color: var(--primary); color: #071006; font-weight: 700; }
+        .btn.primary:hover { filter: brightness(1.08); color: #071006; }
+        .btn.danger:hover { border-color: var(--danger); color: var(--danger); }
+        .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+        .btn:disabled:hover { border-color: var(--border); color: var(--text); }
+        .btn.primary:disabled:hover { color: #071006; filter: none; }
+        .btn.small { padding: 4px 10px; font-size: 13px; border-radius: 8px; }
+        .btn.add { margin-top: 6px; padding: 12px 18px; border-style: dashed; }
+
+        .layout { display: flex; align-items: flex-start; }
+        .side {
+            width: 236px; flex-shrink: 0;
+            position: sticky; top: 61px; height: calc(100vh - 61px); overflow: auto;
+            padding: 8px 0 30px;
+            background: var(--sidebar);
+            border-right: 1px solid var(--border);
+        }
+        .side h4 { margin: 18px 18px 6px; font-size: 12px; font-weight: 600; color: var(--muted); }
+        .side a {
+            display: flex; justify-content: space-between; align-items: center; gap: 8px;
+            padding: 9px 18px;
+            color: var(--text); text-decoration: none; font-size: 14px;
+        }
+        .side a:hover { background: rgba(124,255,107,0.06); }
+        .side a.on { color: var(--primary); background: rgba(124,255,107,0.12); }
+        .side .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--warn); display: none; flex-shrink: 0; }
+        .side a.dirty .dot { display: inline-block; }
+
+        main { flex: 1; min-width: 0; padding: 22px 26px 90px; }
+        .notice { margin-bottom: 16px; padding: 12px 16px; border-radius: 12px; background: rgba(255,200,87,0.08); border: 1px solid rgba(255,200,87,0.3); color: var(--warn); }
+        .sec-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; flex-wrap: wrap; margin-bottom: 16px; }
+        .sec-head h2 { margin: 0 0 4px; font-size: 22px; }
+        .where { margin: 0; color: var(--muted); font-size: 14px; }
+        .sec-tools { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+        .search { width: 200px; }
+        .empty { padding: 40px; text-align: center; color: var(--muted); background: var(--panel); border-radius: 14px; }
+        .empty.bad { color: var(--danger); }
+        .help { font-size: 12px; color: var(--muted); }
+        .help.bad { color: var(--danger); }
+        .help.up { color: var(--primary); }
+        .help.down { color: var(--danger); }
+
+        details.item { background: var(--panel); border: 1px solid var(--border); border-radius: 14px; margin-bottom: 10px; }
+        details.item[open] { border-color: #34404f; }
+        details.item > summary { list-style: none; cursor: pointer; display: flex; align-items: center; gap: 12px; padding: 11px 14px; }
+        details.item > summary::-webkit-details-marker { display: none; }
+        summary .chev { color: var(--muted); transition: transform 0.2s; }
+        details.item[open] > summary .chev { transform: rotate(90deg); }
+        summary .num { color: var(--muted); font-size: 13px; min-width: 26px; text-align: right; }
+        summary .thumb { width: 38px; height: 38px; border-radius: 8px; object-fit: cover; background: var(--field); flex-shrink: 0; }
+        summary .t { font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 60px; }
+        summary .s { flex: 1; min-width: 0; color: var(--muted); font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        summary .tools { display: flex; gap: 4px; flex-shrink: 0; }
+
+        .fields { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 14px 18px; padding: 6px 16px 18px; }
+        .fields.nested { padding: 0; }
+        .field { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+        .field.wide { grid-column: 1 / -1; }
+        .lab { font-size: 12px; color: var(--muted); }
+        .lab b { color: var(--text); font-size: 14px; font-weight: 600; }
+        input[type=text], input[type=search], input[type=password], input[type=date], input[type=datetime-local], textarea, select {
+            width: 100%;
+            padding: 9px 11px;
+            background: var(--field);
+            border: 1px solid var(--border); border-radius: 9px;
+            outline: none;
+        }
+        textarea { resize: vertical; }
+        input:focus, textarea:focus, select:focus { border-color: var(--primary); }
+        .err { border-color: var(--danger) !important; background: rgba(255,90,115,0.08) !important; }
+        .row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+        .row > input { flex: 1; min-width: 160px; width: auto; }
+        .check { display: inline-flex; gap: 8px; align-items: center; cursor: pointer; }
+        .check input { width: 18px; height: 18px; accent-color: var(--primary); }
+        .imgprev { max-width: 100%; max-height: 110px; align-self: flex-start; border-radius: 8px; border: 1px solid var(--border); background: var(--field); }
+
+        .sub { display: flex; flex-direction: column; gap: 8px; }
+        .subrow { display: grid; grid-template-columns: 26px 1fr auto; gap: 10px; align-items: start; padding: 10px; background: var(--panel2); border: 1px solid var(--border); border-radius: 10px; }
+        .subnum { color: var(--muted); font-size: 13px; text-align: right; padding-top: 30px; }
+        .subf { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 8px 12px; }
+        .subtools { display: flex; gap: 4px; padding-top: 24px; }
+        .sub > .btn { align-self: flex-start; }
+
+        .gridwrap { max-height: 340px; overflow: auto; border: 1px solid var(--border); border-radius: 10px; }
+        table.g { width: 100%; border-collapse: collapse; }
+        table.g th { position: sticky; top: 0; z-index: 1; padding: 7px 8px; background: var(--panel2); color: var(--muted); font-size: 12px; font-weight: 600; text-align: left; }
+        table.g td { padding: 3px 6px; border-top: 1px solid var(--border); }
+        table.g td.n { width: 36px; color: var(--muted); font-size: 12px; text-align: right; }
+        table.g td input { padding: 5px 8px; border-radius: 6px; }
+        .sparks { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; }
+        .spark-box { padding: 8px 10px; background: var(--panel2); border: 1px solid var(--border); border-radius: 10px; }
+        .spark-box svg { display: block; width: 100%; height: 50px; margin-top: 4px; }
+
+        .pv {
+            position: sticky; top: 61px; height: calc(100vh - 61px);
+            width: 46vw; flex-shrink: 0;
+            display: flex; flex-direction: column;
+            background: var(--sidebar);
+            border-left: 1px solid var(--border);
+        }
+        .pv-head { display: flex; gap: 8px; align-items: center; padding: 10px 12px; border-bottom: 1px solid var(--border); }
+        .pv-head select { flex: 1; width: auto; min-width: 0; padding: 6px 10px; }
+        .seg { display: inline-flex; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+        .seg button { padding: 5px 11px; border: 0; background: transparent; cursor: pointer; font-size: 13px; }
+        .seg button.on { background: var(--primary); color: #071006; font-weight: 700; }
+        .pv-body { position: relative; flex: 1; overflow: hidden; background: #05070B; }
+        .pv-body iframe { display: block; border: 0; transform-origin: 0 0; background: var(--bg); }
+        .pv-body iframe.phone { margin: 0 auto; border-left: 1px solid var(--border); border-right: 1px solid var(--border); }
+        .pv-note { padding: 8px 12px; font-size: 12px; color: var(--muted); border-top: 1px solid var(--border); }
+
+        #toast {
+            position: fixed; right: 18px; bottom: 18px; z-index: 60;
+            display: none; max-width: 440px;
+            padding: 12px 40px 12px 16px;
+            background: var(--panel2);
+            border: 1px solid var(--border); border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        #toast.ok { border-color: var(--primary); }
+        #toast.bad { border-color: var(--danger); }
+        #toast.wait { border-color: var(--warn); }
+        #toast .x { position: absolute; top: 8px; right: 8px; border: 0; background: transparent; color: var(--muted); cursor: pointer; }
+
+        dialog {
+            width: calc(100% - 32px); max-width: 640px; max-height: calc(100vh - 40px);
+            padding: 22px;
+            background: var(--panel); color: var(--text);
+            border: 1px solid var(--border); border-radius: 16px;
+        }
+        dialog::backdrop { background: rgba(0,0,0,0.65); }
+        dialog h3 { margin: 0 0 12px; font-size: 19px; }
+        dialog .field { margin: 14px 0; }
+        .dlg-msg { padding: 10px 14px; border-radius: 10px; background: rgba(255,200,87,0.1); color: var(--warn); }
+        .howto { margin: 10px 0; padding: 10px 14px; background: var(--panel2); border-radius: 10px; }
+        .howto summary { cursor: pointer; font-weight: 600; }
+        .howto ol { margin: 10px 0 4px; padding-left: 22px; }
+        .howto li { margin: 6px 0; }
+        .three { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 10px 0 0; }
+        .dlg-btns { display: flex; gap: 8px; align-items: center; margin-top: 18px; }
+        .savelist h4 { margin: 14px 0 6px; color: var(--primary); }
+        .savelist ul { margin: 0; padding-left: 20px; }
+        .savelist li { margin: 3px 0; font-size: 14px; word-break: break-all; }
+        .savelist li.more { color: var(--muted); }
+
+        @media (max-width: 1100px) {
+            .pv { position: fixed; inset: 0; z-index: 50; width: auto; height: auto; }
+        }
+        @media (max-width: 860px) {
+            .layout { display: block; }
+            .side { position: static; width: auto; height: auto; display: flex; overflow-x: auto; padding: 6px; border-right: 0; border-bottom: 1px solid var(--border); }
+            .side h4 { display: none; }
+            .side a { white-space: nowrap; padding: 8px 12px; border-radius: 8px; }
+            main { padding: 16px 12px 90px; }
+            .three { grid-template-columns: 1fr; }
+            summary .s { display: none; }
+            details.item > summary { flex-wrap: wrap; }
+            summary .tools { width: 100%; justify-content: flex-end; }
+            .subrow { grid-template-columns: 1fr; }
+            .subnum, .subtools { padding-top: 0; text-align: left; }
+        }
+    </style>
+</head>
+<body>
+    <header class="topbar">
+        <div class="brand">🌟 NovaDEX 관리자</div>
+        <span id="conn" class="conn">불러오는 중…</span>
+        <div class="spacer"></div>
+        <a id="siteLink" class="btn" href="index.html" target="_blank" rel="noopener">홈페이지 열기 ↗</a>
+        <button id="setBtn" class="btn" type="button">⚙ 연결 설정</button>
+        <button id="saveBtn" class="btn primary" type="button" disabled>바뀐 곳 없음</button>
+    </header>
+
+    <div class="layout">
+        <nav id="side" class="side"></nav>
+        <main id="main"></main>
+        <aside id="pv" class="pv" hidden>
+            <div class="pv-head">
+                <select id="pvPage" title="미리 볼 페이지"></select>
+                <div class="seg" id="pvDev">
+                    <button type="button" data-dev="pc" class="on">PC</button>
+                    <button type="button" data-dev="phone">휴대폰</button>
+                </div>
+                <button id="pvReload" class="btn small" type="button" title="다시 그리기">↻</button>
+                <button id="pvClose" class="btn small" type="button" title="미리보기 닫기">✕</button>
+            </div>
+            <div id="pvBody" class="pv-body"><iframe id="pvFrame" title="미리보기"></iframe></div>
+            <div class="pv-note">저장하기 전 모습입니다. 실제 홈페이지는 저장하고 1~2분 뒤에 바뀝니다.</div>
+        </aside>
+    </div>
+
+    <div id="toast"></div>
+
+    <dialog id="setDlg">
+        <h3>GitHub 연결 설정</h3>
+        <p id="setMsg" class="dlg-msg" hidden></p>
+        <p class="help">저장하려면 GitHub 비밀 키가 필요합니다. 이 키는 이 컴퓨터의 이 브라우저 안에만 저장되고, GitHub 에 저장할 때만 쓰입니다.</p>
+        <div class="field">
+            <div class="lab"><b>GitHub 비밀 키</b> · github_pat_ 로 시작합니다</div>
+            <div class="row">
+                <input id="setToken" type="password" autocomplete="off" spellcheck="false">
+                <button id="setShow" class="btn small" type="button">보기</button>
+            </div>
+        </div>
+        <details class="howto">
+            <summary>비밀 키 만드는 법 (처음 한 번만)</summary>
+            <ol>
+                <li>GitHub 에 로그인한 상태에서 <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">비밀 키 만들기 화면</a>을 엽니다.</li>
+                <li><b>Token name</b> 칸에 <code>NovaDEX 관리자</code> 라고 적습니다.</li>
+                <li><b>Expiration</b> 에서 기간을 고릅니다 (예: 1년). 기간이 끝나면 새로 만들어서 여기에 다시 넣으면 됩니다.</li>
+                <li><b>Repository access</b> 에서 <b>Only select repositories</b> 를 누르고 <b class="repoName">NovaDEX01</b> 을 고릅니다.</li>
+                <li><b>Permissions</b> 에서 <b>Contents</b> 를 <b>Read and write</b> 로 바꿉니다. (<b>Add permissions</b> 버튼이 보이면 눌러서 Contents 를 고릅니다)</li>
+                <li>맨 아래 초록 버튼 <b>Generate token</b> 을 누르고, 나온 키를 복사해서 위 칸에 붙여넣습니다. 이 키는 다시 볼 수 없으니 바로 붙여넣어 주세요.</li>
+            </ol>
+        </details>
+        <details class="howto">
+            <summary>고급: 저장소 정보</summary>
+            <div class="three">
+                <div><div class="lab">계정 이름</div><input id="setOwner" type="text" spellcheck="false"></div>
+                <div><div class="lab">저장소 이름</div><input id="setRepo" type="text" spellcheck="false"></div>
+                <div><div class="lab">브랜치</div><input id="setBranch" type="text" spellcheck="false"></div>
+            </div>
+        </details>
+        <div class="dlg-btns">
+            <button id="setClear" class="btn danger" type="button">비밀 키 지우기</button>
+            <span class="spacer"></span>
+            <button class="btn" type="button" data-close>닫기</button>
+            <button id="setSave" class="btn primary" type="button">저장</button>
+        </div>
+    </dialog>
+
+    <dialog id="saveDlg">
+        <h3>이대로 홈페이지에 올릴까요?</h3>
+        <p class="help">아래가 바뀐 곳입니다. [올리기]를 누르면 GitHub 에 저장되고, 1~2분 뒤 홈페이지에 반영됩니다.</p>
+        <div id="saveList" class="savelist"></div>
+        <div class="dlg-btns">
+            <span class="spacer"></span>
+            <button class="btn" type="button" data-close>취소</button>
+            <button id="saveGo" class="btn primary" type="button">올리기</button>
+        </div>
+    </dialog>
+
+    <script>
+    (function () {
+        'use strict';
+
+        // ── 고칠 수 있는 칸 목록
+        // fields: 칸 이름 → [보이는 이름, 입력 방식, 설명]
+        // 입력 방식: text · long(긴 글) · image · link · number · money · percent · datetime · mdy(월/일/연) · bool · sub(목록)
+        const F_COIN = {
+            rank: ['순위', 'number'],
+            name: ['이름', 'text'],
+            symbol: ['기호', 'text', '예: BTC'],
+            price: ['가격 (달러)', 'number'],
+            change24h: ['24시간 변동 %', 'percent', '내렸으면 앞에 - (예: -0.5)'],
+            change7d: ['7일 변동 %', 'percent', '내렸으면 앞에 -'],
+            marketCap: ['시가총액 (달러)', 'money'],
+            volume: ['24시간 거래량 (달러)', 'money'],
+            image: ['로고 사진 주소', 'image']
+        };
+        const F_FLOW = {
+            labels: ['날짜', 'text'],
+            netflow: ['Netflow (거래소 입금 − 출금)', 'number'],
+            reserve: ['Reserve (거래소 보유량)', 'number']
+        };
+        const F_METRIC = {
+            metrics: ['지표 목록', 'sub'],
+            name: ['지표 이름', 'text'],
+            desc: ['설명', 'text'],
+            value: ['값 글자', 'text', '예: 2.717M'],
+            change: ['변동 %', 'percent']
+        };
+
+        const SECTIONS = [
+            {
+                id: 'trending', group: '메인 · Trending 페이지', name: '트렌딩 카드',
+                file: 'trendingData.js', v: 'trendingData', type: 'list',
+                where: '메인(Top) 페이지 맨 위 "Trending Now" 카드와 Trending 페이지 카드에 나옵니다.',
+                pages: ['index.html', 'trending.html'],
+                sum: { title: 'title', sub: ['prediction', 'price'], img: 'img' },
+                fields: {
+                    img: ['카드 사진 주소', 'image', '카드 위쪽 사진'],
+                    title: ['코인 이름', 'text', '예: Delysium (AGI)'],
+                    price: ['가격 칸 글자', 'text', '메인 카드 큰 글자, Trending 페이지 "≈ … USDT"'],
+                    startDate: ['시작 날짜·시각', 'datetime', 'Trending 페이지 Start In'],
+                    endDate: ['끝 날짜·시각', 'datetime', '이 시각까지 남은 시간을 셉니다'],
+                    prediction: ['예상 상승률', 'text', 'Trending 페이지 큰 글자, 예: +302%'],
+                    bannerImage: ['배너 사진 주소', 'image', 'Trending 페이지 배너'],
+                    bannerText: ['배너 설명 글', 'long'],
+                    participateLink: ['Participate 버튼 주소', 'link', '버튼을 누르면 가는 거래소 화면']
+                }
+            },
+            {
+                id: 'coins', group: '메인 · Trending 페이지', name: '메인 코인 표',
+                file: 'coins.json', v: null, type: 'list',
+                where: '메인(Top) 페이지 아래쪽 "Explore Coins" 표에 나옵니다.',
+                pages: ['index.html'],
+                sum: { title: 'name', sub: ['symbol', 'price'], img: 'image' },
+                fields: F_COIN
+            },
+            {
+                id: 'hot', group: 'News 페이지', name: 'HOT TOPIC 기사',
+                file: 'trendingData.js', v: 'coinHotTopics', type: 'dict',
+                where: 'News 페이지에서 코인 버튼(BTC·ETH…)을 누르면 맨 위에 크게 나오는 기사입니다.',
+                pages: ['news.html'],
+                sum: { title: 'title', img: 'img' },
+                fields: {
+                    title: ['기사 제목', 'long'],
+                    comment: ['한 줄 설명', 'long'],
+                    img: ['사진 주소', 'image'],
+                    link: ['기사 주소', 'link']
+                }
+            },
+            {
+                id: 'related', group: 'News 페이지', name: '관련 기사',
+                file: 'trendingData.js', v: 'coinRelatedArticles', type: 'dict', itemName: '기사',
+                where: 'News 페이지 Related Articles 칸에 나옵니다.',
+                pages: ['news.html'],
+                tpl: { title: '', link: '#' },
+                fields: {
+                    title: ['기사 제목', 'long'],
+                    link: ['기사 주소', 'link', '# 이면 눌러도 안 넘어갑니다']
+                }
+            },
+            {
+                id: 'news', group: 'News 페이지', name: '뉴스 목록',
+                file: 'trendingData.js', v: 'manualNews', type: 'dict', itemName: '뉴스',
+                where: 'News 페이지 뉴스 목록에 나옵니다 (코인마다 5개 이상).',
+                pages: ['news.html'],
+                tpl: { title: '', link: '#', time: '' },
+                fields: {
+                    title: ['제목', 'long'],
+                    link: ['주소', 'link', '# 이면 눌러도 안 넘어갑니다'],
+                    time: ['시간 글자', 'text', '예: 1 hour ago']
+                }
+            },
+            {
+                id: 'etf', group: 'ETF 페이지', name: 'ETF 코인 표',
+                file: 'ETF.js', v: 'etfList', type: 'list',
+                where: 'ETF 페이지 코인 표에 나옵니다.',
+                pages: ['ETF.html', 'Application.html'],
+                sum: { title: 'name', sub: ['symbol', 'price'], img: 'image' },
+                fields: F_COIN
+            },
+            {
+                id: 'hook', group: 'ETF 페이지', name: 'ETF 맨 위 코인',
+                file: 'ETFHOOK.js', v: 'etfHookList', type: 'list',
+                where: 'ETF 표에서 24h %·7D %·ETF Market Cap·ETF Volume 정렬을 누를 때 맨 위에 붙는 코인입니다. 누르면 ETF 상세 페이지로 갑니다.',
+                pages: ['ETF.html', 'Application.html', 'ETFHOOK.html'],
+                grids: [['chartLabels', 'volumeBars']],
+                optional: { mosaic: false },
+                sum: { title: 'name', sub: ['symbol', 'id'], img: 'image' },
+                fields: Object.assign({}, F_COIN, {
+                    id: ['구분 이름', 'text', 'hook1·hook2… 상세 페이지 주소에 쓰입니다. hook3 은 홈페이지에서 늘 흐리게 가려집니다'],
+                    etfMarketCap: ['ETF Market Cap (달러)', 'money', '정렬했을 때 표에 보이는 시가총액'],
+                    etfVolume: ['ETF Volume (달러)', 'money', '정렬했을 때 표에 보이는 거래량'],
+                    mosaic: ['코인 이름·로고 흐리게 가리기', 'bool'],
+                    chartFrom: ['차트 시작 날짜', 'mdy'],
+                    chartTo: ['차트 끝 날짜', 'mdy', '늘 오늘 날짜로 둡니다'],
+                    lastVolumeLabel: ['마지막 거래량 글자', 'text', '거래량 막대 가운데 가장 큰 값, 예: 8.021B'],
+                    chartLabels: ['날짜', 'text'],
+                    volumeBars: ['거래량 (B)', 'number'],
+                    link: ['카드 제목 주소', 'link', '상세 페이지 카드 제목을 누르면 가는 곳']
+                })
+            },
+            {
+                id: 'hotchains', group: 'On-Chain Data 페이지', name: 'HOT 추천 코인',
+                file: 'HOT.js', v: 'hotChains', type: 'list',
+                where: 'On-Chain Data 페이지 HOT 추천 코인 차트와 Go to 버튼에 나옵니다.',
+                pages: ['on-chain-data.html'],
+                grids: [['labels', 'netflow', 'reserve']],
+                sum: { title: 'name', sub: ['goToLink'] },
+                fields: Object.assign({}, F_FLOW, {
+                    name: ['코인 이름', 'text', '예: Biconomy (BICO)'],
+                    goToLink: ['Go to 버튼 주소', 'link']
+                })
+            },
+            {
+                id: 'ocd', group: 'On-Chain Data 페이지', name: '코인별 Netflow·Reserve',
+                file: 'OcdCoins.js', v: 'OcdCoins', type: 'list',
+                where: 'On-Chain Data 페이지 코인 목록과 Netflow·Reserve 차트에 나옵니다.',
+                pages: ['on-chain-data.html'],
+                grids: [['labels', 'netflow', 'reserve']],
+                sum: { title: 'name', sub: ['symbol'] },
+                fields: Object.assign({}, F_FLOW, {
+                    symbol: ['기호', 'text', '예: BTC'],
+                    name: ['이름', 'text']
+                })
+            },
+            {
+                id: 'onchain', group: 'On-Chain Data 페이지', name: '상세 지표 (BTC·ETH·XRP·USDT)',
+                file: 'onChainData.js', v: 'onChainData', type: 'dict', addKey: true, itemName: '지표',
+                where: 'On-Chain Data 페이지에서 BTC·ETH·XRP·USDT 를 눌렀을 때 나오는 지표와 차트 값입니다.',
+                pages: ['on-chain-data.html'],
+                grids: [['labels', 'netflow', 'reserve']],
+                tpl: { name: '', desc: '', value: '', change: 0 },
+                fields: Object.assign({}, F_FLOW, F_METRIC)
+            },
+            {
+                id: 'inline', group: 'On-Chain Data 페이지', name: '상세 지표 (그 밖의 코인)',
+                file: 'on-chain-data.html', v: 'inlineMetrics', type: 'dict', addKey: true, itemName: '지표',
+                where: 'SHIB·BTT·XLM·BABYDOGE·WLD·KAIA 를 눌렀을 때 나오는 지표입니다 (on-chain-data.html 안에 들어 있는 값).',
+                pages: ['on-chain-data.html'],
+                tpl: { name: '', desc: '', value: '', change: 0 },
+                fields: F_METRIC
+            }
+        ];
+
+        const PAGE_NAMES = {
+            'index.html': '메인 (Top)',
+            'trending.html': 'Trending',
+            'news.html': 'News',
+            'ETF.html': 'ETF',
+            'Application.html': 'ETF (휴대폰 아래 탭)',
+            'ETFHOOK.html': 'ETF 상세',
+            'on-chain-data.html': 'On-Chain Data'
+        };
+        const MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+        // ── 데이터 파일 읽고 쓰기
+        function skipString(t, i) {
+            const q = t[i];
+            for (let j = i + 1; j < t.length; j++) {
+                if (t[j] === '\\') { j++; continue; }
+                if (t[j] === q) return j;
+            }
+            return t.length;
+        }
+
+        // "const 이름 = [ ... ]" 의 [ ... ] 부분 위치를 찾는다 (글자·주석 안의 괄호는 건너뜀)
+        function findLiteral(text, name) {
+            const m = new RegExp('\\b(?:const|let|var)\\s+' + name + '\\s*=\\s*').exec(text);
+            if (!m) throw new Error(name + ' 을(를) 파일에서 찾지 못했습니다');
+            const start = m.index + m[0].length;
+            if (text[start] !== '[' && text[start] !== '{') throw new Error(name + ' 모양이 예상과 다릅니다');
+            let depth = 0;
+            for (let i = start; i < text.length; i++) {
+                const c = text[i];
+                if (c === '"' || c === "'" || c === '`') { i = skipString(text, i); continue; }
+                if (c === '/' && text[i + 1] === '/') { const n = text.indexOf('\n', i); i = n < 0 ? text.length : n; continue; }
+                if (c === '/' && text[i + 1] === '*') { const n = text.indexOf('*/', i + 2); i = n < 0 ? text.length : n + 1; continue; }
+                if (c === '[' || c === '{') depth++;
+                else if (c === ']' || c === '}') {
+                    depth--;
+                    if (depth === 0) {
+                        const nl = text.indexOf('\n', start);
+                        const child = nl < 0 ? '' : /^[ \t]*/.exec(text.slice(nl + 1))[0];
+                        return { start: start, end: i + 1, base: child.slice(4) };
+                    }
+                }
+            }
+            throw new Error(name + ' 의 끝을 찾지 못했습니다');
+        }
+
+        function evalLiteral(src) {
+            return Function('"use strict"; return (' + src + ');')();
+        }
+
+        function isPrim(v) { return v === null || typeof v !== 'object'; }
+        function clone(v) { return JSON.parse(JSON.stringify(v)); }
+
+        // 값 → 원래 파일과 같은 모양의 JS 글자 (4칸 들여쓰기, 짧은 객체는 한 줄)
+        function ser(v, ind, quoteTop, depth) {
+            if (v === null || v === undefined) return 'null';
+            if (typeof v === 'number') return Number.isFinite(v) ? String(v) : '0';
+            if (typeof v === 'boolean') return String(v);
+            if (typeof v === 'string') return JSON.stringify(v);
+            const inner = ind + '    ';
+            if (Array.isArray(v)) {
+                if (!v.length) return '[]';
+                if (v.every(isPrim)) return '[' + v.map(x => ser(x)).join(', ') + ']';
+                return '[\n' + v.map(x => inner + ser(x, inner, false, depth + 1)).join(',\n') + '\n' + ind + ']';
+            }
+            const keys = Object.keys(v);
+            if (!keys.length) return '{}';
+            const k = key => ((depth === 0 && quoteTop) || !/^[A-Za-z_$][\w$]*$/.test(key))
+                ? "'" + key.replace(/\\/g, '\\\\').replace(/'/g, "\\'") + "'"
+                : key;
+            if (keys.length <= 5 && keys.every(key => isPrim(v[key]))) {
+                const one = '{ ' + keys.map(key => k(key) + ': ' + ser(v[key])).join(', ') + ' }';
+                if (one.length <= 160) return one;
+            }
+            return '{\n' + keys.map(key => inner + k(key) + ': ' + ser(v[key], inner, false, depth + 1)).join(',\n') + '\n' + ind + '}';
+        }
+
+        // 고친 칸만 새 글자로 바꿔 끼운 파일 전체 글자 (주석·나머지 코드는 그대로)
+        function buildText(path, base, secs) {
+            let text = base;
+            const eol = text.indexOf('\r\n') >= 0 ? '\r\n' : '\n';
+            if (!secs.length) return text;
+            if (!secs[0].sec.v) return (JSON.stringify(secs[0].value, null, 2) + '\n').replace(/\n/g, eol);
+            const spans = secs.map(x => Object.assign(findLiteral(text, x.sec.v), { x: x })).sort((a, b) => b.start - a.start);
+            for (const sp of spans) {
+                const out = ser(sp.x.value, sp.base, sp.x.quoteTop, 0).replace(/\n/g, eol);
+                text = text.slice(0, sp.start) + out + text.slice(sp.end);
+            }
+            return text;
+        }
+
+        function readSection(sec, text) {
+            if (!sec.v) return { value: JSON.parse(text), quoteTop: false };
+            const sp = findLiteral(text, sec.v);
+            const src = text.slice(sp.start, sp.end);
+            return { value: evalLiteral(src), quoteTop: sec.type === 'dict' && /^\s*'[^'\n]+'\s*:/m.test(src) };
+        }
+
+        // ── 상태
+        const LS = 'novadexAdmin';
+        function readLS() { try { return JSON.parse(localStorage.getItem(LS) || '{}'); } catch (e) { return {}; } }
+        function writeLS(o) { try { localStorage.setItem(LS, JSON.stringify(o)); } catch (e) {} }
+
+        const DEFAULT = (function () {
+            const h = location.hostname;
+            if (/\.github\.io$/.test(h)) return { owner: h.split('.')[0], repo: location.pathname.split('/')[1] || 'NovaDEX01', branch: 'main' };
+            return { owner: 'wlgus6464-ui', repo: 'NovaDEX01', branch: 'main' };
+        })();
+
+        const S = {
+            settings: Object.assign({ token: '' }, DEFAULT, readLS().settings || {}),
+            files: {},      // 파일 이름 → { sha, text }
+            secs: {},       // 칸 id → { orig, origJSON, work, idx, quoteTop } 또는 { err }
+            pages: {},      // 미리보기용 HTML
+            open: new WeakSet(),
+            cur: SECTIONS[0].id,
+            flags: {},
+            loadError: ''
+        };
+
+        const curSec = () => SECTIONS.find(s => s.id === S.cur) || SECTIONS[0];
+        const repoPath = () => '/repos/' + S.settings.owner + '/' + S.settings.repo;
+        const siteUrl = () => 'https://' + S.settings.owner.toLowerCase() + '.github.io/' + S.settings.repo + '/';
+        const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+        function isDirty(id) {
+            const st = S.secs[id];
+            return !!(st && st.work !== undefined && JSON.stringify(st.work) !== st.origJSON);
+        }
+        const anyDirty = () => SECTIONS.some(s => isDirty(s.id));
+
+        function mapIdx(st) {
+            st.idx = new WeakMap();
+            if (Array.isArray(st.work)) st.work.forEach((o, i) => { if (o && typeof o === 'object') st.idx.set(o, i); });
+        }
+
+        function parseAll() {
+            S.secs = {};
+            for (const sec of SECTIONS) {
+                const f = S.files[sec.file];
+                if (!f) continue;
+                try {
+                    const r = readSection(sec, f.text);
+                    const st = { orig: r.value, origJSON: JSON.stringify(r.value), work: clone(r.value), quoteTop: r.quoteTop };
+                    mapIdx(st);
+                    S.secs[sec.id] = st;
+                } catch (e) {
+                    S.secs[sec.id] = { err: e.message };
+                }
+            }
+        }
+
+        function fileText(path, base) {
+            const f = S.files[path];
+            const secs = SECTIONS.filter(s => s.file === path && isDirty(s.id))
+                .map(s => ({ sec: s, value: S.secs[s.id].work, quoteTop: S.secs[s.id].quoteTop }));
+            return buildText(path, base != null ? base : (f ? f.text : ''), secs);
+        }
+
+        // 올리기 전에 새 파일을 다시 읽어서 고친 값과 똑같은지 확인
+        function checkText(path, text) {
+            for (const sec of SECTIONS.filter(s => s.file === path && isDirty(s.id))) {
+                const back = readSection(sec, text).value;
+                if (JSON.stringify(back) !== JSON.stringify(S.secs[sec.id].work)) {
+                    throw new Error(sec.name + ' 을(를) 파일로 바꾸다가 값이 어긋났습니다. 저장을 멈췄습니다.');
+                }
+            }
+        }
+
+        // ── GitHub
+        function b64dec(b) {
+            const bin = atob(String(b).replace(/\s/g, ''));
+            const u = new Uint8Array(bin.length);
+            for (let i = 0; i < bin.length; i++) u[i] = bin.charCodeAt(i);
+            return new TextDecoder('utf-8').decode(u);
+        }
+
+        function ghError(status, msg) {
+            if (status === 401) return 'GitHub 비밀 키가 틀렸거나 기간이 끝났습니다. [⚙ 연결 설정]에서 새 키를 넣어 주세요.';
+            if (status === 403 && /rate limit/i.test(msg)) return 'GitHub 읽기 횟수 한도가 찼습니다. [⚙ 연결 설정]에서 비밀 키를 넣으면 풀립니다.';
+            if (status === 403) return '이 비밀 키에는 저장 권한이 없습니다. 키를 만들 때 Contents 를 Read and write 로 골랐는지 확인해 주세요.';
+            if (status === 404) return '저장소나 파일을 찾지 못했습니다. [⚙ 연결 설정] → 고급에서 저장소 이름을 확인해 주세요.';
+            return 'GitHub 오류 ' + status + (msg ? ' (' + msg + ')' : '');
+        }
+
+        async function gh(path, opt) {
+            opt = opt || {};
+            const headers = { Accept: 'application/vnd.github+json' };
+            if (S.settings.token) headers.Authorization = 'Bearer ' + S.settings.token;
+            if (opt.body) headers['Content-Type'] = 'application/json';
+            let r;
+            try {
+                r = await fetch('https://api.github.com' + path, {
+                    method: opt.method || 'GET', headers: headers, cache: 'no-store',
+                    body: opt.body ? JSON.stringify(opt.body) : undefined
+                });
+            } catch (e) {
+                throw new Error('GitHub 에 접속하지 못했습니다. 인터넷 연결을 확인해 주세요.');
+            }
+            if (!r.ok) {
+                let msg = '';
+                try { msg = (await r.json()).message || ''; } catch (e) {}
+                const err = new Error(ghError(r.status, msg));
+                err.status = r.status;
+                throw err;
+            }
+            return r.status === 204 ? null : r.json();
+        }
+
+        const ref = () => '?ref=' + encodeURIComponent(S.settings.branch);
+
+        async function loadAll() {
+            setConn('불러오는 중…', '');
+            S.loadError = '';
+            try {
+                const names = [...new Set(SECTIONS.map(s => s.file))];
+                const res = await Promise.all(names.map(n => gh(repoPath() + '/contents/' + encodeURIComponent(n) + ref())));
+                S.files = {};
+                res.forEach((j, i) => { S.files[names[i]] = { sha: j.sha, text: b64dec(j.content) }; });
+                parseAll();
+                if (S.settings.token) setConn('GitHub 연결됨', 'ok');
+                else setConn('보기만 가능 (비밀 키 없음)', 'warn');
+            } catch (e) {
+                S.loadError = e.message;
+                setConn('불러오지 못함', 'bad');
+            }
+            renderSection();
+            updateDirty();
+        }
+
+        // 바뀐 파일들을 커밋 하나로 올린다
+        async function commitFiles(paths, latest, dirtySecs) {
+            const base = repoPath();
+            const head = (await gh(base + '/git/ref/heads/' + S.settings.branch)).object.sha;
+            const commit = await gh(base + '/git/commits/' + head);
+            const tree = await gh(base + '/git/trees/' + commit.tree.sha);
+            const remote = {};
+            tree.tree.forEach(t => { remote[t.path] = t.sha; });
+            if (!latest) {
+                const changed = paths.filter(p => remote[p] && remote[p] !== S.files[p].sha);
+                if (changed.length) {
+                    const err = new Error('conflict');
+                    err.conflict = changed;
+                    err.latest = {};
+                    for (const p of changed) err.latest[p] = b64dec((await gh(base + '/git/blobs/' + remote[p])).content);
+                    throw err;
+                }
+            }
+            const changes = paths.map(p => ({ path: p, text: fileText(p, latest && latest[p] != null ? latest[p] : null) }));
+            changes.forEach(c => checkText(c.path, c.text));
+            const nt = await gh(base + '/git/trees', {
+                method: 'POST',
+                body: { base_tree: commit.tree.sha, tree: changes.map(c => ({ path: c.path, mode: '100644', type: 'blob', content: c.text })) }
+            });
+            const nc = await gh(base + '/git/commits', {
+                method: 'POST',
+                body: { message: '관리자 페이지에서 수정: ' + dirtySecs.map(s => s.name).join(', '), tree: nt.sha, parents: [head] }
+            });
+            await gh(base + '/git/refs/heads/' + S.settings.branch, { method: 'PATCH', body: { sha: nc.sha } });
+            const shas = {};
+            nt.tree.forEach(t => { shas[t.path] = t.sha; });
+            return { changes: changes, shas: shas };
+        }
+
+        // 홈페이지 주소에서 새 파일이 보일 때까지 기다린다
+        async function pollDeploy(changes) {
+            const run = (pollDeploy.run = (pollDeploy.run || 0) + 1);
+            const t0 = Date.now();
+            const norm = s => s.replace(/\r\n/g, '\n').replace(/\s+$/, '');
+            const want = changes.map(c => ({ url: siteUrl() + c.path, text: norm(c.text) }));
+            while (run === pollDeploy.run) {
+                const sec = Math.round((Date.now() - t0) / 1000);
+                if (sec > 600) {
+                    toast('⚠ 10분이 지나도 홈페이지에 반영되지 않았습니다. <a href="https://github.com/' + esc(S.settings.owner) + '/' + esc(S.settings.repo) + '/actions" target="_blank" rel="noopener">GitHub 진행 화면</a>을 확인해 주세요.', 'bad', true);
+                    return;
+                }
+                toast('✅ GitHub 에 저장했습니다.<br>⏳ 홈페이지에 반영되는 중… ' + mmss(sec) + ' (보통 1~2분)', 'wait', true);
+                await sleep(5000);
+                try {
+                    const oks = await Promise.all(want.map(async w => {
+                        const r = await fetch(w.url + '?t=' + Date.now(), { cache: 'no-store' });
+                        return r.ok && norm(await r.text()) === w.text;
+                    }));
+                    if (run === pollDeploy.run && oks.every(Boolean)) {
+                        toast('✅ 홈페이지에 반영됐습니다 (' + mmss(Math.round((Date.now() - t0) / 1000)) + ' 걸림). <a href="' + siteUrl() + '" target="_blank" rel="noopener">홈페이지 열기 ↗</a>', 'ok', true);
+                        return;
+                    }
+                } catch (e) {}
+            }
+        }
+
+        // ── 작은 도구
+        const $ = s => document.querySelector(s);
+        function el(tag, attrs) {
+            const e = document.createElement(tag);
+            for (const k in (attrs || {})) {
+                const v = attrs[k];
+                if (v == null || v === false) continue;
+                if (k === 'class') e.className = v;
+                else if (k === 'text') e.textContent = v;
+                else if (k.slice(0, 2) === 'on') e.addEventListener(k.slice(2), v);
+                else e.setAttribute(k, v === true ? '' : v);
+            }
+            for (let i = 2; i < arguments.length; i++) {
+                [].concat(arguments[i]).forEach(c => { if (c != null && c !== false) e.append(c.nodeType ? c : document.createTextNode(c)); });
+            }
+            return e;
+        }
+        const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+        const mmss = s => (s >= 60 ? Math.floor(s / 60) + '분 ' : '') + (s % 60) + '초';
+        function textInput(v) { const i = el('input', { type: 'text', spellcheck: 'false' }); i.value = v == null ? '' : String(v); return i; }
+
+        function parseNum(s) {
+            s = String(s).trim().replace(/,/g, '');
+            if (!/^[-+]?(\d+\.?\d*|\.\d+)(e[-+]?\d+)?$/i.test(s)) return null;
+            return Number(s);
+        }
+
+        function kor(n) {
+            const neg = n < 0;
+            n = Math.abs(n);
+            let out;
+            if (n >= 1e12) { const a = Math.floor(n / 1e12), b = Math.floor((n % 1e12) / 1e8); out = a.toLocaleString() + '조' + (b ? ' ' + b.toLocaleString() + '억' : ''); }
+            else if (n >= 1e8) { const a = Math.floor(n / 1e8), b = Math.floor((n % 1e8) / 1e4); out = a.toLocaleString() + '억' + (b ? ' ' + b.toLocaleString() + '만' : ''); }
+            else if (n >= 1e4) out = Math.floor(n / 1e4).toLocaleString() + '만';
+            else out = n.toLocaleString('en-US', { maximumFractionDigits: 8 });
+            return (neg ? '-' : '') + out;
+        }
+
+        function numHelp(type, n) {
+            if (typeof n !== 'number') return '';
+            if (type === 'money') return '약 ' + kor(n) + ' 달러';
+            if (type === 'percent') return n > 0 ? '▲ ' + n + '% 오름' : n < 0 ? '▼ ' + Math.abs(n) + '% 내림' : '변동 없음';
+            return Math.abs(n) >= 10000 ? n.toLocaleString('en-US', { maximumFractionDigits: 8 }) : '';
+        }
+
+        function parseLabel(s) {
+            const m = /^([A-Za-z]{3})\s+(\d{1,2})$/.exec(String(s).trim());
+            if (!m) return null;
+            const mo = MON.indexOf(m[1][0].toUpperCase() + m[1].slice(1).toLowerCase());
+            return mo < 0 ? null : { mo: mo, d: +m[2] };
+        }
+
+        // "Aug 13" 다음 날짜 (앞 두 날짜 간격만큼 띄움)
+        function nextLabel(a) {
+            if (!a.length) return '';
+            const last = parseLabel(a[a.length - 1]);
+            if (!last) return '';
+            const y = new Date().getFullYear();
+            let step = 1;
+            const prev = a.length > 1 ? parseLabel(a[a.length - 2]) : null;
+            if (prev) {
+                const d1 = Date.UTC(y, prev.mo, prev.d);
+                let d2 = Date.UTC(y, last.mo, last.d);
+                if (d2 < d1) d2 = Date.UTC(y + 1, last.mo, last.d);
+                step = Math.round((d2 - d1) / 864e5) || 1;
+            }
+            const dt = new Date(Date.UTC(y, last.mo, last.d) + step * 864e5);
+            return MON[dt.getUTCMonth()] + ' ' + dt.getUTCDate();
+        }
+
+        function blankLike(o) {
+            if (Array.isArray(o)) return clone(o);
+            if (!o || typeof o !== 'object') return typeof o === 'number' ? 0 : typeof o === 'boolean' ? false : '';
+            const r = {};
+            for (const k in o) r[k] = (k === 'link') ? '#' : blankLike(o[k]);
+            return r;
+        }
+
+        function fixId(list, c) {
+            if (!('id' in c)) return;
+            const ids = new Set(list.map(x => x.id));
+            if (!ids.has(c.id)) return;
+            const base = String(c.id).replace(/\d+$/, '');
+            let n = 1;
+            while (ids.has(base + n)) n++;
+            c.id = base + n;
+        }
+
+        function specOf(sec, key, val) {
+            const f = sec.fields && sec.fields[key];
+            if (f) return { label: f[0], type: f[1], hint: f[2] || '' };
+            let type = 'text';
+            if (typeof val === 'number') type = 'number';
+            else if (typeof val === 'boolean') type = 'bool';
+            else if (Array.isArray(val)) type = val.length && typeof val[0] === 'object' ? 'sub' : 'arr';
+            else if (val && typeof val === 'object') type = 'obj';
+            else if (typeof val === 'string' && val.length > 80) type = 'long';
+            return { label: key, type: type, hint: '' };
+        }
+
+        // ── 입력칸
+        function renderFields(box, sec, obj, ctx) {
+            const grids = (sec.grids || []).filter(g => g.every(k => Array.isArray(obj[k])));
+            const inGrid = new Set([].concat.apply([], grids));
+            const keys = Object.keys(obj);
+            Object.keys(sec.optional || {}).forEach(k => { if (keys.indexOf(k) < 0) keys.push(k); });
+            const done = new Set();
+            for (const k of keys) {
+                if (inGrid.has(k)) {
+                    const g = grids.find(x => x.indexOf(k) >= 0);
+                    if (!done.has(g)) { done.add(g); box.append(gridEditor(sec, obj, g)); }
+                    continue;
+                }
+                box.append(fieldEditor(sec, obj, k, ctx));
+            }
+        }
+
+        function fieldEditor(sec, obj, key, ctx) {
+            const val = obj[key];
+            const sp = specOf(sec, key, val);
+            const wrap = el('div', { class: 'field' },
+                el('div', { class: 'lab' }, el('b', { text: sp.label }), sp.hint ? ' · ' + sp.hint : null));
+            const changed = () => { if (ctx && ctx.refresh) ctx.refresh(); touch(); };
+            const plain = () => {
+                const inp = textInput(val);
+                inp.addEventListener('input', () => { obj[key] = inp.value; changed(); });
+                wrap.append(inp);
+                return inp;
+            };
+
+            if (sp.type === 'long') {
+                wrap.classList.add('wide');
+                const ta = el('textarea', { rows: Math.min(8, Math.max(2, Math.ceil(String(val || '').length / 90))) });
+                ta.value = val == null ? '' : val;
+                ta.addEventListener('input', () => { obj[key] = ta.value; changed(); });
+                wrap.append(ta);
+            } else if (sp.type === 'image') {
+                wrap.classList.add('wide');
+                const inp = textInput(val);
+                const img = el('img', { class: 'imgprev', alt: '' });
+                const msg = el('div', { class: 'help bad' });
+                const show = () => {
+                    msg.textContent = '';
+                    const u = inp.value.trim();
+                    img.hidden = !u;
+                    if (u) img.src = u;
+                };
+                img.addEventListener('error', () => { img.hidden = true; msg.textContent = '⚠ 이 주소로는 사진이 안 열립니다'; });
+                let t = 0;
+                inp.addEventListener('input', () => { obj[key] = inp.value; changed(); clearTimeout(t); t = setTimeout(show, 500); });
+                wrap.append(inp, img, msg);
+                show();
+            } else if (sp.type === 'link') {
+                const inp = textInput(val);
+                const a = el('a', { class: 'btn small', href: val || '#', target: '_blank', rel: 'noopener', text: '열기 ↗' });
+                inp.addEventListener('input', () => { obj[key] = inp.value; a.href = inp.value || '#'; changed(); });
+                wrap.append(el('div', { class: 'row' }, inp, a));
+            } else if (sp.type === 'number' || sp.type === 'money' || sp.type === 'percent') {
+                const inp = textInput(val);
+                inp.inputMode = 'decimal';
+                const help = el('div', { class: 'help' });
+                const upd = () => {
+                    help.textContent = numHelp(sp.type, obj[key]);
+                    help.className = 'help' + (sp.type === 'percent' ? (obj[key] > 0 ? ' up' : obj[key] < 0 ? ' down' : '') : '');
+                };
+                inp.addEventListener('input', () => {
+                    const n = parseNum(inp.value);
+                    if (n === null) {
+                        inp.classList.add('err');
+                        help.textContent = '숫자만 넣어 주세요 (쉼표·%·$ 없이, 내렸으면 앞에 -)';
+                        help.className = 'help bad';
+                        return;
+                    }
+                    inp.classList.remove('err');
+                    obj[key] = n;
+                    upd();
+                    changed();
+                });
+                wrap.append(inp, help);
+                upd();
+            } else if (sp.type === 'datetime' && /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}(:\d{2})?$/.test(val || '')) {
+                const inp = el('input', { type: 'datetime-local', step: '1' });
+                inp.value = val;
+                inp.addEventListener('input', () => {
+                    let v = inp.value;
+                    if (!v) return;
+                    if (v.length === 16) v += ':00';
+                    obj[key] = v;
+                    changed();
+                });
+                wrap.append(inp);
+            } else if (sp.type === 'mdy' && /^\d{1,2}\/\d{1,2}\/\d{4}$/.test(val || '')) {
+                const m = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/.exec(val);
+                const inp = el('input', { type: 'date' });
+                inp.value = m[3] + '-' + m[1].padStart(2, '0') + '-' + m[2].padStart(2, '0');
+                const set = ymd => { const p = ymd.split('-'); obj[key] = p[1] + '/' + p[2] + '/' + p[0]; changed(); };
+                inp.addEventListener('input', () => { if (inp.value) set(inp.value); });
+                const row = el('div', { class: 'row' }, inp);
+                if (key === 'chartTo') {
+                    row.append(el('button', {
+                        class: 'btn small', type: 'button', text: '오늘 날짜',
+                        onclick: () => {
+                            const d = new Date();
+                            const v = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+                            inp.value = v;
+                            set(v);
+                        }
+                    }));
+                }
+                wrap.append(row);
+            } else if (sp.type === 'bool') {
+                const cb = el('input', { type: 'checkbox' });
+                cb.checked = !!val;
+                cb.addEventListener('change', () => {
+                    if (cb.checked) obj[key] = true;
+                    else if (sec.optional && key in sec.optional) delete obj[key];
+                    else obj[key] = false;
+                    changed();
+                });
+                wrap.append(el('label', { class: 'check' }, cb, '켜기'));
+            } else if (sp.type === 'arr') {
+                wrap.classList.add('wide');
+                const nums = val.every(x => typeof x === 'number');
+                const ta = el('textarea', { rows: 2 });
+                ta.value = val.join(', ');
+                ta.addEventListener('input', () => {
+                    const parts = ta.value.split(',').map(s => s.trim()).filter(s => s !== '');
+                    if (nums) {
+                        const ns = parts.map(parseNum);
+                        if (ns.some(n => n === null)) { ta.classList.add('err'); return; }
+                        ta.classList.remove('err');
+                        obj[key] = ns;
+                    } else obj[key] = parts;
+                    changed();
+                });
+                wrap.append(ta, el('div', { class: 'help', text: '쉼표(,)로 나눠서 적습니다' }));
+            } else if (sp.type === 'sub') {
+                wrap.classList.add('wide');
+                wrap.append(subList(sec, val, ctx));
+            } else if (sp.type === 'obj') {
+                wrap.classList.add('wide');
+                const inner = el('div', { class: 'fields nested' });
+                renderFields(inner, sec, val, ctx);
+                wrap.append(inner);
+            } else {
+                const inp = plain();
+                if (key === 'lastVolumeLabel' && Array.isArray(obj.volumeBars)) {
+                    inp.remove();
+                    wrap.append(el('div', { class: 'row' }, inp, el('button', {
+                        class: 'btn small', type: 'button', text: '가장 큰 막대 값으로 채우기',
+                        onclick: () => {
+                            const nums = obj.volumeBars.filter(x => typeof x === 'number');
+                            if (!nums.length) return;
+                            inp.value = Math.max.apply(null, nums) + 'B';
+                            obj[key] = inp.value;
+                            changed();
+                        }
+                    })));
+                }
+            }
+            return wrap;
+        }
+
+        // 지표 8개·뉴스 5개처럼 같은 모양이 여러 줄인 목록
+        function subList(sec, arr, ctx) {
+            const box = el('div', { class: 'sub' });
+            const after = () => { draw(); touch(); if (ctx && ctx.refresh) ctx.refresh(); };
+            function draw() {
+                box.textContent = '';
+                arr.forEach((o, i) => {
+                    const f = el('div', { class: 'subf' });
+                    if (o && typeof o === 'object') renderFields(f, sec, o, ctx);
+                    box.append(el('div', { class: 'subrow' },
+                        el('div', { class: 'subnum', text: String(i + 1) }),
+                        f,
+                        el('div', { class: 'subtools' },
+                            el('button', { class: 'btn small', type: 'button', title: '위로', text: '↑', disabled: i === 0, onclick: () => { const t = arr[i - 1]; arr[i - 1] = arr[i]; arr[i] = t; after(); } }),
+                            el('button', { class: 'btn small', type: 'button', title: '아래로', text: '↓', disabled: i === arr.length - 1, onclick: () => { const t = arr[i + 1]; arr[i + 1] = arr[i]; arr[i] = t; after(); } }),
+                            el('button', { class: 'btn small danger', type: 'button', title: '이 줄 지우기', text: '✕', onclick: () => { if (confirm((i + 1) + '번 줄을 지울까요?')) { arr.splice(i, 1); after(); } } }))));
+                });
+                box.append(el('button', {
+                    class: 'btn small', type: 'button', text: '+ ' + (sec.itemName || '줄') + ' 추가',
+                    onclick: () => { arr.push(arr.length ? blankLike(arr[arr.length - 1]) : clone(sec.tpl || {})); after(); }
+                }));
+            }
+            draw();
+            return box;
+        }
+
+        function sparkSvg(a) {
+            const n = a.length, W = Math.max(n * 8, 80), H = 50, bw = W / n;
+            let body = '';
+            const mx = Math.max.apply(null, a), mn = Math.min.apply(null, a);
+            if (mn < 0) {
+                const m = Math.max(Math.abs(mx), Math.abs(mn)) || 1, mid = H / 2;
+                a.forEach((v, i) => {
+                    const h = Math.max(Math.abs(v) / m * (mid - 2), 0.6);
+                    body += '<rect x="' + (i * bw + bw * 0.15).toFixed(2) + '" y="' + (v >= 0 ? mid - h : mid).toFixed(2) + '" width="' + (bw * 0.7).toFixed(2) + '" height="' + h.toFixed(2) + '" fill="' + (v >= 0 ? '#7CFF6B' : '#FF5A73') + '"/>';
+                });
+                body += '<line x1="0" x2="' + W + '" y1="' + mid + '" y2="' + mid + '" stroke="#3a4556" stroke-width="0.6"/>';
+            } else if (mn > 0 && (mx - mn) / mx < 0.5) {
+                const r = (mx - mn) || 1;
+                const pts = a.map((v, i) => ((i + 0.5) * bw).toFixed(2) + ',' + (H - 4 - (v - mn) / r * (H - 8)).toFixed(2)).join(' ');
+                body = '<polyline points="' + pts + '" fill="none" stroke="#7CFF6B" stroke-width="1.6" vector-effect="non-scaling-stroke"/>';
+            } else {
+                const m = mx || 1;
+                a.forEach((v, i) => {
+                    const h = Math.max(v / m * (H - 2), 0.6);
+                    body += '<rect x="' + (i * bw + bw * 0.15).toFixed(2) + '" y="' + (H - h).toFixed(2) + '" width="' + (bw * 0.7).toFixed(2) + '" height="' + h.toFixed(2) + '" fill="#7CFF6B"/>';
+                });
+            }
+            return '<svg viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="none">' + body + '</svg>';
+        }
+
+        // 날짜·Netflow·Reserve 처럼 길이가 같은 값 줄들을 표 하나로
+        function gridEditor(sec, obj, keys) {
+            const specs = keys.map(k => specOf(sec, k, obj[k][0]));
+            const isNum = keys.map((k, j) => obj[k].length ? obj[k].every(x => typeof x === 'number') : specs[j].type === 'number');
+            const wrap = el('div', { class: 'field wide' },
+                el('div', { class: 'lab' }, el('b', { text: specs.map(s => s.label).join(' · ') }), ' · 표 칸을 눌러 바로 고칩니다'));
+            const gw = el('div', { class: 'gridwrap' });
+            const sparks = el('div', { class: 'sparks' });
+            const drawSpark = () => {
+                sparks.textContent = '';
+                keys.forEach((k, j) => {
+                    if (!isNum[j]) return;
+                    const a = obj[k].filter(x => typeof x === 'number');
+                    if (!a.length) return;
+                    const box = el('div', { class: 'spark-box' }, el('div', { class: 'help', text: specs[j].label + ' · 가장 작은 값 ' + Math.min.apply(null, a) + ' / 가장 큰 값 ' + Math.max.apply(null, a) }));
+                    box.insertAdjacentHTML('beforeend', sparkSvg(a));
+                    sparks.append(box);
+                });
+            };
+            let sparkT = 0;
+            const later = () => { clearTimeout(sparkT); sparkT = setTimeout(drawSpark, 300); touch(); };
+            const draw = () => {
+                const n = Math.max.apply(null, keys.map(k => obj[k].length));
+                const tb = el('tbody');
+                for (let i = 0; i < n; i++) {
+                    const tr = el('tr', {}, el('td', { class: 'n', text: String(i + 1) }));
+                    keys.forEach((k, j) => {
+                        const inp = textInput(obj[k][i]);
+                        if (isNum[j]) {
+                            inp.inputMode = 'decimal';
+                            inp.addEventListener('input', () => {
+                                const v = parseNum(inp.value);
+                                if (v === null) { inp.classList.add('err'); return; }
+                                inp.classList.remove('err');
+                                obj[k][i] = v;
+                                later();
+                            });
+                        } else {
+                            inp.addEventListener('input', () => { obj[k][i] = inp.value; later(); });
+                        }
+                        tr.append(el('td', {}, inp));
+                    });
+                    tb.append(tr);
+                }
+                gw.textContent = '';
+                gw.append(el('table', { class: 'g' },
+                    el('thead', {}, el('tr', {}, el('th', { text: '#' }), specs.map(s => el('th', { text: s.label })))),
+                    tb));
+                drawSpark();
+            };
+            const addRow = () => keys.forEach((k, j) => {
+                const a = obj[k];
+                a.push(isNum[j] ? (a.length ? a[a.length - 1] : 0) : nextLabel(a));
+            });
+            const toEnd = () => { gw.scrollTop = gw.scrollHeight; };
+            wrap.append(gw, el('div', { class: 'row' },
+                el('button', { class: 'btn small', type: 'button', text: '한 칸 넘기기 (맨 위 줄 지우고 맨 아래에 다음 날짜 줄)', onclick: () => { keys.forEach(k => obj[k].shift()); addRow(); draw(); touch(); toEnd(); } }),
+                el('button', { class: 'btn small', type: 'button', text: '+ 맨 아래 줄 추가', onclick: () => { addRow(); draw(); touch(); toEnd(); } }),
+                el('button', { class: 'btn small danger', type: 'button', text: '− 맨 아래 줄 빼기', onclick: () => { keys.forEach(k => obj[k].pop()); draw(); touch(); toEnd(); } })),
+                sparks);
+            draw();
+            return wrap;
+        }
+
+        // ── 화면
+        function setConn(text, kind) { const c = $('#conn'); c.textContent = text; c.className = 'conn' + (kind ? ' ' + kind : ''); }
+
+        function toast(html, kind, sticky) {
+            const t = $('#toast');
+            t.className = kind || '';
+            t.innerHTML = html + '<button class="x" type="button" title="닫기">✕</button>';
+            t.querySelector('.x').onclick = () => { t.style.display = 'none'; };
+            t.style.display = 'block';
+            clearTimeout(toast.t);
+            if (!sticky) toast.t = setTimeout(() => { t.style.display = 'none'; }, 6000);
+        }
+
+        function renderSide() {
+            const nav = $('#side');
+            nav.textContent = '';
+            let g = '';
+            for (const s of SECTIONS) {
+                if (s.group !== g) { g = s.group; nav.append(el('h4', { text: g })); }
+                nav.append(el('a', { href: '#' + s.id, 'data-id': s.id }, el('span', { text: s.name }), el('i', { class: 'dot', title: '저장 안 한 곳이 있습니다' })));
+            }
+            nav.addEventListener('click', e => {
+                if (e.target.closest('a') && document.querySelector('#main .err') &&
+                    !confirm('빨간 칸에 잘못 넣은 값이 있습니다. 그 칸은 원래 값으로 두고 넘어갈까요?')) e.preventDefault();
+            });
+        }
+
+        let touchT = 0;
+        function touch() {
+            clearTimeout(touchT);
+            touchT = setTimeout(() => { updateDirty(); schedulePreview(); }, 200);
+        }
+
+        function updateDirty() {
+            let n = 0;
+            for (const s of SECTIONS) {
+                const d = isDirty(s.id);
+                if (d) n++;
+                const a = document.querySelector('#side a[data-id="' + s.id + '"]');
+                if (a) a.classList.toggle('dirty', d);
+            }
+            const b = $('#saveBtn');
+            b.disabled = n === 0;
+            b.textContent = n ? '저장하고 홈페이지에 올리기 (' + n + '곳)' : '바뀐 곳 없음';
+            const u = $('#undoBtn');
+            if (u) u.hidden = !isDirty(S.cur);
+        }
+
+        function itemCard(sec, st, en) {
+            const o = en.o, i = en.i, key = en.key;
+            const d = el('details', { class: 'item' });
+            const imgKey = sec.sum && sec.sum.img;
+            const thumb = imgKey ? el('img', { class: 'thumb', alt: '' }) : null;
+            if (thumb) thumb.addEventListener('error', () => { thumb.style.visibility = 'hidden'; });
+            const t = el('span', { class: 't' });
+            const s = el('span', { class: 's' });
+            const titleOf = () => key != null ? key : (o[sec.sum.title] || '(이름 없음)');
+            const refresh = () => {
+                let sub = '';
+                if (key != null) {
+                    if (Array.isArray(o)) sub = (sec.itemName || '') + ' ' + o.length + '개';
+                    else if (sec.sum && o[sec.sum.title]) sub = o[sec.sum.title];
+                    else if (o.metrics) sub = '지표 ' + o.metrics.length + '개';
+                } else {
+                    sub = (sec.sum.sub || []).map(k => o[k]).filter(v => v !== undefined && v !== '').join(' · ');
+                }
+                t.textContent = titleOf();
+                s.textContent = sub;
+                if (thumb) {
+                    const u = o[imgKey];
+                    thumb.style.visibility = u ? 'visible' : 'hidden';
+                    if (u && thumb.getAttribute('src') !== u) thumb.src = u;
+                }
+                d.dataset.q = (titleOf() + ' ' + sub).toLowerCase();
+            };
+            const stop = fn => e => { e.preventDefault(); e.stopPropagation(); fn(); };
+            const tools = el('span', { class: 'tools' });
+            if (sec.type === 'list') {
+                const arr = st.work;
+                tools.append(
+                    el('button', { class: 'btn small', type: 'button', title: '위로', text: '↑', disabled: i === 0, onclick: stop(() => { arr[i] = arr[i - 1]; arr[i - 1] = o; renderSection(); touch(); }) }),
+                    el('button', { class: 'btn small', type: 'button', title: '아래로', text: '↓', disabled: i === arr.length - 1, onclick: stop(() => { arr[i] = arr[i + 1]; arr[i + 1] = o; renderSection(); touch(); }) }),
+                    el('button', { class: 'btn small', type: 'button', title: '바로 아래에 똑같이 하나 더 만들기', text: '복사', onclick: stop(() => { const c = clone(o); fixId(arr, c); arr.splice(i + 1, 0, c); S.open.add(c); renderSection(); touch(); }) }),
+                    el('button', { class: 'btn small danger', type: 'button', text: '지우기', onclick: stop(() => { if (confirm('"' + titleOf() + '" 을(를) 지울까요?\n(저장해야 홈페이지에서도 지워집니다)')) { arr.splice(i, 1); renderSection(); touch(); } }) }));
+            } else if (sec.addKey) {
+                tools.append(el('button', { class: 'btn small danger', type: 'button', text: '지우기', onclick: stop(() => { if (confirm(key + ' 을(를) 지울까요?\n(저장해야 홈페이지에서도 지워집니다)')) { delete st.work[key]; renderSection(); touch(); } }) }));
+            }
+            const body = el('div', { class: 'fields' });
+            let built = false;
+            const build = () => {
+                if (built) return;
+                built = true;
+                const ctx = { refresh: refresh };
+                if (Array.isArray(o)) body.append(el('div', { class: 'field wide' }, subList(sec, o, ctx)));
+                else renderFields(body, sec, o, ctx);
+            };
+            d.addEventListener('toggle', () => {
+                if (d.open) { S.open.add(o); build(); } else S.open.delete(o);
+            });
+            d.append(el('summary', {},
+                el('span', { class: 'chev', text: '▸' }),
+                key == null ? el('span', { class: 'num', text: String(i + 1) }) : null,
+                thumb, t, s, tools), body);
+            refresh();
+            if (S.open.has(o)) { build(); d.open = true; }
+            return d;
+        }
+
+        function renderSection() {
+            const sec = curSec();
+            const st = S.secs[sec.id];
+            const main = $('#main');
+            main.textContent = '';
+            if (!S.settings.token) {
+                main.append(el('div', { class: 'notice' }, '지금은 보기만 됩니다. 저장하려면 오른쪽 위 ', el('b', { text: '⚙ 연결 설정' }), '에서 GitHub 비밀 키를 넣어 주세요.'));
+            }
+            const count = st && st.work ? (Array.isArray(st.work) ? st.work.length : Object.keys(st.work).length) : 0;
+            const search = count > 8 ? el('input', { type: 'search', class: 'search', placeholder: '이름·기호로 찾기' }) : null;
+            main.append(el('div', { class: 'sec-head' },
+                el('div', {}, el('h2', { text: sec.name }), el('p', { class: 'where', text: sec.where })),
+                el('div', { class: 'sec-tools' },
+                    search,
+                    el('button', {
+                        class: 'btn small', type: 'button', text: '모두 펼치기',
+                        onclick: e => {
+                            const open = e.target.textContent === '모두 펼치기';
+                            document.querySelectorAll('#main details.item').forEach(x => { if (!x.hidden) x.open = open; });
+                            e.target.textContent = open ? '모두 접기' : '모두 펼치기';
+                        }
+                    }),
+                    el('button', {
+                        id: 'undoBtn', class: 'btn small danger', type: 'button', text: '↺ 저장 전으로 되돌리기', hidden: !isDirty(sec.id),
+                        onclick: () => {
+                            if (!confirm(sec.name + ' 에서 고친 것을 모두 되돌릴까요?')) return;
+                            st.work = clone(st.orig);
+                            mapIdx(st);
+                            renderSection();
+                            touch();
+                        }
+                    }),
+                    el('button', { class: 'btn small', type: 'button', text: '👁 미리보기', onclick: openPreview }))));
+
+            if (!st) {
+                main.append(el('div', { class: 'empty' + (S.loadError ? ' bad' : ''), text: S.loadError || '불러오는 중…' }));
+                return;
+            }
+            if (st.err) {
+                main.append(el('div', { class: 'empty bad', text: '이 칸을 읽지 못했습니다: ' + st.err }));
+                return;
+            }
+
+            const items = el('div', {});
+            const entries = sec.type === 'list'
+                ? st.work.map((o, i) => ({ o: o, i: i }))
+                : Object.keys(st.work).map((k, i) => ({ o: st.work[k], i: i, key: k }));
+            entries.forEach(en => items.append(itemCard(sec, st, en)));
+            main.append(items);
+
+            if (sec.type === 'list') {
+                main.append(el('button', {
+                    class: 'btn add', type: 'button', text: '+ 새로 추가 (맨 아래 항목을 복사해서 만듭니다)',
+                    onclick: () => {
+                        const last = st.work[st.work.length - 1];
+                        const c = last ? clone(last) : {};
+                        fixId(st.work, c);
+                        st.work.push(c);
+                        S.open.add(c);
+                        renderSection();
+                        touch();
+                        const ds = document.querySelectorAll('#main details.item');
+                        if (ds.length) ds[ds.length - 1].scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                }));
+            } else if (sec.addKey) {
+                main.append(el('button', {
+                    class: 'btn add', type: 'button', text: '+ 코인 추가',
+                    onclick: () => {
+                        const keys = Object.keys(st.work);
+                        let k = prompt('추가할 코인 기호를 적어 주세요 (예: SOL)\n' + (keys.length ? keys[0] + ' 내용을 복사해서 만듭니다.' : ''));
+                        if (!k) return;
+                        k = k.trim().toUpperCase();
+                        if (!k) return;
+                        if (k in st.work) { alert(k + ' 은(는) 이미 있습니다.'); return; }
+                        st.work[k] = keys.length ? clone(st.work[keys[0]]) : {};
+                        S.open.add(st.work[k]);
+                        renderSection();
+                        touch();
+                    }
+                }));
+            } else {
+                main.append(el('p', { class: 'help', text: '코인 버튼(BTC·ETH…)은 News 페이지에 고정돼 있어서 여기서는 내용만 바꿉니다.' }));
+            }
+
+            if (search) {
+                search.addEventListener('input', () => {
+                    const q = search.value.trim().toLowerCase();
+                    items.querySelectorAll('details.item').forEach(x => { x.hidden = !!q && x.dataset.q.indexOf(q) < 0; });
+                });
+            }
+            if (S.flags.open) { const x = items.querySelector('details.item'); if (x) x.open = true; S.flags.open = false; }
+            if (S.flags.pv) { S.flags.pv = false; openPreview(); }
+        }
+
+        function route() {
+            const parts = location.hash.slice(1).split('&');
+            let id = parts[0];
+            if (!SECTIONS.some(s => s.id === id)) id = readLS().last;
+            if (!SECTIONS.some(s => s.id === id)) id = SECTIONS[0].id;
+            S.cur = id;
+            const ls = readLS();
+            ls.last = id;
+            writeLS(ls);
+            document.querySelectorAll('#side a').forEach(a => a.classList.toggle('on', a.dataset.id === id));
+            S.flags = { pv: parts.indexOf('pv') >= 0, open: parts.indexOf('open') >= 0 };
+            if (parts.indexOf('phone') >= 0) setDev('phone');
+            renderSection();
+            updateDirty();
+            if (pv.open) { fillPvSelect(); refreshPreview(); }
+        }
+
+        // ── 미리보기: 실제 홈페이지 HTML 에 고친 데이터를 넣어 그린다
+        const pv = { open: false, dev: 'pc', page: '', timer: 0 };
+
+        function previewPages(sec) {
+            const list = sec.pages.map(p => ({ value: p, label: PAGE_NAMES[p] || p }));
+            const st = S.secs.hook;
+            if (sec.id === 'hook' && st && st.work) {
+                const at = list.findIndex(x => x.value === 'ETFHOOK.html');
+                if (at >= 0) list.splice(at, 1);
+                st.work.forEach(h => list.push({ value: 'ETFHOOK.html?id=' + encodeURIComponent(h.id), label: 'ETF 상세 · ' + h.name }));
+            }
+            return list;
+        }
+
+        function fillPvSelect() {
+            const sel = $('#pvPage');
+            const opts = previewPages(curSec());
+            sel.textContent = '';
+            opts.forEach(o => sel.append(el('option', { value: o.value, text: o.label })));
+            if (!opts.some(o => o.value === pv.page)) pv.page = opts[0].value;
+            sel.value = pv.page;
+        }
+
+        function openPreview() {
+            pv.open = true;
+            $('#pv').hidden = false;
+            fillPvSelect();
+            layoutPreview();
+            refreshPreview();
+        }
+
+        async function pageHtml(page) {
+            if (S.files[page]) return fileText(page);
+            if (!S.pages[page]) S.pages[page] = b64dec((await gh(repoPath() + '/contents/' + encodeURIComponent(page) + ref())).content);
+            return S.pages[page];
+        }
+
+        async function previewHtml(page, query) {
+            let html = await pageHtml(page);
+            html = html.replace(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi, (all, attrs, body) => {
+                const src = /\bsrc\s*=\s*["']([^"']+)["']/i.exec(attrs);
+                const dw = /^\s*document\.write\(\s*'<script src="([^"?]+)/.exec(body);
+                const name = src ? src[1].split('?')[0] : dw ? dw[1] : '';
+                if (/\.js$/.test(name) && S.files[name]) return '<script>' + fileText(name).replace(/<\/script/gi, '<\\/script') + '</scr' + 'ipt>';
+                return all;
+            });
+            let inject = '<base href="' + siteUrl() + '" target="_blank">';
+            if (S.files['coins.json']) {
+                inject += '<script>(function(){var t=' + JSON.stringify(fileText('coins.json')).replace(/</g, '\\u003c') +
+                    ';var f=window.fetch;window.fetch=function(u){var s=String(u&&u.url||u);' +
+                    'if(/(^|\\/)coins\\.json(\\?|$)/.test(s))return Promise.resolve(new Response(t,{headers:{"Content-Type":"application/json"}}));' +
+                    'return f.apply(this,arguments);};})();</scr' + 'ipt>';
+            }
+            if (query) html = html.replace(/window\.location\.search/g, JSON.stringify(query));
+            return /<head[^>]*>/i.test(html) ? html.replace(/<head[^>]*>/i, m => m + inject) : inject + html;
+        }
+
+        async function refreshPreview() {
+            if (!pv.open) return;
+            const frame = $('#pvFrame');
+            const parts = pv.page.split('?');
+            let html;
+            try {
+                html = await previewHtml(parts[0], parts[1] ? '?' + parts[1] : '');
+            } catch (e) {
+                html = '<body style="background:#090B11;color:#FF5A73;font-family:sans-serif;padding:24px">미리보기를 만들지 못했습니다: ' + esc(e.message) + '</body>';
+            }
+            let y = 0;
+            try { y = frame.contentWindow.scrollY; } catch (e) {}
+            frame.onload = () => { if (y) setTimeout(() => { try { frame.contentWindow.scrollTo(0, y); } catch (e) {} }, 150); };
+            frame.srcdoc = html;
+        }
+
+        function schedulePreview() {
+            if (!pv.open) return;
+            clearTimeout(pv.timer);
+            pv.timer = setTimeout(refreshPreview, 1000);
+        }
+
+        function layoutPreview() {
+            const body = $('#pvBody'), f = $('#pvFrame');
+            if (pv.dev === 'phone') {
+                f.classList.add('phone');
+                f.style.width = '390px';
+                f.style.height = '100%';
+                f.style.transform = '';
+                return;
+            }
+            f.classList.remove('phone');
+            const s = Math.min(1, body.clientWidth / 1280) || 1;
+            f.style.width = '1280px';
+            f.style.height = (body.clientHeight / s) + 'px';
+            f.style.transform = 'scale(' + s + ')';
+        }
+
+        function setDev(dev) {
+            pv.dev = dev;
+            document.querySelectorAll('#pvDev button').forEach(b => b.classList.toggle('on', b.dataset.dev === dev));
+            layoutPreview();
+        }
+
+        // ── 저장
+        function diffLines(sec) {
+            const st = S.secs[sec.id];
+            const out = [];
+            const label = k => (sec.fields && sec.fields[k] ? sec.fields[k][0] : k);
+            const short = v => {
+                if (v === undefined) return '(없음)';
+                if (typeof v === 'string') return '"' + (v.length > 40 ? v.slice(0, 40) + '…' : v) + '"';
+                if (v && typeof v === 'object') return '(목록)';
+                return String(v);
+            };
+            const walk = (a, b, path) => {
+                if (JSON.stringify(a) === JSON.stringify(b)) return;
+                if (Array.isArray(a) && Array.isArray(b)) {
+                    if (a.every(isPrim) && b.every(isPrim)) {
+                        out.push(path + ': 값 바뀜' + (a.length !== b.length ? ' (' + a.length + '칸 → ' + b.length + '칸)' : ''));
+                        return;
+                    }
+                    if (a.length !== b.length) out.push(path + ': ' + a.length + '개 → ' + b.length + '개');
+                    for (let i = 0; i < Math.min(a.length, b.length); i++) walk(a[i], b[i], path + ' › ' + (i + 1) + '번');
+                    return;
+                }
+                if (a && b && typeof a === 'object' && typeof b === 'object' && !Array.isArray(a) && !Array.isArray(b)) {
+                    new Set(Object.keys(a).concat(Object.keys(b))).forEach(k => walk(a[k], b[k], path + ' › ' + label(k)));
+                    return;
+                }
+                out.push(path + ': ' + short(a) + ' → ' + short(b));
+            };
+            if (sec.type === 'list') {
+                const name = (o, i) => (i + 1) + '번' + (sec.sum && o[sec.sum.title] ? ' ' + o[sec.sum.title] : '');
+                const seen = new Set();
+                st.work.forEach((o, i) => {
+                    const oi = st.idx.get(o);
+                    if (oi === undefined) out.push(name(o, i) + ': 새로 추가');
+                    else { seen.add(oi); walk(st.orig[oi], o, name(o, i)); }
+                });
+                st.orig.forEach((o, i) => { if (!seen.has(i)) out.push(name(o, i) + ': 지움'); });
+                const order = st.work.map(o => st.idx.get(o)).filter(x => x !== undefined);
+                if (order.some((x, i) => i > 0 && x < order[i - 1])) out.push('순서 바뀜');
+            } else {
+                new Set(Object.keys(st.orig).concat(Object.keys(st.work))).forEach(k => {
+                    if (!(k in st.work)) out.push(k + ': 지움');
+                    else if (!(k in st.orig)) out.push(k + ': 새로 추가');
+                    else walk(st.orig[k], st.work[k], k);
+                });
+            }
+            return out;
+        }
+
+        function openSave() {
+            if (document.querySelector('#main .err')) { alert('빨간 칸에 잘못 넣은 값이 있습니다. 고친 다음 저장해 주세요.'); return; }
+            const dirty = SECTIONS.filter(s => isDirty(s.id));
+            if (!dirty.length) return;
+            if (!S.settings.token) { openSettings('저장하려면 먼저 GitHub 비밀 키를 넣어 주세요.'); return; }
+            const box = $('#saveList');
+            box.textContent = '';
+            for (const s of dirty) {
+                const lines = diffLines(s);
+                const ul = el('ul');
+                lines.slice(0, 40).forEach(l => ul.append(el('li', { text: l })));
+                if (lines.length > 40) ul.append(el('li', { class: 'more', text: '외 ' + (lines.length - 40) + '곳' }));
+                box.append(el('h4', { text: s.name }), ul);
+            }
+            const go = $('#saveGo');
+            go.disabled = false;
+            go.textContent = '올리기';
+            $('#saveDlg').showModal();
+        }
+
+        async function doSave() {
+            const go = $('#saveGo');
+            go.disabled = true;
+            go.textContent = '올리는 중…';
+            const dirty = SECTIONS.filter(s => isDirty(s.id));
+            const paths = [...new Set(dirty.map(s => s.file))];
+            try {
+                let result;
+                try {
+                    result = await commitFiles(paths, null, dirty);
+                } catch (e) {
+                    if (!e.conflict) throw e;
+                    if (!confirm('GitHub 에서 ' + e.conflict.join(', ') + ' 파일이 그사이 다른 곳에서 바뀌었습니다.\n\n지금 고친 칸만 덮어쓰고, 나머지는 GitHub 에 있는 최신 내용대로 둘까요?')) {
+                        go.disabled = false;
+                        go.textContent = '올리기';
+                        return;
+                    }
+                    result = await commitFiles(paths, e.latest, dirty);
+                }
+                $('#saveDlg').close();
+                result.changes.forEach(c => { S.files[c.path] = { sha: result.shas[c.path], text: c.text }; });
+                parseAll();
+                renderSection();
+                updateDirty();
+                pollDeploy(result.changes);
+            } catch (e) {
+                alert('저장하지 못했습니다.\n\n' + e.message);
+                go.disabled = false;
+                go.textContent = '올리기';
+            }
+        }
+
+        // ── 연결 설정
+        function openSettings(msg) {
+            const m = $('#setMsg');
+            m.hidden = !msg;
+            m.textContent = msg || '';
+            $('#setToken').value = S.settings.token || '';
+            $('#setToken').type = 'password';
+            $('#setShow').textContent = '보기';
+            $('#setOwner').value = S.settings.owner;
+            $('#setRepo').value = S.settings.repo;
+            $('#setBranch').value = S.settings.branch;
+            document.querySelectorAll('.repoName').forEach(x => { x.textContent = S.settings.repo; });
+            $('#setDlg').showModal();
+        }
+
+        async function saveSettings(clearToken) {
+            const s = {
+                owner: $('#setOwner').value.trim() || DEFAULT.owner,
+                repo: $('#setRepo').value.trim() || DEFAULT.repo,
+                branch: $('#setBranch').value.trim() || DEFAULT.branch,
+                token: clearToken ? '' : $('#setToken').value.trim()
+            };
+            const moved = s.owner !== S.settings.owner || s.repo !== S.settings.repo || s.branch !== S.settings.branch;
+            if (moved && anyDirty() && !confirm('저장소가 바뀌어서 처음부터 다시 불러옵니다. 저장 안 한 내용은 사라집니다. 계속할까요?')) return;
+            S.settings = s;
+            const ls = readLS();
+            ls.settings = s;
+            writeLS(ls);
+            $('#setDlg').close();
+            if (moved) { S.pages = {}; await loadAll(); return; }
+            if (s.token) {
+                try {
+                    await gh(repoPath());
+                    setConn('GitHub 연결됨', 'ok');
+                    toast('✅ GitHub 에 연결됐습니다. 이제 저장할 수 있습니다.', 'ok');
+                } catch (e) {
+                    setConn('연결 안 됨', 'bad');
+                    toast('⚠ ' + esc(e.message), 'bad', true);
+                }
+            } else {
+                setConn('보기만 가능 (비밀 키 없음)', 'warn');
+            }
+            renderSection();
+        }
+
+        // ── 시작
+        renderSide();
+        $('#siteLink').href = siteUrl();
+        $('#setBtn').onclick = () => openSettings('');
+        $('#setSave').onclick = () => saveSettings(false);
+        $('#setClear').onclick = () => { if (confirm('이 브라우저에 저장된 비밀 키를 지울까요?')) saveSettings(true); };
+        $('#setShow').onclick = () => {
+            const i = $('#setToken');
+            i.type = i.type === 'password' ? 'text' : 'password';
+            $('#setShow').textContent = i.type === 'password' ? '보기' : '숨기기';
+        };
+        $('#saveBtn').onclick = openSave;
+        $('#saveGo').onclick = doSave;
+        document.querySelectorAll('[data-close]').forEach(b => { b.onclick = () => b.closest('dialog').close(); });
+        $('#pvClose').onclick = () => { pv.open = false; $('#pv').hidden = true; $('#pvFrame').srcdoc = ''; };
+        $('#pvReload').onclick = refreshPreview;
+        $('#pvPage').onchange = e => { pv.page = e.target.value; refreshPreview(); };
+        document.querySelectorAll('#pvDev button').forEach(b => { b.onclick = () => setDev(b.dataset.dev); });
+        if (window.ResizeObserver) new ResizeObserver(() => { if (pv.open) layoutPreview(); }).observe($('#pvBody'));
+        document.addEventListener('keydown', e => {
+            if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 's') { e.preventDefault(); openSave(); }
+        });
+        window.addEventListener('beforeunload', e => { if (anyDirty()) { e.preventDefault(); e.returnValue = ''; } });
+        window.addEventListener('hashchange', route);
+        route();
+        loadAll();
+    })();
+    </script>
+</body>
+</html>

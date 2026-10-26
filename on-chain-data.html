@@ -417,9 +417,9 @@
         </div>
     </div>
 
-    <script src="OcdCoins.js"></script>
-    <script src="onChainData.js"></script>
-    <script src="HOT.js"></script>
+    <script>document.write('<script src="OcdCoins.js?v=' + Date.now() + '"><\/script>');</script>
+    <script>document.write('<script src="onChainData.js?v=' + Date.now() + '"><\/script>');</script>
+    <script>document.write('<script src="HOT.js?v=' + Date.now() + '"><\/script>');</script>
     <script>
         const coinList = window.OcdCoins || [];
         const hotList = window.hotChains || [];

@@ -180,7 +180,7 @@
             </table>
         </div>
     </main>
-    <script src="trendingData.js"></script>
+    <script>document.write('<script src="trendingData.js?v=' + Date.now() + '"><\/script>');</script>
     <script>
         function renderTrendingNow() {
             const trendContainer = document.getElementById('trending');
@@ -206,7 +206,7 @@
             const tbody = document.getElementById('coin-table');
             tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:60px; color:#888;">Loading coins...</td></tr>';
             try {
-                const res = await fetch('coins.json');
+                const res = await fetch('coins.json?v=' + Date.now());
                 const data = await res.json();
                 tbody.innerHTML = '';
                 data.forEach(coin => {

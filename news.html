@@ -277,7 +277,7 @@
         </div>
         <div id="news-container"></div>
     </main>
-    <script src="trendingData.js"></script>
+    <script>document.write('<script src="trendingData.js?v=' + Date.now() + '"><\/script>');</script>
     <script>
         function renderHotTopic(filter) {
             const hot = window.coinHotTopics[filter];
