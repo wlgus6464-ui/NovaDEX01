@@ -204,6 +204,32 @@
         .savelist li { margin: 3px 0; font-size: 14px; word-break: break-all; }
         .savelist li.more { color: var(--muted); }
 
+        .modes { display: inline-flex; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+        .modes button { padding: 7px 13px; border: 0; background: transparent; cursor: pointer; white-space: nowrap; }
+        .modes button.on { background: rgba(124,255,107,0.16); color: var(--primary); font-weight: 700; }
+        body:not(.visual) #vbar, body:not(.visual) #vwrap { display: none; }
+        body.visual .layout { display: none; }
+        .vbar { position: sticky; top: var(--top, 61px); z-index: 25; display: flex; gap: 10px; align-items: center; flex-wrap: wrap; padding: 8px 14px; background: var(--panel); border-bottom: 1px solid var(--border); }
+        .vpages { display: flex; gap: 4px; flex-wrap: wrap; }
+        .vpages button { padding: 6px 12px; border: 1px solid transparent; border-radius: 8px; background: transparent; cursor: pointer; font-size: 14px; }
+        .vpages button:hover { border-color: var(--border); }
+        .vpages button.on { background: var(--primary); color: #071006; font-weight: 700; }
+        .vbar select { width: auto; padding: 5px 10px; }
+        .vbar .check { font-size: 13px; color: var(--muted); }
+        .vbar .check input { width: 16px; height: 16px; }
+        .vwrap { position: relative; height: calc(100vh - var(--vtop, 112px)); background: #05070B; overflow: hidden; }
+        .vwrap iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; background: var(--bg); }
+        .vwrap.phone iframe { left: 50%; width: 390px; margin-left: -195px; border-left: 1px solid var(--border); border-right: 1px solid var(--border); }
+        .vloading { position: absolute; top: 10px; right: 16px; z-index: 5; padding: 4px 12px; border-radius: 999px; background: rgba(0,0,0,0.7); color: var(--muted); font-size: 12px; }
+        .vpop { position: fixed; z-index: 45; width: 420px; max-width: calc(100vw - 20px); max-height: 74vh; overflow: auto; padding: 14px; background: var(--panel); border: 1px solid #3a4a5e; border-radius: 14px; box-shadow: 0 16px 44px rgba(0,0,0,0.65); }
+        .vp-head { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 10px; }
+        .vp-title { flex: 1; font-weight: 700; font-size: 14px; }
+        .vp-sub { margin-top: 3px; font-size: 12px; font-weight: 400; color: var(--primary); }
+        .vpop .fields { padding: 0; grid-template-columns: 1fr; }
+        .vpop .fields + .fields { margin-top: 12px; }
+        .vp-tools { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 12px; padding-top: 10px; border-top: 1px solid var(--border); }
+        .vhint { position: fixed; z-index: 44; pointer-events: none; padding: 3px 9px; border-radius: 7px; background: var(--primary); color: #071006; font-size: 12px; font-weight: 700; white-space: nowrap; }
+
         @media (max-width: 1100px) {
             .pv { position: fixed; inset: 0; z-index: 50; width: auto; height: auto; }
         }
@@ -226,11 +252,37 @@
     <header class="topbar">
         <div class="brand">🌟 NovaDEX 관리자</div>
         <span id="conn" class="conn">불러오는 중…</span>
+        <div class="modes" id="modes">
+            <button type="button" data-mode="visual">🖱 화면에서 고치기</button>
+            <button type="button" data-mode="list">☰ 목록으로 고치기</button>
+        </div>
         <div class="spacer"></div>
         <a id="siteLink" class="btn" href="index.html" target="_blank" rel="noopener">홈페이지 열기 ↗</a>
         <button id="setBtn" class="btn" type="button">⚙ 연결 설정</button>
         <button id="saveBtn" class="btn primary" type="button" disabled>바뀐 곳 없음</button>
     </header>
+
+    <div id="vbar" class="vbar">
+        <div id="vPages" class="vpages"></div>
+        <select id="vHook" title="ETF 상세에서 볼 코인" hidden></select>
+        <span class="help">초록 점선이 생기는 곳을 누르면 그 자리에서 고칩니다</span>
+        <span class="spacer"></span>
+        <div class="seg" id="vAct">
+            <button type="button" data-act="edit" class="on" title="데이터 칸을 누르면 고칩니다">✏️ 고치기</button>
+            <button type="button" data-act="click" title="홈페이지처럼 눌러 봅니다 (고치지 않음)">👆 눌러보기</button>
+        </div>
+        <div class="seg" id="vDev">
+            <button type="button" data-dev="pc" class="on">PC</button>
+            <button type="button" data-dev="phone">휴대폰</button>
+        </div>
+        <label class="check"><input type="checkbox" id="vAll"> 고칠 수 있는 곳 모두 표시</label>
+        <button id="vUndo" class="btn small danger" type="button" hidden>↺ 저장 전으로 모두 되돌리기</button>
+    </div>
+    <div id="vwrap" class="vwrap">
+        <iframe id="vf0" title="홈페이지 화면"></iframe>
+        <iframe id="vf1" title="홈페이지 화면" style="visibility:hidden"></iframe>
+        <div id="vload" class="vloading" hidden>그리는 중…</div>
+    </div>
 
     <div class="layout">
         <nav id="side" class="side"></nav>
@@ -251,6 +303,8 @@
     </div>
 
     <div id="toast"></div>
+    <div id="vpop" class="vpop" hidden></div>
+    <div id="vhint" class="vhint" hidden></div>
 
     <dialog id="setDlg">
         <h3>GitHub 연결 설정</h3>
@@ -695,6 +749,7 @@
             }
             renderSection();
             updateDirty();
+            if (V.on) vGo(V.page, V.query);
         }
 
         // 바뀐 파일들을 커밋 하나로 올린다
@@ -1167,6 +1222,10 @@
         function touch() {
             clearTimeout(touchT);
             touchT = setTimeout(() => { updateDirty(); schedulePreview(); }, 200);
+            if (V.on && !V.editing) {
+                clearTimeout(V.timer);
+                V.timer = setTimeout(() => vRender(true), 700);
+            }
         }
 
         function updateDirty() {
@@ -1182,6 +1241,7 @@
             b.textContent = n ? '저장하고 홈페이지에 올리기 (' + n + '곳)' : '바뀐 곳 없음';
             const u = $('#undoBtn');
             if (u) u.hidden = !isDirty(S.cur);
+            $('#vUndo').hidden = n === 0;
         }
 
         function itemCard(sec, st, en) {
@@ -1394,15 +1454,31 @@
         }
 
         async function previewHtml(page, query) {
+            return (await buildPage(page, query, false)).html;
+        }
+
+        // 홈페이지 HTML 에 지금 고친 데이터를 넣는다. edit 이면 페이지 이동·새 창을 관리자 화면이 받는다
+        async function buildPage(page, query, edit) {
             let html = await pageHtml(page);
+            const orig = html;
+            const files = new Set([page]);
             html = html.replace(/<script\b([^>]*)>([\s\S]*?)<\/script>/gi, (all, attrs, body) => {
                 const src = /\bsrc\s*=\s*["']([^"']+)["']/i.exec(attrs);
                 const dw = /^\s*document\.write\(\s*'<script src="([^"?]+)/.exec(body);
                 const name = src ? src[1].split('?')[0] : dw ? dw[1] : '';
-                if (/\.js$/.test(name) && S.files[name]) return '<script>' + fileText(name).replace(/<\/script/gi, '<\\/script') + '</scr' + 'ipt>';
+                if (/\.js$/.test(name) && S.files[name]) {
+                    files.add(name);
+                    return '<script>' + fileText(name).replace(/<\/script/gi, '<\\/script') + '</scr' + 'ipt>';
+                }
                 return all;
             });
+            if (/coins\.json/.test(html) && S.files['coins.json']) files.add('coins.json');
             let inject = '<base href="' + siteUrl() + '" target="_blank">';
+            if (edit) {
+                inject += '<script>(function(){try{Object.defineProperty(window,"__edNav",{set:function(v){try{parent.__novadexNav(String(v));}catch(e){}},get:function(){return "";}});}catch(e){}' +
+                    'window.open=function(u){try{parent.__novadexOpen(String(u));}catch(e){}return null;};})();</scr' + 'ipt>';
+                html = html.replace(/(?:window\.)?location\.href\s*=(?!=)/g, 'window.__edNav=');
+            }
             if (S.files['coins.json']) {
                 inject += '<script>(function(){var t=' + JSON.stringify(fileText('coins.json')).replace(/</g, '\\u003c') +
                     ';var f=window.fetch;window.fetch=function(u){var s=String(u&&u.url||u);' +
@@ -1410,7 +1486,8 @@
                     'return f.apply(this,arguments);};})();</scr' + 'ipt>';
             }
             if (query) html = html.replace(/window\.location\.search/g, JSON.stringify(query));
-            return /<head[^>]*>/i.test(html) ? html.replace(/<head[^>]*>/i, m => m + inject) : inject + html;
+            html = /<head[^>]*>/i.test(html) ? html.replace(/<head[^>]*>/i, m => m + inject) : inject + html;
+            return { html: html, files: files, orig: orig };
         }
 
         async function refreshPreview() {
@@ -1455,6 +1532,736 @@
             pv.dev = dev;
             document.querySelectorAll('#pvDev button').forEach(b => b.classList.toggle('on', b.dataset.dev === dev));
             layoutPreview();
+        }
+
+        // ── 화면에서 고치기: 실제 홈페이지를 그대로 띄우고, JS 데이터에서 나온 칸만 눌러서 고친다
+        // 화면 글자·사진 주소를 데이터 값과 맞춰 보고 어느 칸에서 나왔는지 찾는다 (페이지 코드는 손대지 않음)
+        const V_PAGES = ['index.html', 'trending.html', 'news.html', 'ETF.html', 'ETFHOOK.html', 'on-chain-data.html', 'Application.html'];
+        const V = {
+            on: false, page: 'index.html', query: '', act: 'edit', all: false,
+            front: 0, files: new Set(), static: new Set(), map: null, clicks: [], seq: 0, timer: 0, mapT: 0,
+            editing: null, pop: null, hov: null, hovItem: null, obs: null, flash: null,
+            replaying: false, passOnce: false
+        };
+        const ED_CSS = '.__ed-hov{outline:2px dashed #7CFF6B!important;outline-offset:2px!important;cursor:pointer!important}' +
+            '.__ed-all .__ed-m{outline:1px dashed rgba(124,255,107,.6)!important;outline-offset:1px!important}' +
+            '.__ed-sel{outline:2px solid #7CFF6B!important;outline-offset:2px!important}' +
+            '.__ed-cur{outline:2px solid #7CFF6B!important;outline-offset:2px!important;cursor:text!important;background:rgba(124,255,107,.12)!important}' +
+            '.__ed-item{box-shadow:0 0 0 2px rgba(124,255,107,.35)!important}' +
+            '.__ed-flash{box-shadow:0 0 0 3px #7CFF6B!important;transition:box-shadow .3s}';
+        const vFrame = () => $('#vf' + V.front);
+        const vDoc = () => { try { return vFrame().contentDocument; } catch (e) { return null; } };
+        const getAt = (o, path) => path.reduce((x, k) => (x == null ? x : x[k]), o);
+        const workOf = sec => S.secs[sec.id].work;
+        const leafKey = (sid, path) => sid + '|' + path.join('|');
+        const itemKeyOf = (sec, path) => sec.id + '#' + path.join('|');
+
+        // 칸이 속한 "항목" (카드 하나, 표 한 줄, 뉴스 하나, 지표 한 줄)
+        function itemPathOf(root, path) {
+            let cut = -1, cur = root;
+            for (let i = 0; i < path.length; i++) {
+                if (Array.isArray(cur) && cur[path[i]] && typeof cur[path[i]] === 'object') cut = i;
+                cur = cur == null ? cur : cur[path[i]];
+            }
+            return cut >= 0 ? path.slice(0, cut + 1) : path.slice(0, 1);
+        }
+
+        function vLeaves() {
+            const out = [];
+            for (const sec of SECTIONS) {
+                const st = S.secs[sec.id];
+                if (!V.files.has(sec.file) || !st || st.work === undefined) continue;
+                (function walk(v, path) {
+                    if (typeof v === 'string' || typeof v === 'number') {
+                        out.push({ sec: sec, path: path, value: v, key: leafKey(sec.id, path), item: itemPathOf(st.work, path) });
+                    } else if (v && typeof v === 'object') {
+                        Object.keys(v).forEach(k => walk(v[k], path.concat(Array.isArray(v) ? +k : k)));
+                    }
+                })(st.work, []);
+            }
+            return out;
+        }
+
+        function leafLabel(l) {
+            const p = l.path, last = p[p.length - 1];
+            if (typeof last === 'number') {
+                const f = l.sec.fields && l.sec.fields[p[p.length - 2]];
+                return (f ? f[0] : p[p.length - 2]) + ' ' + (last + 1) + '번째';
+            }
+            const f = l.sec.fields && l.sec.fields[last];
+            return f ? f[0] : String(last);
+        }
+
+        function itemLabel(sec, ip) {
+            const obj = getAt(workOf(sec), ip);
+            const title = sec.type === 'list' && obj && sec.sum && typeof obj[sec.sum.title] === 'string' ? ' ' + obj[sec.sum.title] : '';
+            const parts = ip.map((k, i) => typeof k === 'number' ? (k + 1) + '번' : (i > 0 && sec.fields && sec.fields[k] ? sec.fields[k][0] : k));
+            return sec.name + ' · ' + parts.join(' · ') + title;
+        }
+
+        function lca(a, b) {
+            const s = new Set();
+            for (let n = a; n; n = n.parentNode) s.add(n);
+            for (let n = b; n; n = n.parentNode) if (s.has(n)) return n;
+            return a;
+        }
+        function lcaDepth(a, b) { let n = lca(a, b), d = 0; while (n) { d++; n = n.parentNode; } return d; }
+
+        // 화면 숫자 글자(예: 1304.07)가 데이터 숫자(1304069110041)를 줄여 쓴 것인지
+        const SCALES = [1, 1e3, 1e4, 1e6, 1e8, 1e9, 1e12];
+        function numFits(v, tok) {
+            const dec = (tok.split('.')[1] || '').length;
+            const t = Math.abs(parseFloat(tok));
+            if (!isFinite(t)) return 0;
+            if (String(Math.abs(v)) === tok) return 3;
+            for (const s of SCALES) {
+                const x = Math.abs(v) / s;
+                if (s > 1 && (x < 0.01 || (dec === 0 && x < 10))) continue;
+                if (x.toFixed(dec) === t.toFixed(dec) || (dec === 0 && Math.floor(x) === t)) return s === 1 ? 2 : 1;
+            }
+            return 0;
+        }
+
+        // HTML 에 직접 적힌 글자·사진·주소 목록 (데이터와 글자가 같아도 이것들은 안 잡는다)
+        const norm1 = s => s.replace(/\s+/g, ' ').trim();
+        function sigOf(e) {
+            const c = (e.getAttribute('class') || '').replace(/__ed-[\w-]+/g, '').trim().split(/\s+/)[0] || '';
+            return e.tagName.toLowerCase() + '.' + c;
+        }
+        function staticSigs(html) {
+            const set = new Set();
+            try {
+                const d = new DOMParser().parseFromString(html, 'text/html');
+                const js = [...d.querySelectorAll('script')].map(s => s.textContent).join('\n');
+                d.querySelectorAll('script, style, template, noscript').forEach(x => x.remove());
+                d.querySelectorAll('*').forEach(e => {
+                    const sg = sigOf(e);
+                    // id 로 찾아서 JS 가 글자를 다시 채우는 칸은 HTML 글자로 치지 않는다
+                    const filledByJs = e.id && (js.indexOf('"' + e.id + '"') >= 0 || js.indexOf("'" + e.id + "'") >= 0);
+                    if (!filledByJs) e.childNodes.forEach(n => { if (n.nodeType === 3 && norm1(n.nodeValue)) set.add(sg + '|' + norm1(n.nodeValue)); });
+                    if (e.getAttribute('src')) set.add('src|' + e.getAttribute('src').trim());
+                    if (e.getAttribute('href')) set.add('href|' + e.getAttribute('href').trim());
+                });
+            } catch (e) {}
+            return set;
+        }
+
+        function wordAt(t, s) {
+            let i = t.indexOf(s);
+            while (i >= 0) {
+                const a = t[i - 1], b = t[i + s.length];
+                if (!(a && /[A-Za-z0-9]/.test(a)) && !(b && /[A-Za-z0-9]/.test(b))) return true;
+                i = t.indexOf(s, i + 1);
+            }
+            return false;
+        }
+
+        function vMap() {
+            const doc = vDoc();
+            if (!doc || !doc.body || V.editing) return;
+            const leaves = vLeaves();
+            const byStr = new Map(), strs = [];
+            for (const l of leaves) {
+                if (typeof l.value !== 'string') continue;
+                const s = l.value.trim();
+                if (s.length < 2) continue;
+                if (!byStr.has(s)) { byStr.set(s, []); if (s.length >= 3) strs.push(s); }
+                byStr.get(s).push(l);
+            }
+            const skip = { SCRIPT: 1, STYLE: 1, NOSCRIPT: 1, TEMPLATE: 1 };
+            const raw = [], canvases = [];
+            for (const node of doc.body.querySelectorAll('*')) {
+                if (skip[node.tagName]) continue;
+                if (node.tagName === 'CANVAS') { canvases.push(node); continue; }
+                const src = node.tagName === 'IMG' ? (node.getAttribute('src') || '').trim() : '';
+                if (src && byStr.has(src) && !V.static.has('src|' + src)) raw.push({ node: node, kind: 'img', groups: [byStr.get(src)] });
+                const href = (node.getAttribute('href') || '').trim();
+                if (href && href !== '#' && byStr.has(href) && !V.static.has('href|' + href)) raw.push({ node: node, kind: 'link', groups: [byStr.get(href)] });
+                const sg = sigOf(node);
+                const style = node.getAttribute('style') || '';
+                const bg = style.indexOf('url(') >= 0 && /url\(\s*['"]?([^'")]+)['"]?\s*\)/.exec(style);
+                if (bg && byStr.has(bg[1].trim())) raw.push({ node: node, kind: 'img', bg: true, groups: [byStr.get(bg[1].trim())] });
+                for (const n of node.childNodes) {
+                    if (n.nodeType !== 3) continue;
+                    const t = n.nodeValue.trim();
+                    if (t.length < 2 || V.static.has(sg + '|' + norm1(t))) continue;
+                    if (byStr.has(t)) { raw.push({ node: node, kind: 'text', exact: true, groups: [byStr.get(t)] }); continue; }
+                    let found = strs.filter(s => (s.length < t.length && wordAt(t, s)) || (t.length >= 6 && s.length > t.length && s.indexOf(t) === 0));
+                    found = found.filter(s => !found.some(o => o !== s && o.length > s.length && o.indexOf(s) >= 0));
+                    if (found.length) raw.push({ node: node, kind: 'text', exact: false, groups: found.map(s => byStr.get(s)) });
+                }
+            }
+
+            // 같은 글자가 여러 칸에 있으면, 이미 확실히 찾은 같은 항목 칸과 가장 가까운 것을 고른다
+            const ik = l => itemKeyOf(l.sec, l.item);
+            const anchors = new Map(), pending = [];
+            for (const h of raw) {
+                h.leaves = [];
+                for (const g of h.groups) {
+                    const keys = new Set(g.map(ik));
+                    if (keys.size === 1) {
+                        g.forEach(l => h.leaves.push(l));
+                        const k = [...keys][0];
+                        if (!anchors.has(k)) anchors.set(k, []);
+                        anchors.get(k).push(h.node);
+                    } else pending.push([h, g]);
+                }
+            }
+            const related = (a, b) => a === b || a.indexOf(b + '|') === 0 || b.indexOf(a + '|') === 0;
+            for (const [h, g] of pending) {
+                let best = g[0], bs = -1;
+                for (const l of g) {
+                    let sc = 0;
+                    const k = ik(l);
+                    anchors.forEach((els, ak) => { if (related(ak, k)) els.forEach(e => { const d = lcaDepth(h.node, e); if (d > sc) sc = d; }); });
+                    if (sc > bs) { bs = sc; best = l; }
+                }
+                h.leaves.push(best);
+            }
+
+            const hits = new Map(), byKey = new Map(), items = new Map();
+            const put = h => {
+                if (!h.leaves.length) return;
+                if (!hits.has(h.node)) hits.set(h.node, []);
+                hits.get(h.node).push(h);
+                for (const l of h.leaves) {
+                    if (!byKey.has(l.key)) byKey.set(l.key, []);
+                    byKey.get(l.key).push(h.node);
+                    const k = ik(l);
+                    if (!items.has(k)) items.set(k, { sec: l.sec, path: l.item, els: [] });
+                    items.get(k).els.push(h.node);
+                }
+            };
+            raw.forEach(put);
+
+            // 항목 테두리: 다른 항목이 섞이지 않는 가장 큰 덩어리 (카드 하나, 표 한 줄)
+            const anc = new Map();
+            items.forEach((it, k) => it.els.forEach(e => {
+                for (let n = e; n && n !== doc.body; n = n.parentNode) {
+                    let s = anc.get(n);
+                    if (!s) anc.set(n, s = new Set());
+                    s.add(k);
+                }
+            }));
+            items.forEach(it => {
+                let c = it.els[0];
+                it.els.forEach(e => { c = lca(c, e); });
+                while (c.parentNode && c.parentNode !== doc.body && c.parentNode.nodeType === 1 && (anc.get(c.parentNode) || new Set()).size === 1) c = c.parentNode;
+                it.box = c;
+            });
+
+            // 숫자 칸: 항목 테두리 안에서 숫자 글자를 맞춰 본다
+            const exactText = new Set(raw.filter(h => h.kind === 'text' && h.exact).map(h => h.node));
+            items.forEach(it => {
+                const obj = getAt(workOf(it.sec), it.path);
+                if (!obj || typeof obj !== 'object' || Array.isArray(obj) || !it.box || it.box.nodeType !== 1) return;
+                const nums = Object.keys(obj).filter(k => typeof obj[k] === 'number' && !byKey.has(leafKey(it.sec.id, it.path.concat(k))));
+                if (!nums.length) return;
+                const texts = [];
+                const w = doc.createTreeWalker(it.box, 4);
+                let n;
+                while ((n = w.nextNode())) {
+                    const p = n.parentNode;
+                    if (p && !skip[p.tagName] && !exactText.has(p) && /\d/.test(n.nodeValue) && !V.static.has(sigOf(p) + '|' + norm1(n.nodeValue))) texts.push(n);
+                }
+                // 글자가 똑같은 칸 → 반올림 → 줄여 쓴(B·M·억) 순서로, 한 칸은 한 숫자에만
+                const cand = [];
+                nums.forEach(k => texts.forEach((tn, ti) => {
+                    let sc = 0;
+                    for (const tok of (tn.nodeValue.match(/\d[\d,]*(?:\.\d+)?/g) || [])) sc = Math.max(sc, numFits(obj[k], tok.replace(/,/g, '')));
+                    if (sc) cand.push([sc, ti, k, tn]);
+                }));
+                cand.sort((a, b) => b[0] - a[0] || a[1] - b[1]);
+                const usedT = new Set(), usedK = new Set();
+                for (const c of cand) {
+                    const k = c[2], tn = c[3];
+                    if (usedT.has(tn) || usedK.has(k)) continue;
+                    usedT.add(tn);
+                    usedK.add(k);
+                    const path = it.path.concat(k);
+                    put({ node: tn.parentNode, kind: 'num', leaves: [{ sec: it.sec, path: path, value: obj[k], key: leafKey(it.sec.id, path), item: it.path }] });
+                }
+            });
+
+            // 차트: 차트에 실제로 그려진 숫자와 똑같은 숫자 줄을 가진 항목. 못 찾으면 가장 가까운 항목
+            const gridItems = [];
+            for (const sec of SECTIONS) {
+                const st = S.secs[sec.id];
+                if (!sec.grids || !V.files.has(sec.file) || !st || st.work === undefined) continue;
+                const w = st.work;
+                (Array.isArray(w) ? w.map((o, i) => [[i], o]) : Object.keys(w).map(k => [[k], w[k]])).forEach(e => {
+                    const o = e[1];
+                    if (o && typeof o === 'object' && sec.grids.some(g => g.every(k => Array.isArray(o[k])))) gridItems.push({ sec: sec, path: e[0], obj: o });
+                });
+            }
+            const win = vFrame().contentWindow;
+            for (const cv of canvases) {
+                const found = [];
+                let chart = null;
+                try { chart = win.Chart && win.Chart.getChart ? win.Chart.getChart(cv) : null; } catch (e) {}
+                if (chart && chart.data) {
+                    const sets = (chart.data.datasets || []).map(d => JSON.stringify(d.data || []));
+                    gridItems.forEach(it => {
+                        const keys = [].concat.apply([], it.sec.grids);
+                        if (keys.some(k => Array.isArray(it.obj[k]) && it.obj[k].length && typeof it.obj[k][0] === 'number' && sets.indexOf(JSON.stringify(it.obj[k])) >= 0)) found.push({ sec: it.sec, path: it.path });
+                    });
+                }
+                for (let n = cv.parentNode; n && n !== doc.body && !found.length; n = n.parentNode) {
+                    const set = anc.get(n);
+                    if (!set) continue;
+                    const keys = new Set();
+                    set.forEach(k => {
+                        const [sid, p] = k.split('#');
+                        const parts = p.split('|');
+                        for (let i = parts.length; i > 0; i--) keys.add(sid + '#' + parts.slice(0, i).join('|'));
+                    });
+                    keys.forEach(k => {
+                        const sec = SECTIONS.find(s => s.id === k.split('#')[0]);
+                        const path = k.split('#')[1].split('|').map(x => /^\d+$/.test(x) ? +x : x);
+                        const obj = sec && S.secs[sec.id] && getAt(workOf(sec), path);
+                        if (obj && (sec.grids || []).some(g => g.every(x => Array.isArray(obj[x])))) found.push({ sec: sec, path: path });
+                    });
+                }
+                if (found.length) hits.set(cv, [{ node: cv, kind: 'chart', leaves: [], items: found }]);
+            }
+
+            V.map = { hits: hits, byKey: byKey, items: items };
+            doc.querySelectorAll('.__ed-m').forEach(x => x.classList.remove('__ed-m'));
+            hits.forEach((h, node) => node.classList.add('__ed-m'));
+            doc.body.classList.toggle('__ed-all', V.all);
+            if (V.pop) vReanchor();
+        }
+
+        function vHitsOf(target) {
+            if (!V.map) return null;
+            for (let n = target; n && n.nodeType === 1; n = n.parentNode) {
+                const h = V.map.hits.get(n);
+                if (h) return { node: n, hits: h };
+            }
+            return null;
+        }
+
+        function vHitText(hits) {
+            const names = [];
+            hits.forEach(h => {
+                if (h.kind === 'chart') names.push('차트 숫자');
+                h.leaves.forEach(l => { const s = leafLabel(l); if (names.indexOf(s) < 0) names.push(s); });
+            });
+            return names.join(' + ');
+        }
+
+        function vHover(m) {
+            const node = m ? m.node : null;
+            if (V.hov !== node) {
+                if (V.hov) V.hov.classList.remove('__ed-hov');
+                if (V.hovItem) V.hovItem.classList.remove('__ed-item');
+                V.hov = node;
+                V.hovItem = null;
+                if (node) {
+                    node.classList.add('__ed-hov');
+                    const l = m.hits[0].leaves[0];
+                    const it = l && V.map.items.get(itemKeyOf(l.sec, l.item));
+                    if (it && it.box && it.box !== node && it.box.classList) { it.box.classList.add('__ed-item'); V.hovItem = it.box; }
+                }
+            }
+            const hint = $('#vhint');
+            if (!node) { hint.hidden = true; return; }
+            hint.textContent = vHitText(m.hits) + ' · 누르면 고칩니다';
+            hint.hidden = false;
+            const fr = vFrame().getBoundingClientRect(), r = node.getBoundingClientRect();
+            hint.style.left = Math.max(4, Math.min(window.innerWidth - hint.offsetWidth - 4, fr.left + r.left)) + 'px';
+            hint.style.top = Math.max(fr.top + 2, fr.top + r.top - 26) + 'px';
+        }
+
+        function cssPath(node) {
+            const parts = [];
+            for (let n = node; n && n.nodeType === 1 && n.tagName !== 'BODY'; n = n.parentNode) {
+                let i = 1, s = n;
+                while ((s = s.previousElementSibling)) i++;
+                parts.unshift(n.tagName.toLowerCase() + ':nth-child(' + i + ')');
+            }
+            return parts.length ? 'body > ' + parts.join(' > ') : 'body';
+        }
+
+        function vOnClick(e) {
+            if (V.editing && V.editing.node.contains(e.target)) return;
+            if (V.act === 'edit' && !V.passOnce) {
+                const m = vHitsOf(e.target);
+                if (m) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    e.stopImmediatePropagation();
+                    vOpen(m.node, m.hits);
+                    return;
+                }
+            }
+            const a = e.target.closest && e.target.closest('a[href]');
+            if (a && !V.passOnce) {
+                e.preventDefault();
+                e.stopPropagation();
+                vNav(a.getAttribute('href'));
+                return;
+            }
+            if (V.editing) vEndInline();
+            if (!V.passOnce) vClosePop();
+            if (!V.replaying) {
+                V.clicks.push(cssPath(e.target));
+                if (V.clicks.length > 30) V.clicks.shift();
+            }
+        }
+
+        function vOnKey(e) {
+            if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 's') {
+                e.preventDefault();
+                if (V.editing) vEndInline();
+                openSave();
+            } else if (e.key === 'Escape' && !V.editing) vClosePop();
+        }
+
+        function vNav(href) {
+            if (V.replaying || !href || /^\s*(#|javascript:)/i.test(href)) return;
+            let u;
+            try { u = new URL(href, siteUrl()); } catch (e) { return; }
+            const file = u.pathname.split('/').pop() || 'index.html';
+            if (u.href.indexOf(siteUrl()) === 0 && V_PAGES.indexOf(file) >= 0) vGo(file, u.search);
+            else toast('편집 화면에서는 바깥 주소를 열지 않습니다: ' + esc(href));
+        }
+        window.__novadexNav = vNav;
+        window.__novadexOpen = u => { if (!V.replaying) toast('이 칸을 누르면 새 창으로 이 주소가 열립니다 (편집 화면에서는 열지 않습니다)<br>' + esc(u)); };
+
+        function vOpen(node, hits) {
+            vEndInline();
+            const leaves = [];
+            hits.forEach(h => h.leaves.forEach(l => { if (!leaves.some(x => x.key === l.key)) leaves.push(l); }));
+            const chart = hits.find(h => h.kind === 'chart');
+            const t = hits.find(h => h.kind === 'text' && h.exact && h.leaves.length === 1);
+            const inline = t && node.childNodes.length === 1 && node.firstChild.nodeType === 3 && typeof t.leaves[0].value === 'string' ? t.leaves[0] : null;
+            vShowPop(node, leaves, chart, inline);
+            if (inline) vStartInline(node, inline);
+        }
+
+        function vShowPop(node, leaves, chart, inline) {
+            const pop = $('#vpop');
+            if (V.pop && V.pop.node && V.pop.node.classList) V.pop.node.classList.remove('__ed-sel');
+            pop.textContent = '';
+            const base = chart ? chart.items[0] : { sec: leaves[0].sec, path: leaves[0].item };
+            V.pop = { node: node, key: leaves.length ? leaves[0].key : null, chartKey: chart ? itemKeyOf(base.sec, base.path) : null };
+            if (!inline) node.classList.add('__ed-sel');
+            const ctx = { refresh: vLive };
+            pop.append(el('div', { class: 'vp-head' },
+                el('div', { class: 'vp-title' }, itemLabel(base.sec, base.path),
+                    inline ? el('div', { class: 'vp-sub', text: '✏️ ' + leafLabel(inline) + ' — 화면에서 글자를 바로 고치는 중입니다. 다 고쳤으면 Enter' }) : null),
+                el('button', { class: 'btn small', type: 'button', text: '✕', title: '닫기 (Esc)', onclick: vClosePop })));
+
+            const box = el('div', { class: 'fields' });
+            leaves.forEach(l => {
+                if (inline && l.key === inline.key) return;
+                const parent = getAt(workOf(l.sec), l.path.slice(0, -1));
+                if (parent && typeof parent === 'object') box.append(fieldEditor(l.sec, parent, l.path[l.path.length - 1], ctx));
+            });
+            if (chart) {
+                chart.items.forEach(it => {
+                    const obj = getAt(workOf(it.sec), it.path);
+                    (it.sec.grids || []).filter(g => g.every(k => Array.isArray(obj[k]))).forEach(g => {
+                        box.append(el('div', { class: 'vp-sub', text: '차트 숫자 · ' + itemLabel(it.sec, it.path) }));
+                        box.append(gridEditor(it.sec, obj, g));
+                    });
+                });
+            }
+            if (box.childNodes.length) pop.append(box);
+
+            const tools = el('div', { class: 'vp-tools' });
+            const holder = getAt(workOf(base.sec), base.path.slice(0, -1));
+            const idx = base.path[base.path.length - 1];
+            if (Array.isArray(holder) && typeof idx === 'number') {
+                const parentPath = base.path.slice(0, -1);
+                const horiz = vHorizontal(base.sec, base.path);
+                const move = d => {
+                    const t = holder[idx + d];
+                    holder[idx + d] = holder[idx];
+                    holder[idx] = t;
+                    vAfterStruct(base.sec, parentPath.concat(idx + d));
+                };
+                tools.append(
+                    el('button', { class: 'btn small', type: 'button', text: horiz ? '◀ 앞으로' : '▲ 위로', disabled: idx === 0, onclick: () => move(-1) }),
+                    el('button', { class: 'btn small', type: 'button', text: horiz ? '뒤로 ▶' : '▼ 아래로', disabled: idx === holder.length - 1, onclick: () => move(1) }),
+                    el('button', {
+                        class: 'btn small', type: 'button', text: '복사해서 하나 더',
+                        onclick: () => {
+                            const c = clone(holder[idx]);
+                            fixId(holder, c);
+                            holder.splice(idx + 1, 0, c);
+                            vAfterStruct(base.sec, parentPath.concat(idx + 1));
+                        }
+                    }),
+                    el('button', {
+                        class: 'btn small danger', type: 'button', text: '지우기',
+                        onclick: () => {
+                            if (!confirm(itemLabel(base.sec, base.path) + ' 을(를) 지울까요?\n(저장해야 홈페이지에서도 지워집니다)')) return;
+                            holder.splice(idx, 1);
+                            vAfterStruct(null, null);
+                        }
+                    }));
+            }
+            const full = el('div', { class: 'fields', hidden: true });
+            tools.append(el('button', {
+                class: 'btn small', type: 'button', text: '이 항목의 다른 칸 모두 보기',
+                onclick: e => {
+                    if (!full.childNodes.length) {
+                        const o = getAt(workOf(base.sec), base.path);
+                        if (Array.isArray(o)) full.append(subList(base.sec, o, ctx));
+                        else if (o && typeof o === 'object') renderFields(full, base.sec, o, ctx);
+                    }
+                    full.hidden = !full.hidden;
+                    e.target.textContent = full.hidden ? '이 항목의 다른 칸 모두 보기' : '다른 칸 접기';
+                    vPlacePop();
+                }
+            }));
+            tools.append(el('button', {
+                class: 'btn small', type: 'button', text: '👆 원래처럼 누르기', title: '홈페이지에서 이 칸을 누른 것처럼 동작합니다',
+                onclick: () => {
+                    const n = V.pop && V.pop.node;
+                    vClosePop();
+                    if (n && n.isConnected) { V.passOnce = true; n.click(); V.passOnce = false; }
+                }
+            }));
+            pop.append(tools, full);
+            pop.hidden = false;
+            vPlacePop();
+            if (!inline) { const f = box.querySelector('input, textarea'); if (f) f.focus(); }
+        }
+
+        function vHorizontal(sec, path) {
+            if (!V.map) return false;
+            const i = path[path.length - 1], up = path.slice(0, -1);
+            const me = V.map.items.get(itemKeyOf(sec, path));
+            const sib = V.map.items.get(itemKeyOf(sec, up.concat(i + 1))) || V.map.items.get(itemKeyOf(sec, up.concat(i - 1)));
+            if (!me || !sib || !me.box.getBoundingClientRect || !sib.box.getBoundingClientRect) return false;
+            const a = me.box.getBoundingClientRect(), b = sib.box.getBoundingClientRect();
+            return Math.abs(a.top - b.top) < 8 && Math.abs(a.left - b.left) > 8;
+        }
+
+        function vAfterStruct(sec, flashPath) {
+            vClosePop();
+            V.flash = sec && flashPath ? itemKeyOf(sec, flashPath) : null;
+            touch();
+            vRender(true);
+        }
+
+        // 입력칸에 치는 대로 화면의 사진·글자를 바로 바꾼다 (그다음 페이지를 다시 그림)
+        function vLive() {
+            if (!V.map) return;
+            V.map.hits.forEach((hs, node) => hs.forEach(h => h.leaves.forEach(l => {
+                const v = getAt(workOf(l.sec), l.path);
+                if (typeof v !== 'string') return;
+                if (h.kind === 'img' && !h.bg && node.getAttribute('src') !== v) node.setAttribute('src', v);
+                else if (h.kind === 'text' && h.exact && node.childNodes.length === 1 && node.firstChild.nodeType === 3 && node.textContent.trim() !== v) node.textContent = v;
+            })));
+        }
+
+        function vPlacePop() {
+            const pop = $('#vpop');
+            if (pop.hidden || !V.pop || !V.pop.node || !V.pop.node.isConnected) return;
+            const fr = vFrame().getBoundingClientRect(), r = V.pop.node.getBoundingClientRect();
+            const W = window.innerWidth, H = window.innerHeight, pw = pop.offsetWidth, ph = pop.offsetHeight;
+            let left = fr.left + r.left, top = fr.top + r.bottom + 10;
+            if (left + pw > W - 10) left = W - 10 - pw;
+            if (left < 10) left = 10;
+            if (top + ph > H - 10) {
+                const up = fr.top + r.top - 10 - ph;
+                top = up >= fr.top ? up : Math.max(fr.top, H - 10 - ph);
+            }
+            pop.style.left = left + 'px';
+            pop.style.top = top + 'px';
+        }
+
+        function vReanchor() {
+            if (!V.pop || !V.map) return;
+            let node = null;
+            if (V.pop.key && V.map.byKey.has(V.pop.key)) node = V.map.byKey.get(V.pop.key)[0];
+            else if (V.pop.chartKey) V.map.hits.forEach((hs, n) => { if (!node && hs.some(h => h.items && h.items.some(it => itemKeyOf(it.sec, it.path) === V.pop.chartKey))) node = n; });
+            if (node) {
+                V.pop.node = node;
+                if (!V.editing) node.classList.add('__ed-sel');
+            }
+            vPlacePop();
+        }
+
+        function vClosePop() {
+            if (V.pop && V.pop.node && V.pop.node.classList) V.pop.node.classList.remove('__ed-sel');
+            V.pop = null;
+            $('#vpop').hidden = true;
+        }
+
+        function vStartInline(node, leaf) {
+            const doc = node.ownerDocument;
+            const parent = getAt(workOf(leaf.sec), leaf.path.slice(0, -1));
+            const key = leaf.path[leaf.path.length - 1];
+            V.editing = { node: node, parent: parent, key: key, before: parent[key] };
+            node.setAttribute('contenteditable', 'plaintext-only');
+            if (node.contentEditable !== 'plaintext-only') node.setAttribute('contenteditable', 'true');
+            node.classList.add('__ed-cur');
+            node.focus();
+            const r = doc.createRange();
+            r.selectNodeContents(node);
+            const s = doc.getSelection();
+            s.removeAllRanges();
+            s.addRange(r);
+            node.addEventListener('input', vInlineInput);
+            node.addEventListener('keydown', vInlineKey);
+            node.addEventListener('blur', vInlineBlur);
+        }
+        function vInlineInput() {
+            const ed = V.editing;
+            if (!ed) return;
+            ed.parent[ed.key] = ed.node.textContent.replace(/\s*\n\s*/g, ' ').trim();
+            touch();
+        }
+        function vInlineKey(e) {
+            const ed = V.editing;
+            if (!ed) return;
+            if (e.key === 'Enter') { e.preventDefault(); ed.node.blur(); }
+            else if (e.key === 'Escape') { e.preventDefault(); ed.parent[ed.key] = ed.before; ed.node.textContent = ed.before; ed.node.blur(); }
+        }
+        function vInlineBlur() { setTimeout(vEndInline, 0); }
+        function vEndInline() {
+            const ed = V.editing;
+            if (!ed) return;
+            V.editing = null;
+            ed.node.removeAttribute('contenteditable');
+            ed.node.classList.remove('__ed-cur');
+            ed.node.removeEventListener('input', vInlineInput);
+            ed.node.removeEventListener('keydown', vInlineKey);
+            ed.node.removeEventListener('blur', vInlineBlur);
+            const changed = ed.parent[ed.key] !== ed.before;
+            touch();
+            if (changed) vRender(true);
+            else vMap();
+        }
+
+        function vAttach() {
+            const frame = vFrame(), doc = vDoc(), win = frame.contentWindow;
+            if (!doc || !doc.body) return;
+            const st = doc.createElement('style');
+            st.textContent = ED_CSS;
+            (doc.head || doc.body).append(st);
+            win.addEventListener('click', vOnClick, true);
+            win.addEventListener('mouseover', e => vHover(V.act === 'edit' ? vHitsOf(e.target) : null), true);
+            doc.addEventListener('mouseout', e => { if (!e.relatedTarget) vHover(null); }, true);
+            win.addEventListener('keydown', vOnKey, true);
+            win.addEventListener('scroll', () => { vHover(null); vPlacePop(); }, true);
+            V.obs = new win.MutationObserver(() => {
+                if (V.editing) return;
+                clearTimeout(V.mapT);
+                V.mapT = setTimeout(vMap, 300);
+            });
+            V.obs.observe(doc.body, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: ['src', 'href'] });
+            vMap();
+            if (V.flash && V.map) {
+                const it = V.map.items.get(V.flash);
+                if (it && it.box && it.box.classList) {
+                    it.box.classList.add('__ed-flash');
+                    if (it.box.scrollIntoView) it.box.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+                    setTimeout(() => it.box.classList.remove('__ed-flash'), 1200);
+                }
+                V.flash = null;
+            }
+        }
+
+        // 뒤에 숨긴 화면에 새로 그린 다음 바꿔 끼운다 (깜빡임 없이). keep 이면 눌렀던 버튼·스크롤을 다시 맞춘다
+        async function vRender(keep) {
+            if (!V.on || !Object.keys(S.files).length) return;
+            clearTimeout(V.timer);
+            const seq = ++V.seq;
+            $('#vload').hidden = false;
+            let built;
+            try {
+                built = await buildPage(V.page, V.query, true);
+            } catch (e) {
+                built = { html: '<body style="background:#090B11;color:#FF5A73;font-family:sans-serif;padding:24px">화면을 그리지 못했습니다: ' + esc(e.message) + '</body>', files: new Set() };
+            }
+            if (seq !== V.seq) return;
+            V.files = built.files;
+            V.static = staticSigs(built.orig || '');
+            const front = vFrame(), back = $('#vf' + (1 - V.front));
+            let y = 0;
+            try { y = front.contentWindow.scrollY; } catch (e) {}
+            await new Promise(res => {
+                const t = setTimeout(res, 8000);
+                back.onload = () => { clearTimeout(t); res(); };
+                back.srcdoc = built.html;
+            });
+            if (seq !== V.seq) return;
+            await sleep(250);
+            if (keep && V.clicks.length) {
+                V.replaying = true;
+                for (const p of V.clicks) {
+                    try { const x = back.contentDocument.querySelector(p); if (x) x.click(); } catch (e) {}
+                    await sleep(30);
+                }
+                V.replaying = false;
+                await sleep(120);
+            }
+            if (seq !== V.seq) return;
+            try { if (keep) back.contentWindow.scrollTo(0, y); } catch (e) {}
+            if (V.obs) V.obs.disconnect();
+            vHover(null);
+            back.style.visibility = 'visible';
+            front.style.visibility = 'hidden';
+            V.front = 1 - V.front;
+            vAttach();
+            $('#vload').hidden = true;
+            setTimeout(() => { if (front !== vFrame() && V.seq === seq) { front.onload = null; front.srcdoc = ''; } }, 200);
+        }
+
+        function vGo(page, query) {
+            if (V.replaying) return;
+            vEndInline();
+            vClosePop();
+            V.page = page;
+            const hooks = S.secs.hook && S.secs.hook.work;
+            V.query = query || (page === 'ETFHOOK.html' && hooks && hooks.length ? '?id=' + encodeURIComponent(hooks[0].id) : '');
+            V.clicks = [];
+            const ls = readLS();
+            ls.vpage = page;
+            writeLS(ls);
+            vRenderTabs();
+            vRender(false);
+        }
+
+        function vRenderTabs() {
+            const box = $('#vPages');
+            box.textContent = '';
+            V_PAGES.forEach(p => box.append(el('button', { type: 'button', class: p === V.page ? 'on' : null, text: PAGE_NAMES[p] || p, onclick: () => vGo(p) })));
+            const sel = $('#vHook');
+            const hooks = S.secs.hook && S.secs.hook.work;
+            sel.hidden = V.page !== 'ETFHOOK.html' || !hooks;
+            if (!sel.hidden) {
+                sel.textContent = '';
+                hooks.forEach(h => sel.append(el('option', { value: '?id=' + encodeURIComponent(h.id), text: h.name + ' (' + h.id + ')' })));
+                sel.value = V.query;
+            }
+            vLayout();
+        }
+
+        function vLayout() {
+            const top = $('.topbar').offsetHeight;
+            document.documentElement.style.setProperty('--top', top + 'px');
+            document.documentElement.style.setProperty('--vtop', (top + $('#vbar').offsetHeight) + 'px');
+        }
+
+        function setMode(m) {
+            V.on = m === 'visual';
+            document.body.classList.toggle('visual', V.on);
+            document.querySelectorAll('#modes button').forEach(b => b.classList.toggle('on', b.dataset.mode === m));
+            const ls = readLS();
+            ls.mode = m;
+            writeLS(ls);
+            vEndInline();
+            vClosePop();
+            vHover(null);
+            if (V.on) { vRenderTabs(); vRender(true); }
+            else renderSection();
         }
 
         // ── 저장
@@ -1550,6 +2357,8 @@
                 parseAll();
                 renderSection();
                 updateDirty();
+                vClosePop();
+                if (V.on) vRender(true);
                 pollDeploy(result.changes);
             } catch (e) {
                 alert('저장하지 못했습니다.\n\n' + e.message);
@@ -1624,10 +2433,48 @@
         if (window.ResizeObserver) new ResizeObserver(() => { if (pv.open) layoutPreview(); }).observe($('#pvBody'));
         document.addEventListener('keydown', e => {
             if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 's') { e.preventDefault(); openSave(); }
+            else if (e.key === 'Escape' && V.pop && !document.querySelector('dialog[open]')) vClosePop();
         });
+        document.addEventListener('mousedown', e => {
+            if (V.pop && !e.target.closest('#vpop, dialog, #toast')) vClosePop();
+        });
+        document.querySelectorAll('#modes button').forEach(b => { b.onclick = () => setMode(b.dataset.mode); });
+        document.querySelectorAll('#vAct button').forEach(b => {
+            b.onclick = () => {
+                V.act = b.dataset.act;
+                document.querySelectorAll('#vAct button').forEach(x => x.classList.toggle('on', x === b));
+                vEndInline();
+                vClosePop();
+                vHover(null);
+            };
+        });
+        document.querySelectorAll('#vDev button').forEach(b => {
+            b.onclick = () => {
+                document.querySelectorAll('#vDev button').forEach(x => x.classList.toggle('on', x === b));
+                $('#vwrap').classList.toggle('phone', b.dataset.dev === 'phone');
+                vClosePop();
+                setTimeout(vMap, 300);
+            };
+        });
+        $('#vAll').onchange = e => { V.all = e.target.checked; const d = vDoc(); if (d && d.body) d.body.classList.toggle('__ed-all', V.all); };
+        $('#vHook').onchange = e => vGo('ETFHOOK.html', e.target.value);
+        $('#vUndo').onclick = () => {
+            if (!confirm('저장하지 않고 고친 내용을 모두 되돌릴까요?')) return;
+            SECTIONS.forEach(s => {
+                const st = S.secs[s.id];
+                if (isDirty(s.id)) { st.work = clone(st.orig); mapIdx(st); }
+            });
+            vClosePop();
+            renderSection();
+            touch();
+            vRender(true);
+        };
+        window.addEventListener('resize', () => { vLayout(); vPlacePop(); });
         window.addEventListener('beforeunload', e => { if (anyDirty()) { e.preventDefault(); e.returnValue = ''; } });
         window.addEventListener('hashchange', route);
+        V.page = V_PAGES.indexOf(readLS().vpage) >= 0 ? readLS().vpage : 'index.html';
         route();
+        setMode(readLS().mode === 'list' ? 'list' : 'visual');
         loadAll();
     })();
     </script>
